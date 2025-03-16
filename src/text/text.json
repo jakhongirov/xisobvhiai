@@ -45,6 +45,10 @@
 
 	"notFoundData": "Topilmadi...",
 
+	"addReportText": "Xisobotga qo’shildi ✅",
+	"addReportDateText": "Sana:",
+	"addReportAmountText": "Summa:",
+	"addReportCategoryText": "Kategoriya:",
 	"cancelBtn": "Bekor qilish ❗",
 	"cancelText": "Bekor qilindi ❗",
 
