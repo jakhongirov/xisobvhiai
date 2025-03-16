@@ -589,8 +589,8 @@ bot.on('callback_query', async (msg) => {
             .replace(/%price%/g, formatBalanceWithSpaces(price?.price))
             .replace(/%title%/g, price?.title);
 
-         const text = `m=6697d19280d270b331826481;ac.user_id=${chatId};ac.tarif=${price.title};ac.ilova=Xisobchi_AI;a=${price.price}00`;
-         const base64Encoded = btoa(text);
+         // const text = `m=6697d19280d270b331826481;ac.user_id=${chatId};ac.tarif=${price.title};ac.ilova=Xisobchi_AI;a=${price.price}00`;
+         // const base64Encoded = btoa(text);
 
          bot.sendMessage(chatId, replacedText, {
             parse_mode: "HTML",
@@ -602,18 +602,18 @@ bot.on('callback_query', async (msg) => {
                         url: `https://my.click.uz/services/pay?merchant_id=26420&service_id=34442&transaction_param=Xisobchi_AI&additional_param3=${chatId}&amount=${price.price}&additional_param4=${price.title}`
                      }
                   ],
-                  [
-                     {
-                        text: localText.paymeText,
-                        url: `https://checkout.paycom.uz/${base64Encoded}`
-                     }
-                  ],
-                  [
-                     {
-                        text: localText.uzumText,
-                        url: `https://www.uzumbank.uz/open-service?serviceId=498617211&ilova=Xisobchi_AI&tarif=${price.title}&id=${chatId}&amount=${price.price}00`
-                     }
-                  ],
+                  // [
+                  //    {
+                  //       text: localText.paymeText,
+                  //       url: `https://checkout.paycom.uz/${base64Encoded}`
+                  //    }
+                  // ],
+                  // [
+                  //    {
+                  //       text: localText.uzumText,
+                  //       url: `https://www.uzumbank.uz/open-service?serviceId=498617211&ilova=Xisobchi_AI&tarif=${price.title}&id=${chatId}&amount=${price.price}00`
+                  //    }
+                  // ],
                ]
             }
          })
