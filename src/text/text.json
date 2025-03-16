@@ -45,6 +45,9 @@
 
 	"notFoundData": "Topilmadi...",
 
+	"cancelBtn": "Bekor qilish ❗",
+	"cancelText": "Bekor qilindi ❗",
+
 	"cronTextBefore2day": "Premium obunangiz tugashiga 2 kun qoldi, davom ettirish uchun tarif to'lovini amalga oshirishingiz lozim",
 	"cronTextBefore1day": "Premium obunangiz tugashiga 1 kun qoldi, davom ettirish uchun tarif to'lovini amalga oshirishingiz lozim, aks holda botdan foydalana olmaysiz.",
 	"cronTextStoped": "Sizning premium obunaningiz tugadi. Botdan foydalanish uchun, kerakli tarifni tanlab, to'lovni amalga oshiring."
