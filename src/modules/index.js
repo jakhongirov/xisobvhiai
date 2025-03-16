@@ -12,7 +12,7 @@ const payment = require('./payment/payment')
 
 router
    //  PAYMENT
-   .get('/payment/check', payment.CHECK)
-   .get('/payment/success', payment.SUCCESS)
+   .get('/payment/check/:chat_id/:tarif/:amount', payment.CHECK)
+   .get('/payment/success/:chat_id/:tarif', payment.SUCCESS)
 
 module.exports = router
