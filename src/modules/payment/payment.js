@@ -93,6 +93,11 @@ module.exports = {
                }).then(async () => {
                   await model.editStep(chat_id, 'menu')
                })
+
+               return res.status(200).json({
+                  status: 200,
+                  message: "Success"
+               })
             } else {
                return res.status(400).json({
                   status: 400,
