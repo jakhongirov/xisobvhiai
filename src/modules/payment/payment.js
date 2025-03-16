@@ -15,7 +15,7 @@ module.exports = {
          console.log(foundTarif)
 
          if (foundUser && foundTarif) {
-            if (foundTarif.amount == amount) {
+            if (foundTarif.price == amount) {
                return res.status(200).json({
                   status: 200,
                   message: "Success"
