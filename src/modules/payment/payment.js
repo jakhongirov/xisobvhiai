@@ -1,0 +1,110 @@
+const model = require('./model')
+const { calculateExpiredDate } = require('../../lib/functions')
+const { bot } = require('../../lib/bot')
+const localText = require('../../text/text.json')
+
+module.exports = {
+   GET: async (req, res) => {
+      try {
+         const { chat_id, tarif, amount } = req.params
+         const foundUser = await model.foundUser(chat_id)
+         const foundTarif = await model.foundTarif(tarif)
+
+         if (foundUser && foundTarif) {
+            if (foundTarif.amount == amount) {
+               return res.status(200).json({
+                  status: 200,
+                  message: "Success"
+               })
+            } else {
+               return res.status(400).json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.status(404).json({
+               status: 404,
+               message: "Not found"
+            })
+         }
+
+      } catch (error) {
+         console.log(error)
+         return res.status(500).json({
+            status: 500,
+            message: "Interval Server Error"
+         })
+      }
+   },
+
+   CHECK: async (req, res) => {
+      try {
+         const { chat_id, tarif } = req.params
+         const foundUser = await model.foundUser(chat_id)
+         const foundTarif = await model.foundTarif(tarif)
+
+         if (foundUser) {
+            const expiredDate = await calculateExpiredDate(foundTarif.period)
+            const editUserPremium = await model.editUserPremium(foundUser.id, expiredDate)
+
+            if (editUserPremium) {
+               bot.sendMessage(chat_id, localText.successfullyPaid, {
+                  reply_markup: {
+                     keyboard: [
+                        [
+                           {
+                              text: localText.reportsBtn
+                           },
+                           {
+                              text: localText.loanBtn
+                           },
+                        ],
+                        [
+                           {
+                              text: localText.balancesBtn
+                           },
+                           {
+                              text: localText.shareBtn
+                           }
+                        ],
+                        [
+                           {
+                              text: localText.usageInformationBtn
+                           },
+                           {
+                              text: localText.premiumBtn
+                           }
+                        ]
+                     ],
+                     resize_keyboard: true,
+                  }
+               }).then(async () => {
+                  await model.editStep(chat_id, 'menu')
+               })
+            } else {
+               return res.status(400).json({
+                  status: 400,
+                  message: "Bad request"
+               })
+            }
+
+         } else {
+            return res.status(404).json({
+               status: 404,
+               message: "Not found"
+            })
+         }
+
+
+      } catch (error) {
+         console.log(error)
+         return res.status(500).json({
+            status: 500,
+            message: "Interval Server Error"
+         })
+      }
+   }
+
+}
