@@ -101,7 +101,7 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
          }
       });
 
-      bot.sendMessage(chatId, localText.paymeText, {
+      bot.sendMessage(chatId, localText.priceText, {
          parse_mode: "HTML",
          reply_markup: {
             inline_keyboard: priceKeyboard
