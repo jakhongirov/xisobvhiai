@@ -13,6 +13,7 @@ module.exports = {
          console.log(req.params)
          console.log(foundUser)
          console.log(foundTarif)
+         console.log(foundTarif.price == amount)
 
          if (foundUser && foundTarif) {
             if (foundTarif.price == amount) {
@@ -50,7 +51,7 @@ module.exports = {
          const foundTarif = await model.foundTarif(tarif)
 
          if (foundUser) {
-            const expiredDate = await calculateExpiredDate(foundTarif.period)
+            const expiredDate = await calculateExpiredDate(Number(foundTarif.period))
             const editUserPremium = await model.editUserPremium(foundUser.id, expiredDate)
 
             if (editUserPremium) {

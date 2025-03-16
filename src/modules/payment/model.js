@@ -45,7 +45,7 @@ const editUserPremium = (id, expiredDate) => {
          premium = true
       WHERE
          id = $1
-      RETURNING;
+      RETURNING *;
    `;
 
    return fetch(QUERY, id, expiredDate)
