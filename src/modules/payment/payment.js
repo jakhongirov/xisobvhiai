@@ -54,6 +54,10 @@ module.exports = {
             const expiredDate = await calculateExpiredDate(Number(foundTarif.period))
             const editUserPremium = await model.editUserPremium(foundUser.id, expiredDate)
 
+            console.log(expiredDate);
+            console.log(editUserPremium);
+
+
             if (editUserPremium) {
                bot.sendMessage(chat_id, localText.successfullyPaid, {
                   parse_mode: "HTML",
