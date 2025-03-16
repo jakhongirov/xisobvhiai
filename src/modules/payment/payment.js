@@ -10,6 +10,10 @@ module.exports = {
          const foundUser = await model.foundUser(chat_id)
          const foundTarif = await model.foundTarif(tarif)
 
+         console.log(req.params)
+         console.log(foundUser)
+         console.log(foundTarif)
+
          if (foundUser && foundTarif) {
             if (foundTarif.amount == amount) {
                return res.status(200).json({
