@@ -51,6 +51,7 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
 
    if (foundUser && foundUser.premium) {
       bot.sendMessage(chatId, localText.menuText, {
+         parse_mode: "HTML",
          reply_markup: {
             keyboard: [
                [
@@ -79,6 +80,7 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
                ]
             ],
             resize_keyboard: true,
+
          }
       }).then(async () => {
          await model.editStep(chatId, 'menu')
@@ -100,6 +102,7 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
       });
 
       bot.sendMessage(chatId, localText.paymeText, {
+         parse_mode: "HTML",
          reply_markup: {
             inline_keyboard: priceKeyboard
          }
@@ -108,6 +111,7 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
       })
    } else {
       bot.sendMessage(chatId, localText.startText, {
+         parse_mode: "HTML",
          reply_markup: {
             keyboard: [
                [
@@ -138,6 +142,7 @@ bot.on('contact', async (msg) => {
       if (msg.contact.user_id !== msg.from.id) {
 
          return bot.sendMessage(chatId, localText.contactRegisterError, {
+            parse_mode: "HTML",
             reply_markup: {
                keyboard: [
                   [{
@@ -159,6 +164,7 @@ bot.on('contact', async (msg) => {
 
       if (addPhoneUser) {
          bot.sendMessage(chatId, localText.askNameText, {
+            parse_mode: "HTML",
             reply_markup: {
                remove_keyboard: true
             }
@@ -194,6 +200,7 @@ bot.on('message', async (msg) => {
          });
 
          bot.sendMessage(chatId, localText.successfullyRegister, {
+            parse_mode: "HTML",
             reply_markup: {
                inline_keyboard: priceKeyboard
             }
@@ -213,6 +220,7 @@ bot.on('message', async (msg) => {
       const reportMonthly = `${replacedText}\n\n${localText.reportInputText} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputText} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesText}\n${monthltyByCategories.map(item => `${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
 
       bot.sendMessage(chatId, reportMonthly, {
+         parse_mode: "HTML",
          reply_markup: {
             keyboard: [
                [
@@ -241,6 +249,7 @@ bot.on('message', async (msg) => {
       const balancesText = `${localText.balancesText}\n\n${userBalances.map(item => `${item.currency}: ${formatBalanceWithSpaces(item.total_balance)}\n`).join('')}`
 
       bot.sendMessage(chatId, balancesText, {
+         parse_mode: "HTML",
          reply_markup: {
             keyboard: [
                [
@@ -261,6 +270,7 @@ bot.on('message', async (msg) => {
       const debtText = `${localText.debtText}\n\n${debtsList.map(item => `${localText.debtGivenText} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoText} ${item.name}\n${localText.debtAmountText} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineText} ${formatDateAdvanced(item.deadline)}\n`).join('')}`
 
       bot.sendMessage(chatId, debtText, {
+         parse_mode: "HTML",
          reply_markup: {
             keyboard: [
                [
@@ -294,6 +304,7 @@ bot.on('message', async (msg) => {
       });
 
       bot.sendMessage(chatId, localText.premiumText, {
+         parse_mode: "HTML",
          reply_markup: {
             inline_keyboard: priceKeyboard
          }
@@ -318,6 +329,7 @@ bot.on('message', async (msg) => {
       ])
 
       bot.sendMessage(chatId, localText.chooseMonthText, {
+         parse_mode: "HTML",
          reply_markup: {
             keyboard: monthsKeyboard,
             resize_keyboard: true
@@ -334,6 +346,7 @@ bot.on('message', async (msg) => {
       const seeMoreText = `${replacedSeeMoreText}\n\n${historiesBalanceCurrentMonth.map(item => `${item.income ? "Kirim" : "Chiqim"}: ${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)} | ${item.name}\n`).join('')}`
 
       bot.sendMessage(chatId, seeMoreText, {
+         parse_mode: "HTML",
          reply_markup: {
             keyboard: [
                [
@@ -355,6 +368,7 @@ bot.on('message', async (msg) => {
 
    } else if (text == localText.backBtn) {
       bot.sendMessage(chatId, localText.menuText, {
+         parse_mode: "HTML",
          reply_markup: {
             keyboard: [
                [
@@ -399,6 +413,7 @@ bot.on('message', async (msg) => {
       const reportMonthly = `${replacedText}\n\n${localText.replacedInputText} ${monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('')}${localText.replacedOutputText} ${monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('')}\n\n${localText.replacedCatgoriesText}\n ${monthltyByCategories.map(item => `${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
 
       bot.sendMessage(chatId, reportMonthly, {
+         parse_mode: "HTML",
          reply_markup: {
             keyboard: [
                [
@@ -461,6 +476,7 @@ bot.on('message', async (msg) => {
                      )
                      const debtText = `${localText.debtText}\n\n${localText.debtGivenText} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoText} ${addDebt.name}\n${localText.debtAmountText} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineText} ${formatDateAdvanced(addDebt.deadline)}`
                      bot.sendMessage(chatId, debtText, {
+                        parse_mode: "HTML",
                         reply_markup: {
                            inline_keyboard: [
                               [
@@ -476,6 +492,7 @@ bot.on('message', async (msg) => {
 
                   const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}`
                   bot.sendMessage(chatId, addReportText, {
+                     parse_mode: "HTML",
                      reply_markup: {
                         inline_keyboard: [
                            [
@@ -524,6 +541,7 @@ bot.on('message', async (msg) => {
                )
                const debtText = `${localText.debtText}\n\n${localText.debtGivenText} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoText} ${addDebt.name}\n${localText.debtAmountText} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineText} ${formatDateAdvanced(addDebt.deadline)}`
                bot.sendMessage(chatId, debtText, {
+                  parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
                         [
@@ -539,6 +557,7 @@ bot.on('message', async (msg) => {
 
             const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}`
             bot.sendMessage(chatId, addReportText, {
+               parse_mode: "HTML",
                reply_markup: {
                   inline_keyboard: [
                      [
@@ -574,6 +593,7 @@ bot.on('callback_query', async (msg) => {
          const base64Encoded = btoa(text);
 
          bot.sendMessage(chatId, replacedText, {
+            parse_mode: "HTML",
             reply_markup: {
                inline_keyboard: [
                   [
@@ -601,6 +621,7 @@ bot.on('callback_query', async (msg) => {
          const expiredDate = calculateExpiredDate(Number(price.period))
          await model.editPremium(chatId, expiredDate)
          bot.sendMessage(chatId, localText.menuText, {
+            parse_mode: "HTML",
             reply_markup: {
                keyboard: [
                   [
@@ -640,14 +661,14 @@ bot.on('callback_query', async (msg) => {
       const deleteReport = await model.deleteReport(reportid, foundUser.id)
 
       if (deleteReport) {
-         bot.sendMessage(chatId, localText.cancelText)
+         bot.sendMessage(chatId, localText.cancelText, { parse_mode: "HTML", })
       }
    } else if (data.startsWith('cancel_debt_')) {
       const debtid = data?.split('cancel_debt_')[1]
       const deleteDebt = await model.deleteDebt(debtid, foundUser.id)
 
       if (deleteDebt) {
-         bot.sendMessage(chatId, localText.cancelText)
+         bot.sendMessage(chatId, localText.cancelText, { parse_mode: "HTML", })
       }
    }
 })
