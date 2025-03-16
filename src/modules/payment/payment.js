@@ -4,7 +4,7 @@ const { bot } = require('../../lib/bot')
 const localText = require('../../text/text.json')
 
 module.exports = {
-   GET: async (req, res) => {
+   CHECK: async (req, res) => {
       try {
          const { chat_id, tarif, amount } = req.params
          const foundUser = await model.foundUser(chat_id)
@@ -39,7 +39,7 @@ module.exports = {
       }
    },
 
-   CHECK: async (req, res) => {
+   SUCCESS: async (req, res) => {
       try {
          const { chat_id, tarif } = req.params
          const foundUser = await model.foundUser(chat_id)

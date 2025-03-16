@@ -4,7 +4,7 @@ const cors = require("cors");
 const path = require('path')
 const fs = require('fs');
 const app = express();
-// const router = require("./src/modules");
+const router = require("./src/modules");
 const localText = require('./src/text/text.json')
 const model = require('./model');
 const { bot } = require('./src/lib/bot')
@@ -681,7 +681,7 @@ app.use(express.urlencoded({
    extended: true
 }));
 app.use('/public', express.static(path.resolve(__dirname, 'public')))
-// app.use("/api/v1", router);
+app.use("/api/v1", router);
 
 const job = new CronJob('0 9 * * *', async () => {
    await sendMessageBefore();
