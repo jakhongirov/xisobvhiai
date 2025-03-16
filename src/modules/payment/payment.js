@@ -55,6 +55,7 @@ module.exports = {
 
             if (editUserPremium) {
                bot.sendMessage(chat_id, localText.successfullyPaid, {
+                  parse_mode: "HTML",
                   reply_markup: {
                      keyboard: [
                         [
@@ -62,7 +63,7 @@ module.exports = {
                               text: localText.reportsBtn
                            },
                            {
-                              text: localText.loanBtn
+                              text: localText.debtBtn
                            },
                         ],
                         [
