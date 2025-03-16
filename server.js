@@ -341,6 +341,7 @@ bot.on('message', async (msg) => {
    } else if (foundUser && text == localText.seeMoreBtn) {
       const currentMonth = new Date().getMonth() + 1;
       const historiesBalanceCurrentMonth = await model.historiesBalanceCurrentMonth(foundUser.id, currentMonth)
+      console.log(historiesBalanceCurrentMonth)
       const foundMonth = months.find(item => item.number == currentMonth)
       const replacedSeeMoreText = localText.seeMoreText.replace(/%monthName%/g, foundMonth.name)
       const seeMoreText = `${replacedSeeMoreText}\n\n${historiesBalanceCurrentMonth.map(item => `${item.income ? "Kirim" : "Chiqim"}: ${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)} | ${item.name}\n`).join('')}`
