@@ -22,13 +22,13 @@
 
 	"usageInformationBtn": "📙 Foydalanish yo’qnomasi",
 
-	"loanBtn": "💸  Qarzlar",
-	"loanText": "💸 Qarzlar ro’yxati:",
-	"loanGivenText": "Berilgan:",
-	"loanWhoText": "Kimga:",
-	"loanAmountText": "Qancha:",
-	"loanEstimateText": "Qoldi:",
-	"loanDeadlineText": "Qachon qaytarish kerak:",
+	"debtBtn": "💸  Qarzlar",
+	"debtText": "💸 Qarzlar ro’yxati:",
+	"debtGivenText": "Berilgan:",
+	"debtWhoText": "Kimga:",
+	"debtAmountText": "Qancha:",
+	"debtEstimateText": "Qoldi:",
+	"debtDeadlineText": "Qachon qaytarish kerak:",
 
 	"shareBtn": "🤝 Do’stni taklif qilish",
 
