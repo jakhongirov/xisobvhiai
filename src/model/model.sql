@@ -48,6 +48,7 @@ CREATE TABLE histories_balance (
    id bigserial PRiMARY KEY,
    amount numeric,
    date text,
+   comment text,
    category_id bigint,
    balance_id bigint,
    user_id bigint,

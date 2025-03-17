@@ -344,7 +344,7 @@ bot.on('message', async (msg) => {
       console.log(historiesBalanceCurrentMonth)
       const foundMonth = months.find(item => item.number == currentMonth)
       const replacedSeeMoreText = localText.seeMoreText.replace(/%monthName%/g, foundMonth.name)
-      const seeMoreText = `${replacedSeeMoreText}\n\n${historiesBalanceCurrentMonth.map(item => `${item.income ? "Kirim" : "Chiqim"}: ${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)} | ${item.name}\n`).join('')}`
+      const seeMoreText = `${replacedSeeMoreText}\n\n${historiesBalanceCurrentMonth.map(item => `${item.income ? "Kirim" : "Chiqim"}: ${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)} | ${item.name}\n${localText.addReportCommentText} ${item.comment}`).join('')}`
 
       bot.sendMessage(chatId, seeMoreText, {
          parse_mode: "HTML",
@@ -463,7 +463,8 @@ bot.on('message', async (msg) => {
                      foundCategory.id,
                      jsonData.date,
                      jsonData.amount,
-                     jsonData.type == 'income' ? true : false
+                     jsonData.type == 'income' ? true : false,
+                     jsonData.user_input
                   )
 
                   if (jsonData.isDebtPayment) {
@@ -491,7 +492,7 @@ bot.on('message', async (msg) => {
                      })
                   }
 
-                  const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}`
+                  const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}\n${localText.addReportCommentText} ${addReport.user_input}`
                   bot.sendMessage(chatId, addReportText, {
                      parse_mode: "HTML",
                      reply_markup: {
@@ -527,7 +528,8 @@ bot.on('message', async (msg) => {
                foundCategory.id,
                jsonData.date,
                jsonData.amount,
-               jsonData.type == 'income' ? true : false
+               jsonData.type == 'income' ? true : false,
+               jsonData.user_input
             )
             console.log(jsonData)
 
@@ -556,7 +558,7 @@ bot.on('message', async (msg) => {
                })
             }
 
-            const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}`
+            const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}\n${localText.addReportCommentText} ${addReport.user_input}`
             bot.sendMessage(chatId, addReportText, {
                parse_mode: "HTML",
                reply_markup: {
@@ -570,7 +572,6 @@ bot.on('message', async (msg) => {
                   ]
                }
             })
-
          }
       }
    }
@@ -590,8 +591,8 @@ bot.on('callback_query', async (msg) => {
             .replace(/%price%/g, formatBalanceWithSpaces(price?.price))
             .replace(/%title%/g, price?.title);
 
-         // const text = `m=6697d19280d270b331826481;ac.user_id=${chatId};ac.tarif=${price.title};ac.ilova=Xisobchi_AI;a=${price.price}00`;
-         // const base64Encoded = btoa(text);
+         const text = `m=6697d19280d270b331826481;ac.user_id=${chatId};ac.tarif=${price.title};ac.ilova=Xisobchi_AI;a=${price.price}00`;
+         const base64Encoded = btoa(text);
 
          bot.sendMessage(chatId, replacedText, {
             parse_mode: "HTML",
@@ -603,18 +604,18 @@ bot.on('callback_query', async (msg) => {
                         url: `https://my.click.uz/services/pay?merchant_id=26420&service_id=34442&transaction_param=Xisobchi_AI&additional_param3=${chatId}&amount=${price.price}&additional_param4=${price.title}`
                      }
                   ],
-                  // [
-                  //    {
-                  //       text: localText.paymeText,
-                  //       url: `https://checkout.paycom.uz/${base64Encoded}`
-                  //    }
-                  // ],
-                  // [
-                  //    {
-                  //       text: localText.uzumText,
-                  //       url: `https://www.uzumbank.uz/open-service?serviceId=498617211&ilova=Xisobchi_AI&tarif=${price.title}&id=${chatId}&amount=${price.price}00`
-                  //    }
-                  // ],
+                  [
+                     {
+                        text: localText.paymeText,
+                        url: `https://checkout.paycom.uz/${base64Encoded}`
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.uzumText,
+                        url: `https://www.uzumbank.uz/open-service?serviceId=498617211&ilova=Xisobchi_AI&tarif=${price.title}&id=${chatId}&amount=${price.price}00`
+                     }
+                  ],
                ]
             }
          })
