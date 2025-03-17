@@ -492,7 +492,7 @@ bot.on('message', async (msg) => {
                      })
                   }
 
-                  const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}\n${localText.addReportCommentText} ${addReport.user_input}`
+                  const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}\n${localText.addReportCommentText} ${addReport.comment}`
                   bot.sendMessage(chatId, addReportText, {
                      parse_mode: "HTML",
                      reply_markup: {
@@ -558,7 +558,7 @@ bot.on('message', async (msg) => {
                })
             }
 
-            const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}\n${localText.addReportCommentText} ${addReport.user_input}`
+            const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}\n${localText.addReportCommentText} ${addReport.comment}`
             bot.sendMessage(chatId, addReportText, {
                parse_mode: "HTML",
                reply_markup: {
