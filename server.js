@@ -87,21 +87,12 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
       })
    } else if (foundUser) {
       const priceList = await model.priceList()
-      const priceKeyboard = priceList.map(item => {
-         if (foundUser.used_free) {
-            if (item.price > 0) {
-               return [{
-                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                  callback_data: `price_${item?.id}`
-               }];
-            }
-         } else {
-            return [{
-               text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-               callback_data: `price_${item?.id}`
-            }];
-         }
-      });
+      const priceKeyboard = priceList
+         .filter(item => !(foundUser.used_free && item.price === 0))
+         .map(item => [{
+            text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
+            callback_data: `price_${item.id}`
+         }]);
 
       bot.sendMessage(chatId, localText.premiumText, {
          parse_mode: "HTML",
@@ -187,21 +178,12 @@ bot.on('message', async (msg) => {
 
       if (addName) {
          const priceList = await model.priceList()
-         const priceKeyboard = priceList.map(item => {
-            if (foundUser.used_free) {
-               if (item.price > 0) {
-                  return [{
-                     text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                     callback_data: `price_${item?.id}`
-                  }];
-               }
-            } else {
-               return [{
-                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                  callback_data: `price_${item?.id}`
-               }];
-            }
-         });
+         const priceKeyboard = priceList
+            .filter(item => !(foundUser.used_free && item.price === 0))
+            .map(item => [{
+               text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
+               callback_data: `price_${item.id}`
+            }]);
 
          bot.sendMessage(chatId, localText.successfullyRegister, {
             parse_mode: "HTML",
@@ -293,21 +275,12 @@ bot.on('message', async (msg) => {
 
    } else if (text == localText.premiumBtn) {
       const priceList = await model.priceList()
-      const priceKeyboard = priceList.map(item => {
-         if (foundUser.used_free) {
-            if (item.price =! 0) {
-               return [{
-                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                  callback_data: `price_${item?.id}`
-               }];
-            }
-         } else {
-            return [{
-               text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-               callback_data: `price_${item?.id}`
-            }];
-         }
-      });
+      const priceKeyboard = priceList
+         .filter(item => !(foundUser.used_free && item.price === 0))
+         .map(item => [{
+            text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
+            callback_data: `price_${item.id}`
+         }]);
 
       bot.sendMessage(chatId, localText.premiumText, {
          parse_mode: "HTML",
