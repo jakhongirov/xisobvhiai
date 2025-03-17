@@ -1,21 +1,21 @@
 const { Pool } = require("pg");
 
-// const credentials = {
-//    user: "postgres",
-//    host: "localhost",
-//    database: "xisobchiai",
-//    password: "behad2024",
-//    port: 5432,
-//    timezone: 'Asia/Tashkent'
-// };
 const credentials = {
    user: "postgres",
    host: "localhost",
-   database: "ai",
-   password: "jdb006",
+   database: "xisobchiai",
+   password: "behad2024",
    port: 5432,
    timezone: 'Asia/Tashkent'
 };
+// const credentials = {
+//    user: "postgres",
+//    host: "localhost",
+//    database: "ai",
+//    password: "jdb006",
+//    port: 5432,
+//    timezone: 'Asia/Tashkent'
+// };
 
 const pool = new Pool(credentials);
 
