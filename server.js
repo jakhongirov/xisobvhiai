@@ -323,7 +323,7 @@ bot.on('message', async (msg) => {
       console.log(historiesBalanceCurrentMonth)
       const foundMonth = months.find(item => item.number == currentMonth)
       const replacedSeeMoreText = localText.seeMoreText.replace(/%monthName%/g, foundMonth.name)
-      const seeMoreText = `${replacedSeeMoreText}\n\n${historiesBalanceCurrentMonth.map(item => `${item.income ? "Kirim" : "Chiqim"}: ${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)} | ${item.name}\n${localText.addReportCommentText} ${item.comment}`).join('')}`
+      const seeMoreText = `${replacedSeeMoreText}\n\n${historiesBalanceCurrentMonth.map(item => `${item.income ? "Kirim" : "Chiqim"}: ${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)} | ${item.name}\n${localText.addReportCommentText} ${item.comment}\n`).join('')}`
 
       bot.sendMessage(chatId, seeMoreText, {
          parse_mode: "HTML",
