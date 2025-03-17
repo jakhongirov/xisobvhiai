@@ -455,56 +455,60 @@ bot.on('message', async (msg) => {
 
                writer.on('finish', async () => {
                   const jsonData = await analyzeVoice(`../../public/audios/temp_${fileId}.ogg`)
-                  const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
-                  const foundCategory = await model.foundCategory(jsonData.category)
-                  const addReport = await model.addReport(
-                     foundUser.id,
-                     foundBalance.id,
-                     foundCategory.id,
-                     jsonData.date,
-                     jsonData.amount,
-                     jsonData.type == 'income' ? true : false,
-                     jsonData.user_input
-                  )
 
-                  if (jsonData.isDebtPayment) {
-                     const addDebt = await model.addDebt(
+                  jsonData.forEach(async (item) => {
+                     const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
+                     const foundCategory = await model.foundCategory(item.category)
+                     const addReport = await model.addReport(
                         foundUser.id,
                         foundBalance.id,
-                        jsonData.forWhom,
-                        jsonData.amount,
-                        jsonData.deadline,
-                        jsonData.date,
+                        foundCategory.id,
+                        item.date,
+                        item.amount,
+                        item.type == 'income' ? true : false,
+                        item.user_input
                      )
-                     const debtText = `${localText.debtText}\n\n${localText.debtGivenText} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoText} ${addDebt.name}\n${localText.debtAmountText} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineText} ${formatDateAdvanced(addDebt.deadline)}`
-                     bot.sendMessage(chatId, debtText, {
+                     console.log(item)
+
+                     if (item.isDebtPayment) {
+                        const addDebt = await model.addDebt(
+                           foundUser.id,
+                           foundBalance.id,
+                           item.forWhom,
+                           item.amount,
+                           item.deadline,
+                           item.date,
+                        )
+                        const debtText = `${localText.debtText}\n\n${localText.debtGivenText} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoText} ${addDebt.name}\n${localText.debtAmountText} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineText} ${formatDateAdvanced(addDebt.deadline)}`
+                        bot.sendMessage(chatId, debtText, {
+                           parse_mode: "HTML",
+                           reply_markup: {
+                              inline_keyboard: [
+                                 [
+                                    {
+                                       text: localText.cancelBtn,
+                                       callback_data: `cancel_debt_${addDebt.id}`
+                                    }
+                                 ]
+                              ]
+                           }
+                        })
+                     }
+
+                     const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}\n${localText.addReportCommentText} ${addReport.comment}`
+                     bot.sendMessage(chatId, addReportText, {
                         parse_mode: "HTML",
                         reply_markup: {
                            inline_keyboard: [
                               [
                                  {
                                     text: localText.cancelBtn,
-                                    callback_data: `cancel_debt_${addDebt.id}`
+                                    callback_data: `cancel_report_${addReport.id}`
                                  }
                               ]
                            ]
                         }
                      })
-                  }
-
-                  const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}\n${localText.addReportCommentText} ${addReport.comment}`
-                  bot.sendMessage(chatId, addReportText, {
-                     parse_mode: "HTML",
-                     reply_markup: {
-                        inline_keyboard: [
-                           [
-                              {
-                                 text: localText.cancelBtn,
-                                 callback_data: `cancel_report_${addReport.id}`
-                              }
-                           ]
-                        ]
-                     }
                   })
                })
 
@@ -520,57 +524,60 @@ bot.on('message', async (msg) => {
 
          } else if (text && text != '/start') {
             const jsonData = await analyzeText(text)
-            const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
-            const foundCategory = await model.foundCategory(jsonData.category)
-            const addReport = await model.addReport(
-               foundUser.id,
-               foundBalance.id,
-               foundCategory.id,
-               jsonData.date,
-               jsonData.amount,
-               jsonData.type == 'income' ? true : false,
-               jsonData.user_input
-            )
-            console.log(jsonData)
 
-            if (jsonData.isDebtPayment) {
-               const addDebt = await model.addDebt(
+            jsonData.forEach(async (item) => {
+               const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
+               const foundCategory = await model.foundCategory(item.category)
+               const addReport = await model.addReport(
                   foundUser.id,
                   foundBalance.id,
-                  jsonData.forWhom,
-                  jsonData.amount,
-                  jsonData.deadline,
-                  jsonData.date,
+                  foundCategory.id,
+                  item.date,
+                  item.amount,
+                  item.type == 'income' ? true : false,
+                  item.user_input
                )
-               const debtText = `${localText.debtText}\n\n${localText.debtGivenText} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoText} ${addDebt.name}\n${localText.debtAmountText} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineText} ${formatDateAdvanced(addDebt.deadline)}`
-               bot.sendMessage(chatId, debtText, {
+               console.log(item)
+
+               if (item.isDebtPayment) {
+                  const addDebt = await model.addDebt(
+                     foundUser.id,
+                     foundBalance.id,
+                     item.forWhom,
+                     item.amount,
+                     item.deadline,
+                     item.date,
+                  )
+                  const debtText = `${localText.debtText}\n\n${localText.debtGivenText} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoText} ${addDebt.name}\n${localText.debtAmountText} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineText} ${formatDateAdvanced(addDebt.deadline)}`
+                  bot.sendMessage(chatId, debtText, {
+                     parse_mode: "HTML",
+                     reply_markup: {
+                        inline_keyboard: [
+                           [
+                              {
+                                 text: localText.cancelBtn,
+                                 callback_data: `cancel_debt_${addDebt.id}`
+                              }
+                           ]
+                        ]
+                     }
+                  })
+               }
+
+               const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}\n${localText.addReportCommentText} ${addReport.comment}`
+               bot.sendMessage(chatId, addReportText, {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
                         [
                            {
                               text: localText.cancelBtn,
-                              callback_data: `cancel_debt_${addDebt.id}`
+                              callback_data: `cancel_report_${addReport.id}`
                            }
                         ]
                      ]
                   }
                })
-            }
-
-            const addReportText = `${localText.addReportText}\n\n${addReport.income ? "Kirim:" : "Chiqim:"}\n${localText.addReportDateText} ${formatDateAdvanced(addReport.date)}\n${localText.addReportAmountText} ${formatBalanceWithSpaces(addReport.amount)} ${foundBalance.currency}\n${localText.addReportCategoryText} ${foundCategory.name}\n${localText.addReportCommentText} ${addReport.comment}`
-            bot.sendMessage(chatId, addReportText, {
-               parse_mode: "HTML",
-               reply_markup: {
-                  inline_keyboard: [
-                     [
-                        {
-                           text: localText.cancelBtn,
-                           callback_data: `cancel_report_${addReport.id}`
-                        }
-                     ]
-                  ]
-               }
             })
          }
       }
