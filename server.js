@@ -276,7 +276,7 @@ bot.on('message', async (msg) => {
    } else if (text == localText.premiumBtn) {
       const priceList = await model.priceList()
       const priceKeyboard = priceList
-         .filter(item => !(foundUser.used_free && item.price === 0))
+         .filter(item => !(foundUser.used_free && item.price == 0))
          .map(item => [{
             text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
             callback_data: `price_${item.id}`
