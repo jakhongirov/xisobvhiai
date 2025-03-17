@@ -328,7 +328,8 @@ const addReport = (
    category_id,
    date,
    amount,
-   type
+   type,
+   comment
 ) => {
    const QUERY = `
       INSERT INTO
@@ -358,7 +359,8 @@ const addReport = (
       category_id,
       date,
       amount,
-      type
+      type,
+      comment
    )
 }
 const addDebt = (
