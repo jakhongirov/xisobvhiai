@@ -270,6 +270,7 @@ const historiesBalanceCurrentMonth = (id, currentMonth) => {
          h.amount,
          h.date,
          h.income,
+         h.comment,
          b.currency,
          b.title,
          c.name
