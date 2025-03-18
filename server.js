@@ -204,7 +204,7 @@ bot.on('message', async (msg) => {
       const replacedText = localText.reportMonthlyText
          .replace(/%monthName%/g, months.find(m => m.number == currentMonth).name)
 
-      const reportMonthly = `${replacedText}\n\n${localText.reportInputText} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputText} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesText}\n${monthltyByCategories.map(item => `${item.income ? '🟢': '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
+      const reportMonthly = `${replacedText}\n\n${localText.reportInputText} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputText} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesText}\n${monthltyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
 
       bot.sendMessage(chatId, reportMonthly, {
          parse_mode: "HTML",
@@ -321,10 +321,11 @@ bot.on('message', async (msg) => {
 
    } else if (foundUser && text == localText.seeMoreBtn) {
       const currentMonth = new Date().getMonth() + 1;
-      const historiesBalanceCurrentMonth = await model.historiesBalanceCurrentMonth(foundUser.id, currentMonth)
+      const historiesBalanceCurrentMonthOutcome = await model.historiesBalanceCurrentMonthOutcome(foundUser.id, currentMonth)
+      const historiesBalanceCurrentMonthIncome = await model.historiesBalanceCurrentMonthIncome(foundUser.id, currentMonth)
       const foundMonth = months.find(item => item.number == currentMonth)
       const replacedSeeMoreText = localText.seeMoreText.replace(/%monthName%/g, foundMonth.name)
-      const seeMoreText = `${replacedSeeMoreText}\n\n${historiesBalanceCurrentMonth.map(item => `${item.income ? "Kirim" : "Chiqim"}: ${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)} | ${item.name}\n${localText.addReportCommentText} ${item.comment}\n\n`).join('')}`
+      const seeMoreText = `${replacedSeeMoreText}\n\n<b>${localText.reportOutputText}</b>\n${historiesBalanceCurrentMonthOutcome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentText} ${item.comment}\n\n`).join('')}\n<b>${localText.reportInputText}</b>\n${historiesBalanceCurrentMonthIncome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentText} ${item.comment}\n\n`).join('')}`
 
       bot.sendMessage(chatId, seeMoreText, {
          parse_mode: "HTML",
@@ -391,7 +392,7 @@ bot.on('message', async (msg) => {
       const replacedText = localText.reportMonthlyText
          .replace(/%monthName%/g, foundMonth.name)
 
-         const reportMonthly = `${replacedText}\n\n${localText.reportInputText} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputText} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesText}\n${monthltyByCategories.map(item => `${item.income ? '🟢': '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
+      const reportMonthly = `${replacedText}\n\n${localText.reportInputText} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputText} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesText}\n${monthltyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
 
       bot.sendMessage(chatId, reportMonthly, {
          parse_mode: "HTML",

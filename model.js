@@ -261,7 +261,7 @@ const debtsList = (id) => {
 
    return fetchALL(QUERY, id)
 }
-const historiesBalanceCurrentMonth = (id, currentMonth) => {
+const historiesBalanceCurrentMonthOutcome = (id, currentMonth) => {
    const QUERY = `
       SELECT 
          h.id,
@@ -290,7 +290,43 @@ const historiesBalanceCurrentMonth = (id, currentMonth) => {
                ELSE EXTRACT(YEAR FROM CURRENT_DATE) - 1 
             END
          AND EXTRACT(MONTH FROM h.date::date) = $2
-         AND h.user_id = $1
+         AND h.user_id = $1 AND h.income = false
+      ORDER BY
+         h.id;
+   `;
+
+   return fetchALL(QUERY, id, currentMonth)
+}
+const historiesBalanceCurrentMonthIncome = (id, currentMonth) => {
+   const QUERY = `
+      SELECT 
+         h.id,
+         h.amount,
+         h.date,
+         h.income,
+         h.comment,
+         b.currency,
+         b.title,
+         c.name
+      FROM 
+         histories_balance h
+      JOIN
+         balances b
+      ON
+         h.balance_id = b.id
+      JOIN
+         categories c
+      ON
+         c.id = h.category_id
+      WHERE 
+         EXTRACT(YEAR FROM h.date::date) = 
+            CASE 
+               WHEN EXTRACT(MONTH FROM CURRENT_DATE) >= $2 
+               THEN EXTRACT(YEAR FROM CURRENT_DATE) 
+               ELSE EXTRACT(YEAR FROM CURRENT_DATE) - 1 
+            END
+         AND EXTRACT(MONTH FROM h.date::date) = $2
+         AND h.user_id = $1 AND h.income = true
       ORDER BY
          h.id;
    `;
@@ -463,7 +499,8 @@ module.exports = {
    monthltyByCategories,
    userBalances,
    debtsList,
-   historiesBalanceCurrentMonth,
+   historiesBalanceCurrentMonthOutcome,
+   historiesBalanceCurrentMonthIncome,
    foundBalance,
    foundCategory,
    addReport,
