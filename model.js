@@ -182,7 +182,7 @@ const monthltyByCategories = (id, currentMonth) => {
    const QUERY = `
       SELECT 
          h.balance_id,
-         h.amount,
+         sum(h.amount) as amount,
          b.currency,
          b.title,
          c.name,
