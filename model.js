@@ -207,6 +207,8 @@ const monthltyByCategories = (id, currentMonth) => {
          AND EXTRACT(MONTH FROM h.date::date) = $2
          AND income = false
          AND h.user_id = $1
+      GROUP BY
+         c.id, c.name
       ORDER BY
          h.balance_id;
    `;
