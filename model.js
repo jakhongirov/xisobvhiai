@@ -182,34 +182,30 @@ const monthltyByCategories = (id, currentMonth) => {
    const QUERY = `
       SELECT 
          h.balance_id,
-         sum(h.amount) as amount,
+         SUM(h.amount) AS amount,
          b.currency,
          b.title,
          c.name,
          c.id
       FROM 
          histories_balance h
-      JOIN
-         balances b
-      ON
-         h.balance_id = b.id
-      JOIN
-         categories c
-      ON
-         c.id = h.category_id
+      JOIN 
+         balances b ON h.balance_id = b.id
+      JOIN 
+         categories c ON c.id = h.category_id
       WHERE 
          EXTRACT(YEAR FROM h.date::date) = 
             CASE 
-               WHEN EXTRACT(MONTH FROM CURRENT_DATE) >= $2 
-               THEN EXTRACT(YEAR FROM CURRENT_DATE) 
-               ELSE EXTRACT(YEAR FROM CURRENT_DATE) - 1 
+                  WHEN EXTRACT(MONTH FROM CURRENT_DATE) >= $2 
+                  THEN EXTRACT(YEAR FROM CURRENT_DATE) 
+                  ELSE EXTRACT(YEAR FROM CURRENT_DATE) - 1 
             END
          AND EXTRACT(MONTH FROM h.date::date) = $2
-         AND income = false
+         AND h.income = FALSE
          AND h.user_id = $1
-      GROUP BY
-         c.id, c.name, h.balance_id, h.amount, b.currency, b.title
-      ORDER BY
+      GROUP BY 
+         h.balance_id, b.currency, b.title, c.id, c.name
+      ORDER BY 
          h.balance_id;
    `;
 
