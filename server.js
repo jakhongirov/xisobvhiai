@@ -104,8 +104,9 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
          await model.editStep(chatId, 'payment')
       })
    } else {
-      bot.sendMessage(chatId, localText.startText, {
+      bot.sendVideo(chatId, "BAACAgIAAyEFAASNDiJIAAMGZ9myzM6xvazDGaELaNVHcA6TAAHrAAKbaAACE_DRSiOSIIh-u4FwNgQ", {
          parse_mode: "HTML",
+         caption: localText.startText,
          reply_markup: {
             keyboard: [
                [
