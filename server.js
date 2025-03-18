@@ -8,7 +8,7 @@ const router = require("./src/modules");
 const localText = require('./src/text/text.json')
 const model = require('./model');
 const { bot } = require('./src/lib/bot')
-const { formatBalanceWithSpaces, formatDateAdvanced, calculateExpiredDate } = require('./src/lib/functions');
+const { formatBalanceWithSpaces, formatDateAdvanced, calculateExpiredDate, formatDatePremium } = require('./src/lib/functions');
 const { months } = require('./data')
 const {
    CronJob
@@ -93,8 +93,9 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
             text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
             callback_data: `price_${item.id}`
          }]);
+      const premiumText = foundUser.premium ? `${localText.premiumText}\n\n${localText.premiumExpiredText} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumText
 
-      bot.sendMessage(chatId, localText.premiumText, {
+      bot.sendMessage(chatId, premiumText, {
          parse_mode: "HTML",
          reply_markup: {
             inline_keyboard: priceKeyboard
@@ -281,8 +282,9 @@ bot.on('message', async (msg) => {
             text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
             callback_data: `price_${item.id}`
          }]);
+      const premiumText = foundUser.premium ? `${localText.premiumText}\n\n${localText.premiumExpiredText} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumText
 
-      bot.sendMessage(chatId, localText.premiumText, {
+      bot.sendMessage(chatId, premiumText, {
          parse_mode: "HTML",
          reply_markup: {
             inline_keyboard: priceKeyboard

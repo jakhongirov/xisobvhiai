@@ -70,10 +70,17 @@ const getFormattedDate = () => {
    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}${timezone}`;
 };
 
+const formatDatePremium = (timestamp) => {
+   const date = new Date(timestamp * 1000);
+   const formattedDate = date.toLocaleDateString('en-GB').replace(/\//g, '.');
+   return `${formattedDate}`
+}
+
 module.exports = {
    formatBalanceWithSpaces,
    calculateExpiredDate,
    parseGeminiResponse,
    formatDateAdvanced,
-   getFormattedDate
+   getFormattedDate,
+   formatDatePremium
 }
