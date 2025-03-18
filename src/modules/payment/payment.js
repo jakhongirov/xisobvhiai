@@ -49,6 +49,8 @@ module.exports = {
          const foundUser = await model.foundUser(chat_id)
          const foundTarif = await model.foundTarif(tarif)
 
+         console.log('sss')
+
          if (foundUser) {
             const expiredDate = await calculateExpiredDate(Number(foundTarif.period))
             const editUserPremium = await model.editUserPremium(foundUser.id, expiredDate)
