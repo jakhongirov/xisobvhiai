@@ -88,6 +88,8 @@ const analyzeText = async (inputText) => {
          ## Now, process this input:
          "${inputText}"
 
+         ## Input text only in Uzbek, English and Russian languages.
+
          ## Output ONLY JSON. No explanations, no text, just JSON.
       `;
 
@@ -104,7 +106,7 @@ const analyzeText = async (inputText) => {
 
 const getTextFromAudio = async (fileUri) => {
    const result = await model.generateContent([
-      "Transcribe this audio clip.",
+      "Transcribe this audio clip. The audio is in either Uzbek, English, or Russian.",
       {
          fileData: {
             fileUri: fileUri,
@@ -210,6 +212,8 @@ const analyzeVoice = async (tempFilePath) => {
 
          ## Now, process this input:
          "${await getTextFromAudio(uploadResult.file.uri)}"
+
+         ## Input text only in Uzbek, English and Russian languages.
 
          ## Output ONLY JSON. No explanations, no text, just JSON.
       `;
