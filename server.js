@@ -707,12 +707,12 @@ bot.on('callback_query', async (msg) => {
                         url: `https://checkout.paycom.uz/${base64Encoded}`
                      }
                   ],
-                  [
-                     {
-                        text: localText.uzumText,
-                        url: `https://www.uzumbank.uz/open-service?serviceId=498617211&ilova=Xisobchi_AI&tarif=${price.title}&id=${chatId}&amount=${price.price}00`
-                     }
-                  ],
+                  // [
+                  //    {
+                  //       text: localText.uzumText,
+                  //       url: `https://www.uzumbank.uz/open-service?serviceId=498617211&ilova=Xisobchi_AI&tarif=${price.title}&id=${chatId}&amount=${price.price}00`
+                  //    }
+                  // ],
                ]
             }
          })
