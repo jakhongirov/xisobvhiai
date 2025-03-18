@@ -208,7 +208,7 @@ const monthltyByCategories = (id, currentMonth) => {
          AND income = false
          AND h.user_id = $1
       GROUP BY
-         c.id, c.name
+         c.id, c.name, h.balance_id
       ORDER BY
          h.balance_id;
    `;
