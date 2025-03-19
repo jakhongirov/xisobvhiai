@@ -274,7 +274,7 @@ bot.on('message', async (msg) => {
       })
 
    } else if (text == localText.shareBtn) {
-
+      bot.sendMessage(chatId, localText.shareBtnText)
    } else if (text == localText.premiumBtn) {
       const priceList = await model.priceList()
       const priceKeyboard = priceList
