@@ -11,7 +11,7 @@ CREATE TABLE users (
    phone_number text,
    password text,
    premium boolean DEFAULT false,
-   expired_date text,
+   expired_date bigint,
    telegram_bot boolean DEFAULT false,
    chat_id bigint,
    bot_step text,

@@ -11,7 +11,7 @@ const getUsersBefore2day = () => {
       FROM 
          users
       WHERE 
-         expired_date::date = (CURRENT_DATE + INTERVAL '2 day');
+         TO_TIMESTAMP(expired_date)::DATE = (CURRENT_DATE + INTERVAL '2 day');
    `;
 
    return fetchALL(QUERY)
@@ -24,7 +24,7 @@ const getUsersBefore1day = () => {
       FROM 
          users
       WHERE 
-         expired_date::date = (CURRENT_DATE + INTERVAL '1 day');
+         TO_TIMESTAMP(expired_date)::DATE = (CURRENT_DATE + INTERVAL '1 day');
    `;
 
    return fetchALL(QUERY)
@@ -37,7 +37,7 @@ const getUsers = () => {
       FROM 
          users
       WHERE 
-         expired_date::date = CURRENT_DATE
+         TO_TIMESTAMP(expired_date)::DATE = CURRENT_DATE
    `;
 
    return fetchALL(QUERY)
