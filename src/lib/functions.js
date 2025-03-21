@@ -15,7 +15,6 @@ const calculateExpiredDate = (perid) => {
 
 const parseGeminiResponse = (geminiResponse) => {
    try {
-      console.log(geminiResponse)
       let cleanedText = geminiResponse.replace("```", "").trim();
       cleanedText = cleanedText.startsWith("json") ? cleanedText.substring(4) : cleanedText;
       cleanedText = cleanedText.replace(/`/g, ''); // Orqa qo'shtirnoqlarni olib tashlash

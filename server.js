@@ -451,7 +451,6 @@ bot.on('message', async (msg) => {
                            item.type == 'income' ? true : false,
                            item.user_input
                         )
-                        console.log(item)
 
                         if (item.isDebtPayment) {
                            const addDebt = await model.addDebt(
@@ -505,7 +504,6 @@ bot.on('message', async (msg) => {
                         jsonData.type == 'income' ? true : false,
                         jsonData.user_input
                      )
-                     console.log(jsonData)
 
                      if (jsonData.isDebtPayment) {
                         const addDebt = await model.addDebt(
@@ -576,7 +574,6 @@ bot.on('message', async (msg) => {
                      item.type == 'income' ? true : false,
                      item.user_input
                   )
-                  console.log(item)
 
                   if (item.isDebtPayment) {
                      const addDebt = await model.addDebt(
@@ -630,7 +627,6 @@ bot.on('message', async (msg) => {
                   jsonData.type == 'income' ? true : false,
                   jsonData.user_input
                )
-               console.log(jsonData)
 
                if (jsonData.isDebtPayment) {
                   const addDebt = await model.addDebt(
