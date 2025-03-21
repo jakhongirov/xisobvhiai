@@ -2,6 +2,7 @@ const model = require('./model')
 const {
    bot
 } = require('../bot')
+const localText = require('../../text/text.json')
 
 const sendMessageBefore = async () => {
    try {
