@@ -670,6 +670,24 @@ bot.on('message', async (msg) => {
 
             }
          }
+      } else {
+         const priceList = await model.priceList()
+         const priceKeyboard = priceList
+            .filter(item => !(foundUser.used_free && item.price == 0))
+            .map(item => [{
+               text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
+               callback_data: `price_${item.id}`
+            }]);
+         const premiumText = foundUser.premium ? `${localText.premiumText}\n\n${localText.premiumExpiredText} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumText
+
+         bot.sendMessage(chatId, premiumText, {
+            parse_mode: "HTML",
+            reply_markup: {
+               inline_keyboard: priceKeyboard
+            }
+         }).then(async () => {
+            await model.editStep(chatId, 'payment')
+         })
       }
    }
 })
