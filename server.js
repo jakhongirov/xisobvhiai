@@ -449,6 +449,8 @@ bot.on('message', async (msg) => {
                }
             }
 
+            console.log(jsonData)
+
             if (foundUser?.bot_lang == 'uz') {
                const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${jsonData.category}</b>`
                bot.sendMessage(chatId, reportText, {
