@@ -329,19 +329,19 @@ bot.on('message', async (msg) => {
 
                   if (jsonData.isDebtPayment) {
                      if (foundUser?.bot_lang == 'uz') {
-                        const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextUz} ${jsonData.forWhom}\n${localText.debtAmountTextUz} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(jsonData.deadline)}`;
+                        const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextUz} ${jsonData.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(jsonData.deadline)}`;
                         bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
                      } else if (foundUser?.bot_lang == 'ru') {
-                        const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextRu} ${jsonData.forWhom}\n${localText.debtAmountTextRu} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(jsonData.deadline)}`;
+                        const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextRu} ${jsonData.forWhom}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(jsonData.deadline)}`;
                         bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
                      } else if (foundUser?.bot_lang == 'eng') {
-                        const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTexEng} ${jsonData.forWhom}\n${localText.debtAmountTextEng} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(jsonData.deadline)}`;
+                        const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTexEng} ${jsonData.forWhom}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(jsonData.deadline)}`;
                         bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
                      }
                   }
 
                   if (foundUser?.bot_lang == 'uz') {
-                     const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${jsonData.category}</b>`
+                     const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${jsonData.category}</b>`
                      bot.sendMessage(chatId, reportText, {
                         parse_mode: 'HTML'
                      }).then(async () => {
@@ -370,7 +370,7 @@ bot.on('message', async (msg) => {
                         }
                      })
                   } else if (foundUser?.bot_lang == 'ru') {
-                     const reportText = `${localText.addReportTextRu}\n\n${jsonData.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextRu} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextRu} <b>${jsonData.category}</b>`
+                     const reportText = `${localText.addReportTextRu}\n\n${jsonData.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextRu} <b>${jsonData.category}</b>`
                      bot.sendMessage(chatId, reportText, {
                         parse_mode: 'HTML'
                      }).then(async () => {
@@ -399,7 +399,7 @@ bot.on('message', async (msg) => {
                         }
                      })
                   } else if (foundUser?.bot_lang == 'eng') {
-                     const reportText = `${localText.addReportTextEng}\n\n${jsonData.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextEng} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextEng} <b>${jsonData.category}</b>`
+                     const reportText = `${localText.addReportTextEng}\n\n${jsonData.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextEng} <b>${jsonData.category}</b>`
                      bot.sendMessage(chatId, reportText, {
                         parse_mode: 'HTML'
                      }).then(async () => {
@@ -438,19 +438,19 @@ bot.on('message', async (msg) => {
 
             if (jsonData.isDebtPayment) {
                if (foundUser?.bot_lang == 'uz') {
-                  const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextUz} ${jsonData.forWhom}\n${localText.debtAmountTextUz} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(jsonData.deadline)}`;
+                  const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextUz} ${jsonData.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(jsonData.deadline)}`;
                   bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
                } else if (foundUser?.bot_lang == 'ru') {
-                  const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextRu} ${jsonData.forWhom}\n${localText.debtAmountTextRu} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(jsonData.deadline)}`;
+                  const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextRu} ${jsonData.forWhom}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(jsonData.deadline)}`;
                   bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
                } else if (foundUser?.bot_lang == 'eng') {
-                  const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTexEng} ${jsonData.forWhom}\n${localText.debtAmountTextEng} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(jsonData.deadline)}`;
+                  const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTexEng} ${jsonData.forWhom}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(jsonData.deadline)}`;
                   bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
                }
             }
 
             if (foundUser?.bot_lang == 'uz') {
-               const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${jsonData.category}</b>`
+               const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${jsonData.category}</b>`
                bot.sendMessage(chatId, reportText, {
                   parse_mode: 'HTML'
                }).then(async () => {
@@ -479,7 +479,7 @@ bot.on('message', async (msg) => {
                   }
                })
             } else if (foundUser?.bot_lang == 'ru') {
-               const reportText = `${localText.addReportTextRu}\n\n${jsonData.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextRu} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextRu} <b>${jsonData.category}</b>`
+               const reportText = `${localText.addReportTextRu}\n\n${jsonData.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextRu} <b>${jsonData.category}</b>`
                bot.sendMessage(chatId, reportText, {
                   parse_mode: 'HTML'
                }).then(async () => {
@@ -508,7 +508,7 @@ bot.on('message', async (msg) => {
                   }
                })
             } else if (foundUser?.bot_lang == 'eng') {
-               const reportText = `${localText.addReportTextEng}\n\n${jsonData.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextEng} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextEng} <b>${jsonData.category}</b>`
+               const reportText = `${localText.addReportTextEng}\n\n${jsonData.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextEng} <b>${jsonData.category}</b>`
                bot.sendMessage(chatId, reportText, {
                   parse_mode: 'HTML'
                }).then(async () => {
@@ -1375,67 +1375,564 @@ bot.on('message', async (msg) => {
          }
       } else if (foundUser?.premium) {
          if (msg.voice) {
+            const fileId = msg.voice.file_id;
+            const fileLink = await bot.getFileLink(fileId);
+            const response = await axios({
+               url: fileLink,
+               responseType: 'stream',
+            });
+            const tempFilePath = path.join(__dirname, './public/audios', `temp_${fileId}.ogg`);
 
-         } else if (text) {
+            try {
+               const writer = fs.createWriteStream(tempFilePath);
+               response.data.pipe(writer);
 
-         }
-      } else {
-         if (foundUser?.bot_lang == 'uz') {
-            const priceList = await model.priceList(foundUser?.bot_lang)
-            const priceKeyboard = priceList
-               .filter(item => !(foundUser.used_free && item.price == 0))
-               .map(item => [{
-                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                  callback_data: `price_${item.id}`
-               }]);
-            const premiumText = foundUser.premium ? `${localText.premiumTextUz}\n\n${localText.premiumExpiredTextUz} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextUz
+               writer.on('finish', async () => {
+                  const jsonData = await analyzeVoice(`../../public/audios/temp_${fileId}.ogg`)
 
-            bot.sendMessage(chatId, premiumText, {
-               parse_mode: "HTML",
-               reply_markup: {
-                  inline_keyboard: priceKeyboard
+                  if (jsonData.length > 0) {
+                     jsonData.forEach(async (item) => {
+                        const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
+                        const foundCategory = await model.foundCategory(item.category)
+                        const addReport = await model.addReport(
+                           foundUser.id,
+                           foundBalance.id,
+                           foundCategory.id,
+                           item.date,
+                           item.amount,
+                           item.type == 'income' ? true : false,
+                           item.user_input
+                        )
+
+                        if (item.isDebtPayment) {
+                           const addDebt = await model.addDebt(
+                              foundUser.id,
+                              foundBalance.id,
+                              item.forWhom,
+                              item.amount,
+                              item.deadline,
+                              item.date,
+                           )
+
+                           if (foundUser?.bot_lang == 'uz') {
+                              const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTextUz} ${addDebt.name}\n${localText.debtAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(addDebt.deadline)}`;
+                              bot.sendMessage(chatId, debtText, {
+                                 parse_mode: "HTML",
+                                 reply_markup: {
+                                    inline_keyboard: [
+                                       [
+                                          {
+                                             text: localText.cancelBtnUz,
+                                             callback_data: `cancel_debt_${addDebt.id}`
+                                          }
+                                       ]
+                                    ]
+                                 }
+                              })
+                           } else if (foundUser?.bot_lang == 'ru') {
+                              const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTextRu} ${addDebt.name}\n${localText.debtAmountTextRu} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(addDebt.deadline)}`;
+                              bot.sendMessage(chatId, debtText, {
+                                 parse_mode: "HTML",
+                                 reply_markup: {
+                                    inline_keyboard: [
+                                       [
+                                          {
+                                             text: localText.cancelBtnRu,
+                                             callback_data: `cancel_debt_${addDebt.id}`
+                                          }
+                                       ]
+                                    ]
+                                 }
+                              })
+                           } else if (foundUser?.bot_lang == 'eng') {
+                              const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTexEng} ${addDebt.name}\n${localText.debtAmountTextEng} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(addDebt.deadline)}`;
+                              bot.sendMessage(chatId, debtText, {
+                                 parse_mode: "HTML",
+                                 reply_markup: {
+                                    inline_keyboard: [
+                                       [
+                                          {
+                                             text: localText.cancelBtnEng,
+                                             callback_data: `cancel_debt_${addDebt.id}`
+                                          }
+                                       ]
+                                    ]
+                                 }
+                              })
+                           }
+                        }
+
+                        if (foundUser?.bot_lang == 'uz') {
+                           const reportText = `${localText.addReportTextUz}\n\n${addReport.income ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextUz} <b>${addReport.category}</b>\n${localText.addReportCommentTextUz} ${addReport.comment}`
+                           bot.sendMessage(chatId, reportText, {
+                              parse_mode: 'HTML',
+                              reply_markup: {
+                                 inline_keyboard: [
+                                    [
+                                       {
+                                          text: localText.cancelBtn,
+                                          callback_data: `cancel_report_${addReport.id}`
+                                       }
+                                    ]
+                                 ]
+                              }
+                           })
+                        } else if (foundUser?.bot_lang == 'ru') {
+                           const reportText = `${localText.addReportTextRu}\n\n${addReport.income ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextRu} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextRu} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextRu} ${addReport.comment}`
+                           bot.sendMessage(chatId, reportText, {
+                              parse_mode: 'HTML',
+                              reply_markup: {
+                                 inline_keyboard: [
+                                    [
+                                       {
+                                          text: localText.cancelBtn,
+                                          callback_data: `cancel_report_${addReport.id}`
+                                       }
+                                    ]
+                                 ]
+                              }
+                           })
+                        } else if (foundUser?.bot_lang == 'eng') {
+                           const reportText = `${localText.addReportTextEng}\n\n${addReport.income ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextEng} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextEng} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextEng} ${addReport.comment}`
+                           bot.sendMessage(chatId, reportText, {
+                              parse_mode: 'HTML',
+                              reply_markup: {
+                                 inline_keyboard: [
+                                    [
+                                       {
+                                          text: localText.cancelBtn,
+                                          callback_data: `cancel_report_${addReport.id}`
+                                       }
+                                    ]
+                                 ]
+                              }
+                           })
+                        }
+
+                     })
+                  } else {
+                     const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
+                     const foundCategory = await model.foundCategory(jsonData.category)
+                     const addReport = await model.addReport(
+                        foundUser.id,
+                        foundBalance.id,
+                        foundCategory.id,
+                        jsonData.date,
+                        jsonData.amount,
+                        jsonData.type == 'income' ? true : false,
+                        jsonData.user_input
+                     )
+
+                     if (jsonData.isDebtPayment) {
+                        const addDebt = await model.addDebt(
+                           foundUser.id,
+                           foundBalance.id,
+                           jsonData.forWhom,
+                           jsonData.amount,
+                           jsonData.deadline,
+                           jsonData.date,
+                        )
+
+                        if (foundUser?.bot_lang == 'uz') {
+                           const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTextUz} ${addDebt.name}\n${localText.debtAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(addDebt.deadline)}`;
+                           bot.sendMessage(chatId, debtText, {
+                              parse_mode: "HTML",
+                              reply_markup: {
+                                 inline_keyboard: [
+                                    [
+                                       {
+                                          text: localText.cancelBtnUz,
+                                          callback_data: `cancel_debt_${addDebt.id}`
+                                       }
+                                    ]
+                                 ]
+                              }
+                           })
+                        } else if (foundUser?.bot_lang == 'ru') {
+                           const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTextRu} ${addDebt.name}\n${localText.debtAmountTextRu} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(addDebt.deadline)}`;
+                           bot.sendMessage(chatId, debtText, {
+                              parse_mode: "HTML",
+                              reply_markup: {
+                                 inline_keyboard: [
+                                    [
+                                       {
+                                          text: localText.cancelBtnRu,
+                                          callback_data: `cancel_debt_${addDebt.id}`
+                                       }
+                                    ]
+                                 ]
+                              }
+                           })
+                        } else if (foundUser?.bot_lang == 'eng') {
+                           const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTexEng} ${addDebt.name}\n${localText.debtAmountTextEng} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(addDebt.deadline)}`;
+                           bot.sendMessage(chatId, debtText, {
+                              parse_mode: "HTML",
+                              reply_markup: {
+                                 inline_keyboard: [
+                                    [
+                                       {
+                                          text: localText.cancelBtnEng,
+                                          callback_data: `cancel_debt_${addDebt.id}`
+                                       }
+                                    ]
+                                 ]
+                              }
+                           })
+                        }
+                     }
+
+                     if (foundUser?.bot_lang == 'uz') {
+                        const reportText = `${localText.addReportTextUz}\n\n${addReport.income ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextUz} <b>${addReport.category}</b>\n${localText.addReportCommentTextUz} ${addReport.comment}`
+                        bot.sendMessage(chatId, reportText, {
+                           parse_mode: 'HTML',
+                           reply_markup: {
+                              inline_keyboard: [
+                                 [
+                                    {
+                                       text: localText.cancelBtn,
+                                       callback_data: `cancel_report_${addReport.id}`
+                                    }
+                                 ]
+                              ]
+                           }
+                        })
+                     } else if (foundUser?.bot_lang == 'ru') {
+                        const reportText = `${localText.addReportTextRu}\n\n${addReport.income ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextRu} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextRu} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextRu} ${addReport.comment}`
+                        bot.sendMessage(chatId, reportText, {
+                           parse_mode: 'HTML',
+                           reply_markup: {
+                              inline_keyboard: [
+                                 [
+                                    {
+                                       text: localText.cancelBtn,
+                                       callback_data: `cancel_report_${addReport.id}`
+                                    }
+                                 ]
+                              ]
+                           }
+                        })
+                     } else if (foundUser?.bot_lang == 'eng') {
+                        const reportText = `${localText.addReportTextEng}\n\n${addReport.income ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextEng} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextEng} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextEng} ${addReport.comment}`
+                        bot.sendMessage(chatId, reportText, {
+                           parse_mode: 'HTML',
+                           reply_markup: {
+                              inline_keyboard: [
+                                 [
+                                    {
+                                       text: localText.cancelBtn,
+                                       callback_data: `cancel_report_${addReport.id}`
+                                    }
+                                 ]
+                              ]
+                           }
+                        })
+                     }
+
+                  }
+               })
+            } catch (error) {
+               console.error('Error during upload or analysis:', error);
+            }
+
+         } else if (text && text != '/start') {
+            if (jsonData.length > 0) {
+               jsonData.forEach(async (item) => {
+                  const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
+                  const foundCategory = await model.foundCategory(item.category)
+                  const addReport = await model.addReport(
+                     foundUser.id,
+                     foundBalance.id,
+                     foundCategory.id,
+                     item.date,
+                     item.amount,
+                     item.type == 'income' ? true : false,
+                     item.user_input
+                  )
+
+                  if (item.isDebtPayment) {
+                     const addDebt = await model.addDebt(
+                        foundUser.id,
+                        foundBalance.id,
+                        item.forWhom,
+                        item.amount,
+                        item.deadline,
+                        item.date,
+                     )
+
+                     if (foundUser?.bot_lang == 'uz') {
+                        const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTextUz} ${addDebt.name}\n${localText.debtAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(addDebt.deadline)}`;
+                        bot.sendMessage(chatId, debtText, {
+                           parse_mode: "HTML",
+                           reply_markup: {
+                              inline_keyboard: [
+                                 [
+                                    {
+                                       text: localText.cancelBtnUz,
+                                       callback_data: `cancel_debt_${addDebt.id}`
+                                    }
+                                 ]
+                              ]
+                           }
+                        })
+                     } else if (foundUser?.bot_lang == 'ru') {
+                        const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTextRu} ${addDebt.name}\n${localText.debtAmountTextRu} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(addDebt.deadline)}`;
+                        bot.sendMessage(chatId, debtText, {
+                           parse_mode: "HTML",
+                           reply_markup: {
+                              inline_keyboard: [
+                                 [
+                                    {
+                                       text: localText.cancelBtnRu,
+                                       callback_data: `cancel_debt_${addDebt.id}`
+                                    }
+                                 ]
+                              ]
+                           }
+                        })
+                     } else if (foundUser?.bot_lang == 'eng') {
+                        const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTexEng} ${addDebt.name}\n${localText.debtAmountTextEng} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(addDebt.deadline)}`;
+                        bot.sendMessage(chatId, debtText, {
+                           parse_mode: "HTML",
+                           reply_markup: {
+                              inline_keyboard: [
+                                 [
+                                    {
+                                       text: localText.cancelBtnEng,
+                                       callback_data: `cancel_debt_${addDebt.id}`
+                                    }
+                                 ]
+                              ]
+                           }
+                        })
+                     }
+                  }
+
+                  if (foundUser?.bot_lang == 'uz') {
+                     const reportText = `${localText.addReportTextUz}\n\n${addReport.income ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextUz} <b>${addReport.category}</b>\n${localText.addReportCommentTextUz} ${addReport.comment}`
+                     bot.sendMessage(chatId, reportText, {
+                        parse_mode: 'HTML',
+                        reply_markup: {
+                           inline_keyboard: [
+                              [
+                                 {
+                                    text: localText.cancelBtn,
+                                    callback_data: `cancel_report_${addReport.id}`
+                                 }
+                              ]
+                           ]
+                        }
+                     })
+                  } else if (foundUser?.bot_lang == 'ru') {
+                     const reportText = `${localText.addReportTextRu}\n\n${addReport.income ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextRu} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextRu} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextRu} ${addReport.comment}`
+                     bot.sendMessage(chatId, reportText, {
+                        parse_mode: 'HTML',
+                        reply_markup: {
+                           inline_keyboard: [
+                              [
+                                 {
+                                    text: localText.cancelBtn,
+                                    callback_data: `cancel_report_${addReport.id}`
+                                 }
+                              ]
+                           ]
+                        }
+                     })
+                  } else if (foundUser?.bot_lang == 'eng') {
+                     const reportText = `${localText.addReportTextEng}\n\n${addReport.income ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextEng} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextEng} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextEng} ${addReport.comment}`
+                     bot.sendMessage(chatId, reportText, {
+                        parse_mode: 'HTML',
+                        reply_markup: {
+                           inline_keyboard: [
+                              [
+                                 {
+                                    text: localText.cancelBtn,
+                                    callback_data: `cancel_report_${addReport.id}`
+                                 }
+                              ]
+                           ]
+                        }
+                     })
+                  }
+
+               })
+            } else {
+               const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
+               const foundCategory = await model.foundCategory(jsonData.category)
+               const addReport = await model.addReport(
+                  foundUser.id,
+                  foundBalance.id,
+                  foundCategory.id,
+                  jsonData.date,
+                  jsonData.amount,
+                  jsonData.type == 'income' ? true : false,
+                  jsonData.user_input
+               )
+
+               if (jsonData.isDebtPayment) {
+                  const addDebt = await model.addDebt(
+                     foundUser.id,
+                     foundBalance.id,
+                     jsonData.forWhom,
+                     jsonData.amount,
+                     jsonData.deadline,
+                     jsonData.date,
+                  )
+
+                  if (foundUser?.bot_lang == 'uz') {
+                     const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTextUz} ${addDebt.name}\n${localText.debtAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(addDebt.deadline)}`;
+                     bot.sendMessage(chatId, debtText, {
+                        parse_mode: "HTML",
+                        reply_markup: {
+                           inline_keyboard: [
+                              [
+                                 {
+                                    text: localText.cancelBtnUz,
+                                    callback_data: `cancel_debt_${addDebt.id}`
+                                 }
+                              ]
+                           ]
+                        }
+                     })
+                  } else if (foundUser?.bot_lang == 'ru') {
+                     const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTextRu} ${addDebt.name}\n${localText.debtAmountTextRu} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(addDebt.deadline)}`;
+                     bot.sendMessage(chatId, debtText, {
+                        parse_mode: "HTML",
+                        reply_markup: {
+                           inline_keyboard: [
+                              [
+                                 {
+                                    text: localText.cancelBtnRu,
+                                    callback_data: `cancel_debt_${addDebt.id}`
+                                 }
+                              ]
+                           ]
+                        }
+                     })
+                  } else if (foundUser?.bot_lang == 'eng') {
+                     const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTexEng} ${addDebt.name}\n${localText.debtAmountTextEng} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(addDebt.deadline)}`;
+                     bot.sendMessage(chatId, debtText, {
+                        parse_mode: "HTML",
+                        reply_markup: {
+                           inline_keyboard: [
+                              [
+                                 {
+                                    text: localText.cancelBtnEng,
+                                    callback_data: `cancel_debt_${addDebt.id}`
+                                 }
+                              ]
+                           ]
+                        }
+                     })
+                  }
                }
-            }).then(async () => {
-               await model.editStep(chatId, 'payment')
-            })
-         } else if (foundUser?.bot_lang == 'ru') {
-            const priceList = await model.priceList(foundUser?.bot_lang)
-            const priceKeyboard = priceList
-               .filter(item => !(foundUser.used_free && item.price == 0))
-               .map(item => [{
-                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
-                  callback_data: `price_${item.id}`
-               }]);
-            const premiumText = foundUser.premium ? `${localText.premiumTextRu}\n\n${localText.premiumExpiredTextRu} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextRu
 
-            bot.sendMessage(chatId, premiumText, {
-               parse_mode: "HTML",
-               reply_markup: {
-                  inline_keyboard: priceKeyboard
+               if (foundUser?.bot_lang == 'uz') {
+                  const reportText = `${localText.addReportTextUz}\n\n${addReport.income ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextUz} <b>${addReport.category}</b>\n${localText.addReportCommentTextUz} ${addReport.comment}`
+                  bot.sendMessage(chatId, reportText, {
+                     parse_mode: 'HTML',
+                     reply_markup: {
+                        inline_keyboard: [
+                           [
+                              {
+                                 text: localText.cancelBtn,
+                                 callback_data: `cancel_report_${addReport.id}`
+                              }
+                           ]
+                        ]
+                     }
+                  })
+               } else if (foundUser?.bot_lang == 'ru') {
+                  const reportText = `${localText.addReportTextRu}\n\n${addReport.income ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextRu} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextRu} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextRu} ${addReport.comment}`
+                  bot.sendMessage(chatId, reportText, {
+                     parse_mode: 'HTML',
+                     reply_markup: {
+                        inline_keyboard: [
+                           [
+                              {
+                                 text: localText.cancelBtn,
+                                 callback_data: `cancel_report_${addReport.id}`
+                              }
+                           ]
+                        ]
+                     }
+                  })
+               } else if (foundUser?.bot_lang == 'eng') {
+                  const reportText = `${localText.addReportTextEng}\n\n${addReport.income ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextEng} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextEng} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextEng} ${addReport.comment}`
+                  bot.sendMessage(chatId, reportText, {
+                     parse_mode: 'HTML',
+                     reply_markup: {
+                        inline_keyboard: [
+                           [
+                              {
+                                 text: localText.cancelBtn,
+                                 callback_data: `cancel_report_${addReport.id}`
+                              }
+                           ]
+                        ]
+                     }
+                  })
                }
-            }).then(async () => {
-               await model.editStep(chatId, 'payment')
-            })
-         } else if (foundUser?.bot_lang == 'eng') {
-            const priceList = await model.priceList(foundUser?.bot_lang)
-            const priceKeyboard = priceList
-               .filter(item => !(foundUser.used_free && item.price == 0))
-               .map(item => [{
-                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
-                  callback_data: `price_${item.id}`
-               }]);
-            const premiumText = foundUser.premium ? `${localText.premiumTextEng}\n\n${localText.premiumExpiredTextEng} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextEng
-
-            bot.sendMessage(chatId, premiumText, {
-               parse_mode: "HTML",
-               reply_markup: {
-                  inline_keyboard: priceKeyboard
-               }
-            }).then(async () => {
-               await model.editStep(chatId, 'payment')
-            })
+            }
          }
       }
+
+      // else {
+      //    if (foundUser?.bot_lang == 'uz') {
+      //       const priceList = await model.priceList(foundUser?.bot_lang)
+      //       const priceKeyboard = priceList
+      //          .filter(item => !(foundUser.used_free && item.price == 0))
+      //          .map(item => [{
+      //             text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
+      //             callback_data: `price_${item.id}`
+      //          }]);
+      //       const premiumText = foundUser.premium ? `${localText.premiumTextUz}\n\n${localText.premiumExpiredTextUz} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextUz
+
+      //       bot.sendMessage(chatId, premiumText, {
+      //          parse_mode: "HTML",
+      //          reply_markup: {
+      //             inline_keyboard: priceKeyboard
+      //          }
+      //       }).then(async () => {
+      //          await model.editStep(chatId, 'payment')
+      //       })
+      //    } else if (foundUser?.bot_lang == 'ru') {
+      //       const priceList = await model.priceList(foundUser?.bot_lang)
+      //       const priceKeyboard = priceList
+      //          .filter(item => !(foundUser.used_free && item.price == 0))
+      //          .map(item => [{
+      //             text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
+      //             callback_data: `price_${item.id}`
+      //          }]);
+      //       const premiumText = foundUser.premium ? `${localText.premiumTextRu}\n\n${localText.premiumExpiredTextRu} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextRu
+
+      //       bot.sendMessage(chatId, premiumText, {
+      //          parse_mode: "HTML",
+      //          reply_markup: {
+      //             inline_keyboard: priceKeyboard
+      //          }
+      //       }).then(async () => {
+      //          await model.editStep(chatId, 'payment')
+      //       })
+      //    } else if (foundUser?.bot_lang == 'eng') {
+      //       const priceList = await model.priceList(foundUser?.bot_lang)
+      //       const priceKeyboard = priceList
+      //          .filter(item => !(foundUser.used_free && item.price == 0))
+      //          .map(item => [{
+      //             text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
+      //             callback_data: `price_${item.id}`
+      //          }]);
+      //       const premiumText = foundUser.premium ? `${localText.premiumTextEng}\n\n${localText.premiumExpiredTextEng} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextEng
+
+      //       bot.sendMessage(chatId, premiumText, {
+      //          parse_mode: "HTML",
+      //          reply_markup: {
+      //             inline_keyboard: priceKeyboard
+      //          }
+      //       }).then(async () => {
+      //          await model.editStep(chatId, 'payment')
+      //       })
+      //    }
+      // }
    }
 })
 
