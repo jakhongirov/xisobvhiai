@@ -329,7 +329,8 @@ bot.on('message', async (msg) => {
 
                   if (jsonData.length > 0) {
                      jsonData?.forEach(async (item) => {
-                        if (jsonData.isDebtPayment) {
+
+                        if (item.isDebtPayment) {
                            if (foundUser?.bot_lang == 'uz') {
                               const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(item.deadline)}\n${localText.debtWhoTextUz} ${item.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}`;
                               bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
@@ -352,7 +353,7 @@ bot.on('message', async (msg) => {
                                     await model.editStep(chatId, 'test_2')
                                  })
                               } else if (foundUser?.bot_step == 'test_2') {
-                                 bot.sendMessage(chatId, localText.test3TextUz).then(async () => {
+                                 bot.sendMessage(chatId, localText.test3TextUz, { parse_mode: "HTML" }).then(async () => {
                                     await model.editStep(chatId, 'test_3')
                                  })
                               } else if (foundUser?.bot_step == 'test_3') {
@@ -381,7 +382,7 @@ bot.on('message', async (msg) => {
                                     await model.editStep(chatId, 'test_2')
                                  })
                               } else if (foundUser?.bot_step == 'test_2') {
-                                 bot.sendMessage(chatId, localText.test3TextRu).then(async () => {
+                                 bot.sendMessage(chatId, localText.test3TextRu, { parse_mode: "HTML" }).then(async () => {
                                     await model.editStep(chatId, 'test_3')
                                  })
                               } else if (foundUser?.bot_step == 'test_3') {
@@ -410,7 +411,7 @@ bot.on('message', async (msg) => {
                                     await model.editStep(chatId, 'test_2')
                                  })
                               } else if (foundUser?.bot_step == 'test_2') {
-                                 bot.sendMessage(chatId, localText.test3TextEng).then(async () => {
+                                 bot.sendMessage(chatId, localText.test3TextEng, { parse_mode: "HTML" }).then(async () => {
                                     await model.editStep(chatId, 'test_3')
                                  })
                               } else if (foundUser?.bot_step == 'test_3') {
@@ -455,7 +456,7 @@ bot.on('message', async (msg) => {
                                  await model.editStep(chatId, 'test_2')
                               })
                            } else if (foundUser?.bot_step == 'test_2') {
-                              bot.sendMessage(chatId, localText.test3TextUz).then(async () => {
+                              bot.sendMessage(chatId, localText.test3TextUz, { parse_mode: "HTML" }).then(async () => {
                                  await model.editStep(chatId, 'test_3')
                               })
                            } else if (foundUser?.bot_step == 'test_3') {
@@ -484,7 +485,7 @@ bot.on('message', async (msg) => {
                                  await model.editStep(chatId, 'test_2')
                               })
                            } else if (foundUser?.bot_step == 'test_2') {
-                              bot.sendMessage(chatId, localText.test3TextRu).then(async () => {
+                              bot.sendMessage(chatId, localText.test3TextRu, { parse_mode: "HTML" }).then(async () => {
                                  await model.editStep(chatId, 'test_3')
                               })
                            } else if (foundUser?.bot_step == 'test_3') {
@@ -513,7 +514,7 @@ bot.on('message', async (msg) => {
                                  await model.editStep(chatId, 'test_2')
                               })
                            } else if (foundUser?.bot_step == 'test_2') {
-                              bot.sendMessage(chatId, localText.test3TextEng).then(async () => {
+                              bot.sendMessage(chatId, localText.test3TextEng, { parse_mode: "HTML" }).then(async () => {
                                  await model.editStep(chatId, 'test_3')
                               })
                            } else if (foundUser?.bot_step == 'test_3') {
@@ -542,9 +543,12 @@ bot.on('message', async (msg) => {
          } else if (text && text != '/start') {
             const jsonData = await analyzeText(text)
 
+            console.log(jsonData)
+
             if (jsonData.length > 0) {
                jsonData?.forEach(async (item) => {
-                  if (jsonData.isDebtPayment) {
+
+                  if (item.isDebtPayment) {
                      if (foundUser?.bot_lang == 'uz') {
                         const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(item.deadline)}\n${localText.debtWhoTextUz} ${item.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}`;
                         bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
@@ -567,7 +571,7 @@ bot.on('message', async (msg) => {
                               await model.editStep(chatId, 'test_2')
                            })
                         } else if (foundUser?.bot_step == 'test_2') {
-                           bot.sendMessage(chatId, localText.test3TextUz).then(async () => {
+                           bot.sendMessage(chatId, localText.test3TextUz, { parse_mode: "HTML" }).then(async () => {
                               await model.editStep(chatId, 'test_3')
                            })
                         } else if (foundUser?.bot_step == 'test_3') {
@@ -596,7 +600,7 @@ bot.on('message', async (msg) => {
                               await model.editStep(chatId, 'test_2')
                            })
                         } else if (foundUser?.bot_step == 'test_2') {
-                           bot.sendMessage(chatId, localText.test3TextRu).then(async () => {
+                           bot.sendMessage(chatId, localText.test3TextRu, { parse_mode: "HTML" }).then(async () => {
                               await model.editStep(chatId, 'test_3')
                            })
                         } else if (foundUser?.bot_step == 'test_3') {
@@ -625,7 +629,7 @@ bot.on('message', async (msg) => {
                               await model.editStep(chatId, 'test_2')
                            })
                         } else if (foundUser?.bot_step == 'test_2') {
-                           bot.sendMessage(chatId, localText.test3TextEng).then(async () => {
+                           bot.sendMessage(chatId, localText.test3TextEng, { parse_mode: "HTML" }).then(async () => {
                               await model.editStep(chatId, 'test_3')
                            })
                         } else if (foundUser?.bot_step == 'test_3') {
@@ -647,6 +651,7 @@ bot.on('message', async (msg) => {
                   }
                })
             } else {
+               
                if (jsonData.isDebtPayment) {
                   if (foundUser?.bot_lang == 'uz') {
                      const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextUz} ${jsonData.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(jsonData.deadline)}`;
@@ -670,7 +675,7 @@ bot.on('message', async (msg) => {
                            await model.editStep(chatId, 'test_2')
                         })
                      } else if (foundUser?.bot_step == 'test_2') {
-                        bot.sendMessage(chatId, localText.test3TextUz).then(async () => {
+                        bot.sendMessage(chatId, localText.test3TextUz, { parse_mode: "HTML" }).then(async () => {
                            await model.editStep(chatId, 'test_3')
                         })
                      } else if (foundUser?.bot_step == 'test_3') {
@@ -699,7 +704,7 @@ bot.on('message', async (msg) => {
                            await model.editStep(chatId, 'test_2')
                         })
                      } else if (foundUser?.bot_step == 'test_2') {
-                        bot.sendMessage(chatId, localText.test3TextRu).then(async () => {
+                        bot.sendMessage(chatId, localText.test3TextRu, { parse_mode: "HTML" }).then(async () => {
                            await model.editStep(chatId, 'test_3')
                         })
                      } else if (foundUser?.bot_step == 'test_3') {
@@ -728,7 +733,7 @@ bot.on('message', async (msg) => {
                            await model.editStep(chatId, 'test_2')
                         })
                      } else if (foundUser?.bot_step == 'test_2') {
-                        bot.sendMessage(chatId, localText.test3TextEng).then(async () => {
+                        bot.sendMessage(chatId, localText.test3TextEng, { parse_mode: "HTML" }).then(async () => {
                            await model.editStep(chatId, 'test_3')
                         })
                      } else if (foundUser?.bot_step == 'test_3') {
