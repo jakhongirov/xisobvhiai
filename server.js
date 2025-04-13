@@ -64,7 +64,6 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
    const chatId = msg.chat.id;
    const param = match[1]?.trim();
    const foundUser = await model.foundUser(chatId)
-   const [partnerName, source] = param?.split(' ');
 
    if (foundUser) {
       if (foundUser?.premium) {
@@ -197,8 +196,12 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
             one_time_keyboard: true,
          },
       }).then(async () => {
-         const partner = await model.foundPartnerName(partnerName)
-         await model.createUser(chatId, 'language', partner.id, source);
+         if (param) {
+            const [partnerName, source] = param?.split(' ');
+            const partner = await model.foundPartnerName(partnerName)
+         } else {
+            await model.createUser(chatId, 'language', null, "organic");
+         }
       })
    }
 })
