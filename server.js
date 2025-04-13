@@ -327,21 +327,238 @@ bot.on('message', async (msg) => {
                writer.on('finish', async () => {
                   const jsonData = await analyzeVoice(`../../public/audios/temp_${fileId}.ogg`)
 
+                  if (jsonData.length > 0) {
+                     jsonData?.forEach(async (itme) => {
+                        if (jsonData.isDebtPayment) {
+                           if (foundUser?.bot_lang == 'uz') {
+                              const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(itme.deadline)}\n${localText.debtWhoTextUz} ${itme.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(itme.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(itme.deadline)}`;
+                              bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
+                           } else if (foundUser?.bot_lang == 'ru') {
+                              const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(itme.deadline)}\n${localText.debtWhoTextRu} ${itme.forWhom}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(itme.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(itme.deadline)}`;
+                              bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
+                           } else if (foundUser?.bot_lang == 'eng') {
+                              const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(itme.deadline)}\n${localText.debtWhoTexEng} ${itme.forWhom}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(itme.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(itme.deadline)}`;
+                              bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
+                           }
+                        }
+
+                        if (foundUser?.bot_lang == 'uz') {
+                           const reportText = `${localText.addReportTextUz}\n\n${itme.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(itme.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(itme.amount)}\n${localText.addReportCategoryTextUz} <b>${itme.category}</b>`
+                           bot.sendMessage(chatId, reportText, {
+                              parse_mode: 'HTML'
+                           }).then(async () => {
+                              if (foundUser?.bot_step == 'test_1') {
+                                 bot.sendMessage(chatId, localText.test2TextUz).then(async () => {
+                                    await model.editStep(chatId, 'test_2')
+                                 })
+                              } else if (foundUser?.bot_step == 'test_2') {
+                                 bot.sendMessage(chatId, localText.test3TextUz).then(async () => {
+                                    await model.editStep(chatId, 'test_3')
+                                 })
+                              } else if (foundUser?.bot_step == 'test_3') {
+                                 const priceList = await model.priceList(foundUser?.bot_lang)
+                                 const priceKeyboard = priceList
+                                    .filter(item => !(foundUser?.used_free && item.price == 0))
+                                    .map(item => [{
+                                       text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
+                                       callback_data: `tarif_${item.id}`
+                                    }]);
+                                 bot.sendMessage(chatId, localText.firstTextPaymentUz, {
+                                    parse_mode: 'HTML',
+                                    reply_markup: {
+                                       inline_keyboard: priceKeyboard
+                                    }
+                                 })
+                              }
+                           })
+                        } else if (foundUser?.bot_lang == 'ru') {
+                           const reportText = `${localText.addReportTextRu}\n\n${itme.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(itme.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(itme.amount)}\n${localText.addReportCategoryTextRu} <b>${itme.category}</b>`
+                           bot.sendMessage(chatId, reportText, {
+                              parse_mode: 'HTML'
+                           }).then(async () => {
+                              if (foundUser?.bot_step == 'test_1') {
+                                 bot.sendMessage(chatId, localText.test2TextRu).then(async () => {
+                                    await model.editStep(chatId, 'test_2')
+                                 })
+                              } else if (foundUser?.bot_step == 'test_2') {
+                                 bot.sendMessage(chatId, localText.test3TextRu).then(async () => {
+                                    await model.editStep(chatId, 'test_3')
+                                 })
+                              } else if (foundUser?.bot_step == 'test_3') {
+                                 const priceList = await model.priceList(foundUser?.bot_lang)
+                                 const priceKeyboard = priceList
+                                    .filter(item => !(foundUser?.used_free && item.price == 0))
+                                    .map(item => [{
+                                       text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
+                                       callback_data: `tarif_${item.id}`
+                                    }]);
+                                 bot.sendMessage(chatId, localText.firstTextPaymentRu, {
+                                    parse_mode: 'HTML',
+                                    reply_markup: {
+                                       inline_keyboard: priceKeyboard
+                                    }
+                                 })
+                              }
+                           })
+                        } else if (foundUser?.bot_lang == 'eng') {
+                           const reportText = `${localText.addReportTextEng}\n\n${itme.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(itme.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(itme.amount)}\n${localText.addReportCategoryTextEng} <b>${itme.category}</b>`
+                           bot.sendMessage(chatId, reportText, {
+                              parse_mode: 'HTML'
+                           }).then(async () => {
+                              if (foundUser?.bot_step == 'test_1') {
+                                 bot.sendMessage(chatId, localText.test2TextEng).then(async () => {
+                                    await model.editStep(chatId, 'test_2')
+                                 })
+                              } else if (foundUser?.bot_step == 'test_2') {
+                                 bot.sendMessage(chatId, localText.test3TextEng).then(async () => {
+                                    await model.editStep(chatId, 'test_3')
+                                 })
+                              } else if (foundUser?.bot_step == 'test_3') {
+                                 const priceList = await model.priceList(foundUser?.bot_lang)
+                                 const priceKeyboard = priceList
+                                    .filter(item => !(foundUser?.used_free && item.price == 0))
+                                    .map(item => [{
+                                       text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
+                                       callback_data: `tarif_${item.id}`
+                                    }]);
+                                 bot.sendMessage(chatId, localText.firstTextPaymentEng, {
+                                    parse_mode: 'HTML',
+                                    reply_markup: {
+                                       inline_keyboard: priceKeyboard
+                                    }
+                                 })
+                              }
+                           })
+                        }
+                     })
+                  } else {
+                     if (jsonData.isDebtPayment) {
+                        if (foundUser?.bot_lang == 'uz') {
+                           const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextUz} ${jsonData.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(jsonData.deadline)}`;
+                           bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
+                        } else if (foundUser?.bot_lang == 'ru') {
+                           const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextRu} ${jsonData.forWhom}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(jsonData.deadline)}`;
+                           bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
+                        } else if (foundUser?.bot_lang == 'eng') {
+                           const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTexEng} ${jsonData.forWhom}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(jsonData.deadline)}`;
+                           bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
+                        }
+                     }
+
+                     if (foundUser?.bot_lang == 'uz') {
+                        const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${jsonData.category}</b>`
+                        bot.sendMessage(chatId, reportText, {
+                           parse_mode: 'HTML'
+                        }).then(async () => {
+                           if (foundUser?.bot_step == 'test_1') {
+                              bot.sendMessage(chatId, localText.test2TextUz).then(async () => {
+                                 await model.editStep(chatId, 'test_2')
+                              })
+                           } else if (foundUser?.bot_step == 'test_2') {
+                              bot.sendMessage(chatId, localText.test3TextUz).then(async () => {
+                                 await model.editStep(chatId, 'test_3')
+                              })
+                           } else if (foundUser?.bot_step == 'test_3') {
+                              const priceList = await model.priceList(foundUser?.bot_lang)
+                              const priceKeyboard = priceList
+                                 .filter(item => !(foundUser?.used_free && item.price == 0))
+                                 .map(item => [{
+                                    text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
+                                    callback_data: `tarif_${item.id}`
+                                 }]);
+                              bot.sendMessage(chatId, localText.firstTextPaymentUz, {
+                                 parse_mode: 'HTML',
+                                 reply_markup: {
+                                    inline_keyboard: priceKeyboard
+                                 }
+                              })
+                           }
+                        })
+                     } else if (foundUser?.bot_lang == 'ru') {
+                        const reportText = `${localText.addReportTextRu}\n\n${jsonData.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextRu} <b>${jsonData.category}</b>`
+                        bot.sendMessage(chatId, reportText, {
+                           parse_mode: 'HTML'
+                        }).then(async () => {
+                           if (foundUser?.bot_step == 'test_1') {
+                              bot.sendMessage(chatId, localText.test2TextRu).then(async () => {
+                                 await model.editStep(chatId, 'test_2')
+                              })
+                           } else if (foundUser?.bot_step == 'test_2') {
+                              bot.sendMessage(chatId, localText.test3TextRu).then(async () => {
+                                 await model.editStep(chatId, 'test_3')
+                              })
+                           } else if (foundUser?.bot_step == 'test_3') {
+                              const priceList = await model.priceList(foundUser?.bot_lang)
+                              const priceKeyboard = priceList
+                                 .filter(item => !(foundUser?.used_free && item.price == 0))
+                                 .map(item => [{
+                                    text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
+                                    callback_data: `tarif_${item.id}`
+                                 }]);
+                              bot.sendMessage(chatId, localText.firstTextPaymentRu, {
+                                 parse_mode: 'HTML',
+                                 reply_markup: {
+                                    inline_keyboard: priceKeyboard
+                                 }
+                              })
+                           }
+                        })
+                     } else if (foundUser?.bot_lang == 'eng') {
+                        const reportText = `${localText.addReportTextEng}\n\n${jsonData.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextEng} <b>${jsonData.category}</b>`
+                        bot.sendMessage(chatId, reportText, {
+                           parse_mode: 'HTML'
+                        }).then(async () => {
+                           if (foundUser?.bot_step == 'test_1') {
+                              bot.sendMessage(chatId, localText.test2TextEng).then(async () => {
+                                 await model.editStep(chatId, 'test_2')
+                              })
+                           } else if (foundUser?.bot_step == 'test_2') {
+                              bot.sendMessage(chatId, localText.test3TextEng).then(async () => {
+                                 await model.editStep(chatId, 'test_3')
+                              })
+                           } else if (foundUser?.bot_step == 'test_3') {
+                              const priceList = await model.priceList(foundUser?.bot_lang)
+                              const priceKeyboard = priceList
+                                 .filter(item => !(foundUser?.used_free && item.price == 0))
+                                 .map(item => [{
+                                    text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
+                                    callback_data: `tarif_${item.id}`
+                                 }]);
+                              bot.sendMessage(chatId, localText.firstTextPaymentEng, {
+                                 parse_mode: 'HTML',
+                                 reply_markup: {
+                                    inline_keyboard: priceKeyboard
+                                 }
+                              })
+                           }
+                        })
+                     }
+                  }
+
+               })
+            } catch (uploadError) {
+               console.error('Error during upload or analysis:', uploadError);
+            }
+         } else if (text && text != '/start') {
+            const jsonData = await analyzeText(text)
+
+            if (jsonData.length > 0) {
+               jsonData?.forEach(async (itme) => {
                   if (jsonData.isDebtPayment) {
                      if (foundUser?.bot_lang == 'uz') {
-                        const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextUz} ${jsonData.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(jsonData.deadline)}`;
+                        const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(itme.deadline)}\n${localText.debtWhoTextUz} ${itme.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(itme.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(itme.deadline)}`;
                         bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
                      } else if (foundUser?.bot_lang == 'ru') {
-                        const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextRu} ${jsonData.forWhom}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(jsonData.deadline)}`;
+                        const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(itme.deadline)}\n${localText.debtWhoTextRu} ${itme.forWhom}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(itme.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(itme.deadline)}`;
                         bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
                      } else if (foundUser?.bot_lang == 'eng') {
-                        const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTexEng} ${jsonData.forWhom}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(jsonData.deadline)}`;
+                        const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(itme.deadline)}\n${localText.debtWhoTexEng} ${itme.forWhom}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(itme.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(itme.deadline)}`;
                         bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
                      }
                   }
 
                   if (foundUser?.bot_lang == 'uz') {
-                     const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${jsonData.category}</b>`
+                     const reportText = `${localText.addReportTextUz}\n\n${itme.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(itme.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(itme.amount)}\n${localText.addReportCategoryTextUz} <b>${itme.category}</b>`
                      bot.sendMessage(chatId, reportText, {
                         parse_mode: 'HTML'
                      }).then(async () => {
@@ -370,7 +587,7 @@ bot.on('message', async (msg) => {
                         }
                      })
                   } else if (foundUser?.bot_lang == 'ru') {
-                     const reportText = `${localText.addReportTextRu}\n\n${jsonData.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextRu} <b>${jsonData.category}</b>`
+                     const reportText = `${localText.addReportTextRu}\n\n${itme.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(itme.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(itme.amount)}\n${localText.addReportCategoryTextRu} <b>${itme.category}</b>`
                      bot.sendMessage(chatId, reportText, {
                         parse_mode: 'HTML'
                      }).then(async () => {
@@ -399,7 +616,7 @@ bot.on('message', async (msg) => {
                         }
                      })
                   } else if (foundUser?.bot_lang == 'eng') {
-                     const reportText = `${localText.addReportTextEng}\n\n${jsonData.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextEng} <b>${jsonData.category}</b>`
+                     const reportText = `${localText.addReportTextEng}\n\n${itme.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(itme.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(itme.amount)}\n${localText.addReportCategoryTextEng} <b>${itme.category}</b>`
                      bot.sendMessage(chatId, reportText, {
                         parse_mode: 'HTML'
                      }).then(async () => {
@@ -428,116 +645,109 @@ bot.on('message', async (msg) => {
                         }
                      })
                   }
-
                })
-            } catch (uploadError) {
-               console.error('Error during upload or analysis:', uploadError);
-            }
-         } else if (text && text != '/start') {
-            const jsonData = await analyzeText(text)
-
-            if (jsonData.isDebtPayment) {
-               if (foundUser?.bot_lang == 'uz') {
-                  const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextUz} ${jsonData.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(jsonData.deadline)}`;
-                  bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
-               } else if (foundUser?.bot_lang == 'ru') {
-                  const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextRu} ${jsonData.forWhom}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(jsonData.deadline)}`;
-                  bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
-               } else if (foundUser?.bot_lang == 'eng') {
-                  const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTexEng} ${jsonData.forWhom}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(jsonData.deadline)}`;
-                  bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
+            } else {
+               if (jsonData.isDebtPayment) {
+                  if (foundUser?.bot_lang == 'uz') {
+                     const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextUz} ${jsonData.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(jsonData.deadline)}`;
+                     bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
+                  } else if (foundUser?.bot_lang == 'ru') {
+                     const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextRu} ${jsonData.forWhom}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(jsonData.deadline)}`;
+                     bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
+                  } else if (foundUser?.bot_lang == 'eng') {
+                     const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTexEng} ${jsonData.forWhom}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(jsonData.deadline)}`;
+                     bot.sendMessage(chatId, debtText, { parse_mode: "HTML" })
+                  }
                }
-            }
 
-            console.log(jsonData)
-
-            if (foundUser?.bot_lang == 'uz') {
-               const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${jsonData.category}</b>`
-               bot.sendMessage(chatId, reportText, {
-                  parse_mode: 'HTML'
-               }).then(async () => {
-                  if (foundUser?.bot_step == 'test_1') {
-                     bot.sendMessage(chatId, localText.test2TextUz).then(async () => {
-                        await model.editStep(chatId, 'test_2')
-                     })
-                  } else if (foundUser?.bot_step == 'test_2') {
-                     bot.sendMessage(chatId, localText.test3TextUz).then(async () => {
-                        await model.editStep(chatId, 'test_3')
-                     })
-                  } else if (foundUser?.bot_step == 'test_3') {
-                     const priceList = await model.priceList(foundUser?.bot_lang)
-                     const priceKeyboard = priceList
-                        .filter(item => !(foundUser?.used_free && item.price == 0))
-                        .map(item => [{
-                           text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                           callback_data: `tarif_${item.id}`
-                        }]);
-                     bot.sendMessage(chatId, localText.firstTextPaymentUz, {
-                        parse_mode: 'HTML',
-                        reply_markup: {
-                           inline_keyboard: priceKeyboard
-                        }
-                     })
-                  }
-               })
-            } else if (foundUser?.bot_lang == 'ru') {
-               const reportText = `${localText.addReportTextRu}\n\n${jsonData.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextRu} <b>${jsonData.category}</b>`
-               bot.sendMessage(chatId, reportText, {
-                  parse_mode: 'HTML'
-               }).then(async () => {
-                  if (foundUser?.bot_step == 'test_1') {
-                     bot.sendMessage(chatId, localText.test2TextRu).then(async () => {
-                        await model.editStep(chatId, 'test_2')
-                     })
-                  } else if (foundUser?.bot_step == 'test_2') {
-                     bot.sendMessage(chatId, localText.test3TextRu).then(async () => {
-                        await model.editStep(chatId, 'test_3')
-                     })
-                  } else if (foundUser?.bot_step == 'test_3') {
-                     const priceList = await model.priceList(foundUser?.bot_lang)
-                     const priceKeyboard = priceList
-                        .filter(item => !(foundUser?.used_free && item.price == 0))
-                        .map(item => [{
-                           text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
-                           callback_data: `tarif_${item.id}`
-                        }]);
-                     bot.sendMessage(chatId, localText.firstTextPaymentRu, {
-                        parse_mode: 'HTML',
-                        reply_markup: {
-                           inline_keyboard: priceKeyboard
-                        }
-                     })
-                  }
-               })
-            } else if (foundUser?.bot_lang == 'eng') {
-               const reportText = `${localText.addReportTextEng}\n\n${jsonData.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextEng} <b>${jsonData.category}</b>`
-               bot.sendMessage(chatId, reportText, {
-                  parse_mode: 'HTML'
-               }).then(async () => {
-                  if (foundUser?.bot_step == 'test_1') {
-                     bot.sendMessage(chatId, localText.test2TextEng).then(async () => {
-                        await model.editStep(chatId, 'test_2')
-                     })
-                  } else if (foundUser?.bot_step == 'test_2') {
-                     bot.sendMessage(chatId, localText.test3TextEng).then(async () => {
-                        await model.editStep(chatId, 'test_3')
-                     })
-                  } else if (foundUser?.bot_step == 'test_3') {
-                     const priceList = await model.priceList(foundUser?.bot_lang)
-                     const priceKeyboard = priceList
-                        .filter(item => !(foundUser?.used_free && item.price == 0))
-                        .map(item => [{
-                           text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
-                           callback_data: `tarif_${item.id}`
-                        }]);
-                     bot.sendMessage(chatId, localText.firstTextPaymentEng, {
-                        parse_mode: 'HTML',
-                        reply_markup: {
-                           inline_keyboard: priceKeyboard
-                        }
-                     })
-                  }
-               })
+               if (foundUser?.bot_lang == 'uz') {
+                  const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${jsonData.category}</b>`
+                  bot.sendMessage(chatId, reportText, {
+                     parse_mode: 'HTML'
+                  }).then(async () => {
+                     if (foundUser?.bot_step == 'test_1') {
+                        bot.sendMessage(chatId, localText.test2TextUz).then(async () => {
+                           await model.editStep(chatId, 'test_2')
+                        })
+                     } else if (foundUser?.bot_step == 'test_2') {
+                        bot.sendMessage(chatId, localText.test3TextUz).then(async () => {
+                           await model.editStep(chatId, 'test_3')
+                        })
+                     } else if (foundUser?.bot_step == 'test_3') {
+                        const priceList = await model.priceList(foundUser?.bot_lang)
+                        const priceKeyboard = priceList
+                           .filter(item => !(foundUser?.used_free && item.price == 0))
+                           .map(item => [{
+                              text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
+                              callback_data: `tarif_${item.id}`
+                           }]);
+                        bot.sendMessage(chatId, localText.firstTextPaymentUz, {
+                           parse_mode: 'HTML',
+                           reply_markup: {
+                              inline_keyboard: priceKeyboard
+                           }
+                        })
+                     }
+                  })
+               } else if (foundUser?.bot_lang == 'ru') {
+                  const reportText = `${localText.addReportTextRu}\n\n${jsonData.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextRu} <b>${jsonData.category}</b>`
+                  bot.sendMessage(chatId, reportText, {
+                     parse_mode: 'HTML'
+                  }).then(async () => {
+                     if (foundUser?.bot_step == 'test_1') {
+                        bot.sendMessage(chatId, localText.test2TextRu).then(async () => {
+                           await model.editStep(chatId, 'test_2')
+                        })
+                     } else if (foundUser?.bot_step == 'test_2') {
+                        bot.sendMessage(chatId, localText.test3TextRu).then(async () => {
+                           await model.editStep(chatId, 'test_3')
+                        })
+                     } else if (foundUser?.bot_step == 'test_3') {
+                        const priceList = await model.priceList(foundUser?.bot_lang)
+                        const priceKeyboard = priceList
+                           .filter(item => !(foundUser?.used_free && item.price == 0))
+                           .map(item => [{
+                              text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
+                              callback_data: `tarif_${item.id}`
+                           }]);
+                        bot.sendMessage(chatId, localText.firstTextPaymentRu, {
+                           parse_mode: 'HTML',
+                           reply_markup: {
+                              inline_keyboard: priceKeyboard
+                           }
+                        })
+                     }
+                  })
+               } else if (foundUser?.bot_lang == 'eng') {
+                  const reportText = `${localText.addReportTextEng}\n\n${jsonData.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextEng} <b>${jsonData.category}</b>`
+                  bot.sendMessage(chatId, reportText, {
+                     parse_mode: 'HTML'
+                  }).then(async () => {
+                     if (foundUser?.bot_step == 'test_1') {
+                        bot.sendMessage(chatId, localText.test2TextEng).then(async () => {
+                           await model.editStep(chatId, 'test_2')
+                        })
+                     } else if (foundUser?.bot_step == 'test_2') {
+                        bot.sendMessage(chatId, localText.test3TextEng).then(async () => {
+                           await model.editStep(chatId, 'test_3')
+                        })
+                     } else if (foundUser?.bot_step == 'test_3') {
+                        const priceList = await model.priceList(foundUser?.bot_lang)
+                        const priceKeyboard = priceList
+                           .filter(item => !(foundUser?.used_free && item.price == 0))
+                           .map(item => [{
+                              text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
+                              callback_data: `tarif_${item.id}`
+                           }]);
+                        bot.sendMessage(chatId, localText.firstTextPaymentEng, {
+                           parse_mode: 'HTML',
+                           reply_markup: {
+                              inline_keyboard: priceKeyboard
+                           }
+                        })
+                     }
+                  })
+               }
             }
          }
       } else if (foundUser && text === localText.reportsBtnUz) {
