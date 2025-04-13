@@ -15,19 +15,70 @@ const foundUser = (chatId) => {
 
    return fetch(QUERY, chatId)
 }
-const createUser = (chatId, step) => {
+const foundPartnerName = (partnerName) => {
+   const QUERY = `
+      SELECT
+         *
+      FROM
+         partners
+      WHERE
+         name = $1;
+   `;
+
+   return fetch(QUERY, partnerName)
+}
+const foundPartner = (partner_id) => {
+   const QUERY = `
+      SELECT
+         *
+      FROM
+         partners
+      WHERE
+         id = $1;
+   `;
+
+   return fetch(QUERY, partner_id)
+}
+const createUser = (
+   chatId,
+   step,
+   partner_id,
+   source
+) => {
    const QUERY = `
       INSERT INTO
          users (
             chat_id,
-            bot_step
+            bot_step,
+            partner_id,
+            source
          ) VALUES (
             $1,
-            $2
+            $2,
+            $3,
+            $4
          ) RETURNING *;
    `;
 
-   return fetch(QUERY, chatId, step)
+   return fetch(
+      QUERY,
+      chatId,
+      step,
+      partner_id,
+      source
+   )
+}
+const addLang = (chatId, lang) => {
+   const QUERY = `
+      UPDATE
+         users
+      SET
+         bot_lang = $2
+      WHERE
+         chat_id = $1;
+   `;
+
+   return fetch(QUERY, chatId, lang)
 }
 const createBalance = (
    user_id,
@@ -61,7 +112,8 @@ const editStep = (chatId, step) => {
       SET
          bot_step = $2
       WHERE
-         chat_id = $1;
+         chat_id = $1
+      RETURNING *;
    `;
 
    return fetch(QUERY, chatId, step)
@@ -93,21 +145,43 @@ const addName = (chatId, text) => {
    return fetch(QUERY, chatId, text)
 }
 const priceList = () => {
+   const titleColumn =
+      lang === 'uz'
+         ? 'title_uz'
+         : lang === 'ru'
+            ? 'title_ru'
+            : lang === 'eng'
+               ? 'title_eng'
+               : 'title_uz';
+
    const QUERY = `
       SELECT
-         *
+      *,
+      ${titleColumn ? `${titleColumn} AS title` : ''} 
       FROM
-         price
+      price
       ORDER BY
-         sort_order;
+      sort_order;
    `;
 
    return fetchALL(QUERY)
 }
-const foundTarif = (id) => {
+const foundTarif = (id, lang) => {
+   const titleColumn =
+      lang === 'uz'
+         ? 'title_uz'
+         : lang === 'ru'
+            ? 'title_ru'
+            : lang === 'eng'
+               ? 'title_eng'
+               : 'title_uz';
+
    const QUERY = `
       SELECT
-         *
+         id,
+         ${titleColumn ? `${titleColumn} AS title,` : ''} 
+         period,
+         price
       FROM
          price
       WHERE
@@ -483,10 +557,39 @@ const editPremium = (chatId, expiredDate) => {
 
    return fetch(QUERY, chatId, expiredDate)
 }
+const addLimitAmount = (chatId, limit) => {
+   const QUERY = `
+      UPDATE
+         users
+      SET
+         limit_amount = $2
+      WHERE
+         chat_id = $1
+      RETURNING *;
+   `;
+
+   return fetch(QUERY, chatId, limit)
+}
+const addMonthlyAmount = (chatId, price) => {
+   const QUERY = `
+      UPDATE
+         users
+      SET
+         monthly_amount = $2
+      WHERE
+         chat_id = $1
+      RETURNING *;
+   `;
+
+   return fetch(QUERY, chatId, price)
+}
 
 module.exports = {
    foundUser,
+   foundPartnerName,
+   foundPartner,
    createUser,
+   addLang,
    createBalance,
    editStep,
    addPhoneUser,
@@ -507,5 +610,7 @@ module.exports = {
    deleteReport,
    deleteDebt,
    editUsedFree,
-   editPremium
+   editPremium,
+   addLimitAmount,
+   addMonthlyAmount
 }

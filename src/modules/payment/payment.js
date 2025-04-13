@@ -61,40 +61,113 @@ module.exports = {
 
 
             if (editUserPremium) {
-               bot.sendMessage(chat_id, localText.successfullyPaid, {
-                  parse_mode: "HTML",
-                  reply_markup: {
-                     keyboard: [
-                        [
-                           {
-                              text: localText.reportsBtn
-                           },
-                           {
-                              text: localText.debtBtn
-                           },
+
+               if (foundUser?.bot_lang == 'uz') {
+                  bot.sendMessage(chat_id, localText.successfullyPaidUz, {
+                     parse_mode: "HTML",
+                     reply_markup: {
+                        keyboard: [
+                           [
+                              {
+                                 text: localText.reportsBtnUz
+                              },
+                              {
+                                 text: localText.debtBtnUz
+                              },
+                           ],
+                           [
+                              {
+                                 text: localText.balancesBtnUz
+                              },
+                              {
+                                 text: localText.limitBtnUz
+                              }
+                           ],
+                           [
+                              {
+                                 text: localText.usageInformationBtnUz
+                              },
+                              {
+                                 text: localText.premiumBtnUz
+                              }
+                           ]
                         ],
-                        [
-                           {
-                              text: localText.balancesBtn
-                           },
-                           {
-                              text: localText.shareBtn
-                           }
+                        resize_keyboard: true,
+                     }
+                  }).then(async () => {
+                     await model.editStep(chat_id, 'menu')
+                  })
+               } else if (foundUser?.bot_lang == "ru") {
+                  bot.sendMessage(chat_id, localText.successfullyPaidRu, {
+                     parse_mode: "HTML",
+                     reply_markup: {
+                        keyboard: [
+                           [
+                              {
+                                 text: localText.reportsBtnRu
+                              },
+                              {
+                                 text: localText.debtBtnRu
+                              },
+                           ],
+                           [
+                              {
+                                 text: localText.balancesBtnRu
+                              },
+                              {
+                                 text: localText.limitBtnRu
+                              }
+                           ],
+                           [
+                              {
+                                 text: localText.usageInformationBtnRu
+                              },
+                              {
+                                 text: localText.premiumBtnRu
+                              }
+                           ]
                         ],
-                        [
-                           {
-                              text: localText.usageInformationBtn
-                           },
-                           {
-                              text: localText.premiumBtn
-                           }
-                        ]
-                     ],
-                     resize_keyboard: true,
-                  }
-               }).then(async () => {
-                  await model.editStep(chat_id, 'menu')
-               })
+                        resize_keyboard: true,
+                     }
+                  }).then(async () => {
+                     await model.editStep(chat_id, 'menu')
+                  })
+               } else if (foundUser?.bot_lang == "eng") {
+                  bot.sendMessage(chat_id, localText.successfullyPaidEng, {
+                     parse_mode: "HTML",
+                     reply_markup: {
+                        keyboard: [
+                           [
+                              {
+                                 text: localText.reportsBtnEng
+                              },
+                              {
+                                 text: localText.debtBtnEng
+                              },
+                           ],
+                           [
+                              {
+                                 text: localText.balancesBtnEng
+                              },
+                              {
+                                 text: localText.limitBtnEng
+                              }
+                           ],
+                           [
+                              {
+                                 text: localText.usageInformationBtnEng
+                              },
+                              {
+                                 text: localText.premiumBtnEng
+                              }
+                           ]
+                        ],
+                        resize_keyboard: true,
+                     }
+                  }).then(async () => {
+                     await model.editStep(chat_id, 'menu')
+                  })
+               }
 
                return res.status(200).json({
                   status: 200,

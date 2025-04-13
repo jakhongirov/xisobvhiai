@@ -15,7 +15,27 @@ CREATE TABLE users (
    telegram_bot boolean DEFAULT false,
    chat_id bigint,
    bot_step text,
+   bot_lang text,
+   duration boolean DEFAULT false,
+   source text,
+   partner_id bigint,
+   monthly_amount bigint DEFAULT 0,
+   limit_amount bigint DEFAULT 0,
+   user_blocked boolean DEFAULT false,
    used_free boolean DEFAULT false,
+   create_at timestamptz DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE partners (
+   id bigserial PRiMARY KEY,
+   name text,
+   phone_number text,
+   chat_id text,
+   discount bigint DEFAULT 0,
+   additional bigint DEFAULT 0,
+   profit int DEFAULT 0,
+   duration boolean DEFAULT false,
+   balance bigint DEFAULT 0,
    create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -72,9 +92,44 @@ CREATE TABLE debt (
 
 CREATE TABLE price (
    id bigserial PRiMARY KEY,
-   title text,
+   title_uz text,
+   title_ru text,
+   title_eng text,
    period int,
    price bigint,
    sort_order int,
+   create_at timestamptz DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE atmos_token (
+   id bigserial PRIMARY KEY,
+   token text,
+   expires int
+);
+
+CREATE TABLE cards (
+   id bigserial PRIMARY KEY,
+   card_number_hash text,
+   card_id int,
+   expiry text,
+   otp int,
+   card_token text,
+   phone_number text,
+   card_holder text,
+   transaction_id int,
+   main boolean DEFAULT false,
+   user_id bigint REFERENCES users(chat_id) ON DELETE CASCADE,
+   active boolean DEFAULT true,
+   create_at timestamptz DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE checks (
+   id bigserial PRIMARY KEY,
+   user_id bigint REFERENCES users(chat_id) ON DELETE CASCADE,
+   success_trans_id text,
+   method text,
+   amount bigint,
+   transaction_id int,
+   ofd_url text,
    create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );

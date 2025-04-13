@@ -1,61 +1,263 @@
 {
-	"startText": "Xush kelibsiz! 👋\n\n📊 Xisobchi.ai – bu shaxsiy moliyalaringizni avtomatik boshqaruvchi AI yordamchi.\n\n💡 Nimalar qila oladi?:\n- Kirim-chiqimlaringizni tahlil qiladi 📊\n- Xarajatlaringizni toifalarga ajratadi 🏷\n- Moliyaviy intizomni shakllantirishga yordam beradi ✅\n\n⏩ Davom etish uchun pastdagi tugma orqali telefon raqamingizni yuboring.",
-	"sendContactBtn": "📞 Yuborish",
-	"contactRegisterError": "Noto'g'ri, davom etish uchun aynan pastdagi tugma orqali kontaktingizni yuboring..",
-	"askNameText": "Ajoyib, endi tanishib olamiz, ismingiz nima ?",
-	"successfullyRegister": "✅ <b>Ro'yxatdan o'tib, tanishib ham oldik.\nQuyida Xisobchi.ai tariflari bilan tanishib, o'zingizga mosini tanlab - xarajatlaringizni boshqarishni boshlashingiz mumkin</b>\n\n🏷Agar hali ishonchingiz komil bo'lmasa, 3 kunlik bepul sinov muddatidan foydalanishingiz mumkin. ",
+	"startText": "🇺🇿: Assalomu alaykum, iltimos bot tilni tanlang.\n\n🇷🇺: Здравствуйте, пожалуйста, выберите язык.\n\n🇬🇧: Hello, please select a language.",
 
-	"menuText": "Asosiy sahifa: Kirim-chiqimingizni shu yerda istalgan shaklda, matn yoki ovozli holatda yuborsangiz, men xisob kitoblarga qo'shib qo'yaman 📊 ",
+	"startTextUz": "Xush kelibsiz! 👋\n\n📊 Xisobchi.ai – bu shaxsiy moliyalaringizni avtomatik boshqaruvchi AI yordamchi.\n\n💡 Nimalar qila oladi?:\n- Kirim-chiqimlaringizni tahlil qiladi 📊\n- Xarajatlaringizni toifalarga ajratadi 🏷\n- Moliyaviy intizomni shakllantirishga yordam beradi ✅\n\n⏩ Davom etish uchun pastdagi tugma orqali telefon raqamingizni yuboring.",
+	"startTextRu": "Добро пожаловать! 👋\n\n📊 Xisobchi.ai — искусственный помощник, который автоматически управляет вашими личными финансами.\n\n💡 Что он может делать?:\n- Анализирует ваши доходы и расходы 📊\n- Классифицирует ваши расходы 🏷\n- Помогает сформировать финансовую дисциплину ✅\n\n⏩ Для продолжения укажите свой номер телефона, используя кнопку ниже.",
+	"startTextEng": "Welcome! 👋\n\n📊 Xisobchi.ai is an AI assistant that automatically manages your personal finances.\n\n💡 What can it do?:\n- Analyzes your income and expenses 📊\n- Categorizes your expenses 🏷\n- Helps you build financial discipline ✅\n\n⏩ To continue, send your phone number using the button below.",
 
-	"reportsBtn": "📊  Xisobotlar",
-	"reportMonthlyText": "<b>%monthName% oyi xisobotlari:</b>",
-	"reportInputText": "🟢 Kirimlar:",
-	"reportOutputText": "🔴 Chiqimlar:",
-	"reportCatgoriesText": "<b>Kategoriyar bo’yicha:</b>",
-	"otherMonthsBtn": "📆  Boshqa oylarni ko’rish",
-	"seeMoreBtn": "⏬️️️️️️ Batafsil ko’rish",
-	"chooseMonthText": "O'zingizga kerakli oyni tanlang:",
-	"seeMoreText": "<b>%monthName% oyi xisobotlari:</b>",
+	"sendContactBtnUz": "📞 Yuborish",
+	"sendContactBtnRu": "📞 Отправить",
+	"sendContactBtnEng": "📞 Send",
 
-	"balancesBtn": "💰 Mening balansim",
-	"balancesText": "<b>💰 Balanslar ro’yxati:</b>",
+	"askNameTextUz": "Ajoyib, endi tanishib olamiz, ismingiz nima ?",
+	"askNameTextRu": "Отлично, теперь давайте знакомиться. Как вас зовут?",
+	"askNameTextEng": "Great, now we can get to know each other, what is your name?",
 
-	"usageInformationBtn": "📙 Foydalanish yo’qnomasi",
+	"contactRegisterErrorUz": "Noto'g'ri, davom etish uchun aynan pastdagi tugma orqali kontaktingizni yuboring..",
+	"contactRegisterErrorRu": "Неверно, пожалуйста, отправьте свой контакт с помощью кнопки ниже, чтобы продолжить.",
+	"contactRegisterErrorEng": "Wrong, please send your contact via the button below to continue.",
 
-	"debtBtn": "💸 Qarzlar",
-	"debtText": "<b>💸 Qarzlar ro’yxati:</b>",
-	"debtGivenText": "Berilgan:",
-	"debtWhoText": "Kimga:",
-	"debtAmountText": "Qancha:",
-	"debtEstimateText": "Qoldi:",
-	"debtDeadlineText": "Qachon qaytarish kerak:",
+	"successfullyRegisterUz": "✅ <b>Ro'yxatdan o'tib, tanishib ham oldik.\n\nMing marta eshitgandan bir marta ishlatib ko’rgan afzal. Keling xisobchi.ai dan foydalanib ko’ramiz",
+	"successfullyRegisterRu": "✅ <b>Мы зарегистрировались и познакомились.\n\nЛучше один раз использовать, чем тысячу раз услышать. Давайте попробуем использовать xisobchi.ai",
+	"successfullyRegisterEng": "✅ <b>We registered and got to know each other.\n\nIt's better to try once than hear a thousand times. Let's try using xisobchi.ai",
 
-	"shareBtn": "🤝 Do’stni taklif qilish",
-	"shareBtnText": "🤝 Do'stingizni taklif qilganingiz uchun sizga bonus berishimiz kerak, lekin bu tizimni endi ishlab chiqmoqdamiz.\n\nShu sabab, Xisobchi AI sizga yoqsa, yaqinlaringiz bilan ulashishingiz albatta yaxshi :)\n\n t.me/xisobchiai_bot",
+	"test1TextUz": "Ushbu xabarni shu yerga audio ko’rinishida yuboring:\n\n”Taksiga 15,000 so’m xarajat qildim”",
+	"test1TextRu": "Отправьте это сообщение в аудиоформате:\n\n”Я потратил 15 000 сум на такси”",
+	"test1TextEng": "Send this message here in audio format:\n\n”I spent 15,000 sum on a taxi”",
 
-	"premiumBtn": "💎 Premium",
-	"premiumText": "💎 O'zingizga mos tarifni tanlang va Xisobchi AI dan bahramand bo'ling.",
-	"premiumExpiredText": "Premium' tarifingiz tugash muddati:  ",
+	"test2TextUz": "Ajoyib, keyingi qadam sifatida bu xabarni shu yerga audio, istasangiz matn ko’rinishida yuboring:\n\n”50,000 so’mga ovqatlandim”",
+	"test2TextRu": "Отлично, в качестве следующего шага отправьте это сообщение сюда в аудиоформате или текстовом виде, если вам так удобнее:\n\n”Я поел на 50000 сум”",
+	"test2TextEng": "Great, as a next step, send this message here in audio, or text if you prefer:\n\n”I ate for 50,000 sums”",
 
-	"backBtn": "⬅️ Ortga qaytish",
+	"test3TextUz": "Keyingi qadam, qarzlarni nazorat qilish.\n\nQuyidagi matnni audio yoki matn ko’rinishida yuborib ko'ring.\n\n<b>Rustamga 500 000 so'm qarzga berdim. 15-avgustda qaytaradi.</b>",
+	"test3TextRu": "Следующий шаг — контроль за долгами.\n\nПопробуйте отправить следующий текст в виде аудио или текста.\n\n<b>Я одолжил Рустаму 500 000 сумов. Возврат 15 августа.</b>",
+	"test3TextEng": "The next step is to control debts.\n\nTry sending the following text as audio or text.\n\n<b>I lent Rustam 500,000 soums. He will return it on August 15th.</b>",
 
-	"priceText": "Siz %title% tarifni tanladingiz. Tarif narxi atiga %price% ni tashkil qiladi. Endi o’zingizga qulay turda to'lovni amalga oshiring: ",
-	"clickText": "Click ->",
-	"paymeText": "Payme ->",
-	"uzumText": "Uzum -> ",
-	"successfullyPaid": "✅ To’lovingiz muvaffaqiyatli amalga oshdi. Kirim va chiqimlaringizni istalgan ko'rinishda (ovoz, matn) yuborishni boshlashingiz mumkin, yordamchingiz esa yozib boraveradi.",
+	"firstTextPaymentUz": "<b>Quyida Xisobchi.ai tariflari bilan tanishib, o'zingizga mosini tanlab - xarajatlaringizni boshqarishni boshlashingiz mumkin</b>\n\n🏷Agar hali ishonchingiz komil bo'lmasa, 3 kunlik bepul sinov muddatidan foydalanishingiz mumkin.",
+	"firstTextPaymentRu": "<b>Ниже вы можете ознакомиться с тарифами Xisobchi.ai, выбрать подходящий вам и начать управлять своими расходами.</b>\n\n🏷Если вы все еще не уверены, вы можете воспользоваться 3-дневной бесплатной пробной версией.",
+	"firstTextPaymentEng": "<b>Below you can familiarize yourself with the tariffs of Xisobchi.ai, choose the one that suits you and start managing your expenses.</b>\n\n🏷AIf you're still not sure, you can take advantage of the 3-day free trial.",
 
-	"notFoundData": "Topilmadi...",
+	"menuTextUz": "Asosiy sahifa: Kirim-chiqimingizni shu yerda istalgan shaklda, matn yoki ovozli holatda yuborsangiz, men xisob kitoblarga qo'shib qo'yaman 📊",
+	"menuTextRu": "Главная страница: отправьте сюда свой вклад в любой форме, текстовой или аудио, и я добавлю отчет. 📊",
+	"menuTextEng": "Home: Send your input here in any form, text or audio, and I'll add a report. 📊",
 
-	"addReportText": "<b>Xisobotga qo’shildi </b>✔️",
-	"addReportDateText": "Sana:",
-	"addReportAmountText": "Summa:",
-	"addReportCategoryText": "Kategoriya:",
-	"addReportCommentText": "Izoh:",
-	"cancelBtn": "Bekor qilish 🚫",
-	"cancelText": "Bekor qilindi 🚫",
+	"reportsBtnUz": "📊  Xisobotlar",
+	"reportsBtnRu": "📊  Отчеты",
+	"reportsBtnEng": "📊  Reports",
 
-	"cronTextBefore2day": "Premium obunangiz tugashiga 2 kun qoldi, davom ettirish uchun tarif to'lovini amalga oshirishingiz lozim",
-	"cronTextBefore1day": "Premium obunangiz tugashiga 1 kun qoldi, davom ettirish uchun tarif to'lovini amalga oshirishingiz lozim, aks holda botdan foydalana olmaysiz.",
-	"cronTextStoped": "Sizning premium obunaningiz tugadi. Botdan foydalanish uchun, kerakli tarifni tanlab, to'lovni amalga oshiring."
+	"reportMonthlyTextUz": "<b>%monthName% oyi xisobotlari:</b>",
+	"reportMonthlyTextRu": "<b>Отчеты за месяц %monthName%:</b>",
+	"reportMonthlyTextEng": "<b>Reports for the month of %monthName%:</b>",
+
+	"reportInputTextUz": "🟢 Kirimlar:",
+	"reportInputTextRu": "🟢 Доходы:",
+	"reportInputTextEng": "🟢 Incomes:",
+
+	"reportOutputTextUz": "🔴 Chiqimlar:",
+	"reportOutputTextRu": "🔴 Расходы:",
+	"reportOutputTextEng": "🔴 Expenses:",
+
+	"reportCatgoriesTextUz": "<b>Kategoriyar bo’yicha:</b>",
+	"reportCatgoriesTextRu": "<b>По категориям:</b>",
+	"reportCatgoriesTextEng": "<b>By category:</b>",
+
+	"otherMonthsBtnUz": "📆  Boshqa oylarni ko’rish",
+	"otherMonthsBtnRu": "📆  Посмотреть другие месяцы",
+	"otherMonthsBtnEng": "📆 View other months",
+
+	"seeMoreBtnUz": "⏬️️️️️️ Batafsil ko’rish",
+	"seeMoreBtnRu": "⏬️️️️️️ Посмотреть подробности",
+	"seeMoreBtnEng": "⏬️️️️️️ View details",
+
+	"chooseMonthTextUz": "O'zingizga kerakli oyni tanlang:",
+	"chooseMonthTextRu": "Выберите месяц, который вы хотите:",
+	"chooseMonthTextEng": "Choose the month you want:",
+
+	"seeMoreTextUz": "<b>%monthName% oyi xisobotlari:</b>",
+	"seeMoreTextRu": "<b>Отчеты за месяц %monthName%:</b>",
+	"seeMoreTextEng": "<b>Reports for the month of %monthName%:</b>",
+
+	"balancesBtnUz": "💰 Mening balansim",
+	"balancesBtnRu": "💰 Мой баланс",
+	"balancesBtnEng": "💰 My balance",
+
+	"balancesTextUz": "<b>💰 Balanslar ro’yxati:</b>",
+	"balancesTextRu": "<b>💰 Список балансов:</b>",
+	"balancesTextEng": "<b>💰 List of balances:</b>",
+
+	"usageInformationBtnUz": "📙 Foydalanish yo’riqnomasi",
+	"usageInformationBtnRu": "📙 Руководство пользователя",
+	"usageInformationBtnEng": "📙 User manual",
+
+	"debtBtnUz": "💸 Qarzlar",
+	"debtBtnRu": "💸 Долги",
+	"debtBtnEng": "💸 Debts",
+
+	"debtTextUz": "<b>💸 Qarzlar ro’yxati:</b>",
+	"debtTextRu": "<b>💸 Список долгов:</b>",
+	"debtTextEng": "<b>💸 Debt list:</b>",
+
+	"addDebtTextUz": "<b>💸 Qarzlarga qo’shildi:</b>",
+	"addDebtTextRu": "<b>💸 Добавлено к долгам:</b>",
+	"addDebtTextEng": "<b>💸 Added to debts:</b>",
+
+	"debtGivenTextUz": "Berilgan:",
+	"debtGivenTextRu": "Данный:",
+	"debtGivenTextEng": "Given:",
+
+	"debtWhoTextUz": "Kimga:",
+	"debtWhoTextRu": "Кому:",
+	"debtWhoTextEng": "To whom:",
+
+	"debtAmountTextUz": "Qancha:",
+	"debtAmountTextRu": "Сколько:",
+	"debtAmountTextEng": "How much:",
+
+	"debtEstimateTextUz": "Qoldi:",
+	"debtEstimateTextRu": "Остался:",
+	"debtEstimateTextEng": "Left:",
+
+	"debtDeadlineTextUz": "Qachon qaytarish kerak:",
+	"debtDeadlineTextRu": "Когда возвращаться:",
+	"debtDeadlineTextEng": "When to return:",
+
+	"limitBtnUz": "⚜️  Limit o'rnatish",
+	"limitBtnRu": "⚜️ Установить лимит",
+	"limitBtnEng": "⚜️ Set a limit",
+
+	"limitTextUz": "Bu yerda siz xarajatlaringizga limit o’rnatishingiz mumkin.\n\nXarajatlaringiz siz belgilagan limitga yaqinlashsa, men sizga xabar beraman.\n\nBu yerga limitni raqamlarda yuboring:\n\n<b>Masalan: 5 000 000</b>",
+	"limitTextRu": "Здесь вы можете установить лимит своих расходов.\n\nЯ сообщу вам, когда ваши расходы приблизится к установленному вами лимиту.\n\nОтправьте сюда лимит в цифрах:\n\n<b>Например: 5 000 000</b>",
+	"limitTextEng": "Here you can set a limit on your spending.\n\nI will notify you when your spending gets close to the limit you set.\n\nSend the limit in numbers here:\n\n<b>For example: 5 000 000</b>",
+
+	"limitText2Uz": "Bu yerda siz xarajatlaringizga limit o’rnatishingiz mumkin.\n\nXarajatlaringiz siz belgilagan limitga yaqinlashsa, men sizga xabar beraman.\n\n<b>Sizning hozirgi limitingiz: %limit%</b>\n\n Bu yerga limitni raqamlarda yuboring:\n\n<b>Masalan: 5 000 000</b>",
+	"limitText2Ru": "Здесь вы можете установить лимит расходов.\n\nЯ сообщу вам, когда ваши расходы достигнут установленного вами лимита.\n\n<b>Ваш текущий лимит: %limit%</b>\n\nОтправьте лимит сюда в цифрах:\n\n<b>Например: 5 000 000</b>",
+	"limitText2Eng": "Here you can set a limit on your spending.\n\nI will notify you when your spending approaches the limit you set.\n\n<b>Your current limit: %limit%</b>\n\nSend the limit here in numbers:\n\n<b>For example: 5 000 000</b>",
+
+	"limitText3Uz": "Ajoyib, limit o’rnatildi, yangilah uchun shu yerga yangi limitingizni yuboring.",
+	"limitText3Ru": "Отлично, лимит установлен, отправьте ваш новый лимит сюда для получения обновлений.",
+	"limitText3Eng": "Great, the limit has been set, send your new limit here for updates.",
+
+	"limitErrorTextUz": "No'to'gri format.\n<b>Masalan: 5 000 000</b>",
+	"limitErrorTextRu": "Неверный формат.\n<b>Пример: 5 000 000</b>",
+	"limitErrorTextEng": "Invalid format.\n<b>Example: 5 000 000</b>",
+
+	"premiumBtnUz": "💎 Premium",
+	"premiumBtnRu": "💎 Премиум",
+	"premiumBtnEng": "💎 Premium",
+
+	"premiumTextUz": "💎 O'zingizga mos tarifni tanlang va Xisobchi AI dan bahramand bo'ling.",
+	"premiumTextRu": "💎 Выберите подходящий вам тариф и наслаждайтесь Xisobchi AI.",
+	"premiumTextEng": "💎 Choose a tariff that suits you and enjoy Xisobchi AI.",
+
+	"premiumExpiredTextUz": "Premium' tarifingiz tugash muddati:",
+	"premiumExpiredTextRu": "Дата окончания действия вашего Премиум-тарифа:",
+	"premiumExpiredTextEng": "The expiry date of your Premium' tariff:",
+
+	"addCardTextUz": "Obunani faollashtirish uchun karta qo'shishingiz lozim.",
+	"addCardTextRu": "Для активации подписки необходимо добавить карту.",
+	"addCardTextEng": "You must add a card to activate your subscription.",
+
+	"addCardBtnUz": "💳 Karta qo'shish",
+	"addCardBtnRu": "💳 Добавить карту",
+	"addCardBtnEng": "💳 Add a card",
+
+	"backBtnUz": "⬅️ Ortga qaytish",
+	"backBtnRu": "⬅️ Вернуться назад",
+	"backBtnEng": "⬅️ Go back",
+
+	"priceTextUz": "Siz %title% tarifni tanladingiz. Tarif narxi atiga %price% ni tashkil qiladi. Endi o’zingizga qulay turda to'lovni amalga oshiring:",
+	"priceTextRu": "Вы выбрали ставку %title%. Стоимость проезда составляет не менее %price%. Теперь произведите оплату удобным для вас способом:",
+	"priceTextEng": "You have selected the tariff %title%. The tariff price is at least %price%. Now make a payment in a convenient way for you:",
+
+	"clickTextUz": "Click ->",
+	"paymeTextUz": "Payme ->",
+	"uzumTextUz": "Uzum -> ",
+
+	"successfullyPaidUz": "✅ To’lovingiz muvaffaqiyatli amalga oshdi. Kirim va chiqimlaringizni istalgan ko'rinishda (ovoz, matn) yuborishni boshlashingiz mumkin, yordamchingiz esa yozib boraveradi.",
+	"successfullyPaidRu": "✅ Ваш платеж прошел успешно. Вы можете начать отправлять свои входные и выходные данные в любом формате (голос, текст), а ваш помощник продолжит запись.",
+	"successfullyPaidEng": "✅ Your payment has been successful. You can start sending your receipts and expenses in any format (voice, text), and your assistant will continue to record them.",
+
+	"notFoundDataUz": "Topilmadi...",
+	"notFoundDataRu": "Не найдено...",
+	"notFoundDataEng": "Not found...",
+
+	"addReportTextUz": "<b>Xisobotga qo’shildi </b>✔️",
+	"addReportTextRu": "<b>Добавлено в отчет </b>✔️",
+	"addReportTextEng": "<b>Added to the report </b>✔️",
+
+	"addReportDateTextUz": "Sana:",
+	"addReportDateTextRu": "Дата:",
+	"addReportDateTextEng": "Date:",
+
+	"addReportAmountTextUz": "Summa:",
+	"addReportAmountTextRu": "КоличествоСумма:",
+	"addReportAmountTextEng": "Amount:",
+
+	"addReportCategoryTextUz": "Kategoriya:",
+	"addReportCategoryTextRu": "Категория:",
+	"addReportCategoryTextEng": "Category:",
+
+	"addReportCommentTextUz": "Izoh:",
+	"addReportCommentTextRu": "Комментарий:",
+	"addReportCommentTextEng": "Comment:",
+
+	"cancelBtnUz": "Bekor qilish 🚫",
+	"cancelBtnRu": "Отмена 🚫",
+	"cancelBtnEng": "Cancel 🚫",
+
+	"cancelTextUz": "Bekor qilindi 🚫",
+	"cancelTextRu": "Отмена 🚫",
+	"cancelTextEng": "Cancel 🚫",
+
+	"cronTextBefore2dayUz": "Premium obunangiz tugashiga 2 kun qoldi, davom ettirish uchun tarif to'lovini amalga oshirishingiz lozim",
+	"cronTextBefore2dayRu": "До окончания срока действия вашей премиум-подписки осталось 2 дня. Для продолжения необходимо оплатить тариф.",
+	"cronTextBefore2dayEng": "Your premium subscription has 2 days left to expire, you must pay the tariff to continue",
+
+	"cronTextBefore1dayUz": "Premium obunangiz tugashiga 1 kun qoldi, davom ettirish uchun tarif to'lovini amalga oshirishingiz lozim, aks holda botdan foydalana olmaysiz.",
+	"cronTextBefore1dayRu": "До окончания срока действия вашей премиум-подписки остался 1 день. Для продолжения необходимо оплатить тариф, иначе вы не сможете пользоваться ботом.",
+	"cronTextBefore1dayEng": "There is 1 day left before your premium subscription expires. To continue, you must pay the tariff, otherwise you will not be able to use the bot.",
+
+	"cronTextStopedUz": "Sizning premium obunaningiz tugadi. Botdan foydalanish uchun, kerakli tarifni tanlab, to'lovni amalga oshiring.",
+	"cronTextStopedRu": "Срок действия вашей премиум-подписки истек. Чтобы воспользоваться ботом, выберите нужный тариф и произведите оплату.",
+	"cronTextStopedEng": "Your premium subscription has expired. To use the bot, select the desired plan and make a payment.",
+
+	"cronTextMorningPremiumUz": "Assalomu alaykum. Kuningiz xisobli o'tsin!\n\nXarajatlaringizni yuritishni unutmang (emoji)",
+	"cronTextMorningPremiumRu": "Здравствуйте. Хорошего дня!\n\nНе забудьте отслеживать свои расходы (эмодзи)",
+	"cronTextMorningPremiumEng": "Good morning. Have a great day!\n\nDon't forget to keep track of your expenses (emoji)",
+
+	"cronTextAfternoonPremiumUz": "Xisobchi.ai aloqada. Ertalabdan hozirgacha bo'lgan xisobingizni kiritdlingizmi? \n\nEsingizdan chiqmasidan yuborib qo’ying. Bunga shunchaki 30 soniya yetarti",
+	"cronTextAfternoonPremiumRu": "Xisobchi.ai на связи. Вы ввели свой счет сегодня утром? \n\nОтправь, пока не забыл. Это займет всего 30 секунд",
+	"cronTextAfternoonPremiumEng": "Xisobchi.ai is in touch. Have you entered your account from this morning to now? \n\nSend it before you forget. It only takes 30 seconds.",
+
+	"cronTextNightPremiumUz": "Bugun sarxisobi:\n\nXarajatlar: %output% so'm\nKirimlar: %income% so'm\n\nLimitingiz bo’yicha qoldiq: %limit% so'm",
+	"cronTextNightPremiumRu": "Сегодняшний итог:\n\nРасходы: %output% сумов\nДоходы: %income% сумов\n\nОстаток по вашему лимиту: %limit% сумов",
+	"cronTextNightPremiumEng": "Today's summary:\n\nExpenses: %output% soums\nIncomes: %income% soums\n\nBalance under your limit: %limit% soums",
+
+	"cronText2NightPremiumUz": "Bugun sarxisobi:\n\nXarajatlar: %output% so'm\nKirimlar: %income% so'm",
+	"cronText2NightPremiumRu": "Сегодняшний итог:\n\nРасходы: %output% сумов\nДоходы: %income% сумов",
+	"cronText2NightPremiumEng": "Today's summary:\n\nExpenses: %output% soums\nIncomes: %income% soumslimitBtnUz",
+
+	"cronTextRegister1dayUz": "Oylik sarfingizni aniq nazorat qilib, ortiqcha xarajatlarni 20% gacha kamaytirish imkoniga ega bo’ling. Xisobchi AI bilan har kun moliyangizni tushunarli grafiklarda ko'ring va har bir tiyiningizni e'tiborsiz qoldirmang.\n\nObuna narxi atigi %price% so'm = bir dona lavash...\n\nXarajatlaringizni nazoratga oling va moliyaviy mustaqil boling.",
+	"cronTextRegister1dayRu": "Получите точный контроль над своими ежемесячными расходами и сократите излишние расходы до 20%. С AI the Xisobchi AI вы сможете видеть свои финансы в понятных графиках каждый день и не упустите ни копейки.\n\nСтоимость подписки составляет всего %price% сумов = один кусок лаваша...\n\nВозьмите под контроль свои расходы и станьте финансово независимыми.",
+	"cronTextRegister1dayEng": "Get a clear view of your monthly expenses and reduce your excess expenses by up to 20%. With Calculator AI, see your finances in easy-to-understand graphs every day and don't neglect every penny.\n\nThe subscription price is only %price% soum = one lavash...\n\nTake control of your expenses and become financially independent.",
+
+	"cronTextRegister2dayUz": "Pul qaerga ketayotganini bilmay qolasizmi? Ko‘pimiz shunday muammoga duch kelamiz.\nXisobchi AI bilan audio orqali harajat yoki daromadingizni bir zumda kiritib, to‘liq nazorat o‘rnating.\n\nOylik %price% so'mga bugunoq obuna bo‘ling – bu sizning eng yaxshi sarmoyangiz bo‘ladi!",
+	"cronTextRegister2dayRu": "Вы когда-нибудь задумывались, куда уходят ваши деньги? Многие из нас сталкиваются с этой проблемой.\nС Xisobchi AI мгновенно вводите свои расходы или доходы с помощью аудио и получайте полный контроль.\n\nОформите подписку сегодня за %price% сумов в месяц — это будет вашей лучшей инвестицией!",
+	"cronTextRegister2dayEng": "Do you ever wonder where your money is going? Many of us face this problem.\nTake full control by instantly entering your expenses or income via audio with Xisobchi AI.\n\nSubscribe today for %price% soums per month - it will be your best investment!",
+
+	"cronTextRegister3dayUz": "%price% so'm...\n\nSizni moliyaviy erkinligingizni nazorat qilish uchun kerak investitsiya.\n\nKeling bugun shu %price% so'mni yana qayerga \"shunchaki\" sarflab yuborish mumkinligini ko'rib chiqamiz.\n\n1. Bir stakan yaxshi kofe. Yo'q, eng zo'r kofe emas. Shunchaki oddiy cappucino. Sovugan bo'lsa 5 daqiqada, issiq bo'lsa 10 daqiqada ichib tugatasiz. Hayotingiz o'zgaradimi?\n\nAgar kechasi ichgan bo'lsangiz Ha, ertalabgacha uxlolmay. Ertangi kuningiz ham yomon o'tadi.\n\nMoliyaviy tomondan esa plyusda emassiz))",
+	"cronTextRegister3dayRu": "%price% сум...\n\nВам нужны инвестиции, чтобы взять под контроль свою финансовую свободу.\n\nДавайте посмотрим, где еще вы можете «просто» потратить этот %price% сум сегодня.\n\n1. Чашка хорошего кофе. Нет, не самый лучший кофе. Простой капучино. Холодный напиток можно выпить за 5 минут, а горячий — за 10 минут. Изменится ли ваша жизнь?\n\nЕсли вы вчера выпили, то да, вы не сможете уснуть до утра. Завтра у тебя тоже будет плохой день.\n\nУ тебя не очень хорошее финансовое положение))",
+	"cronTextRegister3dayEng": "%price% sum...\n\nYou need an investment to take control of your financial freedom.\n\nLet's see where else you can \"just\" spend this %price% soum today.\n\n1. A cup of good coffee. No, not the best coffee. Just an ordinary cappuccino. If it's cold, you'll finish it in 5 minutes, if it's hot, you'll finish it in 10 minutes. Will your life change?\n\nIf you drank it at night, yes, you won't be able to sleep until morning. Your day tomorrow will be bad too.\n\nAnd you're not in a plus financially))",
+
+	"cronTextRegister4dayUz": "Keling bugun shu %price% so'mni yana qayerga \"shunchaki\" sarflab yuborish mumkinligini ko'rib chiqamiz.\n\nHech qishki kiyimingizni cho'ntagidan pul topib olganmisiz?\n\n%price% dan ko'p bo'lganmi?\n\nYana nimani o'ylayabsiz, hayotingizni yaxshilashga harakat qilib ko'rish uchun %price% katta summami?\n\nQo'ysangiz-chi))",
+	"cronTextRegister4dayRu": "Давайте посмотрим, где еще вы можете «просто» потратить эту %price% сум сегодня.\n\nВы когда-нибудь находили деньги в кармане на зимнюю одежду?\n\nБыло ли больше, чем %price%?\n\nКак вы думаете, является ли %price% большой суммой, чтобы попытаться улучшить свою жизнь?\n\nА что, если вы ее отдадите))",
+	"cronTextRegister4dayEng": "Let's see where else you can \"just\" spend this %price% soum today.\n\nHave you ever found money in your pocket for your winter clothes?\n\nHas it been more than %price%?\n\nWhat else do you think, is %price% a big amount to try to improve your life?\n\nWhat if you give it away))",
+
+	"cronTextRegister5dayUz": "Keling bugun shu %price% so'mni yana qayerga \"shunchaki\" sarflab yuborish mumkinligini ko'rib chiqamiz.\n\nChilonzordan Oybekgacha taskida yetib olishga qancha sarflaysiz?\n\n%price% dan kammi? Yomg'ir bo'lsachi?)\n\nTaksi qimmat bo'ladi, siz ko'p pul yo'qotasiz-a?\n\nKirim-chiqimlaringizni nazorat qilmayotganingiz sizga qanchaga tushayotganini-chi bilasizmi?\n\nOyiga qancha pulni shunchaki ishlatib yuborayotganingizni-chi?\n\nSiz bo'lsa bitta lavashni pulini tejayman deb, moliyaviy erkinligingizni ortga surayabsiz..",
+	"cronTextRegister5dayRu": "Давайте посмотрим, где еще вы можете «просто» потратить этот %price% сум сегодня.\n\nСколько будет стоить поездка из Чиланзара в Ойбек на такси?\n\nМеньше, чем %price%? А если пойдет дождь?)\n\nТакси стоит дорого, вы потеряете много денег, верно?\n\nЗнаете ли вы, во сколько вам обходится неконтролируемость доходов и расходов?\n\nСколько денег вы просто тратите каждый месяц?\n\nВы откладываете свою финансовую свободу, думая, что сэкономите на одной пите..",
+	"cronTextRegister5dayEng": "Let's see where else you can \"just\" spend this %price% soum today.\n\nHow much will it cost you to get from Chilonzor to Oybek by taxi?\n\nIs it less than %price%? What if it rains?)\n\nA taxi is expensive, and you lose a lot of money, right?\n\nDo you know how much it costs you not to control your income and expenses?\n\nHow much money do you just waste every month?\n\nYou are postponing your financial freedom, thinking that you will save money on one lavash..",
+
+	"cronTextRegisterBtnUz": "Harid qilish",
+	"cronTextRegisterBtnRu": "Покупка",
+	"cronTextRegisterBtnEng": "To buy"
 }
