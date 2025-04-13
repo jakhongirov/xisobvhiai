@@ -1947,7 +1947,7 @@ const options = {
       },
       servers: [
          {
-            url: "https://xisobchiai.admob.uz/api/v1"
+            url: "https://xisobchiai2.admob.uz/api/v1"
          }
       ]
    },
