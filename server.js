@@ -214,7 +214,7 @@ bot.on('message', async (msg) => {
 
    if (foundUser) {
       if (text == '🇺🇿 Uz') {
-         bot.sendVideo(chatId, "BAACAgIAAyEFAASNDiJIAAMGZ9myzM6xvazDGaELaNVHcA6TAAHrAAKbaAACE_DRSiOSIIh-u4FwNgQ", {
+         bot.sendVideo(chatId, "BAACAgIAAyEFAASNDiJIAAMIZ_tk3p_YBqpi72SfyFANtuPuN4UAAptoAAIT8NFKybkhzgSqW202BA", {
             parse_mode: "HTML",
             caption: localText.startTextUz,
             reply_markup: {
@@ -236,7 +236,7 @@ bot.on('message', async (msg) => {
             await model.createBalance(editStep.id, "Dollar", "USD")
          })
       } else if (text == '🇷🇺 Ру') {
-         bot.sendVideo(chatId, "BAACAgIAAyEFAASNDiJIAAMGZ9myzM6xvazDGaELaNVHcA6TAAHrAAKbaAACE_DRSiOSIIh-u4FwNgQ", {
+         bot.sendVideo(chatId, "BAACAgIAAyEFAASNDiJIAAMIZ_tk3p_YBqpi72SfyFANtuPuN4UAAptoAAIT8NFKybkhzgSqW202BA", {
             parse_mode: "HTML",
             caption: localText.startTextRu,
             reply_markup: {
@@ -258,7 +258,7 @@ bot.on('message', async (msg) => {
             await model.createBalance(editStep.id, "Доллар", "USD")
          })
       } else if (text == '🇬🇧 Eng') {
-         bot.sendVideo(chatId, "BAACAgIAAyEFAASNDiJIAAMGZ9myzM6xvazDGaELaNVHcA6TAAHrAAKbaAACE_DRSiOSIIh-u4FwNgQ", {
+         bot.sendVideo(chatId, "BAACAgIAAyEFAASNDiJIAAMIZ_tk3p_YBqpi72SfyFANtuPuN4UAAptoAAIT8NFKybkhzgSqW202BA", {
             parse_mode: "HTML",
             caption: localText.startTextEng,
             reply_markup: {
