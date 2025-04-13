@@ -64,7 +64,7 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
    const chatId = msg.chat.id;
    const param = match[1]?.trim();
    const foundUser = await model.foundUser(chatId)
-   const [partnerName, source] = param.split(' ');
+   const [partnerName, source] = param?.split(' ');
 
    if (foundUser) {
       if (foundUser?.premium) {
