@@ -14,6 +14,7 @@ const atmos = require('./atmos/atmos')
 const users = require('./users/users')
 const transaction = require('./transaction/transaction')
 const partners = require('./partners/partners')
+const price = require('./price/price')
 
 router
 
@@ -1383,5 +1384,340 @@ router
     */
    .delete('/partners', AUTH, partners.DELETE_PARTNER)
 
+   // Price
+   /**
+   * @swagger
+   * components:
+   *   schemas:
+   *     Price:
+   *       type: object
+   *       properties:
+   *         id:
+   *           type: integer
+   *           example: 1
+   *         title_uz:
+   *           type: string
+   *           example: "Bir oylik obuna"
+   *         title_ru:
+   *           type: string
+   *           example: "Подписка на месяц"
+   *         title_eng:
+   *           type: string
+   *           example: "One month subscription"
+   *         period:
+   *           type: integer
+   *           description: Duration of the subscription in days
+   *           example: 30
+   *         price:
+   *           type: integer
+   *           description: Price in smallest currency unit (e.g., cents or tiyin)
+   *           example: 25000
+   *         sort_order:
+   *           type: integer
+   *           description: Order for displaying prices
+   *           example: 1
+   *         create_at:
+   *           type: string
+   *           format: date-time
+   *           example: "2025-04-13T10:20:30Z"
+   */
+
+   /**
+    * @swagger
+    * tags:
+    *    name: Price
+    *    description: Price managing API
+    */
+
+   /**
+   * @swagger
+   * /price:
+   *   get:
+   *     summary: Get list of all prices
+   *     tags:
+   *       - Price
+   *     responses:
+   *       200:
+   *         description: List of prices retrieved successfully
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: object
+   *               properties:
+   *                 status:
+   *                   type: integer
+   *                   example: 200
+   *                 message:
+   *                   type: string
+   *                   example: Success
+   *                 data:
+   *                   type: array
+   *                   items:
+   *                     $ref: '#/components/schemas/Price'
+   *       404:
+   *         description: No prices found
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: object
+   *               properties:
+   *                 status:
+   *                   type: integer
+   *                   example: 404
+   *                 message:
+   *                   type: string
+   *                   example: Not found
+   *       500:
+   *         description: Internal Server Error
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: object
+   *               properties:
+   *                 status:
+   *                   type: integer
+   *                   example: 500
+   *                 message:
+   *                   type: string
+   *                   example: Interval Server Error
+   */
+   .get('/price', AUTH, price.GET)
+
+   /**
+    * @swagger
+    * /price:
+    *   post:
+    *     summary: Add a new price plan
+    *     tags:
+    *       - Price
+    *     requestBody:
+    *       required: true
+    *       content:
+    *         application/json:
+    *           schema:
+    *             type: object
+    *             required:
+    *               - title_uz
+    *               - title_ru
+    *               - title_eng
+    *               - period
+    *               - price
+    *               - sort_order
+    *             properties:
+    *               title_uz:
+    *                 type: string
+    *                 example: Oylik tarif
+    *               title_ru:
+    *                 type: string
+    *                 example: Месячный тариф
+    *               title_eng:
+    *                 type: string
+    *                 example: Monthly plan
+    *               period:
+    *                 type: integer
+    *                 example: 30
+    *               price:
+    *                 type: integer
+    *                 example: 150000
+    *               sort_order:
+    *                 type: integer
+    *                 example: 1
+    *     responses:
+    *       201:
+    *         description: Price added successfully
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 201
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   $ref: '#/components/schemas/Price'
+    *       400:
+    *         description: Bad request (invalid or missing parameters)
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 400
+    *                 message:
+    *                   type: string
+    *                   example: Bad request
+    *       500:
+    *         description: Internal Server Error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .post('/price', AUTH, price.ADD_PRICE)
+
+   /**
+    * @swagger
+    * /price:
+    *   put:
+    *     summary: Edit an existing price plan
+    *     tags:
+    *       - Price
+    *     requestBody:
+    *       required: true
+    *       content:
+    *         application/json:
+    *           schema:
+    *             type: object
+    *             required:
+    *               - id
+    *               - title_uz
+    *               - title_ru
+    *               - title_eng
+    *               - period
+    *               - price
+    *               - sort_order
+    *             properties:
+    *               id:
+    *                 type: integer
+    *                 example: 1
+    *               title_uz:
+    *                 type: string
+    *                 example: Yangi tarif
+    *               title_ru:
+    *                 type: string
+    *                 example: Новый тариф
+    *               title_eng:
+    *                 type: string
+    *                 example: New Plan
+    *               period:
+    *                 type: integer
+    *                 example: 90
+    *               price:
+    *                 type: integer
+    *                 example: 350000
+    *               sort_order:
+    *                 type: integer
+    *                 example: 2
+    *     responses:
+    *       200:
+    *         description: Price updated successfully
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 200
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   $ref: '#/components/schemas/Price'
+    *       400:
+    *         description: Bad request
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 400
+    *                 message:
+    *                   type: string
+    *                   example: Bad request
+    *       500:
+    *         description: Internal Server Error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .put('/price', AUTH, price.EDIT_PRICE)
+
+   /**
+    * @swagger
+    * /price:
+    *   delete:
+    *     summary: Delete a price by ID
+    *     tags:
+    *       - Price
+    *     requestBody:
+    *       required: true
+    *       content:
+    *         application/json:
+    *           schema:
+    *             type: object
+    *             required:
+    *               - id
+    *             properties:
+    *               id:
+    *                 type: integer
+    *                 example: 1
+    *     responses:
+    *       200:
+    *         description: Price deleted successfully
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 200
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   type: object
+    *                   description: Deleted price data
+    *       400:
+    *         description: Bad request
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 400
+    *                 message:
+    *                   type: string
+    *                   example: Bad request
+    *       500:
+    *         description: Internal Server Error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .delete('/price', AUTH, price.DELETE_PRICE)
 
 module.exports = router
