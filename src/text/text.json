@@ -17,9 +17,9 @@
 	"contactRegisterErrorRu": "Неверно, пожалуйста, отправьте свой контакт с помощью кнопки ниже, чтобы продолжить.",
 	"contactRegisterErrorEng": "Wrong, please send your contact via the button below to continue.",
 
-	"successfullyRegisterUz": "✅ <b>Ro'yxatdan o'tib, tanishib ham oldik.\n\nMing marta eshitgandan bir marta ishlatib ko’rgan afzal. Keling xisobchi.ai dan foydalanib ko’ramiz",
-	"successfullyRegisterRu": "✅ <b>Мы зарегистрировались и познакомились.\n\nЛучше один раз использовать, чем тысячу раз услышать. Давайте попробуем использовать xisobchi.ai",
-	"successfullyRegisterEng": "✅ <b>We registered and got to know each other.\n\nIt's better to try once than hear a thousand times. Let's try using xisobchi.ai",
+	"successfullyRegisterUz": "✅ <b>Ro'yxatdan o'tib, tanishib ham oldik.</b>\n\nMing marta eshitgandan bir marta ishlatib ko’rgan afzal. Keling xisobchi.ai dan foydalanib ko’ramiz",
+	"successfullyRegisterRu": "✅ <b>Мы зарегистрировались и познакомились.</b>\n\nЛучше один раз использовать, чем тысячу раз услышать. Давайте попробуем использовать xisobchi.ai",
+	"successfullyRegisterEng": "✅ <b>We registered and got to know each other.</b>\n\nIt's better to try once than hear a thousand times. Let's try using xisobchi.ai",
 
 	"test1TextUz": "Ushbu xabarni shu yerga audio ko’rinishida yuboring:\n\n”Taksiga 15,000 so’m xarajat qildim”",
 	"test1TextRu": "Отправьте это сообщение в аудиоформате:\n\n”Я потратил 15 000 сум на такси”",
