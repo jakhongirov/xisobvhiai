@@ -66,115 +66,111 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
    const foundUser = await model.foundUser(chatId)
 
    if (foundUser) {
-      if (foundUser?.premium) {
-         if (foundUser?.bot_lang == 'uz') {
-            bot.sendMessage(chatId, localText.menuTextUz, {
-               parse_mode: "HTML",
-               reply_markup: {
-                  keyboard: [
-                     [
-                        {
-                           text: localText.reportsBtnUz
-                        },
-                        {
-                           text: localText.debtBtnUz
-                        },
-                     ],
-                     [
-                        {
-                           text: localText.balancesBtnUz
-                        },
-                        {
-                           text: localText.limitBtnUz
-                        }
-                     ],
-                     [
-                        {
-                           text: localText.usageInformationBtnUz
-                        },
-                        {
-                           text: localText.premiumBtnUz
-                        }
-                     ]
+      if (foundUser?.bot_lang == 'uz') {
+         bot.sendMessage(chatId, localText.menuTextUz, {
+            parse_mode: "HTML",
+            reply_markup: {
+               keyboard: [
+                  [
+                     {
+                        text: localText.reportsBtnUz
+                     },
+                     {
+                        text: localText.debtBtnUz
+                     },
                   ],
-                  resize_keyboard: true,
-               }
-            }).then(async () => {
-               await model.editStep(chatId, 'menu')
-            })
-         } else if (foundUser?.bot_lang == 'ru') {
-            bot.sendMessage(chatId, localText.menuTextRu, {
-               parse_mode: "HTML",
-               reply_markup: {
-                  keyboard: [
-                     [
-                        {
-                           text: localText.reportsBtnRu
-                        },
-                        {
-                           text: localText.debtBtnRu
-                        },
-                     ],
-                     [
-                        {
-                           text: localText.balancesBtnRu
-                        },
-                        {
-                           text: localText.limitBtnRu
-                        }
-                     ],
-                     [
-                        {
-                           text: localText.usageInformationBtnRu
-                        },
-                        {
-                           text: localText.premiumBtnRu
-                        }
-                     ]
+                  [
+                     {
+                        text: localText.balancesBtnUz
+                     },
+                     {
+                        text: localText.limitBtnUz
+                     }
                   ],
-                  resize_keyboard: true,
-               }
-            }).then(async () => {
-               await model.editStep(chatId, 'menu')
-            })
-         } else if (foundUser?.bot_lang == 'eng') {
-            bot.sendMessage(chatId, localText.menuTextEng, {
-               parse_mode: "HTML",
-               reply_markup: {
-                  keyboard: [
-                     [
-                        {
-                           text: localText.reportsBtnEng
-                        },
-                        {
-                           text: localText.debtBtnEng
-                        },
-                     ],
-                     [
-                        {
-                           text: localText.balancesBtnEng
-                        },
-                        {
-                           text: localText.limitBtnEng
-                        }
-                     ],
-                     [
-                        {
-                           text: localText.usageInformationBtnEng
-                        },
-                        {
-                           text: localText.premiumBtnEng
-                        }
-                     ]
+                  [
+                     {
+                        text: localText.usageInformationBtnUz
+                     },
+                     {
+                        text: localText.premiumBtnUz
+                     }
+                  ]
+               ],
+               resize_keyboard: true,
+            }
+         }).then(async () => {
+            await model.editStep(chatId, 'menu')
+         })
+      } else if (foundUser?.bot_lang == 'ru') {
+         bot.sendMessage(chatId, localText.menuTextRu, {
+            parse_mode: "HTML",
+            reply_markup: {
+               keyboard: [
+                  [
+                     {
+                        text: localText.reportsBtnRu
+                     },
+                     {
+                        text: localText.debtBtnRu
+                     },
                   ],
-                  resize_keyboard: true,
-               }
-            }).then(async () => {
-               await model.editStep(chatId, 'menu')
-            })
-         }
-      } else {
-
+                  [
+                     {
+                        text: localText.balancesBtnRu
+                     },
+                     {
+                        text: localText.limitBtnRu
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.usageInformationBtnRu
+                     },
+                     {
+                        text: localText.premiumBtnRu
+                     }
+                  ]
+               ],
+               resize_keyboard: true,
+            }
+         }).then(async () => {
+            await model.editStep(chatId, 'menu')
+         })
+      } else if (foundUser?.bot_lang == 'eng') {
+         bot.sendMessage(chatId, localText.menuTextEng, {
+            parse_mode: "HTML",
+            reply_markup: {
+               keyboard: [
+                  [
+                     {
+                        text: localText.reportsBtnEng
+                     },
+                     {
+                        text: localText.debtBtnEng
+                     },
+                  ],
+                  [
+                     {
+                        text: localText.balancesBtnEng
+                     },
+                     {
+                        text: localText.limitBtnEng
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.usageInformationBtnEng
+                     },
+                     {
+                        text: localText.premiumBtnEng
+                     }
+                  ]
+               ],
+               resize_keyboard: true,
+            }
+         }).then(async () => {
+            await model.editStep(chatId, 'menu')
+         })
       }
    } else {
       bot.sendMessage(chatId, localText.startText, {
@@ -651,7 +647,7 @@ bot.on('message', async (msg) => {
                   }
                })
             } else {
-               
+
                if (jsonData.isDebtPayment) {
                   if (foundUser?.bot_lang == 'uz') {
                      const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextUz} ${jsonData.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(jsonData.deadline)}`;
@@ -983,7 +979,7 @@ bot.on('message', async (msg) => {
             .filter(item => !(foundUser.used_free && item.price == 0))
             .map(item => [{
                text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-               callback_data: `price_${item.id}`
+               callback_data: `tarif_${item.id}`
             }]);
          const premiumText = foundUser.premium ? `${localText.premiumTextUz}\n\n${localText.premiumExpiredTextUz} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextUz
 
@@ -1001,7 +997,7 @@ bot.on('message', async (msg) => {
             .filter(item => !(foundUser.used_free && item.price == 0))
             .map(item => [{
                text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
-               callback_data: `price_${item.id}`
+               callback_data: `tarif_${item.id}`
             }]);
          const premiumText = foundUser.premium ? `${localText.premiumTextRu}\n\n${localText.premiumExpiredTextRu} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextRu
 
@@ -1019,7 +1015,7 @@ bot.on('message', async (msg) => {
             .filter(item => !(foundUser.used_free && item.price == 0))
             .map(item => [{
                text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
-               callback_data: `price_${item.id}`
+               callback_data: `tarif_${item.id}`
             }]);
          const premiumText = foundUser.premium ? `${localText.premiumTextEng}\n\n${localText.premiumExpiredTextEng} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextEng
 
@@ -2091,65 +2087,63 @@ bot.on('message', async (msg) => {
                }
             }
          }
+      } else if ((foundUser.bot_step == "menu" || foundUser.bot_step == "payment") && !foundUser.premium) {
+         if (foundUser?.bot_lang == 'uz') {
+            const priceList = await model.priceList(foundUser?.bot_lang)
+            const priceKeyboard = priceList
+               .filter(item => !(foundUser.used_free && item.price == 0))
+               .map(item => [{
+                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
+                  callback_data: `tarif_${item.id}`
+               }]);
+            const premiumText = foundUser.premium ? `${localText.premiumTextUz}\n\n${localText.premiumExpiredTextUz} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextUz
+
+            bot.sendMessage(chatId, premiumText, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  inline_keyboard: priceKeyboard
+               }
+            }).then(async () => {
+               await model.editStep(chatId, 'payment')
+            })
+         } else if (foundUser?.bot_lang == 'ru') {
+            const priceList = await model.priceList(foundUser?.bot_lang)
+            const priceKeyboard = priceList
+               .filter(item => !(foundUser.used_free && item.price == 0))
+               .map(item => [{
+                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
+                  callback_data: `tarif_${item.id}`
+               }]);
+            const premiumText = foundUser.premium ? `${localText.premiumTextRu}\n\n${localText.premiumExpiredTextRu} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextRu
+
+            bot.sendMessage(chatId, premiumText, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  inline_keyboard: priceKeyboard
+               }
+            }).then(async () => {
+               await model.editStep(chatId, 'payment')
+            })
+         } else if (foundUser?.bot_lang == 'eng') {
+            const priceList = await model.priceList(foundUser?.bot_lang)
+            const priceKeyboard = priceList
+               .filter(item => !(foundUser.used_free && item.price == 0))
+               .map(item => [{
+                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
+                  callback_data: `tarif_${item.id}`
+               }]);
+            const premiumText = foundUser.premium ? `${localText.premiumTextEng}\n\n${localText.premiumExpiredTextEng} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextEng
+
+            bot.sendMessage(chatId, premiumText, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  inline_keyboard: priceKeyboard
+               }
+            }).then(async () => {
+               await model.editStep(chatId, 'payment')
+            })
+         }
       }
-
-      // else {
-      //    if (foundUser?.bot_lang == 'uz') {
-      //       const priceList = await model.priceList(foundUser?.bot_lang)
-      //       const priceKeyboard = priceList
-      //          .filter(item => !(foundUser.used_free && item.price == 0))
-      //          .map(item => [{
-      //             text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-      //             callback_data: `price_${item.id}`
-      //          }]);
-      //       const premiumText = foundUser.premium ? `${localText.premiumTextUz}\n\n${localText.premiumExpiredTextUz} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextUz
-
-      //       bot.sendMessage(chatId, premiumText, {
-      //          parse_mode: "HTML",
-      //          reply_markup: {
-      //             inline_keyboard: priceKeyboard
-      //          }
-      //       }).then(async () => {
-      //          await model.editStep(chatId, 'payment')
-      //       })
-      //    } else if (foundUser?.bot_lang == 'ru') {
-      //       const priceList = await model.priceList(foundUser?.bot_lang)
-      //       const priceKeyboard = priceList
-      //          .filter(item => !(foundUser.used_free && item.price == 0))
-      //          .map(item => [{
-      //             text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
-      //             callback_data: `price_${item.id}`
-      //          }]);
-      //       const premiumText = foundUser.premium ? `${localText.premiumTextRu}\n\n${localText.premiumExpiredTextRu} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextRu
-
-      //       bot.sendMessage(chatId, premiumText, {
-      //          parse_mode: "HTML",
-      //          reply_markup: {
-      //             inline_keyboard: priceKeyboard
-      //          }
-      //       }).then(async () => {
-      //          await model.editStep(chatId, 'payment')
-      //       })
-      //    } else if (foundUser?.bot_lang == 'eng') {
-      //       const priceList = await model.priceList(foundUser?.bot_lang)
-      //       const priceKeyboard = priceList
-      //          .filter(item => !(foundUser.used_free && item.price == 0))
-      //          .map(item => [{
-      //             text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
-      //             callback_data: `price_${item.id}`
-      //          }]);
-      //       const premiumText = foundUser.premium ? `${localText.premiumTextEng}\n\n${localText.premiumExpiredTextEng} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextEng
-
-      //       bot.sendMessage(chatId, premiumText, {
-      //          parse_mode: "HTML",
-      //          reply_markup: {
-      //             inline_keyboard: priceKeyboard
-      //          }
-      //       }).then(async () => {
-      //          await model.editStep(chatId, 'payment')
-      //       })
-      //    }
-      // }
    }
 })
 
