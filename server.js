@@ -2122,7 +2122,7 @@ bot.on('message', async (msg) => {
                }
             }
          }
-      } else if (text != '/start' && !foundUser.premium) {
+      } else if (text != '/start' && !foundUser.premium && !foundUser.bot_step != 'register') {
          if (foundUser?.bot_lang == 'uz') {
             const priceList = await model.priceList(foundUser?.bot_lang)
             const priceKeyboard = priceList
