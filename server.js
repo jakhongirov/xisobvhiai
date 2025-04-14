@@ -403,10 +403,23 @@ bot.on('message', async (msg) => {
                                  const priceList = await model.priceList(foundUser?.bot_lang)
                                  const priceKeyboard = priceList
                                     .filter(item => !(foundUser?.used_free && item.price == 0))
-                                    .map(item => [{
-                                       text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                                       callback_data: `tarif_${item.id}`
-                                    }]);
+                                    .map(item => {
+                                       const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                                       if (item.period == 30) {
+                                          return [{
+                                             text,
+                                             web_app: {
+                                                url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                             }
+                                          }];
+                                       } else {
+                                          return [{
+                                             text,
+                                             callback_data: `tarif_${item.id}`
+                                          }];
+                                       }
+                                    });
                                  bot.sendMessage(chatId, localText.firstTextPaymentUz, {
                                     parse_mode: 'HTML',
                                     reply_markup: {
@@ -432,10 +445,23 @@ bot.on('message', async (msg) => {
                                  const priceList = await model.priceList(foundUser?.bot_lang)
                                  const priceKeyboard = priceList
                                     .filter(item => !(foundUser?.used_free && item.price == 0))
-                                    .map(item => [{
-                                       text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
-                                       callback_data: `tarif_${item.id}`
-                                    }]);
+                                    .map(item => {
+                                       const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                                       if (item.period == 30) {
+                                          return [{
+                                             text,
+                                             web_app: {
+                                                url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                             }
+                                          }];
+                                       } else {
+                                          return [{
+                                             text,
+                                             callback_data: `tarif_${item.id}`
+                                          }];
+                                       }
+                                    });
                                  bot.sendMessage(chatId, localText.firstTextPaymentRu, {
                                     parse_mode: 'HTML',
                                     reply_markup: {
@@ -461,10 +487,23 @@ bot.on('message', async (msg) => {
                                  const priceList = await model.priceList(foundUser?.bot_lang)
                                  const priceKeyboard = priceList
                                     .filter(item => !(foundUser?.used_free && item.price == 0))
-                                    .map(item => [{
-                                       text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
-                                       callback_data: `tarif_${item.id}`
-                                    }]);
+                                    .map(item => {
+                                       const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                                       if (item.period == 30) {
+                                          return [{
+                                             text,
+                                             web_app: {
+                                                url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                             }
+                                          }];
+                                       } else {
+                                          return [{
+                                             text,
+                                             callback_data: `tarif_${item.id}`
+                                          }];
+                                       }
+                                    });
                                  bot.sendMessage(chatId, localText.firstTextPaymentEng, {
                                     parse_mode: 'HTML',
                                     reply_markup: {
@@ -506,10 +545,23 @@ bot.on('message', async (msg) => {
                               const priceList = await model.priceList(foundUser?.bot_lang)
                               const priceKeyboard = priceList
                                  .filter(item => !(foundUser?.used_free && item.price == 0))
-                                 .map(item => [{
-                                    text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                                    callback_data: `tarif_${item.id}`
-                                 }]);
+                                 .map(item => {
+                                    const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                                    if (item.period == 30) {
+                                       return [{
+                                          text,
+                                          web_app: {
+                                             url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                          }
+                                       }];
+                                    } else {
+                                       return [{
+                                          text,
+                                          callback_data: `tarif_${item.id}`
+                                       }];
+                                    }
+                                 });
                               bot.sendMessage(chatId, localText.firstTextPaymentUz, {
                                  parse_mode: 'HTML',
                                  reply_markup: {
@@ -535,10 +587,23 @@ bot.on('message', async (msg) => {
                               const priceList = await model.priceList(foundUser?.bot_lang)
                               const priceKeyboard = priceList
                                  .filter(item => !(foundUser?.used_free && item.price == 0))
-                                 .map(item => [{
-                                    text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
-                                    callback_data: `tarif_${item.id}`
-                                 }]);
+                                 .map(item => {
+                                    const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                                    if (item.period == 30) {
+                                       return [{
+                                          text,
+                                          web_app: {
+                                             url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                          }
+                                       }];
+                                    } else {
+                                       return [{
+                                          text,
+                                          callback_data: `tarif_${item.id}`
+                                       }];
+                                    }
+                                 });
                               bot.sendMessage(chatId, localText.firstTextPaymentRu, {
                                  parse_mode: 'HTML',
                                  reply_markup: {
@@ -564,10 +629,23 @@ bot.on('message', async (msg) => {
                               const priceList = await model.priceList(foundUser?.bot_lang)
                               const priceKeyboard = priceList
                                  .filter(item => !(foundUser?.used_free && item.price == 0))
-                                 .map(item => [{
-                                    text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
-                                    callback_data: `tarif_${item.id}`
-                                 }]);
+                                 .map(item => {
+                                    const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                                    if (item.period == 30) {
+                                       return [{
+                                          text,
+                                          web_app: {
+                                             url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                          }
+                                       }];
+                                    } else {
+                                       return [{
+                                          text,
+                                          callback_data: `tarif_${item.id}`
+                                       }];
+                                    }
+                                 });
                               bot.sendMessage(chatId, localText.firstTextPaymentEng, {
                                  parse_mode: 'HTML',
                                  reply_markup: {
@@ -628,10 +706,23 @@ bot.on('message', async (msg) => {
                            const priceList = await model.priceList(foundUser?.bot_lang)
                            const priceKeyboard = priceList
                               .filter(item => !(foundUser?.used_free && item.price == 0))
-                              .map(item => [{
-                                 text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                                 callback_data: `tarif_${item.id}`
-                              }]);
+                              .map(item => {
+                                 const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                                 if (item.period == 30) {
+                                    return [{
+                                       text,
+                                       web_app: {
+                                          url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                       }
+                                    }];
+                                 } else {
+                                    return [{
+                                       text,
+                                       callback_data: `tarif_${item.id}`
+                                    }];
+                                 }
+                              });
                            bot.sendMessage(chatId, localText.firstTextPaymentUz, {
                               parse_mode: 'HTML',
                               reply_markup: {
@@ -657,10 +748,23 @@ bot.on('message', async (msg) => {
                            const priceList = await model.priceList(foundUser?.bot_lang)
                            const priceKeyboard = priceList
                               .filter(item => !(foundUser?.used_free && item.price == 0))
-                              .map(item => [{
-                                 text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
-                                 callback_data: `tarif_${item.id}`
-                              }]);
+                              .map(item => {
+                                 const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                                 if (item.period == 30) {
+                                    return [{
+                                       text,
+                                       web_app: {
+                                          url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                       }
+                                    }];
+                                 } else {
+                                    return [{
+                                       text,
+                                       callback_data: `tarif_${item.id}`
+                                    }];
+                                 }
+                              });
                            bot.sendMessage(chatId, localText.firstTextPaymentRu, {
                               parse_mode: 'HTML',
                               reply_markup: {
@@ -686,10 +790,23 @@ bot.on('message', async (msg) => {
                            const priceList = await model.priceList(foundUser?.bot_lang)
                            const priceKeyboard = priceList
                               .filter(item => !(foundUser?.used_free && item.price == 0))
-                              .map(item => [{
-                                 text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
-                                 callback_data: `tarif_${item.id}`
-                              }]);
+                              .map(item => {
+                                 const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                                 if (item.period == 30) {
+                                    return [{
+                                       text,
+                                       web_app: {
+                                          url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                       }
+                                    }];
+                                 } else {
+                                    return [{
+                                       text,
+                                       callback_data: `tarif_${item.id}`
+                                    }];
+                                 }
+                              });
                            bot.sendMessage(chatId, localText.firstTextPaymentEng, {
                               parse_mode: 'HTML',
                               reply_markup: {
@@ -732,10 +849,23 @@ bot.on('message', async (msg) => {
                         const priceList = await model.priceList(foundUser?.bot_lang)
                         const priceKeyboard = priceList
                            .filter(item => !(foundUser?.used_free && item.price == 0))
-                           .map(item => [{
-                              text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                              callback_data: `tarif_${item.id}`
-                           }]);
+                           .map(item => {
+                              const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                              if (item.period == 30) {
+                                 return [{
+                                    text,
+                                    web_app: {
+                                       url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                    }
+                                 }];
+                              } else {
+                                 return [{
+                                    text,
+                                    callback_data: `tarif_${item.id}`
+                                 }];
+                              }
+                           });
                         bot.sendMessage(chatId, localText.firstTextPaymentUz, {
                            parse_mode: 'HTML',
                            reply_markup: {
@@ -761,10 +891,23 @@ bot.on('message', async (msg) => {
                         const priceList = await model.priceList(foundUser?.bot_lang)
                         const priceKeyboard = priceList
                            .filter(item => !(foundUser?.used_free && item.price == 0))
-                           .map(item => [{
-                              text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
-                              callback_data: `tarif_${item.id}`
-                           }]);
+                           .map(item => {
+                              const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                              if (item.period == 30) {
+                                 return [{
+                                    text,
+                                    web_app: {
+                                       url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                    }
+                                 }];
+                              } else {
+                                 return [{
+                                    text,
+                                    callback_data: `tarif_${item.id}`
+                                 }];
+                              }
+                           });
                         bot.sendMessage(chatId, localText.firstTextPaymentRu, {
                            parse_mode: 'HTML',
                            reply_markup: {
@@ -790,10 +933,23 @@ bot.on('message', async (msg) => {
                         const priceList = await model.priceList(foundUser?.bot_lang)
                         const priceKeyboard = priceList
                            .filter(item => !(foundUser?.used_free && item.price == 0))
-                           .map(item => [{
-                              text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
-                              callback_data: `tarif_${item.id}`
-                           }]);
+                           .map(item => {
+                              const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                              if (item.period == 30) {
+                                 return [{
+                                    text,
+                                    web_app: {
+                                       url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                    }
+                                 }];
+                              } else {
+                                 return [{
+                                    text,
+                                    callback_data: `tarif_${item.id}`
+                                 }];
+                              }
+                           });
                         bot.sendMessage(chatId, localText.firstTextPaymentEng, {
                            parse_mode: 'HTML',
                            reply_markup: {
@@ -1085,11 +1241,24 @@ bot.on('message', async (msg) => {
          } else {
             const priceList = await model.priceList(foundUser?.bot_lang)
             const priceKeyboard = priceList
-               .filter(item => !(foundUser.used_free && item.price == 0))
-               .map(item => [{
-                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                  callback_data: `tarif_${item.id}`
-               }]);
+               .filter(item => !(foundUser?.used_free && item.price == 0))
+               .map(item => {
+                  const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                  if (item.period == 30) {
+                     return [{
+                        text,
+                        web_app: {
+                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                        }
+                     }];
+                  } else {
+                     return [{
+                        text,
+                        callback_data: `tarif_${item.id}`
+                     }];
+                  }
+               });
 
             bot.sendMessage(chatId, localText.premiumTextUz, {
                parse_mode: "HTML",
@@ -1156,11 +1325,24 @@ bot.on('message', async (msg) => {
          } else {
             const priceList = await model.priceList(foundUser?.bot_lang)
             const priceKeyboard = priceList
-               .filter(item => !(foundUser.used_free && item.price == 0))
-               .map(item => [{
-                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                  callback_data: `tarif_${item.id}`
-               }]);
+               .filter(item => !(foundUser?.used_free && item.price == 0))
+               .map(item => {
+                  const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                  if (item.period == 30) {
+                     return [{
+                        text,
+                        web_app: {
+                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                        }
+                     }];
+                  } else {
+                     return [{
+                        text,
+                        callback_data: `tarif_${item.id}`
+                     }];
+                  }
+               });
 
             bot.sendMessage(chatId, localText.premiumTextRu, {
                parse_mode: "HTML",
@@ -1227,11 +1409,24 @@ bot.on('message', async (msg) => {
          } else {
             const priceList = await model.priceList(foundUser?.bot_lang)
             const priceKeyboard = priceList
-               .filter(item => !(foundUser.used_free && item.price == 0))
-               .map(item => [{
-                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                  callback_data: `tarif_${item.id}`
-               }]);
+               .filter(item => !(foundUser?.used_free && item.price == 0))
+               .map(item => {
+                  const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                  if (item.period == 30) {
+                     return [{
+                        text,
+                        web_app: {
+                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                        }
+                     }];
+                  } else {
+                     return [{
+                        text,
+                        callback_data: `tarif_${item.id}`
+                     }];
+                  }
+               });
 
             bot.sendMessage(chatId, localText.premiumTextEng, {
                parse_mode: "HTML",
@@ -2322,13 +2517,25 @@ bot.on('message', async (msg) => {
          }
       } else if (text != '/start' && !foundUser.premium && !foundUser.bot_step != 'register') {
          if (foundUser?.bot_lang == 'uz') {
-            const priceList = await model.priceList(foundUser?.bot_lang)
             const priceKeyboard = priceList
-               .filter(item => !(foundUser.used_free && item.price == 0))
-               .map(item => [{
-                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`,
-                  callback_data: `tarif_${item.id}`
-               }]);
+               .filter(item => !(foundUser?.used_free && item.price == 0))
+               .map(item => {
+                  const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                  if (item.period == 30) {
+                     return [{
+                        text,
+                        web_app: {
+                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                        }
+                     }];
+                  } else {
+                     return [{
+                        text,
+                        callback_data: `tarif_${item.id}`
+                     }];
+                  }
+               });
             const premiumText = foundUser.premium ? `${localText.premiumTextUz}\n\n${localText.premiumExpiredTextUz} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextUz
 
             bot.sendMessage(chatId, premiumText, {
@@ -2342,11 +2549,24 @@ bot.on('message', async (msg) => {
          } else if (foundUser?.bot_lang == 'ru') {
             const priceList = await model.priceList(foundUser?.bot_lang)
             const priceKeyboard = priceList
-               .filter(item => !(foundUser.used_free && item.price == 0))
-               .map(item => [{
-                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} сум )`,
-                  callback_data: `tarif_${item.id}`
-               }]);
+               .filter(item => !(foundUser?.used_free && item.price == 0))
+               .map(item => {
+                  const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                  if (item.period == 30) {
+                     return [{
+                        text,
+                        web_app: {
+                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                        }
+                     }];
+                  } else {
+                     return [{
+                        text,
+                        callback_data: `tarif_${item.id}`
+                     }];
+                  }
+               });
             const premiumText = foundUser.premium ? `${localText.premiumTextRu}\n\n${localText.premiumExpiredTextRu} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextRu
 
             bot.sendMessage(chatId, premiumText, {
@@ -2360,11 +2580,24 @@ bot.on('message', async (msg) => {
          } else if (foundUser?.bot_lang == 'eng') {
             const priceList = await model.priceList(foundUser?.bot_lang)
             const priceKeyboard = priceList
-               .filter(item => !(foundUser.used_free && item.price == 0))
-               .map(item => [{
-                  text: `${item.title} ( ${formatBalanceWithSpaces(item.price)} sum )`,
-                  callback_data: `tarif_${item.id}`
-               }]);
+               .filter(item => !(foundUser?.used_free && item.price == 0))
+               .map(item => {
+                  const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+                  if (item.period == 30) {
+                     return [{
+                        text,
+                        web_app: {
+                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                        }
+                     }];
+                  } else {
+                     return [{
+                        text,
+                        callback_data: `tarif_${item.id}`
+                     }];
+                  }
+               });
             const premiumText = foundUser.premium ? `${localText.premiumTextEng}\n\n${localText.premiumExpiredTextEng} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextEng
 
             bot.sendMessage(chatId, premiumText, {
