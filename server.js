@@ -353,13 +353,17 @@ bot.on('message', async (msg) => {
                               parse_mode: 'HTML'
                            }).then(async () => {
                               if (foundUser?.bot_step == 'test_1') {
-                                 bot.sendMessage(chatId, localText.test2TextUz).then(async () => {
-                                    await model.editStep(chatId, 'test_2')
-                                 })
+                                 setTimeout(async () => {
+                                    bot.sendMessage(chatId, localText.test2TextUz).then(async () => {
+                                       await model.editStep(chatId, 'test_2')
+                                    })
+                                 }, 3000)
                               } else if (foundUser?.bot_step == 'test_2') {
-                                 bot.sendMessage(chatId, localText.test3TextUz, { parse_mode: "HTML" }).then(async () => {
-                                    await model.editStep(chatId, 'test_3')
-                                 })
+                                 setTimeout(async () => {
+                                    bot.sendMessage(chatId, localText.test3TextUz, { parse_mode: "HTML" }).then(async () => {
+                                       await model.editStep(chatId, 'test_3')
+                                    })
+                                 }, 3000)
                               } else if (foundUser?.bot_step == 'test_3') {
                                  const priceList = await model.priceList(foundUser?.bot_lang)
                                  const priceKeyboard = priceList
@@ -381,12 +385,14 @@ bot.on('message', async (msg) => {
                                           }];
                                        }
                                     });
-                                 bot.sendMessage(chatId, localText.firstTextPaymentUz, {
-                                    parse_mode: 'HTML',
-                                    reply_markup: {
-                                       inline_keyboard: priceKeyboard
-                                    }
-                                 })
+                                 setTimeout(async () => {
+                                    bot.sendMessage(chatId, localText.firstTextPaymentUz, {
+                                       parse_mode: 'HTML',
+                                       reply_markup: {
+                                          inline_keyboard: priceKeyboard
+                                       }
+                                    })
+                                 }, 5000)
                               }
                            })
                         } else if (foundUser?.bot_lang == 'ru') {
@@ -395,13 +401,17 @@ bot.on('message', async (msg) => {
                               parse_mode: 'HTML'
                            }).then(async () => {
                               if (foundUser?.bot_step == 'test_1') {
-                                 bot.sendMessage(chatId, localText.test2TextRu).then(async () => {
-                                    await model.editStep(chatId, 'test_2')
-                                 })
+                                 setTimeout(async () => {
+                                    bot.sendMessage(chatId, localText.test2TextRu).then(async () => {
+                                       await model.editStep(chatId, 'test_2')
+                                    })
+                                 }, 3000)
                               } else if (foundUser?.bot_step == 'test_2') {
-                                 bot.sendMessage(chatId, localText.test3TextRu, { parse_mode: "HTML" }).then(async () => {
-                                    await model.editStep(chatId, 'test_3')
-                                 })
+                                 setTimeout(async () => {
+                                    bot.sendMessage(chatId, localText.test3TextRu, { parse_mode: "HTML" }).then(async () => {
+                                       await model.editStep(chatId, 'test_3')
+                                    })
+                                 }, 3000)
                               } else if (foundUser?.bot_step == 'test_3') {
                                  const priceList = await model.priceList(foundUser?.bot_lang)
                                  const priceKeyboard = priceList
@@ -423,12 +433,14 @@ bot.on('message', async (msg) => {
                                           }];
                                        }
                                     });
-                                 bot.sendMessage(chatId, localText.firstTextPaymentRu, {
-                                    parse_mode: 'HTML',
-                                    reply_markup: {
-                                       inline_keyboard: priceKeyboard
-                                    }
-                                 })
+                                 setTimeout(async () => {
+                                    bot.sendMessage(chatId, localText.firstTextPaymentRu, {
+                                       parse_mode: 'HTML',
+                                       reply_markup: {
+                                          inline_keyboard: priceKeyboard
+                                       }
+                                    })
+                                 }, 5000)
                               }
                            })
                         } else if (foundUser?.bot_lang == 'eng') {
@@ -437,13 +449,17 @@ bot.on('message', async (msg) => {
                               parse_mode: 'HTML'
                            }).then(async () => {
                               if (foundUser?.bot_step == 'test_1') {
-                                 bot.sendMessage(chatId, localText.test2TextEng).then(async () => {
-                                    await model.editStep(chatId, 'test_2')
-                                 })
+                                 setTimeout(async () => {
+                                    bot.sendMessage(chatId, localText.test2TextEng).then(async () => {
+                                       await model.editStep(chatId, 'test_2')
+                                    })
+                                 }, 3000)
                               } else if (foundUser?.bot_step == 'test_2') {
-                                 bot.sendMessage(chatId, localText.test3TextEng, { parse_mode: "HTML" }).then(async () => {
-                                    await model.editStep(chatId, 'test_3')
-                                 })
+                                 setTimeout(async () => {
+                                    bot.sendMessage(chatId, localText.test3TextEng, { parse_mode: "HTML" }).then(async () => {
+                                       await model.editStep(chatId, 'test_3')
+                                    })
+                                 }, 3000)
                               } else if (foundUser?.bot_step == 'test_3') {
                                  const priceList = await model.priceList(foundUser?.bot_lang)
                                  const priceKeyboard = priceList
@@ -465,12 +481,14 @@ bot.on('message', async (msg) => {
                                           }];
                                        }
                                     });
-                                 bot.sendMessage(chatId, localText.firstTextPaymentEng, {
-                                    parse_mode: 'HTML',
-                                    reply_markup: {
-                                       inline_keyboard: priceKeyboard
-                                    }
-                                 })
+                                 setTimeout(async () => {
+                                    bot.sendMessage(chatId, localText.firstTextPaymentEng, {
+                                       parse_mode: 'HTML',
+                                       reply_markup: {
+                                          inline_keyboard: priceKeyboard
+                                       }
+                                    })
+                                 }, 5000)
                               }
                            })
                         }
@@ -495,13 +513,17 @@ bot.on('message', async (msg) => {
                            parse_mode: 'HTML'
                         }).then(async () => {
                            if (foundUser?.bot_step == 'test_1') {
-                              bot.sendMessage(chatId, localText.test2TextUz).then(async () => {
-                                 await model.editStep(chatId, 'test_2')
-                              })
+                              setTimeout(async () => {
+                                 bot.sendMessage(chatId, localText.test2TextUz).then(async () => {
+                                    await model.editStep(chatId, 'test_2')
+                                 })
+                              }, 3000)
                            } else if (foundUser?.bot_step == 'test_2') {
-                              bot.sendMessage(chatId, localText.test3TextUz, { parse_mode: "HTML" }).then(async () => {
-                                 await model.editStep(chatId, 'test_3')
-                              })
+                              setTimeout(async () => {
+                                 bot.sendMessage(chatId, localText.test3TextUz, { parse_mode: "HTML" }).then(async () => {
+                                    await model.editStep(chatId, 'test_3')
+                                 })
+                              }, 3000)
                            } else if (foundUser?.bot_step == 'test_3') {
                               const priceList = await model.priceList(foundUser?.bot_lang)
                               const priceKeyboard = priceList
@@ -523,12 +545,14 @@ bot.on('message', async (msg) => {
                                        }];
                                     }
                                  });
-                              bot.sendMessage(chatId, localText.firstTextPaymentUz, {
-                                 parse_mode: 'HTML',
-                                 reply_markup: {
-                                    inline_keyboard: priceKeyboard
-                                 }
-                              })
+                              setTimeout(async () => {
+                                 bot.sendMessage(chatId, localText.firstTextPaymentUz, {
+                                    parse_mode: 'HTML',
+                                    reply_markup: {
+                                       inline_keyboard: priceKeyboard
+                                    }
+                                 })
+                              }, 5000)
                            }
                         })
                      } else if (foundUser?.bot_lang == 'ru') {
@@ -537,13 +561,17 @@ bot.on('message', async (msg) => {
                            parse_mode: 'HTML'
                         }).then(async () => {
                            if (foundUser?.bot_step == 'test_1') {
-                              bot.sendMessage(chatId, localText.test2TextRu).then(async () => {
-                                 await model.editStep(chatId, 'test_2')
-                              })
+                              setTimeout(async () => {
+                                 bot.sendMessage(chatId, localText.test2TextRu).then(async () => {
+                                    await model.editStep(chatId, 'test_2')
+                                 })
+                              }, 3000)
                            } else if (foundUser?.bot_step == 'test_2') {
-                              bot.sendMessage(chatId, localText.test3TextRu, { parse_mode: "HTML" }).then(async () => {
-                                 await model.editStep(chatId, 'test_3')
-                              })
+                              setTimeout(async () => {
+                                 bot.sendMessage(chatId, localText.test3TextRu, { parse_mode: "HTML" }).then(async () => {
+                                    await model.editStep(chatId, 'test_3')
+                                 })
+                              }, 3000)
                            } else if (foundUser?.bot_step == 'test_3') {
                               const priceList = await model.priceList(foundUser?.bot_lang)
                               const priceKeyboard = priceList
@@ -565,12 +593,14 @@ bot.on('message', async (msg) => {
                                        }];
                                     }
                                  });
-                              bot.sendMessage(chatId, localText.firstTextPaymentRu, {
-                                 parse_mode: 'HTML',
-                                 reply_markup: {
-                                    inline_keyboard: priceKeyboard
-                                 }
-                              })
+                              setTimeout(async () => {
+                                 bot.sendMessage(chatId, localText.firstTextPaymentRu, {
+                                    parse_mode: 'HTML',
+                                    reply_markup: {
+                                       inline_keyboard: priceKeyboard
+                                    }
+                                 })
+                              }, 5000)
                            }
                         })
                      } else if (foundUser?.bot_lang == 'eng') {
@@ -579,13 +609,17 @@ bot.on('message', async (msg) => {
                            parse_mode: 'HTML'
                         }).then(async () => {
                            if (foundUser?.bot_step == 'test_1') {
-                              bot.sendMessage(chatId, localText.test2TextEng).then(async () => {
-                                 await model.editStep(chatId, 'test_2')
-                              })
+                              setTimeout(async () => {
+                                 bot.sendMessage(chatId, localText.test2TextEng).then(async () => {
+                                    await model.editStep(chatId, 'test_2')
+                                 })
+                              }, 3000)
                            } else if (foundUser?.bot_step == 'test_2') {
-                              bot.sendMessage(chatId, localText.test3TextEng, { parse_mode: "HTML" }).then(async () => {
-                                 await model.editStep(chatId, 'test_3')
-                              })
+                              setTimeout(async () => {
+                                 bot.sendMessage(chatId, localText.test3TextEng, { parse_mode: "HTML" }).then(async () => {
+                                    await model.editStep(chatId, 'test_3')
+                                 })
+                              }, 3000)
                            } else if (foundUser?.bot_step == 'test_3') {
                               const priceList = await model.priceList(foundUser?.bot_lang)
                               const priceKeyboard = priceList
@@ -607,12 +641,14 @@ bot.on('message', async (msg) => {
                                        }];
                                     }
                                  });
-                              bot.sendMessage(chatId, localText.firstTextPaymentEng, {
-                                 parse_mode: 'HTML',
-                                 reply_markup: {
-                                    inline_keyboard: priceKeyboard
-                                 }
-                              })
+                              setTimeout(async () => {
+                                 bot.sendMessage(chatId, localText.firstTextPaymentEng, {
+                                    parse_mode: 'HTML',
+                                    reply_markup: {
+                                       inline_keyboard: priceKeyboard
+                                    }
+                                 })
+                              }, 5000)
                            }
                         })
                      }
@@ -656,13 +692,17 @@ bot.on('message', async (msg) => {
                         parse_mode: 'HTML'
                      }).then(async () => {
                         if (foundUser?.bot_step == 'test_1') {
-                           bot.sendMessage(chatId, localText.test2TextUz).then(async () => {
-                              await model.editStep(chatId, 'test_2')
-                           })
+                           setTimeout(async () => {
+                              bot.sendMessage(chatId, localText.test2TextUz).then(async () => {
+                                 await model.editStep(chatId, 'test_2')
+                              })
+                           }, 3000)
                         } else if (foundUser?.bot_step == 'test_2') {
-                           bot.sendMessage(chatId, localText.test3TextUz, { parse_mode: "HTML" }).then(async () => {
-                              await model.editStep(chatId, 'test_3')
-                           })
+                           setTimeout(async () => {
+                              bot.sendMessage(chatId, localText.test3TextUz, { parse_mode: "HTML" }).then(async () => {
+                                 await model.editStep(chatId, 'test_3')
+                              })
+                           }, 3000)
                         } else if (foundUser?.bot_step == 'test_3') {
                            const priceList = await model.priceList(foundUser?.bot_lang)
                            const priceKeyboard = priceList
@@ -684,12 +724,14 @@ bot.on('message', async (msg) => {
                                     }];
                                  }
                               });
-                           bot.sendMessage(chatId, localText.firstTextPaymentUz, {
-                              parse_mode: 'HTML',
-                              reply_markup: {
-                                 inline_keyboard: priceKeyboard
-                              }
-                           })
+                           setTimeout(async () => {
+                              bot.sendMessage(chatId, localText.firstTextPaymentUz, {
+                                 parse_mode: 'HTML',
+                                 reply_markup: {
+                                    inline_keyboard: priceKeyboard
+                                 }
+                              })
+                           }, 5000)
                         }
                      })
                   } else if (foundUser?.bot_lang == 'ru') {
@@ -698,13 +740,17 @@ bot.on('message', async (msg) => {
                         parse_mode: 'HTML'
                      }).then(async () => {
                         if (foundUser?.bot_step == 'test_1') {
-                           bot.sendMessage(chatId, localText.test2TextRu).then(async () => {
-                              await model.editStep(chatId, 'test_2')
-                           })
+                           setTimeout(async () => {
+                              bot.sendMessage(chatId, localText.test2TextRu).then(async () => {
+                                 await model.editStep(chatId, 'test_2')
+                              })
+                           }, 3000)
                         } else if (foundUser?.bot_step == 'test_2') {
-                           bot.sendMessage(chatId, localText.test3TextRu, { parse_mode: "HTML" }).then(async () => {
-                              await model.editStep(chatId, 'test_3')
-                           })
+                           setTimeout(async () => {
+                              bot.sendMessage(chatId, localText.test3TextRu, { parse_mode: "HTML" }).then(async () => {
+                                 await model.editStep(chatId, 'test_3')
+                              })
+                           }, 3000)
                         } else if (foundUser?.bot_step == 'test_3') {
                            const priceList = await model.priceList(foundUser?.bot_lang)
                            const priceKeyboard = priceList
@@ -726,12 +772,14 @@ bot.on('message', async (msg) => {
                                     }];
                                  }
                               });
-                           bot.sendMessage(chatId, localText.firstTextPaymentRu, {
-                              parse_mode: 'HTML',
-                              reply_markup: {
-                                 inline_keyboard: priceKeyboard
-                              }
-                           })
+                           setTimeout(async () => {
+                              bot.sendMessage(chatId, localText.firstTextPaymentRu, {
+                                 parse_mode: 'HTML',
+                                 reply_markup: {
+                                    inline_keyboard: priceKeyboard
+                                 }
+                              })
+                           }, 5000)
                         }
                      })
                   } else if (foundUser?.bot_lang == 'eng') {
@@ -740,13 +788,17 @@ bot.on('message', async (msg) => {
                         parse_mode: 'HTML'
                      }).then(async () => {
                         if (foundUser?.bot_step == 'test_1') {
-                           bot.sendMessage(chatId, localText.test2TextEng).then(async () => {
-                              await model.editStep(chatId, 'test_2')
-                           })
+                           setTimeout(async () => {
+                              bot.sendMessage(chatId, localText.test2TextEng).then(async () => {
+                                 await model.editStep(chatId, 'test_2')
+                              })
+                           }, 3000)
                         } else if (foundUser?.bot_step == 'test_2') {
-                           bot.sendMessage(chatId, localText.test3TextEng, { parse_mode: "HTML" }).then(async () => {
-                              await model.editStep(chatId, 'test_3')
-                           })
+                           setTimeout(async () => {
+                              bot.sendMessage(chatId, localText.test3TextEng, { parse_mode: "HTML" }).then(async () => {
+                                 await model.editStep(chatId, 'test_3')
+                              })
+                           }, 3000)
                         } else if (foundUser?.bot_step == 'test_3') {
                            const priceList = await model.priceList(foundUser?.bot_lang)
                            const priceKeyboard = priceList
@@ -768,12 +820,14 @@ bot.on('message', async (msg) => {
                                     }];
                                  }
                               });
-                           bot.sendMessage(chatId, localText.firstTextPaymentEng, {
-                              parse_mode: 'HTML',
-                              reply_markup: {
-                                 inline_keyboard: priceKeyboard
-                              }
-                           })
+                           setTimeout(async () => {
+                              bot.sendMessage(chatId, localText.firstTextPaymentEng, {
+                                 parse_mode: 'HTML',
+                                 reply_markup: {
+                                    inline_keyboard: priceKeyboard
+                                 }
+                              })
+                           }, 5000)
                         }
                      })
                   }
@@ -798,14 +852,19 @@ bot.on('message', async (msg) => {
                   bot.sendMessage(chatId, reportText, {
                      parse_mode: 'HTML'
                   }).then(async () => {
+
                      if (foundUser?.bot_step == 'test_1') {
-                        bot.sendMessage(chatId, localText.test2TextUz).then(async () => {
-                           await model.editStep(chatId, 'test_2')
-                        })
+                        setTimeout(async () => {
+                           bot.sendMessage(chatId, localText.test2TextUz).then(async () => {
+                              await model.editStep(chatId, 'test_2')
+                           })
+                        }, 3000)
                      } else if (foundUser?.bot_step == 'test_2') {
-                        bot.sendMessage(chatId, localText.test3TextUz, { parse_mode: "HTML" }).then(async () => {
-                           await model.editStep(chatId, 'test_3')
-                        })
+                        setTimeout(async () => {
+                           bot.sendMessage(chatId, localText.test3TextUz, { parse_mode: "HTML" }).then(async () => {
+                              await model.editStep(chatId, 'test_3')
+                           })
+                        }, 3000)
                      } else if (foundUser?.bot_step == 'test_3') {
                         const priceList = await model.priceList(foundUser?.bot_lang)
                         const priceKeyboard = priceList
@@ -827,12 +886,14 @@ bot.on('message', async (msg) => {
                                  }];
                               }
                            });
-                        bot.sendMessage(chatId, localText.firstTextPaymentUz, {
-                           parse_mode: 'HTML',
-                           reply_markup: {
-                              inline_keyboard: priceKeyboard
-                           }
-                        })
+                        setTimeout(async () => {
+                           bot.sendMessage(chatId, localText.firstTextPaymentUz, {
+                              parse_mode: 'HTML',
+                              reply_markup: {
+                                 inline_keyboard: priceKeyboard
+                              }
+                           })
+                        }, 5000)
                      }
                   })
                } else if (foundUser?.bot_lang == 'ru') {
@@ -841,13 +902,17 @@ bot.on('message', async (msg) => {
                      parse_mode: 'HTML'
                   }).then(async () => {
                      if (foundUser?.bot_step == 'test_1') {
-                        bot.sendMessage(chatId, localText.test2TextRu).then(async () => {
-                           await model.editStep(chatId, 'test_2')
-                        })
+                        setTimeout(async () => {
+                           bot.sendMessage(chatId, localText.test2TextRu).then(async () => {
+                              await model.editStep(chatId, 'test_2')
+                           })
+                        }, 3000)
                      } else if (foundUser?.bot_step == 'test_2') {
-                        bot.sendMessage(chatId, localText.test3TextRu, { parse_mode: "HTML" }).then(async () => {
-                           await model.editStep(chatId, 'test_3')
-                        })
+                        setTimeout(async () => {
+                           bot.sendMessage(chatId, localText.test3TextRu, { parse_mode: "HTML" }).then(async () => {
+                              await model.editStep(chatId, 'test_3')
+                           })
+                        }, 3000)
                      } else if (foundUser?.bot_step == 'test_3') {
                         const priceList = await model.priceList(foundUser?.bot_lang)
                         const priceKeyboard = priceList
@@ -869,12 +934,14 @@ bot.on('message', async (msg) => {
                                  }];
                               }
                            });
-                        bot.sendMessage(chatId, localText.firstTextPaymentRu, {
-                           parse_mode: 'HTML',
-                           reply_markup: {
-                              inline_keyboard: priceKeyboard
-                           }
-                        })
+                        setTimeout(async () => {
+                           bot.sendMessage(chatId, localText.firstTextPaymentRu, {
+                              parse_mode: 'HTML',
+                              reply_markup: {
+                                 inline_keyboard: priceKeyboard
+                              }
+                           })
+                        }, 5000)
                      }
                   })
                } else if (foundUser?.bot_lang == 'eng') {
@@ -883,13 +950,17 @@ bot.on('message', async (msg) => {
                      parse_mode: 'HTML'
                   }).then(async () => {
                      if (foundUser?.bot_step == 'test_1') {
-                        bot.sendMessage(chatId, localText.test2TextEng).then(async () => {
-                           await model.editStep(chatId, 'test_2')
-                        })
+                        setTimeout(async () => {
+                           bot.sendMessage(chatId, localText.test2TextEng).then(async () => {
+                              await model.editStep(chatId, 'test_2')
+                           })
+                        }, 3000)
                      } else if (foundUser?.bot_step == 'test_2') {
-                        bot.sendMessage(chatId, localText.test3TextEng, { parse_mode: "HTML" }).then(async () => {
-                           await model.editStep(chatId, 'test_3')
-                        })
+                        setTimeout(async () => {
+                           bot.sendMessage(chatId, localText.test3TextEng, { parse_mode: "HTML" }).then(async () => {
+                              await model.editStep(chatId, 'test_3')
+                           })
+                        }, 3000)
                      } else if (foundUser?.bot_step == 'test_3') {
                         const priceList = await model.priceList(foundUser?.bot_lang)
                         const priceKeyboard = priceList
@@ -911,14 +982,14 @@ bot.on('message', async (msg) => {
                                  }];
                               }
                            });
-                        bot.sendMessage(chatId, localText.firstTextPaymentEng, {
-                           parse_mode: 'HTML',
-                           reply_markup: {
-                              inline_keyboard: priceKeyboard
-                           }
-                        }).then(async () => {
-                           await model.editStep(chatId, 'payment')
-                        })
+                        setTimeout(async () => {
+                           bot.sendMessage(chatId, localText.firstTextPaymentEng, {
+                              parse_mode: 'HTML',
+                              reply_markup: {
+                                 inline_keyboard: priceKeyboard
+                              }
+                           })
+                        }, 5000)
                      }
                   })
                }

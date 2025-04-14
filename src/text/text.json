@@ -137,7 +137,7 @@
 	"limitTextRu": "Здесь вы можете установить лимит своих расходов.\n\nЯ сообщу вам, когда ваши расходы приблизится к установленному вами лимиту.\n\nОтправьте сюда лимит в цифрах:\n\n<b>Например: 5 000 000</b>",
 	"limitTextEng": "Here you can set a limit on your spending.\n\nI will notify you when your spending gets close to the limit you set.\n\nSend the limit in numbers here:\n\n<b>For example: 5 000 000</b>",
 
-	"limitText2Uz": "Bu yerda siz xarajatlaringizga limit o’rnatishingiz mumkin.\n\nXarajatlaringiz siz belgilagan limitga yaqinlashsa, men sizga xabar beraman.\n\n<b>Sizning hozirgi limitingiz: %limit%</b>\n\n Bu yerga limitni raqamlarda yuboring:\n\n<b>Masalan: 5 000 000</b>",
+	"limitText2Uz": "Bu yerda siz xarajatlaringizga limit o’rnatishingiz mumkin.\n\nXarajatlaringiz siz belgilagan limitga yaqinlashsa, men sizga xabar beraman.\n\n<b>Sizning hozirgi limitingiz: %limit%</b>\n\nBu yerga limitni raqamlarda yuboring:\n\n<b>Masalan: 5 000 000</b>",
 	"limitText2Ru": "Здесь вы можете установить лимит расходов.\n\nЯ сообщу вам, когда ваши расходы достигнут установленного вами лимита.\n\n<b>Ваш текущий лимит: %limit%</b>\n\nОтправьте лимит сюда в цифрах:\n\n<b>Например: 5 000 000</b>",
 	"limitText2Eng": "Here you can set a limit on your spending.\n\nI will notify you when your spending approaches the limit you set.\n\n<b>Your current limit: %limit%</b>\n\nSend the limit here in numbers:\n\n<b>For example: 5 000 000</b>",
 
