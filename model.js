@@ -144,7 +144,7 @@ const addName = (chatId, text) => {
 
    return fetch(QUERY, chatId, text)
 }
-const priceList = () => {
+const priceList = (lang) => {
    const titleColumn =
       lang === 'uz'
          ? 'title_uz'
