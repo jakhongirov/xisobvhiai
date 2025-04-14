@@ -149,9 +149,37 @@
 	"premiumTextRu": "💎 Выберите подходящий вам тариф и наслаждайтесь Xisobchi AI.",
 	"premiumTextEng": "💎 Choose a tariff that suits you and enjoy Xisobchi AI.",
 
+	"premiumText2Uz": "Siz o’z moliyaviy intizomingizga investitsiya qilgansiz va Xisobchi AI’ premium obunasiga egasiz.\n\nKeyingi obuna yangilanish vaqti:<b> %expiredDate% </b>",
+	"premiumText2Ru": "Вы инвестировали в свою финансовую дисциплину и имеете премиум-подписку на Xisobchi AI.\n\nСледующее время продления подписки:<b> %expiredDate% </b>",
+	"premiumText2Eng": "You have invested in your financial discipline and have a premium subscription to Xisobchi AI.\n\nNext subscription renewal time:<b> %expiredDate% </b>",
+
 	"premiumExpiredTextUz": "Premium' tarifingiz tugash muddati:",
 	"premiumExpiredTextRu": "Дата окончания действия вашего Премиум-тарифа:",
 	"premiumExpiredTextEng": "The expiry date of your Premium' tariff:",
+
+	"unsubscribeBtnUz": "Obunani to’xtatish",
+	"unsubscribeBtnRu": "Отписаться",
+	"unsubscribeBtnEng": "Unsubscribe",
+
+	"askStopSubscribeUz": "Haqiqatdan ham obunani to’xtatmoqchimisiz ?\n\nObunani qayta tiklagungizga qadar xisobotlaringizni ko’ra olmaysiz va Xisobchi AI dan foydalana olymaysiz.",
+	"askStopSubscribeRu": "Вы уверены, что хотите отменить подписку?\n\nВы не сможете просматривать свои отчеты или использовать Xisobchi AI, пока не продлите подписку.",
+	"askStopSubscribeEng": "Are you sure you want to cancel your subscription?\n\nYou will not be able to view your reports or use Xisobchi AI until you renew your subscription.",
+
+	"askStopSubscribeYesUz": "Ha, to’xtatish",
+	"askStopSubscribeYesRu": "Да, стоп.",
+	"askStopSubscribeYesEng": "Yes, stop.",
+
+	"askStopSubscribeNoUz": "Yo’q, davom etaman",
+	"askStopSubscribeNoRu": "Нет, я продолжу.",
+	"askStopSubscribeNosEng": "No, I'll continue.",
+
+	"stopedSubscribeTextUz": "Obunangiz to'xtatildi",
+	"stopedSubscribeTextRu": "Ваша подписка приостановлена.",
+	"stopedSubscribeTextEng": "Your subscription has been suspended.",
+
+	"premiumDurationTextUz": "Siz o’z moliyaviy intizomingizga investitsiya qilgansiz va Xisobchi AI’ premium obunasiga egasiz.\n\nKeyingi obuna yangilanish vaqti:<b> %expiredDate% </b>\n\nBu yerda obunani va kartalaringizni boshqarishingiz mumkin",
+	"premiumDurationTextRu": "Вы инвестировали в свою финансовую дисциплину и имеете премиум-подписку на Xisobchi AI.\n\nСледующее время продления подписки:<b> %expiredDate% </b>\n\nЗдесь вы можете управлять своей подпиской и картами,",
+	"premiumDurationTextEng": "You have invested in your financial discipline and have a premium subscription to Xisobchi AI.\n\nNext subscription renewal time:<b> %expiredDate% </b>\n\nHere you can manage your subscription and cards,",
 
 	"addCardTextUz": "Obunani faollashtirish uchun karta qo'shishingiz lozim.",
 	"addCardTextRu": "Для активации подписки необходимо добавить карту.",
