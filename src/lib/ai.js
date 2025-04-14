@@ -96,7 +96,7 @@ const analyzeText = async (inputText) => {
       const result = await model.generateContent([prompt]);
       const responseText = result.response.text();
       const jsonData = parseGeminiResponse(responseText);
-
+      console.log(jsonData)
       return jsonData;
    } catch (error) {
       console.error('Error analyzing text:', error);
@@ -223,6 +223,7 @@ const analyzeVoice = async (tempFilePath) => {
 
       try {
          const jsonData = parseGeminiResponse(responseText);
+         console.log(jsonData)
          return jsonData
       } catch (jsonError) {
          console.error('Error parsing JSON:', jsonError);
