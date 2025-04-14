@@ -230,19 +230,6 @@ bot.on('message', async (msg) => {
             await model.addLang(chatId, 'uz')
             await model.createBalance(editStep.id, "So'm", "UZS")
             await model.createBalance(editStep.id, "Dollar", "USD")
-            bot.sendMessage(chatId, localText.startText2Uz, {
-               parse_mode: "HTML",
-               reply_markup: {
-                  inline_keyboard: [
-                     [
-                        {
-                           text: localText.ofertaUrlBtnUz,
-                           url: "https://behad.uz/xisobchioferta.html"
-                        }
-                     ]
-                  ]
-               }
-            })
          })
       } else if (text == '🇷🇺 Ру') {
          bot.sendVideo(chatId, "BAACAgIAAyEFAASNDiJIAAMIZ_tk3p_YBqpi72SfyFANtuPuN4UAAptoAAIT8NFKybkhzgSqW202BA", {
@@ -265,19 +252,6 @@ bot.on('message', async (msg) => {
             await model.addLang(chatId, 'ru')
             await model.createBalance(editStep.id, "Сум", "UZS")
             await model.createBalance(editStep.id, "Доллар", "USD")
-            bot.sendMessage(chatId, localText.startText2Ru, {
-               parse_mode: "HTML",
-               reply_markup: {
-                  inline_keyboard: [
-                     [
-                        {
-                           text: localText.ofertaUrlBtnRu,
-                           url: "https://behad.uz/xisobchioferta.html"
-                        }
-                     ]
-                  ]
-               }
-            })
          })
       } else if (text == '🇬🇧 Eng') {
          bot.sendVideo(chatId, "BAACAgIAAyEFAASNDiJIAAMIZ_tk3p_YBqpi72SfyFANtuPuN4UAAptoAAIT8NFKybkhzgSqW202BA", {
@@ -300,19 +274,6 @@ bot.on('message', async (msg) => {
             await model.addLang(chatId, 'eng')
             await model.createBalance(editStep.id, "Sum", "UZS")
             await model.createBalance(editStep.id, "Dollar", "USD")
-            bot.sendMessage(chatId, localText.startText2Eng, {
-               parse_mode: "HTML",
-               reply_markup: {
-                  inline_keyboard: [
-                     [
-                        {
-                           text: localText.ofertaUrlBtnEng,
-                           url: "https://behad.uz/xisobchioferta.html"
-                        }
-                     ]
-                  ]
-               }
-            })
          })
       } else if (foundUser?.bot_step == 'ask_name' && text) {
          const addName = await model.addName(chatId, text)
