@@ -1848,6 +1848,7 @@ bot.on('message', async (msg) => {
             }
 
          } else if (text && text != '/start') {
+            const jsonData = await analyzeText(text)
             if (jsonData.length > 0) {
                jsonData.forEach(async (item) => {
                   const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
