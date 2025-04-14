@@ -1676,7 +1676,7 @@ bot.on('message', async (msg) => {
                         }
 
                         if (foundUser?.bot_lang == 'uz') {
-                           const reportText = `${localText.addReportTextUz}\n\n${addReport.income ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextUz} <b>${addReport.category}</b>\n${localText.addReportCommentTextUz} ${addReport.comment}`
+                           const reportText = `${localText.addReportTextUz}\n\n${addReport.income ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextUz} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextUz} ${addReport.comment}`
                            bot.sendMessage(chatId, reportText, {
                               parse_mode: 'HTML',
                               reply_markup: {
@@ -1795,7 +1795,7 @@ bot.on('message', async (msg) => {
                      }
 
                      if (foundUser?.bot_lang == 'uz') {
-                        const reportText = `${localText.addReportTextUz}\n\n${addReport.income ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextUz} <b>${addReport.category}</b>\n${localText.addReportCommentTextUz} ${addReport.comment}`
+                        const reportText = `${localText.addReportTextUz}\n\n${addReport.income ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextUz} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextUz} ${addReport.comment}`
                         bot.sendMessage(chatId, reportText, {
                            parse_mode: 'HTML',
                            reply_markup: {
@@ -1923,7 +1923,7 @@ bot.on('message', async (msg) => {
                   }
 
                   if (foundUser?.bot_lang == 'uz') {
-                     const reportText = `${localText.addReportTextUz}\n\n${addReport.income ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextUz} <b>${addReport.category}</b>\n${localText.addReportCommentTextUz} ${addReport.comment}`
+                     const reportText = `${localText.addReportTextUz}\n\n${addReport.income ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextUz} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextUz} ${addReport.comment}`
                      bot.sendMessage(chatId, reportText, {
                         parse_mode: 'HTML',
                         reply_markup: {
@@ -2042,7 +2042,7 @@ bot.on('message', async (msg) => {
                }
 
                if (foundUser?.bot_lang == 'uz') {
-                  const reportText = `${localText.addReportTextUz}\n\n${addReport.income ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextUz} <b>${addReport.category}</b>\n${localText.addReportCommentTextUz} ${addReport.comment}`
+                  const reportText = `${localText.addReportTextUz}\n\n${addReport.income ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(addReport.date)}</b>\n\n${localText.addReportAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addReport.amount)}\n${localText.addReportCategoryTextUz} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextUz} ${addReport.comment}`
                   bot.sendMessage(chatId, reportText, {
                      parse_mode: 'HTML',
                      reply_markup: {
