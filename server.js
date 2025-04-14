@@ -2552,6 +2552,32 @@ bot.on('callback_query', async (msg) => {
             })
          }
       }
+   } else if (data.startsWith('cancel_report_')) {
+      const reportid = data?.split('cancel_report_')[1]
+      const deleteReport = await model.deleteReport(reportid, foundUser.id)
+
+      if (deleteReport) {
+         if (foundUser.bot_lang == 'uz') {
+            bot.sendMessage(chatId, localText.cancelTextUz, { parse_mode: "HTML", })
+         } else if (foundUser.bot_lang == 'ru') {
+            bot.sendMessage(chatId, localText.cancelTextRu, { parse_mode: "HTML", })
+         } else if (foundUser.bot_lang == 'eng') {
+            bot.sendMessage(chatId, localText.cancelTextEng, { parse_mode: "HTML", })
+         }
+      }
+   } else if (data.startsWith('cancel_debt_')) {
+      const debtid = data?.split('cancel_debt_')[1]
+      const deleteDebt = await model.deleteDebt(debtid, foundUser.id)
+
+      if (deleteDebt) {
+         if (foundUser.bot_lang == 'uz') {
+            bot.sendMessage(chatId, localText.cancelTextUz, { parse_mode: "HTML", })
+         } else if (foundUser.bot_lang == 'ru') {
+            bot.sendMessage(chatId, localText.cancelTextRu, { parse_mode: "HTML", })
+         } else if (foundUser.bot_lang == 'eng') {
+            bot.sendMessage(chatId, localText.cancelTextEng, { parse_mode: "HTML", })
+         }
+      }
    }
 })
 
