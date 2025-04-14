@@ -1683,7 +1683,7 @@ bot.on('message', async (msg) => {
                                  inline_keyboard: [
                                     [
                                        {
-                                          text: localText.cancelBtn,
+                                          text: localText.cancelBtnUz,
                                           callback_data: `cancel_report_${addReport.id}`
                                        }
                                     ]
@@ -1698,7 +1698,7 @@ bot.on('message', async (msg) => {
                                  inline_keyboard: [
                                     [
                                        {
-                                          text: localText.cancelBtn,
+                                          text: localText.cancelBtnRu,
                                           callback_data: `cancel_report_${addReport.id}`
                                        }
                                     ]
@@ -1713,7 +1713,7 @@ bot.on('message', async (msg) => {
                                  inline_keyboard: [
                                     [
                                        {
-                                          text: localText.cancelBtn,
+                                          text: localText.cancelBtnEng,
                                           callback_data: `cancel_report_${addReport.id}`
                                        }
                                     ]
@@ -1802,7 +1802,7 @@ bot.on('message', async (msg) => {
                               inline_keyboard: [
                                  [
                                     {
-                                       text: localText.cancelBtn,
+                                       text: localText.cancelBtnUz,
                                        callback_data: `cancel_report_${addReport.id}`
                                     }
                                  ]
@@ -1817,7 +1817,7 @@ bot.on('message', async (msg) => {
                               inline_keyboard: [
                                  [
                                     {
-                                       text: localText.cancelBtn,
+                                       text: localText.cancelBtnRu,
                                        callback_data: `cancel_report_${addReport.id}`
                                     }
                                  ]
@@ -1832,7 +1832,7 @@ bot.on('message', async (msg) => {
                               inline_keyboard: [
                                  [
                                     {
-                                       text: localText.cancelBtn,
+                                       text: localText.cancelBtnEng,
                                        callback_data: `cancel_report_${addReport.id}`
                                     }
                                  ]
@@ -1849,6 +1849,7 @@ bot.on('message', async (msg) => {
 
          } else if (text && text != '/start') {
             const jsonData = await analyzeText(text)
+
             if (jsonData.length > 0) {
                jsonData.forEach(async (item) => {
                   const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
@@ -1929,7 +1930,7 @@ bot.on('message', async (msg) => {
                            inline_keyboard: [
                               [
                                  {
-                                    text: localText.cancelBtn,
+                                    text: localText.cancelBtnUz,
                                     callback_data: `cancel_report_${addReport.id}`
                                  }
                               ]
@@ -1944,7 +1945,7 @@ bot.on('message', async (msg) => {
                            inline_keyboard: [
                               [
                                  {
-                                    text: localText.cancelBtn,
+                                    text: localText.cancelBtnRu,
                                     callback_data: `cancel_report_${addReport.id}`
                                  }
                               ]
@@ -1959,7 +1960,7 @@ bot.on('message', async (msg) => {
                            inline_keyboard: [
                               [
                                  {
-                                    text: localText.cancelBtn,
+                                    text: localText.cancelBtnEng,
                                     callback_data: `cancel_report_${addReport.id}`
                                  }
                               ]
@@ -2048,7 +2049,7 @@ bot.on('message', async (msg) => {
                         inline_keyboard: [
                            [
                               {
-                                 text: localText.cancelBtn,
+                                 text: localText.cancelBtnUz,
                                  callback_data: `cancel_report_${addReport.id}`
                               }
                            ]
@@ -2063,7 +2064,7 @@ bot.on('message', async (msg) => {
                         inline_keyboard: [
                            [
                               {
-                                 text: localText.cancelBtn,
+                                 text: localText.cancelBtnRu,
                                  callback_data: `cancel_report_${addReport.id}`
                               }
                            ]
@@ -2078,7 +2079,7 @@ bot.on('message', async (msg) => {
                         inline_keyboard: [
                            [
                               {
-                                 text: localText.cancelBtn,
+                                 text: localText.cancelBtnEng,
                                  callback_data: `cancel_report_${addReport.id}`
                               }
                            ]
