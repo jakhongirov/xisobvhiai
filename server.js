@@ -2438,7 +2438,7 @@ bot.on('callback_query', async (msg) => {
          }
       } else if (tarif && !foundUser?.used_free && tarif.price === 0) {
          const expiredDate = calculateExpiredDate(Number(tarif.period))
-         await model.editPremium(chatId, expxiredDate)
+         await model.editPremium(chatId, expiredDate)
 
          if (foundUser?.bot_lang == 'uz') {
             bot.sendMessage(chatId, localText.menuTextUz, {
