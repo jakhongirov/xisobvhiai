@@ -143,38 +143,11 @@ const analyzeVoice = async (tempFilePath) => {
          - "type": Either "income" or "outcome" based on whether it's earnings or spending.
          - "date": The date and time of the transaction in "YYYY-MM-DD HH:MM:SS.mmmmmm+ZZ" format (e.g., 2025-03-15 20:34:59.25447+05). If the date and time are not explicitly mentioned, use the provided current date and time: ${current_datetime}. If the input text contains a date, overwrite the current date with the found date.
          - "deadline": The date and time the debt is expected to be repaid in "YYYY-MM-DD HH:MM:SS.mmmmmm+ZZ" format (e.g., 2025-03-21 20:34:59.25447+05). If no deadline is mentioned, set it to "".
+         - "isDebtPayment": true if the transaction is a debt payment, false otherwise.
+         - "forWhom": The name of the person or entity involved in the debt payment. If not a debt payment, set it to "".
 
-         Additional Rules for Debt Payments:
-         - If the transaction is a debt payment, include:
-         - "isDebtPayment": true
-         - "forWhom": The name of the person or entity involved in the debt payment.
-         - If not a debt payment, set "isDebtPayment": false and "forWhom": "".
-
-         ## Examples:
-         1. Input: "I paid $200 for my rent on 2024-06-15 10:00:00+05"
-            Output: [{{"user_input": "I paid $200 for my rent on 2024-06-15 10:00:00+05", "isDebtPayment": false, "forWhom": "", "category": "Uy-joy xarajatlari", "amount": 200, "currency": "USD", "type": "outcome", "date": "2024-06-15 10:00:00.000000+05", "deadline": ""}}]
-
-         2. Input: "I borrowed 500$ from Alex aka yesterday, he will return it on 2024-06-25 12:00:00+05"
-            Output: [{{"user_input": "I borrowed 500$ from Alex aka yesterday, he will return it on 2024-06-25 12:00:00+05", "isDebtPayment": true, "forWhom": "Alex aka", "category": "Moliyaviy majburiyatlar", "amount": 500, "currency": "USD", "type": "outcome", "date": "2024-06-15 20:34:59.25447+05", "deadline": "2024-06-25 12:00:00.000000+05"}}]
-
-         3. Input: "I received my salary of 1000 UZS"
-            Output: [{{"user_input": "I received my salary of 1000 UZS", "isDebtPayment": false, "forWhom": "", "category": "Mehnat daromadlari", "amount": 1000, "currency": "UZS", "type": "income", "date": "2024-06-16 20:34:59.25447+05", "deadline": ""}}]
-
-         4. Input: "I spent 50 sum on dinner at a restaurant"
-            Output: [{{"user_input": "I spent 50 sum on dinner at a restaurant", "isDebtPayment": false, "forWhom": "", "category": "Oziq-ovqat", "amount": 50, "currency": "UZS", "type": "outcome", "date": "2024-06-16 20:34:59.25447+05", "deadline": ""}}]
-
-         5. Input: "Nodir $200 qarzini berdi kecha"
-            Output: [{{"user_input": "Nodir $200 qarzini berdi kecha", "isDebtPayment": true, "forWhom": "Nodir", "category": "Moliyaviy majburiyatlar", "amount": 200, "currency": "USD", "type": "income", "date": "2024-06-15 20:34:59.25447+05", "deadline": ""}}]
-
-         6. Input: "Kecha anvar 100$ qarzini berdi"
-            Output: [{{"user_input": "Kecha anvar 100$ qarzini berdi", "isDebtPayment": true, "forWhom": "Anvar", "category": "Moliyaviy majburiyatlar", "amount": 100, "currency": "USD", "type": "income", "date": "2024-06-15 20:34:59.25447+05", "deadline": ""}}]
-
-         7. Input: "Anvarga qarz berdim 500 dollar. 21-mart 12:00:00+05 da qaytaradi."
-            Output: [{{"user_input": "Anvarga qarz berdim 500 dollar. 21-mart 12:00:00+05 da qaytaradi.", "isDebtPayment": true, "forWhom": "Anvar", "category": "Moliyaviy majburiyatlar", "amount": 500, "currency": "USD", "type": "outcome", "date": "2024-06-16 20:34:59.25447+05", "deadline": "2025-03-21 12:00:00.000000+05"}}]
-
-         8. Use that categories
-
-         otutcome: {
+         ## Categories:
+         outcome: {
             "categories": [
                "Uy-joy xarajatlari",
                "Oziq-ovqat",
@@ -205,12 +178,34 @@ const analyzeVoice = async (tempFilePath) => {
             ]
          }
 
+         ## Examples:
+         1. Input: "I paid $200 for my rent on 2024-06-15 10:00:00+05"
+            Output: [{{"user_input": "I paid $200 for my rent on 2024-06-15 10:00:00+05", "isDebtPayment": false, "forWhom": "", "category": "Uy-joy xarajatlari", "amount": 200, "currency": "USD", "type": "outcome", "date": "2024-06-15 10:00:00.000000+05", "deadline": ""}}]
+
+         2. Input: "I borrowed 500$ from Alex aka yesterday, he will return it on 2024-06-25 12:00:00+05"
+            Output: [{{"user_input": "I borrowed 500$ from Alex aka yesterday, he will return it on 2024-06-25 12:00:00+05", "isDebtPayment": true, "forWhom": "Alex aka", "category": "Moliyaviy majburiyatlar", "amount": 500, "currency": "USD", "type": "outcome", "date": "${current_datetime}", "deadline": "2024-06-25 12:00:00.000000+05"}}]
+
+         3. Input: "I received my salary of 1000 UZS"
+            Output: [{{"user_input": "I received my salary of 1000 UZS", "isDebtPayment": false, "forWhom": "", "category": "Mehnat daromadlari", "amount": 1000, "currency": "UZS", "type": "income", "date": "${current_datetime}", "deadline": ""}}]
+
+         4. Input: "I spent 50 sum on dinner at a restaurant"
+            Output: [{{"user_input": "I spent 50 sum on dinner at a restaurant", "isDebtPayment": false, "forWhom": "", "category": "Oziq-ovqat", "amount": 50, "currency": "UZS", "type": "outcome", "date": "${current_datetime}", "deadline": ""}}]
+
+         5. Input: "Nodir $200 qarzini berdi kecha"
+            Output: [{{"user_input": "Nodir $200 qarzini berdi kecha", "isDebtPayment": true, "forWhom": "Nodir", "category": "Moliyaviy majburiyatlar", "amount": 200, "currency": "USD", "type": "income", "date": "${current_datetime}", "deadline": ""}}]
+
+         6. Input: "Kecha anvar 100$ qarzini berdi"
+            Output: [{{"user_input": "Kecha anvar 100$ qarzini berdi", "isDebtPayment": true, "forWhom": "Anvar", "category": "Moliyaviy majburiyatlar", "amount": 100, "currency": "USD", "type": "income", "date": "${current_datetime}", "deadline": ""}}]
+
+         7. Input: "Anvarga qarz berdim 500 dollar. 21-mart 12:00:00+05 da qaytaradi."
+            Output: [{{"user_input": "Anvarga qarz berdim 500 dollar. 21-mart 12:00:00+05 da qaytaradi.", "isDebtPayment": true, "forWhom": "Anvar", "category": "Moliyaviy majburiyatlar", "amount": 500, "currency": "USD", "type": "outcome", "date": "${current_datetime}", "deadline": "2025-03-21 12:00:00.000000+05"}}]
+
          ## Now, process this input:
          "${await getTextFromAudio(uploadResult.file.uri)}"
 
          ## Input text only in Uzbek, English and Russian languages.
 
-         ## Output ONLY JSON. No explanations, no text, just JSON.
+         ## Output ONLY JSON. No explanations, no text, just JSON. If the input text is not suitable for financial statement extraction, output 'wrong'.
       `;
 
       const result = await model.generateContent([prompt]);

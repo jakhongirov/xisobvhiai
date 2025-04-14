@@ -209,6 +209,10 @@
 	"cancelTextRu": "Отмена 🚫",
 	"cancelTextEng": "Cancel 🚫",
 
+	"wrongTextUz": "Xato ma'lumot kiritildi",
+	"wrongTextRU": "Введена неверная информация.",
+	"wrongTextEng": "Incorrect information entered.",
+
 	"cronTextBefore2dayUz": "Premium obunangiz tugashiga 2 kun qoldi, davom ettirish uchun tarif to'lovini amalga oshirishingiz lozim",
 	"cronTextBefore2dayRu": "До окончания срока действия вашей премиум-подписки осталось 2 дня. Для продолжения необходимо оплатить тариф.",
 	"cronTextBefore2dayEng": "Your premium subscription has 2 days left to expire, you must pay the tariff to continue",

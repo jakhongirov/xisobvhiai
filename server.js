@@ -541,9 +541,9 @@ bot.on('message', async (msg) => {
 
             console.log(jsonData)
 
-            if (jsonData.length > 0) {
-               jsonData?.forEach(async (item) => {
+            if (jsonData?.length > 0) {
 
+               jsonData?.forEach(async (item) => {
                   if (item.isDebtPayment) {
                      if (foundUser?.bot_lang == 'uz') {
                         const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(item.deadline)}\n${localText.debtWhoTextUz} ${item.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}`;
@@ -1603,8 +1603,8 @@ bot.on('message', async (msg) => {
                writer.on('finish', async () => {
                   const jsonData = await analyzeVoice(`../../public/audios/temp_${fileId}.ogg`)
 
-                  if (jsonData.length > 0) {
-                     jsonData.forEach(async (item) => {
+                  if (jsonData?.length > 0) {
+                     jsonData?.forEach(async (item) => {
                         const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
                         const foundCategory = await model.foundCategory(item.category)
                         const addReport = await model.addReport(
@@ -1723,7 +1723,7 @@ bot.on('message', async (msg) => {
                         }
 
                      })
-                  } else {
+                  } else if (typeof jsonData === 'object' && value !== null && !Array.isArray(value)) {
                      const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
                      const foundCategory = await model.foundCategory(jsonData.category)
                      const addReport = await model.addReport(
@@ -1841,6 +1841,14 @@ bot.on('message', async (msg) => {
                         })
                      }
 
+                  } else if (jsonData == 'wrong') {
+                     if (foundUser.bot_lang == 'uz') {
+                        bot.sendMessage(chatId, localText.wrongTextUz)
+                     } else if (foundUser.bot_lang == 'ru') {
+                        bot.sendMessage(chatId, localText.wrongTextRU)
+                     } else if (foundUser.bot_lang == 'eng') {
+                        bot.sendMessage(chatId, localText.wrongTextEng)
+                     }
                   }
                })
             } catch (error) {
@@ -1850,8 +1858,8 @@ bot.on('message', async (msg) => {
          } else if (text && text != '/start') {
             const jsonData = await analyzeText(text)
 
-            if (jsonData.length > 0) {
-               jsonData.forEach(async (item) => {
+            if (jsonData?.length > 0) {
+               jsonData?.forEach(async (item) => {
                   const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
                   const foundCategory = await model.foundCategory(item.category)
                   const addReport = await model.addReport(
@@ -1970,7 +1978,7 @@ bot.on('message', async (msg) => {
                   }
 
                })
-            } else {
+            } else if (typeof jsonData === 'object' && value !== null && !Array.isArray(value)) {
                const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
                const foundCategory = await model.foundCategory(jsonData.category)
                const addReport = await model.addReport(
@@ -2086,6 +2094,14 @@ bot.on('message', async (msg) => {
                         ]
                      }
                   })
+               }
+            } else if (jsonData == 'wrong') {
+               if (foundUser.bot_lang == 'uz') {
+                  bot.sendMessage(chatId, localText.wrongTextUz)
+               } else if (foundUser.bot_lang == 'ru') {
+                  bot.sendMessage(chatId, localText.wrongTextRU)
+               } else if (foundUser.bot_lang == 'eng') {
+                  bot.sendMessage(chatId, localText.wrongTextEng)
                }
             }
          }
