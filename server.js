@@ -323,7 +323,15 @@ bot.on('message', async (msg) => {
                writer.on('finish', async () => {
                   const jsonData = await analyzeVoice(`../../public/audios/temp_${fileId}.ogg`)
 
-                  if (jsonData.length > 0) {
+                  if (jsonData == 'wrong') {
+                     if (foundUser.bot_lang == 'uz') {
+                        bot.sendMessage(chatId, localText.wrongTextUz)
+                     } else if (foundUser.bot_lang == 'ru') {
+                        bot.sendMessage(chatId, localText.wrongTextRU)
+                     } else if (foundUser.bot_lang == 'eng') {
+                        bot.sendMessage(chatId, localText.wrongTextEng)
+                     }
+                  } else if (jsonData.length > 0) {
                      jsonData?.forEach(async (item) => {
 
                         if (item.isDebtPayment) {
@@ -541,8 +549,15 @@ bot.on('message', async (msg) => {
 
             console.log(jsonData)
 
-            if (jsonData?.length > 0) {
-
+            if (jsonData == 'wrong') {
+               if (foundUser.bot_lang == 'uz') {
+                  bot.sendMessage(chatId, localText.wrongTextUz)
+               } else if (foundUser.bot_lang == 'ru') {
+                  bot.sendMessage(chatId, localText.wrongTextRU)
+               } else if (foundUser.bot_lang == 'eng') {
+                  bot.sendMessage(chatId, localText.wrongTextEng)
+               }
+            } else if (jsonData?.length > 0) {
                jsonData?.forEach(async (item) => {
                   if (item.isDebtPayment) {
                      if (foundUser?.bot_lang == 'uz') {
