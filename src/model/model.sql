@@ -9,7 +9,6 @@ CREATE TABLE users (
    id bigserial PRiMARY KEY,
    name text,
    phone_number text,
-   password text,
    premium boolean DEFAULT false,
    expired_date bigint,
    telegram_bot boolean DEFAULT false,

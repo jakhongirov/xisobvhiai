@@ -2155,6 +2155,7 @@ bot.on('callback_query', async (msg) => {
    if (data.startsWith('tarif_')) {
       const tarifId = data?.split('tarif_')[1]
       const tarif = await model.foundTarif(tarifId, foundUser?.bot_lang)
+      console.log(tarif)
       const foundPartner = await model.foundPartner(foundUser?.partner_id)
       const price =
          foundPartner?.discount > 0
@@ -2437,7 +2438,7 @@ bot.on('callback_query', async (msg) => {
          }
       } else if (tarif && !foundUser?.used_free && tarif.price === 0) {
          const expiredDate = calculateExpiredDate(Number(tarif.period))
-         await model.editPremium(chatId, expiredDate)
+         await model.editPremium(chatId, expxiredDate)
 
          if (foundUser?.bot_lang == 'uz') {
             bot.sendMessage(chatId, localText.menuTextUz, {
