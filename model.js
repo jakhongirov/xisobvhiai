@@ -583,6 +583,33 @@ const addMonthlyAmount = (chatId, price) => {
 
    return fetch(QUERY, chatId, price)
 }
+const editDuration = (chatId, duration) => {
+   const QUERY = `
+      UPDATE
+         users
+      SET
+         duration = $2
+      WHERE
+         chat_id = $1
+      RETURNING *;
+   `;
+
+   return fetch(QUERY, chatId, duration)
+}
+const userCard = (chatId) => {
+   const QUERY = `
+      SELECT
+         *
+      FROM
+         cards
+      WHERE
+         user_id = $1
+      ORDER BY
+         main;
+   `;
+
+   return fetchALL(QUERY, chatId)
+}
 
 module.exports = {
    foundUser,
@@ -612,5 +639,7 @@ module.exports = {
    editUsedFree,
    editPremium,
    addLimitAmount,
-   addMonthlyAmount
+   addMonthlyAmount,
+   editDuration,
+   userCard
 }
