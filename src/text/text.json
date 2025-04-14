@@ -5,6 +5,14 @@
 	"startTextRu": "Добро пожаловать! 👋\n\n📊 Xisobchi.ai — искусственный помощник, который автоматически управляет вашими личными финансами.\n\n💡 Что он может делать?:\n- Анализирует ваши доходы и расходы 📊\n- Классифицирует ваши расходы 🏷\n- Помогает сформировать финансовую дисциплину ✅\n\n⏩ Для продолжения укажите свой номер телефона, используя кнопку ниже.",
 	"startTextEng": "Welcome! 👋\n\n📊 Xisobchi.ai is an AI assistant that automatically manages your personal finances.\n\n💡 What can it do?:\n- Analyzes your income and expenses 📊\n- Categorizes your expenses 🏷\n- Helps you build financial discipline ✅\n\n⏩ To continue, send your phone number using the button below.",
 
+	"startText2Uz": "Davom etirsangiz shartlarga roziligingizni bildirad.",
+	"startText2Ru": "Продолжая, вы соглашаетесь с условиями.",
+	"startText2Eng": "By continuing, you agree to the terms and conditions.",
+
+	"ofertaUrlBtnUz": "Oferta link →",
+	"ofertaUrlBtnRu": "Предложение ссылки",
+	"ofertaUrlBtnEng": "Offer link",
+
 	"sendContactBtnUz": "📞 Yuborish",
 	"sendContactBtnRu": "📞 Отправить",
 	"sendContactBtnEng": "📞 Send",
