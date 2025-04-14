@@ -169,9 +169,9 @@
 	"priceTextRu": "Вы выбрали ставку %title%. Стоимость проезда составляет не менее %price%. Теперь произведите оплату удобным для вас способом:",
 	"priceTextEng": "You have selected the tariff %title%. The tariff price is at least %price%. Now make a payment in a convenient way for you:",
 
-	"clickTextUz": "Click ->",
-	"paymeTextUz": "Payme ->",
-	"uzumTextUz": "Uzum -> ",
+	"clickText": "Click ->",
+	"paymeText": "Payme ->",
+	"uzumText": "Uzum -> ",
 
 	"successfullyPaidUz": "✅ To’lovingiz muvaffaqiyatli amalga oshdi. Kirim va chiqimlaringizni istalgan ko'rinishda (ovoz, matn) yuborishni boshlashingiz mumkin, yordamchingiz esa yozib boraveradi.",
 	"successfullyPaidRu": "✅ Ваш платеж прошел успешно. Вы можете начать отправлять свои входные и выходные данные в любом формате (голос, текст), а ваш помощник продолжит запись.",
