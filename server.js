@@ -2326,7 +2326,7 @@ bot.on('callback_query', async (msg) => {
                }
             })
          }
-      } else if (price === 0 && tarif.price > 0) {
+      } else if (price == 0 && tarif.price > 0) {
          const expiredDate = calculateExpiredDate(Number(tarif.period))
          await model.editPremium(chatId, expiredDate)
 
@@ -2436,7 +2436,7 @@ bot.on('callback_query', async (msg) => {
                await model.editStep(chatId, 'menu')
             })
          }
-      } else if (tarif && !foundUser?.used_free && tarif.price === 0) {
+      } else if (tarif && !foundUser?.used_free && tarif.price == 0) {
          const expiredDate = calculateExpiredDate(Number(tarif.period))
          await model.editPremium(chatId, expiredDate)
 
