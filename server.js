@@ -1603,7 +1603,15 @@ bot.on('message', async (msg) => {
                writer.on('finish', async () => {
                   const jsonData = await analyzeVoice(`../../public/audios/temp_${fileId}.ogg`)
 
-                  if (jsonData?.length > 0) {
+                  if (jsonData == 'wrong') {
+                     if (foundUser.bot_lang == 'uz') {
+                        bot.sendMessage(chatId, localText.wrongTextUz)
+                     } else if (foundUser.bot_lang == 'ru') {
+                        bot.sendMessage(chatId, localText.wrongTextRU)
+                     } else if (foundUser.bot_lang == 'eng') {
+                        bot.sendMessage(chatId, localText.wrongTextEng)
+                     }
+                  } else if (jsonData?.length > 0) {
                      jsonData?.forEach(async (item) => {
                         const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
                         const foundCategory = await model.foundCategory(item.category)
@@ -1841,14 +1849,6 @@ bot.on('message', async (msg) => {
                         })
                      }
 
-                  } else if (jsonData == 'wrong') {
-                     if (foundUser.bot_lang == 'uz') {
-                        bot.sendMessage(chatId, localText.wrongTextUz)
-                     } else if (foundUser.bot_lang == 'ru') {
-                        bot.sendMessage(chatId, localText.wrongTextRU)
-                     } else if (foundUser.bot_lang == 'eng') {
-                        bot.sendMessage(chatId, localText.wrongTextEng)
-                     }
                   }
                })
             } catch (error) {
@@ -1858,7 +1858,15 @@ bot.on('message', async (msg) => {
          } else if (text && text != '/start') {
             const jsonData = await analyzeText(text)
 
-            if (jsonData?.length > 0) {
+            if (jsonData == 'wrong') {
+               if (foundUser.bot_lang == 'uz') {
+                  bot.sendMessage(chatId, localText.wrongTextUz)
+               } else if (foundUser.bot_lang == 'ru') {
+                  bot.sendMessage(chatId, localText.wrongTextRU)
+               } else if (foundUser.bot_lang == 'eng') {
+                  bot.sendMessage(chatId, localText.wrongTextEng)
+               }
+            } else if (jsonData?.length > 0) {
                jsonData?.forEach(async (item) => {
                   const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
                   const foundCategory = await model.foundCategory(item.category)
@@ -2094,14 +2102,6 @@ bot.on('message', async (msg) => {
                         ]
                      }
                   })
-               }
-            } else if (jsonData == 'wrong') {
-               if (foundUser.bot_lang == 'uz') {
-                  bot.sendMessage(chatId, localText.wrongTextUz)
-               } else if (foundUser.bot_lang == 'ru') {
-                  bot.sendMessage(chatId, localText.wrongTextRU)
-               } else if (foundUser.bot_lang == 'eng') {
-                  bot.sendMessage(chatId, localText.wrongTextEng)
                }
             }
          }
