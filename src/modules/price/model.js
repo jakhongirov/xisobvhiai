@@ -36,7 +36,7 @@ const addPrice = (
             $4,
             $5,
             $6
-         ) RETURNING *:
+         ) RETURNING *;
    `;
 
    return fetch(
