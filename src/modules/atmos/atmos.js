@@ -108,18 +108,23 @@ module.exports = {
                      })
                   } else {
                      const foundPartner = await model.foundPartner(checkUser?.partner_id);
+                     const foundTarif = await model.foundTarif(30);
                      let price;
 
                      if (foundPartner?.duration) {
-                        price = checkUser.monthly_amount;
+                        price =
+                           foundPartner?.discount > 0
+                              ? Math.max(foundTarif.price - foundPartner.discount, 0)
+                              : foundPartner?.additional > 0
+                                 ? Math.max(foundTarif.price + foundPartner.additional, 0)
+                                 : foundTarif.price;
                      } else {
-                        const foundTarif = await model.foundTarif(30);
                         price = foundTarif.price;
                      }
 
                      await model.editMonthlyAmount(checkUser.id, price)
 
-                     if (price === 0) {
+                     if (price == 0) {
                         const expiredDate = await calculateExpiredDate(30)
                         const editUserPremium = await model.editUserPremium(chat_id, expiredDate)
                         const profitAmount = (price * foundPartner.profit) / 100;
