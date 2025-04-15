@@ -49,7 +49,9 @@ CREATE TABLE balances (
 
 CREATE TABLE categories (
    id bigserial PRiMARY KEY,
-   name text,
+   name_uz text,
+   name_ru text,
+   name_en text,
    emoji text,
    "primary" boolean DEFAULT false,
    create_at timestamptz DEFAULT CURRENT_TIMESTAMP

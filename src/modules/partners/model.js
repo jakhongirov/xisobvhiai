@@ -28,7 +28,7 @@ const foundPartner = (id) => {
          id = $1;
    `;
 
-   return fetchALL(QUERY)
+   return fetchALL(QUERY, id)
 }
 
 const addPartner = (
