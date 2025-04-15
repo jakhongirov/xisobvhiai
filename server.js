@@ -2549,6 +2549,7 @@ bot.on('message', async (msg) => {
          }
       } else if (text != '/start' && !foundUser.premium && !foundUser.bot_step != 'register') {
          if (foundUser?.bot_lang == 'uz') {
+            const priceList = await model.priceList(foundUser?.bot_lang)
             const priceKeyboard = priceList
                .filter(item => !(foundUser?.used_free && item.price == 0))
                .map(item => {
@@ -2581,8 +2582,8 @@ bot.on('message', async (msg) => {
          } else if (foundUser?.bot_lang == 'ru') {
             const priceList = await model.priceList(foundUser?.bot_lang)
             const priceKeyboard = priceList
-               .filter(item => !(foundUser?.used_free && item.price == 0))
-               .map(item => {
+               ?.filter(item => !(foundUser?.used_free && item.price == 0))
+               ?.map(item => {
                   const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
 
                   if (item.period == 30) {
