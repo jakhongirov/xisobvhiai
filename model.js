@@ -425,7 +425,7 @@ const foundCategory = (name) => {
       FROM
          categories
       WHERE
-         name = $1;
+         name_uz = $1;
    `;
 
    return fetch(QUERY, name)
