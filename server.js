@@ -2547,7 +2547,7 @@ bot.on('message', async (msg) => {
                }
             }
          }
-      } else if (text != '/start' || !foundUser.premium || foundUser.bot_step || 'register' || foundUser.bot_step != 'ask_name') {
+      } else if (text != '/start' || !foundUser.premium || foundUser.bot_step != 'register' || foundUser.bot_step != 'ask_name') {
          if (foundUser?.bot_lang == 'uz') {
             const priceList = await model.priceList(foundUser?.bot_lang)
             const priceKeyboard = priceList
