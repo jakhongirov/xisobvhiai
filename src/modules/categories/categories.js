@@ -86,8 +86,8 @@ module.exports = {
          )
 
          if (editCategory) {
-            return res.status(201).json({
-               status: 201,
+            return res.status(200).json({
+               status: 200,
                message: "Success",
                data: editCategory
             })
@@ -114,8 +114,8 @@ module.exports = {
          const deleteCategory = await model.deleteCategory(id)
 
          if (deleteCategory) {
-            return res.status(201).json({
-               status: 201,
+            return res.status(200).json({
+               status: 200,
                message: "Success",
                data: deleteCategory
             })

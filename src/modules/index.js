@@ -1928,7 +1928,7 @@ router
     *                 type: boolean
     *                 example: false
     *     responses:
-    *       201:
+    *       200:
     *         description: Category updated successfully
     *         content:
     *           application/json:
@@ -1937,7 +1937,7 @@ router
     *               properties:
     *                 status:
     *                   type: integer
-    *                   example: 201
+    *                   example: 200
     *                 message:
     *                   type: string
     *                   example: Success
@@ -1991,7 +1991,7 @@ router
     *                 type: integer
     *                 example: 5
     *     responses:
-    *       201:
+    *       200:
     *         description: Category deleted successfully
     *         content:
     *           application/json:
@@ -2000,7 +2000,7 @@ router
     *               properties:
     *                 status:
     *                   type: integer
-    *                   example: 201
+    *                   example: 200
     *                 message:
     *                   type: string
     *                   example: Success

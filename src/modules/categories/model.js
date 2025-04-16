@@ -64,7 +64,7 @@ const editCategory = (
          name_ru = $3,
          name_en = $4,
          emoji = $5,
-         "primary" = 6
+         "primary" = $6
       WHERE
          id = $1
       RETURNING *;
