@@ -116,6 +116,18 @@ const usersRegistered = (day) => {
 
    return fetchALL(QUERY)
 }
+const priceMonthly = () => {
+   const QUERY = `
+      SELECT
+         *
+      FROM
+         price
+      WHERE
+         period = 30;
+   `;
+
+   return fetch(QUERY)
+}
 const incomeSum = (id) => {
    const QUERY = `
       SELECT 
@@ -246,6 +258,7 @@ module.exports = {
    editUserPremium,
    markUserAsBlocked,
    usersRegistered,
+   priceMonthly,
    incomeSum,
    outputSum,
    atmosToken,
