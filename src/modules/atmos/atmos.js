@@ -127,8 +127,10 @@ module.exports = {
                      if (price == 0) {
                         const expiredDate = await calculateExpiredDate(30)
                         const editUserPremium = await model.editUserPremium(chat_id, expiredDate)
-                        const profitAmount = (price * foundPartner.profit) / 100;
-                        await model.editPartnerProfit(foundPartner.id, profitAmount)
+                        if (foundPartner) {
+                           const profitAmount = (price * foundPartner?.profit) / 100;
+                           await model.editPartnerProfit(foundPartner.id, profitAmount)
+                        }
 
                         if (editUserPremium?.bot_lang == 'uz') {
                            bot.sendMessage(chat_id, localText.successfullyPaidUz, {
@@ -244,7 +246,7 @@ module.exports = {
 
                      } else {
                         const atmosCreatePay = await atmos.createPay(
-                           price,
+                           Number(price * 100),
                            chat_id,
                            atmosToken?.token,
                            atmosToken?.expires
@@ -474,8 +476,10 @@ module.exports = {
                   } else if (price == 0) {
                      const expiredDate = await calculateExpiredDate(30)
                      const editUserPremium = await model.editUserPremium(checkUser.id, expiredDate)
-                     const profitAmount = (price * foundPartner.profit) / 100;
-                     await model.editPartnerProfit(foundPartner.id, profitAmount)
+                     if (foundPartner) {
+                        const profitAmount = (price * foundPartner?.profit) / 100;
+                        await model.editPartnerProfit(foundPartner.id, profitAmount)
+                     }
 
                      if (editUserPremium?.bot_lang == 'uz') {
                         bot.sendMessage(chat_id, localText.successfullyPaidUz, {
@@ -590,7 +594,7 @@ module.exports = {
                      })
                   } else {
                      const atmosCreatePay = await atmos.createPay(
-                        price,
+                        Number(price * 100),
                         chat_id,
                         atmosToken?.token,
                         atmosToken?.expires
@@ -629,9 +633,10 @@ module.exports = {
 
                               const expiredDate = await calculateExpiredDate(30)
                               const editUserPremium = await model.editUserPremium(checkUser.id, expiredDate)
-                              const profitAmount = (price * foundPartner.profit) / 100;
-                              await model.editPartnerProfit(foundPartner.id, profitAmount)
-
+                              if (foundPartner) {
+                                 const profitAmount = (price * foundPartner?.profit) / 100;
+                                 await model.editPartnerProfit(foundPartner.id, profitAmount)
+                              }
                               if (addCheck && editUserPremium) {
                                  if (editUserPremium?.bot_lang == 'uz') {
                                     bot.sendMessage(chat_id, localText.successfullyPaidUz, {
