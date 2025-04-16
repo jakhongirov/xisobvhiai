@@ -421,7 +421,8 @@ const foundBalance = (id, currency) => {
 const foundCategory = (name) => {
    const QUERY = `
       SELECT
-         *
+         *,
+         name_uz as name
       FROM
          categories
       WHERE
