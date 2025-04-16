@@ -16,6 +16,7 @@ const transaction = require('./transaction/transaction')
 const partners = require('./partners/partners')
 const price = require('./price/price')
 const categories = require('./categories/categories')
+const cards = require('./cards/cards')
 
 router
 
@@ -2037,5 +2038,216 @@ router
     *                   example: Interval Server Error
     */
    .delete('/categories', AUTH, categories.DELETE_CATEGORY)
+
+   // CARDS
+   /**
+    * @swagger
+    * components:
+    *   schemas:
+    *     Card:
+    *       type: object
+    *       properties:
+    *         id:
+    *           type: integer
+    *           example: 1
+    *         card_number_hash:
+    *           type: string
+    *           example: "e9a1b2c3d4e5f6789012"
+    *         card_id:
+    *           type: integer
+    *           example: 123456
+    *         expiry:
+    *           type: string
+    *           example: "12/26"
+    *         otp:
+    *           type: integer
+    *           example: 4321
+    *         card_token:
+    *           type: string
+    *           example: "eyJhbg9..."
+    *         phone_number:
+    *           type: string
+    *           example: "+998901234567"
+    *         card_holder:
+    *           type: string
+    *           example: "John Doe"
+    *         transaction_id:
+    *           type: integer
+    *           example: 7890
+    *         main:
+    *           type: boolean
+    *           example: false
+    *         user_id:
+    *           type: integer
+    *           example: 45
+    *         active:
+    *           type: boolean
+    *           example: true
+    *         create_at:
+    *           type: string
+    *           format: date-time
+    *           example: "2025-04-13T14:55:30.000Z"
+    */
+
+   /**
+    * @swagger
+    * tags:
+    *    name: Cards
+    *    description: Cards managing API
+    */
+
+   /**
+    * @swagger
+    * /cards:
+    *   get:
+    *     summary: Get paginated list of cards
+    *     tags: [Cards]
+    *     parameters:
+    *       - in: query
+    *         name: limit
+    *         schema:
+    *           type: integer
+    *         required: true
+    *         description: Number of cards to return per page
+    *       - in: query
+    *         name: page
+    *         schema:
+    *           type: integer
+    *         required: true
+    *         description: Page number to retrieve
+    *     responses:
+    *       200:
+    *         description: List of cards retrieved successfully
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 200
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   type: array
+    *                   items:
+    *                     $ref: '#/components/schemas/Card'
+    *       400:
+    *         description: Missing limit or page query parameter
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 400
+    *                 message:
+    *                   type: string
+    *                   example: Bad request
+    *       404:
+    *         description: No cards found
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 404
+    *                 message:
+    *                   type: string
+    *                   example: Not found
+    *       500:
+    *         description: Internal server error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .get('/card/list', AUTH, cards.GET)
+
+   /**
+    * @swagger
+    * /cards:
+    *   delete:
+    *     summary: Delete a card by ID
+    *     tags: [Cards]
+    *     requestBody:
+    *       required: true
+    *       content:
+    *         application/json:
+    *           schema:
+    *             type: object
+    *             required:
+    *               - id
+    *             properties:
+    *               id:
+    *                 type: integer
+    *                 example: 123
+    *                 description: Card ID to delete
+    *     responses:
+    *       200:
+    *         description: Card successfully deleted
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 200
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *       400:
+    *         description: Failed to delete the card
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 400
+    *                 message:
+    *                   type: string
+    *                   example: Bad request
+    *       404:
+    *         description: Card not found
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 404
+    *                 message:
+    *                   type: string
+    *                   example: Not found
+    *       500:
+    *         description: Internal server error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .delete('/card/delete', AUTH, cards.DELETE_CARD)
 
 module.exports = router
