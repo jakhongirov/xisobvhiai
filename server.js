@@ -193,7 +193,7 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
          },
       }).then(async () => {
          if (param) {
-            const [partnerName, source] = param?.split(' ');
+            const [partnerName, source] = param?.split('/');
             const partner = await model.foundPartnerName(partnerName)
             await model.createUser(chatId, 'language', partner.id, source);
          } else {
@@ -999,12 +999,12 @@ bot.on('message', async (msg) => {
          const currentMonth = new Date().getMonth() + 1;
          const monthlyInput = await model.monthlyInput(foundUser.id, currentMonth)
          const monthlyOutput = await model.monthlyOutput(foundUser.id, currentMonth)
-         const monthltyByCategories = await model.monthltyByCategories(foundUser.id, currentMonth)
+         const monthlyByCategories = await model.monthlyByCategories(foundUser.id, currentMonth)
 
          const replacedText = localText.reportMonthlyTextUz
             .replace(/%monthName%/g, months.find(m => m.number == currentMonth).name_uz)
 
-         const reportMonthly = `${replacedText}\n\n${localText.reportInputTextUz} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextUz} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextUz}\n${monthltyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
+         const reportMonthly = `${replacedText}\n\n${localText.reportInputTextUz} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextUz} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextUz}\n${monthlyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
 
          bot.sendMessage(chatId, reportMonthly, {
             parse_mode: "HTML",
@@ -1035,12 +1035,12 @@ bot.on('message', async (msg) => {
          const currentMonth = new Date().getMonth() + 1;
          const monthlyInput = await model.monthlyInput(foundUser.id, currentMonth)
          const monthlyOutput = await model.monthlyOutput(foundUser.id, currentMonth)
-         const monthltyByCategories = await model.monthltyByCategories(foundUser.id, currentMonth)
+         const monthlyByCategories = await model.monthlyByCategories(foundUser.id, currentMonth)
 
          const replacedText = localText.reportMonthlyTextRu
             .replace(/%monthName%/g, months.find(m => m.number == currentMonth).name_ru)
 
-         const reportMonthly = `${replacedText}\n\n${localText.reportInputTextRu} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextRu} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextRu}\n${monthltyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
+         const reportMonthly = `${replacedText}\n\n${localText.reportInputTextRu} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextRu} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextRu}\n${monthlyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
 
          bot.sendMessage(chatId, reportMonthly, {
             parse_mode: "HTML",
@@ -1071,12 +1071,12 @@ bot.on('message', async (msg) => {
          const currentMonth = new Date().getMonth() + 1;
          const monthlyInput = await model.monthlyInput(foundUser.id, currentMonth)
          const monthlyOutput = await model.monthlyOutput(foundUser.id, currentMonth)
-         const monthltyByCategories = await model.monthltyByCategories(foundUser.id, currentMonth)
+         const monthlyByCategories = await model.monthlyByCategories(foundUser.id, currentMonth)
 
          const replacedText = localText.reportMonthlyTextEng
             .replace(/%monthName%/g, months.find(m => m.number == currentMonth).name_eng)
 
-         const reportMonthly = `${replacedText}\n\n${localText.reportInputTextEng} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextEng} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextEng}\n${monthltyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
+         const reportMonthly = `${replacedText}\n\n${localText.reportInputTextEng} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextEng} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextEng}\n${monthlyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
 
          bot.sendMessage(chatId, reportMonthly, {
             parse_mode: "HTML",
@@ -1860,13 +1860,13 @@ bot.on('message', async (msg) => {
          const foundMonth = months.find(item => item.name == text)
          const monthlyInput = await model.monthlyInput(foundUser.id, foundMonth.number)
          const monthlyOutput = await model.monthlyOutput(foundUser.id, foundMonth.number)
-         const monthltyByCategories = await model.monthltyByCategories(foundUser.id, foundMonth.number)
+         const monthlyByCategories = await model.monthlyByCategories(foundUser.id, foundMonth.number)
 
          if (foundUser?.bot_lang == 'uz') {
             const replacedText = localText.reportMonthlyTextUz
                .replace(/%monthName%/g, foundMonth.name_uz)
 
-            const reportMonthly = `${replacedText}\n\n${localText.reportInputTextUz} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextUz} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextUz}\n${monthltyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
+            const reportMonthly = `${replacedText}\n\n${localText.reportInputTextUz} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextUz} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextUz}\n${monthlyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
 
             bot.sendMessage(chatId, reportMonthly, {
                parse_mode: "HTML",
@@ -1897,7 +1897,7 @@ bot.on('message', async (msg) => {
             const replacedText = localText.reportMonthlyTextRu
                .replace(/%monthName%/g, foundMonth.name_ru)
 
-            const reportMonthly = `${replacedText}\n\n${localText.reportInputTextRu} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextRu} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextRu}\n${monthltyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
+            const reportMonthly = `${replacedText}\n\n${localText.reportInputTextRu} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextRu} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextRu}\n${monthlyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
 
             bot.sendMessage(chatId, reportMonthly, {
                parse_mode: "HTML",
@@ -1928,7 +1928,7 @@ bot.on('message', async (msg) => {
             const replacedText = localText.reportMonthlyTextEng
                .replace(/%monthName%/g, foundMonth.name_ru)
 
-            const reportMonthly = `${replacedText}\n\n${localText.reportInputTextEng} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextEng} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextEng}\n${monthltyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
+            const reportMonthly = `${replacedText}\n\n${localText.reportInputTextEng} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextEng} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextEng}\n${monthlyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
 
             bot.sendMessage(chatId, reportMonthly, {
                parse_mode: "HTML",

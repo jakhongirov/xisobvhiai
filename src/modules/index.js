@@ -15,6 +15,7 @@ const users = require('./users/users')
 const transaction = require('./transaction/transaction')
 const partners = require('./partners/partners')
 const price = require('./price/price')
+const categories = require('./categories/categories')
 
 router
 
@@ -1719,5 +1720,322 @@ router
     *                   example: Interval Server Error
     */
    .delete('/price', AUTH, price.DELETE_PRICE)
+
+   // CATEGORIES
+   /**
+    * @swagger
+    * components:
+    *   schemas:
+    *     Category:
+    *       type: object
+    *       properties:
+    *         id:
+    *           type: integer
+    *           example: 1
+    *         name_uz:
+    *           type: string
+    *           example: "Salomatlik"
+    *         name_ru:
+    *           type: string
+    *           example: "Здоровье"
+    *         name_en:
+    *           type: string
+    *           example: "Health"
+    *         emoji:
+    *           type: string
+    *           example: "💊"
+    *         "1":
+    *           type: boolean
+    *           description: Optional flag (not recommended as '1')
+    *           example: false
+    *         create_at:
+    *           type: string
+    *           format: date-time
+    *           example: "2025-04-13T12:00:00Z"
+    */
+
+   /**
+    * @swagger
+    * tags:
+    *    name: Categories
+    *    description: Categories managing API
+    */
+
+   /**
+    * @swagger
+    * /categories:
+    *   get:
+    *     summary: Get all categories
+    *     tags: [Categories]
+    *     responses:
+    *       200:
+    *         description: List of categories retrieved successfully
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 200
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   type: array
+    *                   items:
+    *                     $ref: '#/components/schemas/Category'
+    *       404:
+    *         description: No categories found
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 404
+    *                 message:
+    *                   type: string
+    *                   example: Not found
+    *       500:
+    *         description: Server error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .get('/categories', AUTH, categories.GET)
+
+   /**
+    * @swagger
+    * /categories:
+    *   post:
+    *     summary: Add a new category
+    *     tags: [Categories]
+    *     requestBody:
+    *       required: true
+    *       content:
+    *         application/json:
+    *           schema:
+    *             type: object
+    *             required:
+    *               - name_uz
+    *               - name_ru
+    *               - name_en
+    *             properties:
+    *               name_uz:
+    *                 type: string
+    *                 example: "Salomatlik"
+    *               name_ru:
+    *                 type: string
+    *                 example: "Здоровье"
+    *               name_en:
+    *                 type: string
+    *                 example: "Health"
+    *               emoji:
+    *                 type: string
+    *                 example: "💊"
+    *               primary:
+    *                 type: boolean
+    *                 example: true
+    *     responses:
+    *       201:
+    *         description: Category added successfully
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 201
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   $ref: '#/components/schemas/Category'
+    *       400:
+    *         description: Invalid input or bad request
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 400
+    *                 message:
+    *                   type: string
+    *                   example: Bad request
+    *       500:
+    *         description: Internal server error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .post('/categories', AUTH, categories.ADD_CATEGORY)
+
+   /**
+    * @swagger
+    * /categories:
+    *   put:
+    *     summary: Edit an existing category
+    *     tags: [Categories]
+    *     requestBody:
+    *       required: true
+    *       content:
+    *         application/json:
+    *           schema:
+    *             type: object
+    *             required:
+    *               - id
+    *               - name_uz
+    *               - name_ru
+    *               - name_en
+    *             properties:
+    *               id:
+    *                 type: integer
+    *                 example: 1
+    *               name_uz:
+    *                 type: string
+    *                 example: "Texnologiya"
+    *               name_ru:
+    *                 type: string
+    *                 example: "Технология"
+    *               name_en:
+    *                 type: string
+    *                 example: "Technology"
+    *               emoji:
+    *                 type: string
+    *                 example: "💻"
+    *               primary:
+    *                 type: boolean
+    *                 example: false
+    *     responses:
+    *       201:
+    *         description: Category updated successfully
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 201
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   $ref: '#/components/schemas/Category'
+    *       400:
+    *         description: Bad request or validation error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 400
+    *                 message:
+    *                   type: string
+    *                   example: Bad request
+    *       500:
+    *         description: Server error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .put('/categories', AUTH, categories.EDIT_CATEGORY)
+
+   /**
+    * @swagger
+    * /categories:
+    *   delete:
+    *     summary: Delete a category by ID
+    *     tags: [Categories]
+    *     requestBody:
+    *       required: true
+    *       content:
+    *         application/json:
+    *           schema:
+    *             type: object
+    *             required:
+    *               - id
+    *             properties:
+    *               id:
+    *                 type: integer
+    *                 example: 5
+    *     responses:
+    *       201:
+    *         description: Category deleted successfully
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 201
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   type: object
+    *                   example:
+    *                     id: 5
+    *                     name_uz: "Deleted Category"
+    *       400:
+    *         description: Bad request (e.g. missing or invalid ID)
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 400
+    *                 message:
+    *                   type: string
+    *                   example: Bad request
+    *       500:
+    *         description: Internal server error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .delete('/categories', AUTH, categories.DELETE_CATEGORY)
 
 module.exports = router

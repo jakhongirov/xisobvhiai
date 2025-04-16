@@ -252,14 +252,14 @@ const monthlyOutput = (id, currentMonth) => {
 
    return fetchALL(QUERY, id, currentMonth)
 }
-const monthltyByCategories = (id, currentMonth) => {
+const monthlyByCategories = (id, currentMonth) => {
    const QUERY = `
       SELECT 
          h.balance_id,
          SUM(h.amount) AS amount,
          b.currency,
          b.title,
-         c.name,
+         c.name_uz as name,
          c.id
       FROM 
          histories_balance h
@@ -277,7 +277,7 @@ const monthltyByCategories = (id, currentMonth) => {
          AND EXTRACT(MONTH FROM h.date::date) = $2
          AND h.user_id = $1
       GROUP BY 
-         h.balance_id, b.currency, b.title, c.id, c.name
+         h.balance_id, b.currency, b.title, c.id, c.name_uz
       ORDER BY 
          h.balance_id;
    `;
@@ -344,7 +344,7 @@ const historiesBalanceCurrentMonthOutcome = (id, currentMonth) => {
          h.comment,
          b.currency,
          b.title,
-         c.name
+         c.name_uz as name
       FROM 
          histories_balance h
       JOIN
@@ -380,7 +380,7 @@ const historiesBalanceCurrentMonthIncome = (id, currentMonth) => {
          h.comment,
          b.currency,
          b.title,
-         c.name
+         c.name_uz as name
       FROM 
          histories_balance h
       JOIN
@@ -625,7 +625,7 @@ module.exports = {
    foundTarif,
    monthlyInput,
    monthlyOutput,
-   monthltyByCategories,
+   monthlyByCategories,
    userBalances,
    debtsList,
    historiesBalanceCurrentMonthOutcome,

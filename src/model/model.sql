@@ -18,6 +18,7 @@ CREATE TABLE users (
    duration boolean DEFAULT false,
    source text,
    partner_id bigint,
+   partner_name text,
    monthly_amount bigint DEFAULT 0,
    limit_amount bigint DEFAULT 0,
    user_blocked boolean DEFAULT false,
@@ -53,7 +54,7 @@ CREATE TABLE categories (
    name_ru text,
    name_en text,
    emoji text,
-   "primary" boolean DEFAULT false,
+   "1" boolean DEFAULT false,
    create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
