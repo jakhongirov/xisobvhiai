@@ -283,8 +283,10 @@ module.exports = {
 
                                  const expiredDate = await calculateExpiredDate(30)
                                  const editUserPremium = await model.editUserPremium(checkUser.id, expiredDate)
-                                 const profitAmount = (price * foundPartner.profit) / 100;
-                                 await model.editPartnerProfit(foundPartner.id, profitAmount)
+                                 if (foundPartner) {
+                                    const profitAmount = (price * foundPartner?.profit) / 100;
+                                    await model.editPartnerProfit(foundPartner.id, profitAmount)
+                                 }
 
                                  if (addCheck && editUserPremium) {
                                     if (editUserPremium?.bot_lang == 'uz') {
