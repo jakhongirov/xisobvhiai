@@ -290,7 +290,7 @@ const sendMessageAdvice = async () => {
          for (const user of usersRegisteredfor5days) {
             if (user.bot_lang == 'uz') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister5dayUz.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister5dayUz.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -305,7 +305,7 @@ const sendMessageAdvice = async () => {
                })
             } else if (user.bot_lang == 'ru') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister5dayRu.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister5dayRu.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -320,7 +320,7 @@ const sendMessageAdvice = async () => {
                })
             } else if (user.bot_lang == 'eng') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister5dayEng.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister5dayEng.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -335,7 +335,7 @@ const sendMessageAdvice = async () => {
                })
             } else {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister5dayUz.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister5dayUz.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -356,7 +356,7 @@ const sendMessageAdvice = async () => {
          for (const user of usersRegisteredfor4days) {
             if (user.bot_lang == 'uz') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister4dayUz.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister4dayUz.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -371,7 +371,7 @@ const sendMessageAdvice = async () => {
                })
             } else if (user.bot_lang == 'ru') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister4dayRu.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister4dayRu.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -386,7 +386,7 @@ const sendMessageAdvice = async () => {
                })
             } else if (user.bot_lang == 'eng') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister4dayEng.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister4dayEng.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -401,7 +401,7 @@ const sendMessageAdvice = async () => {
                })
             } else {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister4dayUz.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister4dayUz.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -422,7 +422,7 @@ const sendMessageAdvice = async () => {
          for (const user of usersRegisteredfor3days) {
             if (user.bot_lang == 'uz') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister3dayUz.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister3dayUz.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -437,7 +437,7 @@ const sendMessageAdvice = async () => {
                })
             } else if (user.bot_lang == 'ru') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister3dayRu.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister3dayRu.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -452,7 +452,7 @@ const sendMessageAdvice = async () => {
                })
             } else if (user.bot_lang == 'eng') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister3dayEng.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister3dayEng.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -467,7 +467,7 @@ const sendMessageAdvice = async () => {
                })
             } else {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister3dayUz.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister3dayUz.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -488,7 +488,7 @@ const sendMessageAdvice = async () => {
          for (const user of usersRegisteredfor2days) {
             if (user.bot_lang == 'uz') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister2dayUz.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister2dayUz.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -503,7 +503,7 @@ const sendMessageAdvice = async () => {
                })
             } else if (user.bot_lang == 'ru') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister2dayRu.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister2dayRu.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -518,7 +518,7 @@ const sendMessageAdvice = async () => {
                })
             } else if (user.bot_lang == 'eng') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister2dayEng.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister2dayEng.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -533,7 +533,7 @@ const sendMessageAdvice = async () => {
                })
             } else {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister2dayUz.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister2dayUz.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -554,7 +554,7 @@ const sendMessageAdvice = async () => {
          for (const user of usersRegisteredfor1days) {
             if (user.bot_lang == 'uz') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister1dayUz.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister1dayUz.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -569,7 +569,7 @@ const sendMessageAdvice = async () => {
                })
             } else if (user.bot_lang == 'ru') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister1dayRu.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister1dayRu.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -584,7 +584,7 @@ const sendMessageAdvice = async () => {
                })
             } else if (user.bot_lang == 'eng') {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister1dayEng.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister1dayEng.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -599,7 +599,7 @@ const sendMessageAdvice = async () => {
                })
             } else {
                bot.sendMessage(user.chat_id,
-                  localText.cronTextRegister1dayUz.replace(/%price%/g, formatBalanceWithSpaces(user.monthly_amount)), {
+                  localText.cronTextRegister1dayUz.replace(/%price%/g, formatBalanceWithSpaces(Number(user.monthly_amount))), {
                   parse_mode: "HTML",
                   reply_markup: {
                      inline_keyboard: [
@@ -624,7 +624,7 @@ const pay = async (user, userCard) => {
    const atmosToken = await model.atmosToken()
 
    const createPay = await atmos.createPay(
-      user.monthly_amount,
+      Number(user.monthly_amount),
       user?.chat_id,
       atmosToken?.token,
       atmosToken?.expires

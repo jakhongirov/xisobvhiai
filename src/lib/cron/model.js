@@ -111,7 +111,7 @@ const usersRegistered = (day) => {
       FROM
          users
       WHERE
-         create_at::date = (CURRENT_DATE - INTERVAL '${day} days');
+         create_at::date = (CURRENT_DATE - INTERVAL '${day} days') and premium = false;
    `;
 
    return fetchALL(QUERY)
