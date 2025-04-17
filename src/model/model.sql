@@ -19,7 +19,6 @@ CREATE TABLE users (
    source text,
    partner_id bigint,
    partner_name text,
-   partner_name text,
    monthly_amount bigint DEFAULT 0,
    limit_amount bigint DEFAULT 0,
    user_blocked boolean DEFAULT false,
