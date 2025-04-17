@@ -43,6 +43,7 @@ const createUser = (
    chatId,
    step,
    partner_id,
+   partner_name,
    source
 ) => {
    const QUERY = `
@@ -51,12 +52,14 @@ const createUser = (
             chat_id,
             bot_step,
             partner_id,
+            partner_name,
             source
          ) VALUES (
             $1,
             $2,
             $3,
-            $4
+            $4,
+            $5
          ) RETURNING *;
    `;
 
@@ -65,6 +68,7 @@ const createUser = (
       chatId,
       step,
       partner_id,
+      partner_name,
       source
    )
 }
