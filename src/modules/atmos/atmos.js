@@ -284,7 +284,7 @@ module.exports = {
                                  )
 
                                  const expiredDate = await calculateExpiredDate(30)
-                                 const editUserPremium = await model.editUserPremium(checkUser.id, expiredDate)
+                                 const editUserPremium = await model.editUserPremium(checkUser.chat_id, expiredDate)
                                  if (foundPartner) {
                                     const profitAmount = (price * foundPartner?.profit) / 100;
                                     await model.editPartnerProfit(foundPartner.id, profitAmount)
@@ -475,7 +475,7 @@ module.exports = {
                      })
                   } else if (price == 0) {
                      const expiredDate = await calculateExpiredDate(30)
-                     const editUserPremium = await model.editUserPremium(checkUser.id, expiredDate)
+                     const editUserPremium = await model.editUserPremium(checkUser.chat_id, expiredDate)
                      if (foundPartner) {
                         const profitAmount = (price * foundPartner?.profit) / 100;
                         await model.editPartnerProfit(foundPartner.id, profitAmount)
@@ -632,7 +632,7 @@ module.exports = {
                               )
 
                               const expiredDate = await calculateExpiredDate(30)
-                              const editUserPremium = await model.editUserPremium(checkUser.id, expiredDate)
+                              const editUserPremium = await model.editUserPremium(checkUser.chat_id, expiredDate)
                               if (foundPartner) {
                                  const profitAmount = (price * foundPartner?.profit) / 100;
                                  await model.editPartnerProfit(foundPartner.id, profitAmount)
