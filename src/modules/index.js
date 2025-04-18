@@ -605,7 +605,7 @@ router
 
    //  PAYMENT
    .get('/payment/check/:chat_id/:tarif/:amount', payment.CHECK)
-   .get('/payment/success/:chat_id/:tarif', payment.SUCCESS)
+   .get('/payment/success/:chat_id/:tarif/:method/:trans_id/:amount', payment.SUCCESS)
 
    // TRANSACTION
 

@@ -277,7 +277,7 @@ module.exports = {
                                  const addCheck = await model.addCheck(
                                     chat_id,
                                     atmosApply?.store_transaction?.success_trans_id,
-                                    "CARD",
+                                    "ATMOS",
                                     atmosApply?.store_transaction?.amount,
                                     atmosCreatePay?.transaction_id,
                                     atmosApply?.ofd_url,
@@ -625,7 +625,7 @@ module.exports = {
                               const addCheck = await model.addCheck(
                                  chat_id,
                                  atmosApply?.store_transaction?.success_trans_id,
-                                 "CARD",
+                                 "ATMOS",
                                  atmosApply?.store_transaction?.amount,
                                  atmosCreatePay?.transaction_id,
                                  atmosApply?.ofd_url,

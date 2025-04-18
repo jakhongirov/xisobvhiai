@@ -15,7 +15,6 @@ const {
    formatDateAdvanced,
    calculateExpiredDate,
    formatDatePremium,
-   getCurrentDateFormatted
 } = require('./src/lib/functions');
 const { months } = require('./data')
 const {
@@ -2731,7 +2730,7 @@ bot.on('callback_query', async (msg) => {
             })
          }
       } else if (tarif && price > 0) {
-         const text = `m=6697d19280d270b331826481;ac.user_id=${chatId};ac.tarif=${tarif.title};ac.ilova=Xisobchi_AI;a=${price}00`;
+         const text = `m=6697d19280d270b331826481;ac.user_id=${chatId};ac.tarif=${tarif.title};ac.ilova=Hisobchi_AI;a=${price}00`;
          const base64Encoded = btoa(text);
 
          if (foundUser?.bot_lang == 'uz') {
@@ -2746,7 +2745,7 @@ bot.on('callback_query', async (msg) => {
                      [
                         {
                            text: localText.clickText,
-                           url: `https://my.click.uz/services/pay?merchant_id=26420&service_id=34442&transaction_param=Xisobchi_AI&additional_param3=${chatId}&amount=${price}&additional_param4=${tarif.title}`
+                           url: `https://my.click.uz/services/pay?merchant_id=26420&service_id=34442&transaction_param=Hisobchi_AI&additional_param3=${chatId}&amount=${price}&additional_param4=${tarif.title}`
                         }
                      ],
                      [
@@ -2758,7 +2757,7 @@ bot.on('callback_query', async (msg) => {
                      // [
                      //    {
                      //       text: localText.uzumText,
-                     //       url: `https://www.uzumbank.uz/open-service?serviceId=498617211&ilova=Xisobchi_AI&tarif=${price.title}&id=${chatId}&amount=${price.price}00`
+                     //       url: `https://www.uzumbank.uz/open-service?serviceId=498617211&ilova=Hisobchi_AI&tarif=${price.title}&id=${chatId}&amount=${price.price}00`
                      //    }
                      // ],
                   ]
@@ -2776,7 +2775,7 @@ bot.on('callback_query', async (msg) => {
                      [
                         {
                            text: localText.clickText,
-                           url: `https://my.click.uz/services/pay?merchant_id=26420&service_id=34442&transaction_param=Xisobchi_AI&additional_param3=${chatId}&amount=${price}&additional_param4=${tarif.title}`
+                           url: `https://my.click.uz/services/pay?merchant_id=26420&service_id=34442&transaction_param=Hisobchi_AI&additional_param3=${chatId}&amount=${price}&additional_param4=${tarif.title}`
                         }
                      ],
                      [
@@ -2788,7 +2787,7 @@ bot.on('callback_query', async (msg) => {
                      // [
                      //    {
                      //       text: localText.uzumText,
-                     //       url: `https://www.uzumbank.uz/open-service?serviceId=498617211&ilova=Xisobchi_AI&tarif=${price.title}&id=${chatId}&amount=${price.price}00`
+                     //       url: `https://www.uzumbank.uz/open-service?serviceId=498617211&ilova=Hisobchi_AI&tarif=${price.title}&id=${chatId}&amount=${price.price}00`
                      //    }
                      // ],
                   ]
@@ -2806,7 +2805,7 @@ bot.on('callback_query', async (msg) => {
                      [
                         {
                            text: localText.clickText,
-                           url: `https://my.click.uz/services/pay?merchant_id=26420&service_id=34442&transaction_param=Xisobchi_AI&additional_param3=${chatId}&amount=${price}&additional_param4=${tarif.title}`
+                           url: `https://my.click.uz/services/pay?merchant_id=26420&service_id=34442&transaction_param=Hisobchi_AI&additional_param3=${chatId}&amount=${price}&additional_param4=${tarif.title}`
                         }
                      ],
                      [
@@ -2818,7 +2817,7 @@ bot.on('callback_query', async (msg) => {
                      // [
                      //    {
                      //       text: localText.uzumText,
-                     //       url: `https://www.uzumbank.uz/open-service?serviceId=498617211&ilova=Xisobchi_AI&tarif=${price.title}&id=${chatId}&amount=${price.price}00`
+                     //       url: `https://www.uzumbank.uz/open-service?serviceId=498617211&ilova=Hisobchi_AI&tarif=${price.title}&id=${chatId}&amount=${price.price}00`
                      //    }
                      // ],
                   ]

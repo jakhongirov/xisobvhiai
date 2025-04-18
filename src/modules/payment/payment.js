@@ -45,11 +45,9 @@ module.exports = {
 
    SUCCESS: async (req, res) => {
       try {
-         const { chat_id, tarif } = req.params
+         const { chat_id, tarif, method, trans_id, amount } = req.params
          const foundUser = await model.foundUser(chat_id)
          const foundTarif = await model.foundTarif(tarif)
-
-         console.log('sss')
 
          if (foundUser) {
             const expiredDate = await calculateExpiredDate(Number(foundTarif.period))
@@ -61,6 +59,7 @@ module.exports = {
 
 
             if (editUserPremium) {
+               await model.addCheck(chat_id, method, trans_id, amount)
 
                if (foundUser?.bot_lang == 'uz') {
                   bot.sendMessage(chat_id, localText.successfullyPaidUz, {

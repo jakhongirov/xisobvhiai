@@ -31,7 +31,7 @@ const foundTarif = (title) => {
       FROM
          price
       WHERE
-         title = $1;
+         title_uz = $1 or title_ru = $1 or title_eng = $1;
    `;
 
    return fetch(QUERY, title)
@@ -50,10 +50,35 @@ const editUserPremium = (id, expiredDate) => {
 
    return fetch(QUERY, id, expiredDate)
 }
+const addCheck = (chat_id, method, trans_id, amount) => {
+   const QUERY = `
+      INSERT INTO 
+         checks (
+            user_id,
+            method,
+            success_trans_id,
+            amount
+         ) VALUES (
+            $1,
+            $2,
+            $3,
+            $4
+         ) RETURNING *;
+   `;
+
+   return fetch(
+      QUERY,
+      chat_id,
+      method,
+      trans_id,
+      amount
+   )
+}
 
 module.exports = {
    foundUser,
    editStep,
    foundTarif,
-   editUserPremium
+   editUserPremium,
+   addCheck
 }
