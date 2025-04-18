@@ -2173,7 +2173,7 @@ router
     *                   type: string
     *                   example: Interval Server Error
     */
-   .get('/card/list', AUTH, cards.GET)
+   .get('/cards', AUTH, cards.GET)
 
    /**
     * @swagger
