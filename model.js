@@ -264,7 +264,8 @@ const monthlyByCategories = (id, currentMonth) => {
          b.currency,
          b.title,
          c.name_uz as name,
-         c.id
+         c.id,
+         h.income
       FROM 
          histories_balance h
       JOIN 
@@ -281,7 +282,7 @@ const monthlyByCategories = (id, currentMonth) => {
          AND EXTRACT(MONTH FROM h.date::date) = $2
          AND h.user_id = $1
       GROUP BY 
-         h.balance_id, b.currency, b.title, c.id, c.name_uz
+         h.balance_id, b.currency, b.title, c.id, c.name_uz, h.income
       ORDER BY 
          h.balance_id;
    `;

@@ -1002,6 +1002,7 @@ bot.on('message', async (msg) => {
          const monthlyOutput = await model.monthlyOutput(foundUser.id, currentMonth)
          const monthlyByCategories = await model.monthlyByCategories(foundUser.id, currentMonth)
 
+         // select * from histories_balance where chat_id = 772457382;
          const replacedText = localText.reportMonthlyTextUz
             .replace(/%monthName%/g, months.find(m => m.number == currentMonth).name_uz)
 
