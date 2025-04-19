@@ -128,8 +128,17 @@ module.exports = {
                         const expiredDate = await calculateExpiredDate(30)
                         const editUserPremium = await model.editUserPremium(chat_id, expiredDate)
                         if (foundPartner) {
-                           const profitAmount = (price * foundPartner?.profit) / 100;
-                           await model.editPartnerProfit(foundPartner.id, profitAmount)
+                           if (foundPartner.duration) {
+                              const profitAmount = (price * foundPartner?.profit) / 100;
+                              await model.editPartnerProfit(foundPartner.id, profitAmount)
+                           } else {
+                              const checkUserPaid = await model.checkUserPaid(checkUser.chat_id)
+
+                              if (checkUserPaid.length == 0) {
+                                 const profitAmount = (price * foundPartner?.profit) / 100;
+                                 await model.editPartnerProfit(foundPartner.id, profitAmount)
+                              }
+                           }
                         }
 
                         if (editUserPremium?.bot_lang == 'uz') {
@@ -274,7 +283,7 @@ module.exports = {
                               console.log(atmosApply)
 
                               if (atmosApply?.result?.code == "OK") {
-                                 const addCheck = await model.addCheck(
+                                 const addCheck = await model.f(
                                     chat_id,
                                     atmosApply?.store_transaction?.success_trans_id,
                                     "ATMOS",
@@ -286,8 +295,17 @@ module.exports = {
                                  const expiredDate = await calculateExpiredDate(30)
                                  const editUserPremium = await model.editUserPremium(checkUser.chat_id, expiredDate)
                                  if (foundPartner) {
-                                    const profitAmount = (price * foundPartner?.profit) / 100;
-                                    await model.editPartnerProfit(foundPartner.id, profitAmount)
+                                    if (foundPartner.duration) {
+                                       const profitAmount = (price * foundPartner?.profit) / 100;
+                                       await model.editPartnerProfit(foundPartner.id, profitAmount)
+                                    } else {
+                                       const checkUserPaid = await model.checkUserPaid(checkUser.chat_id)
+
+                                       if (checkUserPaid.length == 0) {
+                                          const profitAmount = (price * foundPartner?.profit) / 100;
+                                          await model.editPartnerProfit(foundPartner.id, profitAmount)
+                                       }
+                                    }
                                  }
 
                                  if (addCheck && editUserPremium) {
@@ -477,8 +495,17 @@ module.exports = {
                      const expiredDate = await calculateExpiredDate(30)
                      const editUserPremium = await model.editUserPremium(checkUser.chat_id, expiredDate)
                      if (foundPartner) {
-                        const profitAmount = (price * foundPartner?.profit) / 100;
-                        await model.editPartnerProfit(foundPartner.id, profitAmount)
+                        if (foundPartner.duration) {
+                           const profitAmount = (price * foundPartner?.profit) / 100;
+                           await model.editPartnerProfit(foundPartner.id, profitAmount)
+                        } else {
+                           const checkUserPaid = await model.checkUserPaid(checkUser.chat_id)
+
+                           if (checkUserPaid.length == 0) {
+                              const profitAmount = (price * foundPartner?.profit) / 100;
+                              await model.editPartnerProfit(foundPartner.id, profitAmount)
+                           }
+                        }
                      }
 
                      if (editUserPremium?.bot_lang == 'uz') {
@@ -634,8 +661,17 @@ module.exports = {
                               const expiredDate = await calculateExpiredDate(30)
                               const editUserPremium = await model.editUserPremium(checkUser.chat_id, expiredDate)
                               if (foundPartner) {
-                                 const profitAmount = (price * foundPartner?.profit) / 100;
-                                 await model.editPartnerProfit(foundPartner.id, profitAmount)
+                                 if (foundPartner.duration) {
+                                    const profitAmount = (price * foundPartner?.profit) / 100;
+                                    await model.editPartnerProfit(foundPartner.id, profitAmount)
+                                 } else {
+                                    const checkUserPaid = await model.checkUserPaid(checkUser.chat_id)
+
+                                    if (checkUserPaid.length == 0) {
+                                       const profitAmount = (price * foundPartner?.profit) / 100;
+                                       await model.editPartnerProfit(foundPartner.id, profitAmount)
+                                    }
+                                 }
                               }
                               if (addCheck && editUserPremium) {
                                  if (editUserPremium?.bot_lang == 'uz') {

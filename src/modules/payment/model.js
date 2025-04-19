@@ -74,11 +74,51 @@ const addCheck = (chat_id, method, trans_id, amount) => {
       amount
    )
 }
+const foundPartner = (partner_id) => {
+   const QUERY = `
+      SELECT
+         *
+      FROM
+         partners
+      WHERE
+         id = $1;
+   `;
+
+   return fetch(QUERY, partner_id)
+};
+const checkUserPaid = (chat_id) => {
+   const QUERY = `
+      SELECT
+         *
+      FROM
+         checks
+      WHERE
+         user_id = $1;
+   `;
+
+   return fetchALL(QUERY, chat_id)
+}
+const editPartnerProfit = (id, profitAmount) => {
+   const QUERY = `
+      UPDATE
+         partners
+      SET
+         balance = balance + $2
+      WHERE
+         id = $1
+      RETURNING *;
+   `;
+
+   return fetch(QUERY, id, profitAmount)
+}
 
 module.exports = {
    foundUser,
    editStep,
    foundTarif,
    editUserPremium,
-   addCheck
+   addCheck,
+   foundPartner,
+   checkUserPaid,
+   editPartnerProfit
 }

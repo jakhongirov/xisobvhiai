@@ -165,6 +165,19 @@ const editMonthlyAmount = (id, price) => {
    return fetch(QUERY, id, price)
 };
 
+const checkUserPaid = (chat_id) => {
+   const QUERY = `
+      SELECT
+         *
+      FROM
+         checks
+      WHERE
+         user_id = $1;
+   `;
+
+   return fetchALL(QUERY, chat_id)
+}
+
 const editPartnerProfit = (id, profitAmount) => {
    const QUERY = `
       UPDATE
@@ -266,6 +279,7 @@ module.exports = {
    foundPartner,
    foundTarif,
    editMonthlyAmount,
+   checkUserPaid,
    editPartnerProfit,
    addCheck,
    editStep,

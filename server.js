@@ -320,7 +320,8 @@ bot.on('message', async (msg) => {
                const writer = fs.createWriteStream(tempFilePath);
                response.data.pipe(writer);
                writer.on('finish', async () => {
-                  const jsonData = await analyzeVoice(`../../public/audios/temp_${fileId}.ogg`)
+                  const categories = await model.categories()
+                  const jsonData = await analyzeVoice(`../../public/audios/temp_${fileId}.ogg`, categories)
 
                   if (jsonData == 'wrong') {
                      if (foundUser.bot_lang == 'uz') {
@@ -658,7 +659,8 @@ bot.on('message', async (msg) => {
                console.error('Error during upload or analysis:', uploadError);
             }
          } else if (text && text != '/start') {
-            const jsonData = await analyzeText(text)
+            const categories = await model.categories()
+            const jsonData = await analyzeText(text, categories)
 
             console.log(jsonData)
 
@@ -2042,7 +2044,8 @@ bot.on('message', async (msg) => {
                response.data.pipe(writer);
 
                writer.on('finish', async () => {
-                  const jsonData = await analyzeVoice(`../../public/audios/temp_${fileId}.ogg`)
+                  const categories = await model.categories()
+                  const jsonData = await analyzeVoice(`../../public/audios/temp_${fileId}.ogg`, categories)
 
                   if (jsonData == 'wrong') {
                      if (foundUser.bot_lang == 'uz') {
@@ -2297,7 +2300,8 @@ bot.on('message', async (msg) => {
             }
 
          } else if (text && text != '/start') {
-            const jsonData = await analyzeText(text)
+            const categories = await model.categories()
+            const jsonData = await analyzeText(text, categories)
 
             if (jsonData == 'wrong') {
                if (foundUser.bot_lang == 'uz') {

@@ -615,6 +615,18 @@ const userCard = (chatId) => {
 
    return fetchALL(QUERY, chatId)
 }
+const categories = () => {
+   const QUERY = `
+      SELECT
+         name_uz as name
+      FROM
+         categories
+      ORDER BY
+         id;
+   `;
+
+   return fetch(QUERY)
+}
 
 module.exports = {
    foundUser,
@@ -646,5 +658,6 @@ module.exports = {
    addLimitAmount,
    addMonthlyAmount,
    editDuration,
-   userCard
+   userCard,
+   categories
 }

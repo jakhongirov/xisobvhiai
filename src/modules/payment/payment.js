@@ -61,6 +61,21 @@ module.exports = {
             if (editUserPremium) {
                await model.addCheck(chat_id, method, trans_id, amount)
 
+               const foundPartner = await model.foundPartner(editUserPremium?.partner_id);
+               if (foundPartner) {
+                  if (foundPartner.duration) {
+                     const profitAmount = (amount * foundPartner?.profit) / 100;
+                     await model.editPartnerProfit(foundPartner.id, profitAmount)
+                  } else {
+                     const checkUserPaid = await model.checkUserPaid(chat_id)
+
+                     if (checkUserPaid.length == 0) {
+                        const profitAmount = (amount * foundPartner?.profit) / 100;
+                        await model.editPartnerProfit(foundPartner.id, profitAmount)
+                     }
+                  }
+               }
+
                if (foundUser?.bot_lang == 'uz') {
                   bot.sendMessage(chat_id, localText.successfullyPaidUz, {
                      parse_mode: "HTML",

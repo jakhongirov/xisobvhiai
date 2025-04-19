@@ -8,7 +8,7 @@ const fileManager = new GoogleAIFileManager(GOOGLE_API_KEY);
 const fs = require('fs');
 const path = require('path');
 
-const analyzeText = async (inputText) => {
+const analyzeText = async (inputText, categories) => {
    try {
       const current_datetime = getFormattedDate()
       const prompt = `
@@ -27,36 +27,7 @@ const analyzeText = async (inputText) => {
          - "forWhom": The name of the person or entity involved in the debt payment. If not a debt payment, set it to "".
 
          ## Categories:
-         outcome: {
-            "categories": [
-               "Uy-joy xarajatlari",
-               "Oziq-ovqat",
-               "Transport",
-               "Sog'liqni saqlash",
-               "Kiyim-kechak",
-               "Shaxsiy parvarish",
-               "O'qish va rivojlanish",
-               "O'yin-kulgi va dam olish",
-               "Moliyaviy majburiyatlar",
-               "Jamg'arma va investitsiyalar",
-               "Bolalar va oilaviy xarajatlar",
-               "Uy hayvonlari",
-               "Aloqa va media",
-               "Sovg'alar va ehsonlar",
-               "Kutilmagan xarajatlar"
-            ]
-         }
-
-         income: {
-            "categories": [
-               "Mehnat daromadlari",
-               "Biznes daromadlari",
-               "Ijara daromadlari",
-               "Investitsiya daromadlari",
-               "Davlat to'lovlari",
-               "Boshqa daromadlar"
-            ]
-         }
+         ${categories}
 
          ## Examples:
          1. Input: "I paid $200 for my rent on 2024-06-15 10:00:00+05"
@@ -99,7 +70,7 @@ const analyzeText = async (inputText) => {
    }
 }
 
-const getTextFromAudio = async (fileUri) => {
+const getTextFromAudio = async (fileUri, categories) => {
    const result = await model.generateContent([
       "Transcribe this audio clip. The audio is in either Uzbek, English, or Russian.",
       {
@@ -147,36 +118,7 @@ const analyzeVoice = async (tempFilePath) => {
          - "forWhom": The name of the person or entity involved in the debt payment. If not a debt payment, set it to "".
 
          ## Categories:
-         outcome: {
-            "categories": [
-               "Uy-joy xarajatlari",
-               "Oziq-ovqat",
-               "Transport",
-               "Sog'liqni saqlash",
-               "Kiyim-kechak",
-               "Shaxsiy parvarish",
-               "O'qish va rivojlanish",
-               "O'yin-kulgi va dam olish",
-               "Moliyaviy majburiyatlar",
-               "Jamg'arma va investitsiyalar",
-               "Bolalar va oilaviy xarajatlar",
-               "Uy hayvonlari",
-               "Aloqa va media",
-               "Sovg'alar va ehsonlar",
-               "Kutilmagan xarajatlar"
-            ]
-         }
-
-         income: {
-            "categories": [
-               "Mehnat daromadlari",
-               "Biznes daromadlari",
-               "Ijara daromadlari",
-               "Investitsiya daromadlari",
-               "Davlat to'lovlari",
-               "Boshqa daromadlar"
-            ]
-         }
+        ${categories}
 
          ## Examples:
          1. Input: "I paid $200 for my rent on 2024-06-15 10:00:00+05"

@@ -54,7 +54,7 @@ CREATE TABLE categories (
    name_ru text,
    name_en text,
    emoji text,
-   "1" boolean DEFAULT false,
+   "primary" boolean DEFAULT false,
    create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
