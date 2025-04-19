@@ -375,7 +375,7 @@ bot.on('message', async (msg) => {
                                           return [{
                                              text,
                                              web_app: {
-                                                url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                                url: `https://payment.hisobchiai.admob.uz/${chatId}`
                                              }
                                           }];
                                        } else {
@@ -423,7 +423,7 @@ bot.on('message', async (msg) => {
                                           return [{
                                              text,
                                              web_app: {
-                                                url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                                url: `https://payment.hisobchiai.admob.uz/${chatId}`
                                              }
                                           }];
                                        } else {
@@ -471,7 +471,7 @@ bot.on('message', async (msg) => {
                                           return [{
                                              text,
                                              web_app: {
-                                                url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                                url: `https://payment.hisobchiai.admob.uz/${chatId}`
                                              }
                                           }];
                                        } else {
@@ -535,7 +535,7 @@ bot.on('message', async (msg) => {
                                        return [{
                                           text,
                                           web_app: {
-                                             url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                             url: `https://payment.hisobchiai.admob.uz/${chatId}`
                                           }
                                        }];
                                     } else {
@@ -583,7 +583,7 @@ bot.on('message', async (msg) => {
                                        return [{
                                           text,
                                           web_app: {
-                                             url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                             url: `https://payment.hisobchiai.admob.uz/${chatId}`
                                           }
                                        }];
                                     } else {
@@ -631,7 +631,7 @@ bot.on('message', async (msg) => {
                                        return [{
                                           text,
                                           web_app: {
-                                             url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                             url: `https://payment.hisobchiai.admob.uz/${chatId}`
                                           }
                                        }];
                                     } else {
@@ -715,7 +715,7 @@ bot.on('message', async (msg) => {
                                     return [{
                                        text,
                                        web_app: {
-                                          url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                          url: `https://payment.hisobchiai.admob.uz/${chatId}`
                                        }
                                     }];
                                  } else {
@@ -763,7 +763,7 @@ bot.on('message', async (msg) => {
                                     return [{
                                        text,
                                        web_app: {
-                                          url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                          url: `https://payment.hisobchiai.admob.uz/${chatId}`
                                        }
                                     }];
                                  } else {
@@ -811,7 +811,7 @@ bot.on('message', async (msg) => {
                                     return [{
                                        text,
                                        web_app: {
-                                          url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                          url: `https://payment.hisobchiai.admob.uz/${chatId}`
                                        }
                                     }];
                                  } else {
@@ -877,7 +877,7 @@ bot.on('message', async (msg) => {
                                  return [{
                                     text,
                                     web_app: {
-                                       url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                       url: `https://payment.hisobchiai.admob.uz/${chatId}`
                                     }
                                  }];
                               } else {
@@ -925,7 +925,7 @@ bot.on('message', async (msg) => {
                                  return [{
                                     text,
                                     web_app: {
-                                       url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                       url: `https://payment.hisobchiai.admob.uz/${chatId}`
                                     }
                                  }];
                               } else {
@@ -973,7 +973,7 @@ bot.on('message', async (msg) => {
                                  return [{
                                     text,
                                     web_app: {
-                                       url: `https://hisobchi-ai.vercel.app/${chatId}`
+                                       url: `https://payment.hisobchiai.admob.uz/${chatId}`
                                     }
                                  }];
                               } else {
@@ -1232,7 +1232,7 @@ bot.on('message', async (msg) => {
                   [{
                      text: localText.addCardBtnUz,
                      web_app: {
-                        url: `https://hisobchi-ai.vercel.app/${chatId}`
+                        url: `https://payment.hisobchiai.admob.uz/${chatId}`
                      }
                   }],
                   [{
@@ -1282,7 +1282,7 @@ bot.on('message', async (msg) => {
                      return [{
                         text,
                         web_app: {
-                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                           url: `https://payment.hisobchiai.admob.uz/${chatId}`
                         }
                      }];
                   } else {
@@ -1316,7 +1316,7 @@ bot.on('message', async (msg) => {
                   [{
                      text: localText.addCardBtnRu,
                      web_app: {
-                        url: `https://hisobchi-ai.vercel.app/${chatId}`
+                        url: `https://payment.hisobchiai.admob.uz/${chatId}`
                      }
                   }],
                   [{
@@ -1366,7 +1366,7 @@ bot.on('message', async (msg) => {
                      return [{
                         text,
                         web_app: {
-                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                           url: `https://payment.hisobchiai.admob.uz/${chatId}`
                         }
                      }];
                   } else {
@@ -1400,7 +1400,7 @@ bot.on('message', async (msg) => {
                   [{
                      text: localText.addCardBtnEng,
                      web_app: {
-                        url: `https://hisobchi-ai.vercel.app/${chatId}`
+                        url: `https://payment.hisobchiai.admob.uz/${chatId}`
                      }
                   }],
                   [{
@@ -1450,7 +1450,7 @@ bot.on('message', async (msg) => {
                      return [{
                         text,
                         web_app: {
-                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                           url: `https://payment.hisobchiai.admob.uz/${chatId}`
                         }
                      }];
                   } else {
@@ -2562,7 +2562,7 @@ bot.on('message', async (msg) => {
                      return [{
                         text,
                         web_app: {
-                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                           url: `https://payment.hisobchiai.admob.uz/${chatId}`
                         }
                      }];
                   } else {
@@ -2593,7 +2593,7 @@ bot.on('message', async (msg) => {
                      return [{
                         text,
                         web_app: {
-                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                           url: `https://payment.hisobchiai.admob.uz/${chatId}`
                         }
                      }];
                   } else {
@@ -2624,7 +2624,7 @@ bot.on('message', async (msg) => {
                      return [{
                         text,
                         web_app: {
-                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                           url: `https://payment.hisobchiai.admob.uz/${chatId}`
                         }
                      }];
                   } else {
@@ -2680,7 +2680,7 @@ bot.on('callback_query', async (msg) => {
                      [{
                         text: localText.addCardBtnUz,
                         web_app: {
-                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                           url: `https://payment.hisobchiai.admob.uz/${chatId}`
                         }
                      }],
                      [{
@@ -2701,7 +2701,7 @@ bot.on('callback_query', async (msg) => {
                      [{
                         text: localText.addCardBtnRu,
                         web_app: {
-                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                           url: `https://payment.hisobchiai.admob.uz/${chatId}`
                         }
                      }],
                      [{
@@ -2722,7 +2722,7 @@ bot.on('callback_query', async (msg) => {
                      [{
                         text: localText.addCardBtnEng,
                         web_app: {
-                           url: `https://hisobchi-ai.vercel.app/${chatId}`
+                           url: `https://payment.hisobchiai.admob.uz/${chatId}`
                         }
                      }],
                      [{
