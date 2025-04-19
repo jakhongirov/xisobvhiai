@@ -43,7 +43,8 @@ const deleteCard = (card_id) => {
       DELETE FROM
          cards
       WHERE
-         card_id = $1;
+         card_id = $1
+      RETURNING *;;
    `;
 
    return fetch(QUERY, card_id)
