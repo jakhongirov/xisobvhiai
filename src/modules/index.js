@@ -2248,6 +2248,6 @@ router
     *                   type: string
     *                   example: Interval Server Error
     */
-   .delete('/card/delete', AUTH, cards.DELETE_CARD)
+   .delete('/cards', AUTH, cards.DELETE_CARD)
 
 module.exports = router
