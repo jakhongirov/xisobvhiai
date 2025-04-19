@@ -26,8 +26,32 @@ const atmosToken = () => {
 
    return fetch(QUERY)
 }
+const foundCard = (id) => {
+   const QUERY = `
+      SELECT 
+         *
+      FROM
+         cards
+      WHERE
+         id = $1;
+   `;
+
+   return fetch(QUERY, id)
+}
+const deleteCard = (card_id) => {
+   const QUERY = `
+      DELETE FROM
+         cards
+      WHERE
+         card_id = $1;
+   `;
+
+   return fetch(QUERY, card_id)
+}
 
 module.exports = {
    cardsList,
-   atmosToken
+   atmosToken,
+   foundCard,
+   deleteCard
 }
