@@ -83,7 +83,7 @@ const getTextFromAudio = async (fileUri, categories) => {
    return result.response.text();
 }
 
-const analyzeVoice = async (tempFilePath) => {
+const analyzeVoice = async (tempFilePath, categories) => {
    try {
       const uploadResult = await fileManager.uploadFile(path.join(__dirname, tempFilePath), {
          mimeType: 'audio/ogg',
