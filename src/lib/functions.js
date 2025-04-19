@@ -1,7 +1,7 @@
 const formatBalanceWithSpaces = (balance) => {
    return new Intl.NumberFormat('en-US', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
    }).format(balance).replace(/,/g, ' ');
 }
 
