@@ -36,6 +36,7 @@ CREATE TABLE partners (
    profit int DEFAULT 0,
    duration boolean DEFAULT false,
    balance bigint DEFAULT 0,
+   bot_lang text,
    create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 

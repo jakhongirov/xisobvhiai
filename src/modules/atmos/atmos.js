@@ -283,7 +283,7 @@ module.exports = {
                               console.log(atmosApply)
 
                               if (atmosApply?.result?.code == "OK") {
-                                 const addCheck = await model.f(
+                                 const addCheck = await model.addCheck(
                                     chat_id,
                                     atmosApply?.store_transaction?.success_trans_id,
                                     "ATMOS",
