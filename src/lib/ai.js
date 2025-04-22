@@ -57,6 +57,7 @@ const analyzeText = async (inputText, categories) => {
          ## Input text only in Uzbek, English and Russian languages.
 
          ## Output ONLY JSON. No explanations, no text, just JSON. If the input text is not suitable for financial statement extraction, output 'wrong'.
+         ## Ensure that the 'category' field is ONLY populated with values provided in the '## Categories:' section.
       `;
 
       const result = await model.generateContent([prompt]);
@@ -146,8 +147,9 @@ const analyzeVoice = async (tempFilePath, categories) => {
          "${await getTextFromAudio(uploadResult.file.uri)}"
 
          ## Input text only in Uzbek, English and Russian languages.
-
+         
          ## Output ONLY JSON. No explanations, no text, just JSON. If the input text is not suitable for financial statement extraction, output 'wrong'.
+         ## Ensure that the 'category' field is ONLY populated with values provided in the '## Categories:' section.
       `;
 
       const result = await model.generateContent([prompt]);
