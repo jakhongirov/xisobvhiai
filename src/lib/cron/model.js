@@ -173,7 +173,7 @@ const outputSum = (id) => {
          b.user_id = $1 
          AND h.income = false
          AND b.currency = 'UZS'
-         AND DATE_TRUNC('month', h.created_at) = DATE_TRUNC('month', CURRENT_DATE)
+         AND DATE_TRUNC('month', h.create_at) = DATE_TRUNC('month', CURRENT_DATE)
       GROUP BY 
          b.id, b.user_id, b.title, b.currency
       ORDER BY 
