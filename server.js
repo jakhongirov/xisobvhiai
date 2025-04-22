@@ -2062,9 +2062,9 @@ bot.on('message', async (msg) => {
                         const foundCategory = await model.foundCategory(item.category)
                         console.log(foundCategory)
                         const addReport = await model.addReport(
-                           foundUser.id,
-                           foundBalance.id,
-                           foundCategory.id,
+                           foundUser?.id,
+                           foundBalance?.id,
+                           foundCategory?.id,
                            item.date,
                            item.amount,
                            item.type == 'income' ? true : false,
