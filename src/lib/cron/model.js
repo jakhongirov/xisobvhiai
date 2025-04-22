@@ -41,7 +41,7 @@ const getUsers = () => {
          users
       WHERE 
          TO_TIMESTAMP(expired_date)::DATE = CURRENT_DATE 
-         AND duratio = false
+         AND duration = false
    `;
 
    return fetchALL(QUERY)
@@ -146,7 +146,7 @@ const incomeSum = (id) => {
          b.user_id = $1 
          AND h.income = true
          AND b.currency = 'UZS'
-         AND DATE_TRUNC('month', h.created_at) = DATE_TRUNC('month', CURRENT_DATE)
+         AND DATE_TRUNC('month', h.create_at) = DATE_TRUNC('month', CURRENT_DATE)
       GROUP BY 
          b.id, b.user_id, b.title, b.currency
       ORDER BY 

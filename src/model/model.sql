@@ -30,7 +30,7 @@ CREATE TABLE partners (
    id bigserial PRiMARY KEY,
    name text,
    phone_number text,
-   chat_id text,
+   chat_id bigint,
    discount bigint DEFAULT 0,
    additional bigint DEFAULT 0,
    profit int DEFAULT 0,

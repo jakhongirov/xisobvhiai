@@ -1002,7 +1002,6 @@ bot.on('message', async (msg) => {
          const monthlyOutput = await model.monthlyOutput(foundUser.id, currentMonth)
          const monthlyByCategories = await model.monthlyByCategories(foundUser.id, currentMonth)
 
-         // select * from histories_balance where chat_id = 772457382;
          const replacedText = localText.reportMonthlyTextUz
             .replace(/%monthName%/g, months.find(m => m.number == currentMonth).name_uz)
 
@@ -2058,8 +2057,10 @@ bot.on('message', async (msg) => {
                      }
                   } else if (jsonData?.length > 0) {
                      jsonData?.forEach(async (item) => {
+                        console.log(item)
                         const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
                         const foundCategory = await model.foundCategory(item.category)
+                        console.log(foundCategory)
                         const addReport = await model.addReport(
                            foundUser.id,
                            foundBalance.id,
