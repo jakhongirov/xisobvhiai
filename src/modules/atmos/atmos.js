@@ -288,7 +288,7 @@ module.exports = {
                                     chat_id,
                                     atmosApply?.store_transaction?.success_trans_id,
                                     "ATMOS",
-                                    atmosApply?.store_transaction?.amount,
+                                    Number(atmosApply?.store_transaction?.amount * 100),
                                     atmosCreatePay?.transaction_id,
                                     atmosApply?.ofd_url,
                                  )
@@ -656,7 +656,7 @@ module.exports = {
                                  chat_id,
                                  atmosApply?.store_transaction?.success_trans_id,
                                  "ATMOS",
-                                 atmosApply?.store_transaction?.amount,
+                                 Number(atmosApply?.store_transaction?.amount * 100),
                                  atmosCreatePay?.transaction_id,
                                  atmosApply?.ofd_url,
                               )
