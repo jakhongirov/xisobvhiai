@@ -3,6 +3,7 @@ const atmos = require('../../lib/atmos/atmos')
 const { bot } = require('../../lib/bot')
 const localText = require('../../text/text.json')
 const { calculateExpiredDate } = require('../../lib/functions')
+const axios = require('axios')
 
 module.exports = {
    GET_TOKEN: async (_, res) => {
@@ -298,6 +299,8 @@ module.exports = {
                                     if (foundPartner.duration) {
                                        const profitAmount = (price * foundPartner?.profit) / 100;
                                        await model.editPartnerProfit(foundPartner.id, profitAmount)
+                                       const response = await axios.get(`https://partner.hisobchiai.admob.uz/api/v1/profit/${foundPartner.id}/${addCheck.id}/${profitAmount}`);
+                                       console.log(response.status)
                                     } else {
                                        const checkUserPaid = await model.checkUserPaid(checkUser.chat_id)
 
