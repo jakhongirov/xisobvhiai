@@ -214,8 +214,8 @@ const sendMessageNight = async () => {
                   bot.sendMessage(
                      user?.chat_id,
                      localText.cronText2NightPremiumUz
-                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum))
-                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum))
+                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum ?? 0))
+                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum ?? 0))
                   )
                }
             } else if (user?.lang == 'ru') {
@@ -223,16 +223,16 @@ const sendMessageNight = async () => {
                   bot.sendMessage(
                      user?.chat_id,
                      localText.cronTextNightPremiumRu
-                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum))
-                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum))
+                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum ?? 0))
+                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum ?? 0))
                         .replace(/%limit%/g, formatBalanceWithSpaces(Number(user?.limit_amount - outputSum.sum)))
                   )
                } else {
                   bot.sendMessage(
                      user?.chat_id,
                      localText.cronText2NightPremiumRu
-                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum))
-                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum))
+                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum ?? 0))
+                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum ?? 0))
                   )
                }
             } else if (user?.lang == 'eng') {
@@ -240,16 +240,16 @@ const sendMessageNight = async () => {
                   bot.sendMessage(
                      user?.chat_id,
                      localText.cronTextNightPremiumEng
-                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum))
-                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum))
+                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum ?? 0))
+                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum ?? 0))
                         .replace(/%limit%/g, formatBalanceWithSpaces(Number(user?.limit_amount - outputSum.sum)))
                   )
                } else {
                   bot.sendMessage(
                      user?.chat_id,
                      localText.cronText2NightPremiumEng
-                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum))
-                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum))
+                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum ?? 0))
+                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum ?? 0))
                   )
                }
             } else {
@@ -257,16 +257,16 @@ const sendMessageNight = async () => {
                   bot.sendMessage(
                      user?.chat_id,
                      localText.cronTextNightPremiumUz
-                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum))
-                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum))
+                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum ?? 0))
+                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum ?? 0))
                         .replace(/%limit%/g, formatBalanceWithSpaces(Number(user?.limit_amount - outputSum.sum)))
                   )
                } else {
                   bot.sendMessage(
                      user?.chat_id,
                      localText.cronText2NightPremiumUz
-                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum))
-                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum))
+                        .replace(/%output%/g, formatBalanceWithSpaces(outputSum?.sum ?? 0))
+                        .replace(/%income%/g, formatBalanceWithSpaces(incomeSum?.sum ?? 0))
                   )
                }
             }
