@@ -3466,6 +3466,101 @@ bot.on('callback_query', async (msg) => {
             await model.editStep(chatId, 'menu')
          })
       }
+   } else if (data == 'to_buy') {
+      if (foundUser?.bot_lang == 'uz') {
+         const priceList = await model.priceList(foundUser?.bot_lang)
+         const priceKeyboard = priceList
+            .filter(item => !(foundUser?.used_free && item.price == 0))
+            .map(item => {
+               const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+               if (item.period == 30) {
+                  return [{
+                     text,
+                     web_app: {
+                        url: `https://payment.hisobchiai.admob.uz/${chatId}`
+                     }
+                  }];
+               } else {
+                  return [{
+                     text,
+                     callback_data: `tarif_${item.id}`
+                  }];
+               }
+            });
+         const premiumText = foundUser.premium ? `${localText.premiumTextUz}\n\n${localText.premiumExpiredTextUz} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextUz
+
+         bot.sendMessage(chatId, premiumText, {
+            parse_mode: "HTML",
+            reply_markup: {
+               inline_keyboard: priceKeyboard
+            }
+         }).then(async () => {
+            await model.editStep(chatId, 'payment')
+         })
+      } else if (foundUser?.bot_lang == 'ru') {
+         const priceList = await model.priceList(foundUser?.bot_lang)
+         const priceKeyboard = priceList
+            ?.filter(item => !(foundUser?.used_free && item.price == 0))
+            ?.map(item => {
+               const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+               if (item.period == 30) {
+                  return [{
+                     text,
+                     web_app: {
+                        url: `https://payment.hisobchiai.admob.uz/${chatId}`
+                     }
+                  }];
+               } else {
+                  return [{
+                     text,
+                     callback_data: `tarif_${item.id}`
+                  }];
+               }
+            });
+         const premiumText = foundUser.premium ? `${localText.premiumTextRu}\n\n${localText.premiumExpiredTextRu} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextRu
+
+         bot.sendMessage(chatId, premiumText, {
+            parse_mode: "HTML",
+            reply_markup: {
+               inline_keyboard: priceKeyboard
+            }
+         }).then(async () => {
+            await model.editStep(chatId, 'payment')
+         })
+      } else if (foundUser?.bot_lang == 'eng') {
+         const priceList = await model.priceList(foundUser?.bot_lang)
+         const priceKeyboard = priceList
+            .filter(item => !(foundUser?.used_free && item.price == 0))
+            .map(item => {
+               const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+
+               if (item.period == 30) {
+                  return [{
+                     text,
+                     web_app: {
+                        url: `https://payment.hisobchiai.admob.uz/${chatId}`
+                     }
+                  }];
+               } else {
+                  return [{
+                     text,
+                     callback_data: `tarif_${item.id}`
+                  }];
+               }
+            });
+         const premiumText = foundUser.premium ? `${localText.premiumTextEng}\n\n${localText.premiumExpiredTextEng} <b>${formatDatePremium(foundUser?.expired_date)}</b>` : localText.premiumTextEng
+
+         bot.sendMessage(chatId, premiumText, {
+            parse_mode: "HTML",
+            reply_markup: {
+               inline_keyboard: priceKeyboard
+            }
+         }).then(async () => {
+            await model.editStep(chatId, 'payment')
+         })
+      }
    }
 })
 

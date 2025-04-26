@@ -202,7 +202,7 @@ const sendMessageNight = async () => {
             const outputSum = await model.outputSum(user.id)
 
             if (user?.bot_lang == 'uz') {
-               if (user?.limit_amount > 0) {
+               if (Number(user?.limit_amount) > 0) {
                   bot.sendMessage(
                      user?.chat_id,
                      localText.cronTextNightPremiumUz
@@ -219,7 +219,7 @@ const sendMessageNight = async () => {
                   )
                }
             } else if (user?.lang == 'ru') {
-               if (user?.limit_amount > 0) {
+               if (Number(user?.limit_amount) > 0) {
                   bot.sendMessage(
                      user?.chat_id,
                      localText.cronTextNightPremiumRu
@@ -236,7 +236,7 @@ const sendMessageNight = async () => {
                   )
                }
             } else if (user?.lang == 'eng') {
-               if (user?.limit_amount > 0) {
+               if (Number(user?.limit_amount) > 0) {
                   bot.sendMessage(
                      user?.chat_id,
                      localText.cronTextNightPremiumEng
@@ -253,7 +253,7 @@ const sendMessageNight = async () => {
                   )
                }
             } else {
-               if (user?.limit_amount > 0) {
+               if (Number(user?.limit_amount) > 0) {
                   bot.sendMessage(
                      user?.chat_id,
                      localText.cronTextNightPremiumUz
