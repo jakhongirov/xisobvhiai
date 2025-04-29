@@ -656,8 +656,8 @@ const pay = async (user, userCard) => {
             const addCheck = await model.addCheck(
                user?.chat_id,
                apply?.store_transaction?.success_trans_id,
-               "CARD",
-               apply?.store_transaction?.amount,
+               "ATMOS",
+               Number(apply?.store_transaction?.amount / 100),
                createPay?.transaction_id,
                apply?.ofd_url
             )
