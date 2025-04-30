@@ -256,14 +256,14 @@ const monthlyOutput = (id, currentMonth) => {
 
    return fetchALL(QUERY, id, currentMonth)
 }
-const monthlyByCategories = (id, currentMonth) => {
+const monthlyByCategories = (id, currentMonth, lang) => {
    const QUERY = `
       SELECT 
          h.balance_id,
          SUM(h.amount) AS amount,
          b.currency,
          b.title,
-         c.name_uz as name,
+         c.name_${lang} as name,
          c.id,
          h.income
       FROM 
@@ -339,7 +339,7 @@ const debtsList = (id) => {
 
    return fetchALL(QUERY, id)
 }
-const historiesBalanceCurrentMonthOutcome = (id, currentMonth) => {
+const historiesBalanceCurrentMonthOutcome = (id, currentMonth, lang) => {
    const QUERY = `
       SELECT 
          h.id,
@@ -349,7 +349,7 @@ const historiesBalanceCurrentMonthOutcome = (id, currentMonth) => {
          h.comment,
          b.currency,
          b.title,
-         c.name_uz as name
+         c.name_${lang} as name
       FROM 
          histories_balance h
       JOIN
@@ -375,7 +375,7 @@ const historiesBalanceCurrentMonthOutcome = (id, currentMonth) => {
 
    return fetchALL(QUERY, id, currentMonth)
 }
-const historiesBalanceCurrentMonthIncome = (id, currentMonth) => {
+const historiesBalanceCurrentMonthIncome = (id, currentMonth, lang) => {
    const QUERY = `
       SELECT 
          h.id,
@@ -385,7 +385,7 @@ const historiesBalanceCurrentMonthIncome = (id, currentMonth) => {
          h.comment,
          b.currency,
          b.title,
-         c.name_uz as name
+         c.name_${lang} as name
       FROM 
          histories_balance h
       JOIN

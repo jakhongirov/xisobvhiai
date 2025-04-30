@@ -1000,7 +1000,7 @@ bot.on('message', async (msg) => {
          const currentMonth = new Date().getMonth() + 1;
          const monthlyInput = await model.monthlyInput(foundUser.id, currentMonth)
          const monthlyOutput = await model.monthlyOutput(foundUser.id, currentMonth)
-         const monthlyByCategories = await model.monthlyByCategories(foundUser.id, currentMonth)
+         const monthlyByCategories = await model.monthlyByCategories(foundUser.id, currentMonth, 'uz')
 
          const replacedText = localText.reportMonthlyTextUz
             .replace(/%monthName%/g, months.find(m => m.number == currentMonth).name_uz)
@@ -1036,7 +1036,7 @@ bot.on('message', async (msg) => {
          const currentMonth = new Date().getMonth() + 1;
          const monthlyInput = await model.monthlyInput(foundUser.id, currentMonth)
          const monthlyOutput = await model.monthlyOutput(foundUser.id, currentMonth)
-         const monthlyByCategories = await model.monthlyByCategories(foundUser.id, currentMonth)
+         const monthlyByCategories = await model.monthlyByCategories(foundUser.id, currentMonth, 'ru')
 
          const replacedText = localText.reportMonthlyTextRu
             .replace(/%monthName%/g, months.find(m => m.number == currentMonth).name_ru)
@@ -1072,7 +1072,7 @@ bot.on('message', async (msg) => {
          const currentMonth = new Date().getMonth() + 1;
          const monthlyInput = await model.monthlyInput(foundUser.id, currentMonth)
          const monthlyOutput = await model.monthlyOutput(foundUser.id, currentMonth)
-         const monthlyByCategories = await model.monthlyByCategories(foundUser.id, currentMonth)
+         const monthlyByCategories = await model.monthlyByCategories(foundUser.id, currentMonth, 'en')
 
          const replacedText = localText.reportMonthlyTextEng
             .replace(/%monthName%/g, months.find(m => m.number == currentMonth).name_eng)
@@ -1553,8 +1553,8 @@ bot.on('message', async (msg) => {
 
       } else if (foundUser && text == localText.seeMoreBtnUz) {
          const currentMonth = new Date().getMonth() + 1;
-         const historiesBalanceCurrentMonthOutcome = await model.historiesBalanceCurrentMonthOutcome(foundUser.id, currentMonth)
-         const historiesBalanceCurrentMonthIncome = await model.historiesBalanceCurrentMonthIncome(foundUser.id, currentMonth)
+         const historiesBalanceCurrentMonthOutcome = await model.historiesBalanceCurrentMonthOutcome(foundUser.id, currentMonth, 'uz')
+         const historiesBalanceCurrentMonthIncome = await model.historiesBalanceCurrentMonthIncome(foundUser.id, currentMonth, 'uz')
          const foundMonth = months.find(item => item.number == currentMonth)
          const replacedSeeMoreText = localText.seeMoreTextUz.replace(/%monthName%/g, foundMonth.name_uz)
          const seeMoreText = `${replacedSeeMoreText}\n\n<b>${localText.reportOutputTextUz}</b>\n${historiesBalanceCurrentMonthOutcome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextUz} ${item.comment}\n\n`).join('')}\n<b>${localText.reportInputTextUz}</b>\n${historiesBalanceCurrentMonthIncome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextUz} ${item.comment}\n\n`).join('')}`
@@ -1582,8 +1582,8 @@ bot.on('message', async (msg) => {
 
       } else if (foundUser && text == localText.seeMoreBtnRu) {
          const currentMonth = new Date().getMonth() + 1;
-         const historiesBalanceCurrentMonthOutcome = await model.historiesBalanceCurrentMonthOutcome(foundUser.id, currentMonth)
-         const historiesBalanceCurrentMonthIncome = await model.historiesBalanceCurrentMonthIncome(foundUser.id, currentMonth)
+         const historiesBalanceCurrentMonthOutcome = await model.historiesBalanceCurrentMonthOutcome(foundUser.id, currentMonth, 'ru')
+         const historiesBalanceCurrentMonthIncome = await model.historiesBalanceCurrentMonthIncome(foundUser.id, currentMonth, 'ru')
          const foundMonth = months.find(item => item.number == currentMonth)
          const replacedSeeMoreText = localText.seeMoreTextRu.replace(/%monthName%/g, foundMonth.name_uz)
          const seeMoreText = `${replacedSeeMoreText}\n\n<b>${localText.reportOutputTextRu}</b>\n${historiesBalanceCurrentMonthOutcome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextRu} ${item.comment}\n\n`).join('')}\n<b>${localText.reportInputTextRu}</b>\n${historiesBalanceCurrentMonthIncome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextRu} ${item.comment}\n\n`).join('')}`
@@ -1611,8 +1611,8 @@ bot.on('message', async (msg) => {
 
       } else if (foundUser && text == localText.seeMoreBtnEng) {
          const currentMonth = new Date().getMonth() + 1;
-         const historiesBalanceCurrentMonthOutcome = await model.historiesBalanceCurrentMonthOutcome(foundUser.id, currentMonth)
-         const historiesBalanceCurrentMonthIncome = await model.historiesBalanceCurrentMonthIncome(foundUser.id, currentMonth)
+         const historiesBalanceCurrentMonthOutcome = await model.historiesBalanceCurrentMonthOutcome(foundUser.id, currentMonth, 'en')
+         const historiesBalanceCurrentMonthIncome = await model.historiesBalanceCurrentMonthIncome(foundUser.id, currentMonth, 'en')
          const foundMonth = months.find(item => item.number == currentMonth)
          const replacedSeeMoreText = localText.seeMoreTextEng.replace(/%monthName%/g, foundMonth.name_uz)
          const seeMoreText = `${replacedSeeMoreText}\n\n<b>${localText.reportOutputTextEng}</b>\n${historiesBalanceCurrentMonthOutcome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextEng} ${item.comment}\n\n`).join('')}\n<b>${localText.reportInputTextEng}</b>\n${historiesBalanceCurrentMonthIncome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextEng} ${item.comment}\n\n`).join('')}`
