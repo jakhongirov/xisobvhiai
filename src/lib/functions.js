@@ -17,7 +17,7 @@ const parseGeminiResponse = (geminiResponse) => {
    try {
       let cleanedText = geminiResponse.replace("```", "").trim();
       cleanedText = cleanedText.startsWith("json") ? cleanedText.substring(4) : cleanedText;
-      cleanedText = cleanedText.replace(/`/g, ''); // Orqa qo'shtirnoqlarni olib tashlash
+      cleanedText = cleanedText.replace(/`/g, '');
       return JSON.parse(cleanedText);
    } catch (e) {
       throw new Error(`Error decoding JSON: ${e}`);

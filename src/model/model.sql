@@ -56,6 +56,7 @@ CREATE TABLE categories (
    name_en text,
    emoji text,
    "primary" boolean DEFAULT false,
+   from_ai boolean DEFAULT false,
    create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 

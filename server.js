@@ -31,7 +31,8 @@ const {
 const axios = require('axios');
 const {
    analyzeText,
-   analyzeVoice
+   analyzeVoice,
+   newCategoryData
 } = require('./src/lib/ai');
 
 const publicFolderPath = path.join(__dirname, 'public');
@@ -2059,8 +2060,14 @@ bot.on('message', async (msg) => {
                      jsonData?.forEach(async (item) => {
                         console.log(item)
                         const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
-                        const foundCategory = await model.foundCategory(item.category)
-                        console.log(foundCategory)
+                        let foundCategory;
+                        foundCategory = await model.foundCategory(item.category)
+
+                        if (foundCategory) {
+                           const categoryData = await newCategoryData(item.category)
+                           foundCategory = await model.addCategory(categoryData)
+                        }
+
                         const addReport = await model.addReport(
                            foundUser?.id,
                            foundBalance?.id,
@@ -2179,7 +2186,13 @@ bot.on('message', async (msg) => {
                      })
                   } else if (typeof jsonData === 'object' && value !== null && !Array.isArray(value)) {
                      const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
-                     const foundCategory = await model.foundCategory(jsonData.category)
+                     let foundCategory;
+                     foundCategory = await model.foundCategory(jsonData.category)
+
+                     if (foundCategory) {
+                        const categoryData = await newCategoryData(jsonData.category)
+                        foundCategory = await model.addCategory(categoryData)
+                     }
                      const addReport = await model.addReport(
                         foundUser.id,
                         foundBalance.id,
@@ -2316,7 +2329,14 @@ bot.on('message', async (msg) => {
             } else if (jsonData?.length > 0) {
                jsonData?.forEach(async (item) => {
                   const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
-                  const foundCategory = await model.foundCategory(item.category)
+                  let foundCategory;
+                  foundCategory = await model.foundCategory(item.category)
+
+                  if (foundCategory) {
+                     const categoryData = await newCategoryData(item.category)
+                     foundCategory = await model.addCategory(categoryData)
+                  }
+                  
                   const addReport = await model.addReport(
                      foundUser.id,
                      foundBalance.id,
@@ -2435,7 +2455,13 @@ bot.on('message', async (msg) => {
                })
             } else if (typeof jsonData === 'object' && value !== null && !Array.isArray(value)) {
                const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
-               const foundCategory = await model.foundCategory(jsonData.category)
+               let foundCategory;
+               foundCategory = await model.foundCategory(jsonData.category)
+
+               if (foundCategory) {
+                  const categoryData = await newCategoryData(jsonData.category)
+                  foundCategory = await model.addCategory(categoryData)
+               }
                const addReport = await model.addReport(
                   foundUser.id,
                   foundBalance.id,

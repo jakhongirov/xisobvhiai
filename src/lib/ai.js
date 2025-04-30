@@ -27,7 +27,7 @@ const analyzeText = async (inputText, categories) => {
          - "forWhom": The name of the person or entity involved in the debt payment. If not a debt payment, set it to "".
 
          ## Categories list - use it for clarify category of transaction:
-         ${categories} . For the transaction category, strictly choose the closest or most accurate one from the available categories list. If none match, select the "Other expenses" category.
+         ${categories} . For the transaction category, strictly choose the closest or most accurate one from the available categories list. If none match, select the "Boshqa daromadlar" category.
 
          ## Examples:
          1. Input: "I paid $200 for my rent on 2024-06-15 10:00:00+05"
@@ -119,7 +119,7 @@ const analyzeVoice = async (tempFilePath, categories) => {
          - "forWhom": The name of the person or entity involved in the debt payment. If not a debt payment, set it to "".
 
          ## Categories list - use it for clarify category of transaction:
-         ${categories} . For the transaction category, strictly choose the closest or most accurate one from the available categories list. If none match, select the "Other expenses" category.
+         ${categories} . For the transaction category, strictly choose the closest or most accurate one from the available categories list. If none match, select the "Boshqa daromadlar" category.
 
          ## Examples:
          1. Input: "I paid $200 for my rent on 2024-06-15 10:00:00+05"
@@ -169,7 +169,37 @@ const analyzeVoice = async (tempFilePath, categories) => {
    }
 }
 
+const newCategoryData = async (inputText) => {
+   try {
+      const prompt = `
+         ## Task:
+         Translate the provided Uzbek term into Russian and English, and return the results as a JSON object with the keys "name_uz", "name_ru", and "name_en", "emoji".
+         
+         ## Now, process this input:
+         "${inputText}"
+
+         ## Output ONLY JSON. No explanations, no text, just JSON.
+      `;
+
+      const result = await model.generateContent([prompt]);
+      const responseText = result.response.text();
+
+      try {
+         const jsonData = parseGeminiResponse(responseText);
+         console.log(jsonData)
+         return jsonData
+      } catch (jsonError) {
+         console.error('Error parsing JSON:', jsonError);
+      }
+
+   } catch (error) {
+      console.error('Error analyzing text:', error);
+      return 'An error occurred during text analysis.';
+   }
+}
+
 module.exports = {
    analyzeText,
-   analyzeVoice
+   analyzeVoice,
+   newCategoryData
 }

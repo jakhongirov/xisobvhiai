@@ -431,7 +431,7 @@ const foundCategory = (name) => {
       FROM
          categories
       WHERE
-         name_uz = $1;
+         name_uz = $1 or name_ru = $1 or name_en = $1;
    `;
 
    return fetch(QUERY, name)
@@ -628,6 +628,33 @@ const categories = () => {
 
    return fetch(QUERY)
 }
+const addCategory = (categoryData) => {
+   const QUERY = `
+      INSERT INTO
+         categories (
+            name_uz,
+            name_ru,
+            name_en,
+            emoji,
+            from_ai
+         ) VALUES (
+            $1,
+            $2,
+            $3,
+            $4,
+            $5
+         ) RETURNING *;
+   `;
+
+   return fetch(
+      QUERY,
+      categoryData.name_uz,
+      categoryData.name_ru,
+      categoryData.name_en,
+      categoryData.emoji,
+      true
+   )
+}
 
 module.exports = {
    foundUser,
@@ -660,5 +687,6 @@ module.exports = {
    addMonthlyAmount,
    editDuration,
    userCard,
-   categories
+   categories,
+   addCategory
 }
