@@ -91,6 +91,7 @@ CREATE TABLE debt (
    user_id bigint,
    history json [],
    given_date text,
+   income boolean DEFAULT false,
    create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 

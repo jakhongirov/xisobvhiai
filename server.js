@@ -2355,10 +2355,11 @@ bot.on('message', async (msg) => {
                               item.amount,
                               item.deadline,
                               item.date,
+                              item.type == 'income' ? true : false,
                            )
 
                            if (foundUser?.bot_lang == 'uz') {
-                              const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTextUz} ${addDebt.name}\n${localText.debtAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(addDebt.deadline)}`;
+                              const debtText = `${localText.addDebtTextUz}\n\n${addDebt.income ? localText.debtTakenTextUz : localText.debtGivenTextUz} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTextUz} ${addDebt.name}\n${localText.debtAmountTextUz} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(addDebt.deadline)}`;
                               bot.sendMessage(chatId, debtText, {
                                  parse_mode: "HTML",
                                  reply_markup: {
@@ -2373,7 +2374,7 @@ bot.on('message', async (msg) => {
                                  }
                               })
                            } else if (foundUser?.bot_lang == 'ru') {
-                              const debtText = `${localText.addDebtTextRu}\n\n${localText.debtGivenTextRu} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTextRu} ${addDebt.name}\n${localText.debtAmountTextRu} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(addDebt.deadline)}`;
+                              const debtText = `${localText.addDebtTextRu}\n\n${addDebt.income ? localText.debtTakenTextRu : localText.debtGivenTextRu} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTextRu} ${addDebt.name}\n${localText.debtAmountTextRu} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(addDebt.deadline)}`;
                               bot.sendMessage(chatId, debtText, {
                                  parse_mode: "HTML",
                                  reply_markup: {
@@ -2388,7 +2389,7 @@ bot.on('message', async (msg) => {
                                  }
                               })
                            } else if (foundUser?.bot_lang == 'eng') {
-                              const debtText = `${localText.daddDebtTextEng}\n\n${localText.debtGivenTextEng} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTexEng} ${addDebt.name}\n${localText.debtAmountTextEng} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(addDebt.deadline)}`;
+                              const debtText = `${localText.daddDebtTextEng}\n\n${addDebt.income ? localText.debtTakenTextEng : localText.debtGivenTextEng} ${formatDateAdvanced(addDebt.given_date)}\n${localText.debtWhoTexEng} ${addDebt.name}\n${localText.debtAmountTextEng} ${foundBalance.currency} ${formatBalanceWithSpaces(addDebt.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(addDebt.deadline)}`;
                               bot.sendMessage(chatId, debtText, {
                                  parse_mode: "HTML",
                                  reply_markup: {

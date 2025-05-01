@@ -113,6 +113,10 @@
 	"debtGivenTextRu": "Данный:",
 	"debtGivenTextEng": "Given:",
 
+	"debtTakenTextUz": "Olingan:",
+	"debtTakenTextRu": "Получено:",
+	"debtTakenTextEng": "Taken:",
+
 	"debtWhoTextUz": "Kimga:",
 	"debtWhoTextRu": "Кому:",
 	"debtWhoTextEng": "To whom:",
