@@ -19,7 +19,7 @@ const analyzeText = async (inputText, categories) => {
          - "user_input": The original user input as a string.
          - "category": The category of expense or income flow categories list below provided. 
          - "amount": The numerical value of the transaction.
-         - "currency": The currency used in the transaction (e.g., "USD", "EUR", "UZS"). If the currency is not explicitly mentioned, think, if amount more than "30000" maybe it is "UZS", another cases maybe - "USD" 
+         - "currency": The currency used in the transaction (e.g., "USD", "EUR", "UZS"). If the currency is not explicitly mentioned, think, if amount more than "1500" maybe it is "UZS", another cases maybe - "USD" 
          - "type": Either "income" for earning or "outcome" for spending - based on whether it's income or outcome.
          - "date": The date and time of the transaction in "YYYY-MM-DD HH:MM:SS.mmmmmm+ZZ" format (e.g., 2025-03-15 20:34:59.25447+05). If the date and time are not explicitly mentioned, use the provided current date and time: ${current_datetime}. If the input contains a date, overwrite the current date with the found date.
          - "deadline": The date and time the debt is expected to be repaid in "YYYY-MM-DD HH:MM:SS.mmmmmm+ZZ" format (e.g., 2025-03-21 20:34:59.25447+05). If no deadline is mentioned, set it to "".
@@ -111,7 +111,7 @@ const analyzeVoice = async (tempFilePath, categories) => {
          - "user_input": The original user input as a string.
          - "category": The category of expense or income flow categories list below provided. 
          - "amount": The numerical value of the transaction.
-         - "currency": The currency used in the transaction (e.g., "USD", "EUR", "UZS"). If the currency is not explicitly mentioned, think, if amount more than "30000" maybe it is "UZS", another cases maybe - "USD" 
+         - "currency": The currency used in the transaction (e.g., "USD", "EUR", "UZS"). If the currency is not explicitly mentioned, think, if amount more than "1500" maybe it is "UZS", another cases maybe - "USD" 
          - "type": Either "income" for earning or "outcome" for spending - based on whether it's income or outcome.
          - "date": The date and time of the transaction in "YYYY-MM-DD HH:MM:SS.mmmmmm+ZZ" format (e.g., 2025-03-15 20:34:59.25447+05). If the date and time are not explicitly mentioned, use the provided current date and time: ${current_datetime}. If the input contains a date, overwrite the current date with the found date.
          - "deadline": The date and time the debt is expected to be repaid in "YYYY-MM-DD HH:MM:SS.mmmmmm+ZZ" format (e.g., 2025-03-21 20:34:59.25447+05). If no deadline is mentioned, set it to "".
