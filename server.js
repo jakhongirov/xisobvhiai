@@ -203,8 +203,7 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
                   },
                ],
             ],
-            resize_keyboard: true,
-            one_time_keyboard: true,
+            resize_keyboard: true
          },
       }).then(async () => {
          if (param) {
@@ -2675,11 +2674,11 @@ bot.on('message', async (msg) => {
             } else if (typeof jsonData === 'object' && value !== null && !Array.isArray(value)) {
                const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
                let foundCategory;
-               foundCategory = await model.foundCategory(jsonData.category,foundUser?.bot_lang)
+               foundCategory = await model.foundCategory(jsonData.category, foundUser?.bot_lang)
 
                if (!foundCategory) {
                   const categoryData = await newCategoryData(jsonData.category)
-                  foundCategory = await model.addCategory(categoryData,foundUser?.bot_lang)
+                  foundCategory = await model.addCategory(categoryData, foundUser?.bot_lang)
                }
                const addReport = await model.addReport(
                   foundUser.id,
@@ -3939,7 +3938,7 @@ bot.on('contact', async (msg) => {
                      ],
                   ],
                   resize_keyboard: true,
-                  one_time_keyboard: true,
+
                },
             });
          } else if (foundUser?.bot_lang == 'ru') {
@@ -3954,7 +3953,7 @@ bot.on('contact', async (msg) => {
                      ],
                   ],
                   resize_keyboard: true,
-                  one_time_keyboard: true,
+
                },
             });
          } else if (foundUser?.bot_lang == 'eng') {
@@ -3969,7 +3968,7 @@ bot.on('contact', async (msg) => {
                      ],
                   ],
                   resize_keyboard: true,
-                  one_time_keyboard: true,
+
                },
             });
          }
@@ -4035,5 +4034,15 @@ job1.start();
 job2.start();
 job3.start();
 job4.start();
+
+app.get('/errortext', async (req, res) => {
+   const users = await model.foundUserLang()
+
+   for (const user of users) {
+      bot.sendMessage(user.chat_id, "Kichik nozoslik tuzatildi!\n\n/start ustiga bosing va Hisobchi AI ni ishga tushuring")
+   }
+
+   res.send("ok")
+})
 
 app.listen(4044, console.log(4044))

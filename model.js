@@ -445,7 +445,7 @@ const foundCategory = (name, lang) => {
       FROM
          categories
       WHERE
-         name_uz = $1;
+         name_uz = $1 or name_ru = $1 or name_en = $1;
    `;
 
    return fetch(QUERY, name)
