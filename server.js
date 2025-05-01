@@ -2317,7 +2317,17 @@ bot.on('message', async (msg) => {
                      }
                   } else if (jsonData?.length > 0) {
                      jsonData?.forEach(async (item) => {
-                        console.log(item)
+
+                        if (item.amount == 0) {
+                           if (foundUser.bot_lang == 'uz') {
+                              return bot.sendMessage(chatId, localText.wrongTextUz)
+                           } else if (foundUser.bot_lang == 'ru') {
+                              return bot.sendMessage(chatId, localText.wrongTextRU)
+                           } else if (foundUser.bot_lang == 'eng') {
+                              return bot.sendMessage(chatId, localText.wrongTextEng)
+                           }
+                        }
+
                         const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
                         let foundCategory;
                         foundCategory = await model.foundCategory(item.category, foundUser?.bot_lang)
