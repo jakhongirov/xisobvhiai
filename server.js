@@ -191,16 +191,9 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
       bot.sendMessage(chatId, localText.startText, {
          reply_markup: {
             keyboard: [
-               [
-                  {
-                     text: '🇺🇿 Uz'
-                  },
-                  {
-                     text: '🇷🇺 Ру'
-                  }
-               ]
+               [{ text: '🇺🇿 Uz' }, { text: '🇷🇺 Ру' }]
             ],
-            // resize_keyboard: true
+            resize_keyboard: true,
          }
       }).then(async () => {
          if (param) {
