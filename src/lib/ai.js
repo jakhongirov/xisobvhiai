@@ -55,13 +55,10 @@ const analyzeText = async (inputText, categories) => {
          ## Now, process this input:
          "${inputText}"
 
-
          ## Input text only in Uzbek, English and Russian languages.
          ## Output ONLY JSON. No explanations, no text, just JSON. If the input text is not suitable for financial statement extraction, output 'wrong'.
          ...
       `;
-
-      console.log(prompt)
 
       const result = await model.generateContent([prompt]);
       const responseText = result.response.text();
