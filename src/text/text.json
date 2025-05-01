@@ -213,6 +213,14 @@
 	"successfullyPaidRu": "✅ Ваш платеж прошел успешно. Вы можете начать отправлять свои входные и выходные данные в любом формате (голос, текст), а ваш помощник продолжит запись.",
 	"successfullyPaidEng": "✅ Your payment has been successful. You can start sending your receipts and expenses in any format (voice, text), and your assistant will continue to record them.",
 
+	"changeLangBtnUz": "Tilni o'zgartirish",
+	"changeLangBtnRu": "Изменить язык",
+	"changeLangBtnEng": "Change language",
+
+	"changeLangTextUz": "Iltimos bot tilni tanlang.",
+	"changeLangTextRu": "Пожалуйста, выберите язык.",
+	"changeLangTextEng": "Please select a language.",
+
 	"notFoundDataUz": "Topilmadi...",
 	"notFoundDataRu": "Не найдено...",
 	"notFoundDataEng": "Not found...",

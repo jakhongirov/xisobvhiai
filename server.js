@@ -94,6 +94,11 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
                      {
                         text: localText.premiumBtnUz
                      }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnUz
+                     }
                   ]
                ],
                resize_keyboard: true,
@@ -128,6 +133,11 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
                      },
                      {
                         text: localText.premiumBtnRu
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnRu
                      }
                   ]
                ],
@@ -164,7 +174,12 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
                      {
                         text: localText.premiumBtnEng
                      }
-                  ]
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnEng
+                     }
+                  ],
                ],
                resize_keyboard: true,
             }
@@ -209,7 +224,133 @@ bot.on('message', async (msg) => {
    const foundUser = await model.foundUser(chatId)
 
    if (foundUser) {
-      if (text == '🇺🇿 Uz') {
+      if (foundUser.bot_step == 'change_lang') {
+         if (text == '🇺🇿 Uz') {
+            bot.sendMessage(chatId, localText.menuTextUz, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  keyboard: [
+                     [
+                        {
+                           text: localText.reportsBtnUz
+                        },
+                        {
+                           text: localText.debtBtnUz
+                        },
+                     ],
+                     [
+                        {
+                           text: localText.balancesBtnUz
+                        },
+                        {
+                           text: localText.limitBtnUz
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.usageInformationBtnUz
+                        },
+                        {
+                           text: localText.premiumBtnUz
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.changeLangBtnUz
+                        }
+                     ]
+                  ],
+                  resize_keyboard: true,
+               }
+            }).then(async () => {
+               await model.editStep(chatId, 'menu')
+               await model.changeLang(chatId, 'uz')
+            })
+         } else if (text == '🇷🇺 Ру') {
+            bot.sendMessage(chatId, localText.menuTextRu, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  keyboard: [
+                     [
+                        {
+                           text: localText.reportsBtnRu
+                        },
+                        {
+                           text: localText.debtBtnRu
+                        },
+                     ],
+                     [
+                        {
+                           text: localText.balancesBtnRu
+                        },
+                        {
+                           text: localText.limitBtnRu
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.usageInformationBtnRu
+                        },
+                        {
+                           text: localText.premiumBtnRu
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.changeLangBtnRu
+                        }
+                     ]
+                  ],
+                  resize_keyboard: true,
+               }
+            }).then(async () => {
+               await model.editStep(chatId, 'menu')
+               await model.changeLang(chatId, 'ru')
+            })
+         } else if (text == '🇬🇧 Eng') {
+            bot.sendMessage(chatId, localText.menuTextEng, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  keyboard: [
+                     [
+                        {
+                           text: localText.reportsBtnEng
+                        },
+                        {
+                           text: localText.debtBtnEng
+                        },
+                     ],
+                     [
+                        {
+                           text: localText.balancesBtnEng
+                        },
+                        {
+                           text: localText.limitBtnEng
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.usageInformationBtnEng
+                        },
+                        {
+                           text: localText.premiumBtnEng
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.changeLangBtnEng
+                        }
+                     ]
+                  ],
+                  resize_keyboard: true,
+               }
+            }).then(async () => {
+               await model.editStep(chatId, 'menu')
+               await model.changeLang(chatId, 'eng')
+
+            })
+         }
+      } else if (text == '🇺🇿 Uz') {
          bot.sendVideo(chatId, "BAACAgIAAyEFAASNDiJIAAMIZ_tk3p_YBqpi72SfyFANtuPuN4UAAptoAAIT8NFKybkhzgSqW202BA", {
             parse_mode: "HTML",
             caption: localText.startTextUz,
@@ -1753,6 +1894,69 @@ bot.on('message', async (msg) => {
                await model.editStep(chatId, 'add_limit')
             })
          }
+      } else if (text == localText.changeLangBtnUz) {
+         bot.sendMessage(chatId, localText.changeLangTextUz, {
+            reply_markup: {
+               keyboard: [
+                  [
+                     {
+                        text: '🇺🇿 Uz',
+                     },
+                     {
+                        text: '🇷🇺 Ру',
+                     },
+                     {
+                        text: '🇬🇧 Eng',
+                     },
+                  ],
+               ],
+               resize_keyboard: true,
+            }
+         }).then(async () => {
+            await model.editStep(chatId, 'change_lang')
+         })
+      } else if (text == localText.changeLangBtnRu) {
+         bot.sendMessage(chatId, localText.changeLangTextRu, {
+            reply_markup: {
+               keyboard: [
+                  [
+                     {
+                        text: '🇺🇿 Uz',
+                     },
+                     {
+                        text: '🇷🇺 Ру',
+                     },
+                     {
+                        text: '🇬🇧 Eng',
+                     },
+                  ],
+               ],
+               resize_keyboard: true,
+            }
+         }).then(async () => {
+            await model.editStep(chatId, 'change_lang')
+         })
+      } else if (text == localText.changeLangBtnEng) {
+         bot.sendMessage(chatId, localText.changeLangTextEng, {
+            reply_markup: {
+               keyboard: [
+                  [
+                     {
+                        text: '🇺🇿 Uz',
+                     },
+                     {
+                        text: '🇷🇺 Ру',
+                     },
+                     {
+                        text: '🇬🇧 Eng',
+                     },
+                  ],
+               ],
+               resize_keyboard: true,
+            }
+         }).then(async () => {
+            await model.editStep(chatId, 'change_lang')
+         })
       } else if (text == localText.backBtnUz) {
          bot.sendMessage(chatId, localText.menuTextUz, {
             parse_mode: "HTML",
@@ -1780,6 +1984,11 @@ bot.on('message', async (msg) => {
                      },
                      {
                         text: localText.premiumBtnUz
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnUz
                      }
                   ]
                ],
@@ -1816,6 +2025,11 @@ bot.on('message', async (msg) => {
                      {
                         text: localText.premiumBtnRu
                      }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnRu
+                     }
                   ]
                ],
                resize_keyboard: true,
@@ -1850,6 +2064,11 @@ bot.on('message', async (msg) => {
                      },
                      {
                         text: localText.premiumBtnEng
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnEng
                      }
                   ]
                ],
@@ -2888,6 +3107,11 @@ bot.on('callback_query', async (msg) => {
                         {
                            text: localText.premiumBtnUz
                         }
+                     ],
+                     [
+                        {
+                           text: localText.changeLangBtnUz
+                        }
                      ]
                   ],
                   resize_keyboard: true,
@@ -2923,6 +3147,11 @@ bot.on('callback_query', async (msg) => {
                         {
                            text: localText.premiumBtnRu
                         }
+                     ],
+                     [
+                        {
+                           text: localText.changeLangBtnRu
+                        }
                      ]
                   ],
                   resize_keyboard: true,
@@ -2957,6 +3186,11 @@ bot.on('callback_query', async (msg) => {
                         },
                         {
                            text: localText.premiumBtnEng
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.changeLangBtnEng
                         }
                      ]
                   ],
@@ -2998,6 +3232,11 @@ bot.on('callback_query', async (msg) => {
                         {
                            text: localText.premiumBtnUz
                         }
+                     ],
+                     [
+                        {
+                           text: localText.changeLangBtnUz
+                        }
                      ]
                   ],
                   resize_keyboard: true,
@@ -3034,6 +3273,11 @@ bot.on('callback_query', async (msg) => {
                         {
                            text: localText.premiumBtnRu
                         }
+                     ],
+                     [
+                        {
+                           text: localText.changeLangBtnRu
+                        }
                      ]
                   ],
                   resize_keyboard: true,
@@ -3069,6 +3313,11 @@ bot.on('callback_query', async (msg) => {
                         },
                         {
                            text: localText.premiumBtnEng
+                        }
+                     ],
+                     [
+                        {
+                           text: localText.changeLangBtnEng
                         }
                      ]
                   ],
@@ -3200,6 +3449,11 @@ bot.on('callback_query', async (msg) => {
                      {
                         text: localText.premiumBtnUz
                      }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnUz
+                     }
                   ]
                ],
                resize_keyboard: true,
@@ -3235,6 +3489,11 @@ bot.on('callback_query', async (msg) => {
                      {
                         text: localText.premiumBtnRu
                      }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnRu
+                     }
                   ]
                ],
                resize_keyboard: true,
@@ -3269,6 +3528,11 @@ bot.on('callback_query', async (msg) => {
                      },
                      {
                         text: localText.premiumBtnEng
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnEng
                      }
                   ]
                ],
@@ -3307,6 +3571,11 @@ bot.on('callback_query', async (msg) => {
                      {
                         text: localText.premiumBtnUz
                      }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnUz
+                     }
                   ]
                ],
                resize_keyboard: true,
@@ -3342,6 +3611,11 @@ bot.on('callback_query', async (msg) => {
                      {
                         text: localText.premiumBtnRu
                      }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnRu
+                     }
                   ]
                ],
                resize_keyboard: true,
@@ -3376,6 +3650,11 @@ bot.on('callback_query', async (msg) => {
                      },
                      {
                         text: localText.premiumBtnEng
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnEng
                      }
                   ]
                ],
@@ -3414,6 +3693,11 @@ bot.on('callback_query', async (msg) => {
                      {
                         text: localText.premiumBtnUz
                      }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnUz
+                     }
                   ]
                ],
                resize_keyboard: true,
@@ -3449,6 +3733,11 @@ bot.on('callback_query', async (msg) => {
                      {
                         text: localText.premiumBtnRu
                      }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnRu
+                     }
                   ]
                ],
                resize_keyboard: true,
@@ -3483,6 +3772,11 @@ bot.on('callback_query', async (msg) => {
                      },
                      {
                         text: localText.premiumBtnEng
+                     }
+                  ],
+                  [
+                     {
+                        text: localText.changeLangBtnEng
                      }
                   ]
                ],

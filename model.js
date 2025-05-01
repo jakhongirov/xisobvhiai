@@ -122,6 +122,19 @@ const editStep = (chatId, step) => {
 
    return fetch(QUERY, chatId, step)
 }
+const changeLang = (chatId, lang) => {
+   const QUERY = `
+      UPDATE
+         users
+      SET
+         bot_lang = $2
+      WHERE
+         chat_id = $1
+      RETURNING *;
+   `;
+
+   return fetch(QUERY, chatId, lang)
+}
 const addPhoneUser = (chatId, phoneNumber) => {
    const QUERY = `
       UPDATE
@@ -664,6 +677,7 @@ module.exports = {
    addLang,
    createBalance,
    editStep,
+   changeLang,
    addPhoneUser,
    addName,
    priceList,
