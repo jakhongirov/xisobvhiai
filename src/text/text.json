@@ -221,6 +221,14 @@
 	"changeLangTextRu": "Пожалуйста, выберите язык.",
 	"changeLangTextEng": "Please select a language.",
 
+	"communityBtnUz": "Guruhga qo'shilish",
+	"communityBtnRu": "Присоединяйтесь к группе",
+	"communityBtnEng": "Join the group",
+
+	"communityTextUz": "Hisobchi Community - Moliyaviy intizomga iltiluvchilar guruhiga qo'shiling: @hisobchiai",
+	"communityTextRu": "Присоединяйтесь к группе “Hisobchi Community” — сообществу тех, кто стремится к финансовой дисциплине: @hisobchiai",
+	"communityTextEng": "Join the “Hisobchi Community” — a group for those striving for financial discipline: @hisobchiai",
+
 	"notFoundDataUz": "Topilmadi...",
 	"notFoundDataRu": "Не найдено...",
 	"notFoundDataEng": "Not found...",

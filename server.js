@@ -114,6 +114,9 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
                   [
                      {
                         text: localText.changeLangBtnUz
+                     },
+                     {
+                        text: localText.communityBtnUz
                      }
                   ]
                ],
@@ -154,6 +157,9 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
                   [
                      {
                         text: localText.changeLangBtnRu
+                     },
+                     {
+                        text: localText.communityBtnRu
                      }
                   ]
                ],
@@ -194,6 +200,9 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
                   [
                      {
                         text: localText.changeLangBtnEng
+                     },
+                     {
+                        text: localText.communityBtnEng
                      }
                   ],
                ],
@@ -271,6 +280,9 @@ bot.on('message', async (msg) => {
                      [
                         {
                            text: localText.changeLangBtnUz
+                        },
+                        {
+                           text: localText.communityBtnUz
                         }
                      ]
                   ],
@@ -312,6 +324,9 @@ bot.on('message', async (msg) => {
                      [
                         {
                            text: localText.changeLangBtnRu
+                        },
+                        {
+                           text: localText.communityBtnRu
                         }
                      ]
                   ],
@@ -353,6 +368,9 @@ bot.on('message', async (msg) => {
                      [
                         {
                            text: localText.changeLangBtnEng
+                        },
+                        {
+                           text: localText.communityBtnEng
                         }
                      ]
                   ],
@@ -1996,6 +2014,9 @@ bot.on('message', async (msg) => {
                   [
                      {
                         text: localText.changeLangBtnUz
+                     },
+                     {
+                        text: localText.communityBtnUz
                      }
                   ]
                ],
@@ -2004,6 +2025,8 @@ bot.on('message', async (msg) => {
          }).then(async () => {
             await model.editStep(chatId, 'menu')
          })
+      } else if (text == localText.communityBtnUz) {
+
       } else if (text == localText.backBtnRu) {
          bot.sendMessage(chatId, localText.menuTextRu, {
             parse_mode: "HTML",
@@ -2036,6 +2059,9 @@ bot.on('message', async (msg) => {
                   [
                      {
                         text: localText.changeLangBtnRu
+                     },
+                     {
+                        text: localText.communityBtnRu
                      }
                   ]
                ],
@@ -2076,6 +2102,9 @@ bot.on('message', async (msg) => {
                   [
                      {
                         text: localText.changeLangBtnEng
+                     },
+                     {
+                        text: localText.communityBtnEng
                      }
                   ]
                ],
@@ -3118,6 +3147,9 @@ bot.on('callback_query', async (msg) => {
                      [
                         {
                            text: localText.changeLangBtnUz
+                        },
+                        {
+                           text: localText.communityBtnUz
                         }
                      ]
                   ],
@@ -3158,6 +3190,9 @@ bot.on('callback_query', async (msg) => {
                      [
                         {
                            text: localText.changeLangBtnRu
+                        },
+                        {
+                           text: localText.communityBtnRu
                         }
                      ]
                   ],
@@ -3198,6 +3233,9 @@ bot.on('callback_query', async (msg) => {
                      [
                         {
                            text: localText.changeLangBtnEng
+                        },
+                        {
+                           text: localText.communityBtnEng
                         }
                      ]
                   ],
@@ -3243,6 +3281,9 @@ bot.on('callback_query', async (msg) => {
                      [
                         {
                            text: localText.changeLangBtnUz
+                        },
+                        {
+                           text: localText.communityBtnUz
                         }
                      ]
                   ],
@@ -3284,6 +3325,9 @@ bot.on('callback_query', async (msg) => {
                      [
                         {
                            text: localText.changeLangBtnRu
+                        },
+                        {
+                           text: localText.communityBtnRu
                         }
                      ]
                   ],
@@ -3325,6 +3369,9 @@ bot.on('callback_query', async (msg) => {
                      [
                         {
                            text: localText.changeLangBtnEng
+                        },
+                        {
+                           text: localText.communityBtnEng
                         }
                      ]
                   ],
@@ -3460,6 +3507,9 @@ bot.on('callback_query', async (msg) => {
                   [
                      {
                         text: localText.changeLangBtnUz
+                     },
+                     {
+                        text: localText.communityBtnUz
                      }
                   ]
                ],
@@ -3500,6 +3550,9 @@ bot.on('callback_query', async (msg) => {
                   [
                      {
                         text: localText.changeLangBtnRu
+                     },
+                     {
+                        text: localText.communityBtnRu
                      }
                   ]
                ],
@@ -3540,6 +3593,9 @@ bot.on('callback_query', async (msg) => {
                   [
                      {
                         text: localText.changeLangBtnEng
+                     },
+                     {
+                        text: localText.communityBtnEng
                      }
                   ]
                ],
@@ -3582,6 +3638,9 @@ bot.on('callback_query', async (msg) => {
                   [
                      {
                         text: localText.changeLangBtnUz
+                     },
+                     {
+                        text: localText.communityBtnUz
                      }
                   ]
                ],
@@ -3622,6 +3681,9 @@ bot.on('callback_query', async (msg) => {
                   [
                      {
                         text: localText.changeLangBtnRu
+                     },
+                     {
+                        text: localText.communityBtnRu
                      }
                   ]
                ],
@@ -3662,6 +3724,9 @@ bot.on('callback_query', async (msg) => {
                   [
                      {
                         text: localText.changeLangBtnEng
+                     },
+                     {
+                        text: localText.communityBtnEng
                      }
                   ]
                ],
@@ -3704,6 +3769,9 @@ bot.on('callback_query', async (msg) => {
                   [
                      {
                         text: localText.changeLangBtnUz
+                     },
+                     {
+                        text: localText.communityBtnUz
                      }
                   ]
                ],
@@ -3744,6 +3812,9 @@ bot.on('callback_query', async (msg) => {
                   [
                      {
                         text: localText.changeLangBtnRu
+                     },
+                     {
+                        text: localText.communityBtnRu
                      }
                   ]
                ],
@@ -3784,6 +3855,9 @@ bot.on('callback_query', async (msg) => {
                   [
                      {
                         text: localText.changeLangBtnEng
+                     },
+                     {
+                        text: localText.communityBtnEng
                      }
                   ]
                ],
