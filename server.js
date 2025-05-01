@@ -1339,7 +1339,7 @@ bot.on('message', async (msg) => {
          })
       } else if (foundUser && text == localText.debtBtnUz) {
          const debtsList = await model.debtsList(foundUser.id)
-         const debtText = `${localText.debtTextUz}\n\n${debtsList.map(item => `${localText.debtGivenTextUz} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextUz} ${item.name}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}\n\n`).join('')}`
+         const debtText = `${localText.debtTextUz}\n\n${debtsList.map(item => `${item.income ? localText.debtTakenTextUz : localText.debtGivenTextUz} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextUz} ${item.name}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}\n\n`).join('')}`
 
          bot.sendMessage(chatId, debtText, {
             parse_mode: "HTML",
@@ -1358,7 +1358,7 @@ bot.on('message', async (msg) => {
          })
       } else if (foundUser && text == localText.debtBtnRu) {
          const debtsList = await model.debtsList(foundUser.id)
-         const debtText = `${localText.debtTextRu}\n\n${debtsList.map(item => `${localText.debtGivenTextRu} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextRu} ${item.name}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(item.deadline)}\n\n`).join('')}`
+         const debtText = `${localText.debtTextRu}\n\n${debtsList.map(item => `${item.income ? localText.debtTakenTextRu : localText.debtGivenTextRu} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextRu} ${item.name}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(item.deadline)}\n\n`).join('')}`
 
          bot.sendMessage(chatId, debtText, {
             parse_mode: "HTML",
@@ -1377,7 +1377,7 @@ bot.on('message', async (msg) => {
          })
       } else if (foundUser && text == localText.debtBtnEng) {
          const debtsList = await model.debtsList(foundUser.id)
-         const debtText = `${localText.debtTextEng}\n\n${debtsList.map(item => `${localText.debtGivenTextEng} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextEng} ${item.name}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(item.deadline)}\n\n`).join('')}`
+         const debtText = `${localText.debtTextEng}\n\n${debtsList.map(item => `${item.income ? localText.debtTakenTextEng : localText.debtGivenTextEng} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextEng} ${item.name}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(item.deadline)}\n\n`).join('')}`
 
          bot.sendMessage(chatId, debtText, {
             parse_mode: "HTML",
