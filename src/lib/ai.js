@@ -60,6 +60,8 @@ const analyzeText = async (inputText, categories) => {
          ...
       `;
 
+      console.log(prompt)
+
       const result = await model.generateContent([prompt]);
       const responseText = result.response.text();
       const jsonData = parseGeminiResponse(responseText);
