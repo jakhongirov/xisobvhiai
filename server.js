@@ -4039,7 +4039,9 @@ app.get('/errortext', async (req, res) => {
    const users = await model.foundUserLang()
 
    for (const user of users) {
-      bot.sendMessage(user.chat_id, "Kichik nozoslik tuzatildi!\n\n/start ustiga bosing va Hisobchi AI ni ishga tushuring")
+      bot.sendMessage(user.chat_id, "Kichik nozoslik tuzatildi!\n\n/start ustiga bosing va <b>Hisobchi AI</b> ni ishga tushuring", {
+         parse_mode: "HTML"
+      }).catch(e => console.log("SendMessage Error:", e.message));
    }
 
    res.send("ok")
