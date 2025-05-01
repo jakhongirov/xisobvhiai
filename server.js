@@ -66,7 +66,23 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
    const foundUser = await model.foundUser(chatId)
 
    if (foundUser) {
-      if (foundUser?.bot_lang == 'uz') {
+      if (foundUser?.bot_step == 'language') {
+         bot.sendMessage(chatId, localText.startText, {
+            reply_markup: {
+               keyboard: [
+                  [
+                     {
+                        text: '🇺🇿 Uz'
+                     },
+                     {
+                        text: '🇷🇺 Ру'
+                     }
+                  ]
+               ],
+               resize_keyboard: true
+            }
+         })
+      } else if (foundUser?.bot_lang == 'uz') {
          bot.sendMessage(chatId, localText.menuTextUz, {
             parse_mode: "HTML",
             reply_markup: {
@@ -4034,7 +4050,7 @@ app.get('/errortext', async (req, res) => {
 
    for (const user of users) {
       bot.sendMessage(user.chat_id, "Kichik nozoslik tuzatildi!\n\n/start ustiga bosing va <b>Hisobchi AI</b> ni ishga tushuring", {
-         parse_mode: "HTML"
+         parse_mode: "HTML",
       }).catch(e => console.log("SendMessage Error:", e.message));
    }
 
