@@ -200,7 +200,7 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
                   }
                ]
             ],
-            resize_keyboard: true
+            // resize_keyboard: true
          }
       }).then(async () => {
          if (param) {
