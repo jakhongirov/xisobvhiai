@@ -3449,10 +3449,13 @@ bot.on('callback_query', async (msg) => {
          }
       }
    } else if (data.startsWith('cancel_debt_')) {
-      const debtid = data?.split('cancel_debt_')[1]
+      const [debtPart, reportPart] = data.split('-');
+      const debtid = debtPart.replace('cancel_debt_', '');
+      const reportid = reportPart.replace('cancel_report_', '');
       const deleteDebt = await model.deleteDebt(debtid, foundUser.id)
+      const deleteReport = await model.deleteReport(reportid, foundUser.id)
 
-      if (deleteDebt) {
+      if (deleteDebt && deleteReport) {
          if (foundUser.bot_lang == 'uz') {
             bot.sendMessage(chatId, localText.cancelTextUz, { parse_mode: "HTML", })
          } else if (foundUser.bot_lang == 'ru') {
