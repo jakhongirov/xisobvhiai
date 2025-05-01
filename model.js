@@ -640,7 +640,7 @@ const categories = () => {
          id;
    `;
 
-   return fetch(QUERY)
+   return fetchALL(QUERY)
 }
 const addCategory = (categoryData, lang) => {
    const QUERY = `
