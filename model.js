@@ -79,7 +79,8 @@ const addLang = (chatId, lang) => {
       SET
          bot_lang = $2
       WHERE
-         chat_id = $1;
+         chat_id = $1
+      RETURNING *;;
    `;
 
    return fetch(QUERY, chatId, lang)
