@@ -27,7 +27,8 @@ const analyzeText = async (inputText, categories) => {
          - "forWhom": The name of the person or entity involved in the debt payment. If not a debt payment, set it to "".
 
          ## Categories list - use it for clarify category of transaction:
-         ${categories} . For the transaction category, strictly choose the closest or most accurate one from the available categories list. If none match, select the "Boshqa daromadlar" category.
+         ${categories.map(e => e.name).join(', ')} 
+         For the transaction category, strictly choose the closest or most accurate one from the available categories list. If none match, select the "Boshqa daromadlar" category.
 
          ## Examples:
          1. Input: "I paid $200 for my rent on 2024-06-15 10:00:00+05"
@@ -121,7 +122,7 @@ const analyzeVoice = async (tempFilePath, categories) => {
          - "forWhom": The name of the person or entity involved in the debt payment. If not a debt payment, set it to "".
 
          ## Categories list - use it for clarify category of transaction:
-         ${categories} . For the transaction category, strictly choose the closest or most accurate one from the available categories list. If none match, select the "Boshqa daromadlar" category.
+         ${categories.map(e => e.name).join(', ')} . For the transaction category, strictly choose the closest or most accurate one from the available categories list. If none match, select the "Boshqa daromadlar" category.
 
          ## Examples:
          1. Input: "I paid $200 for my rent on 2024-06-15 10:00:00+05"
