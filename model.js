@@ -498,6 +498,7 @@ const addDebt = (
    amount,
    deadline,
    date,
+   income
 ) => {
    const QUERY = `
       INSERT INTO
@@ -507,14 +508,16 @@ const addDebt = (
             name,
             amount,
             deadline,
-            given_date
+            given_date,
+            income
          ) VALUES (
             $1,
             $2,
             $3,
             $4,
             $5,
-            $6
+            $6,
+            $7
          ) RETURNING *;
    `;
 
@@ -525,7 +528,8 @@ const addDebt = (
       forWhom,
       amount,
       deadline,
-      date
+      date,
+      income
    )
 }
 const deleteReport = (reportid, user_id) => {
