@@ -471,6 +471,7 @@ bot.on('message', async (msg) => {
                      }
                   } else if (jsonData.length > 0) {
                      jsonData?.forEach(async (item) => {
+                        const foundCategory = await model.foundCategory(item.category, foundUser?.bot_lang)
 
                         if (item.isDebtPayment) {
                            if (foundUser?.bot_lang == 'uz') {
@@ -486,7 +487,7 @@ bot.on('message', async (msg) => {
                         }
 
                         if (foundUser?.bot_lang == 'uz') {
-                           const reportText = `${localText.addReportTextUz}\n\n${item.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(item.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.addReportCategoryTextUz} <b>${item.category}</b>\n${localText.addReportCommentTextUz} ${item.user_input}`
+                           const reportText = `${localText.addReportTextUz}\n\n${item.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(item.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.addReportCategoryTextUz} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextUz} ${item.user_input}`
                            bot.sendMessage(chatId, reportText, {
                               parse_mode: 'HTML'
                            }).then(async () => {
@@ -534,7 +535,7 @@ bot.on('message', async (msg) => {
                               }
                            })
                         } else if (foundUser?.bot_lang == 'ru') {
-                           const reportText = `${localText.addReportTextRu}\n\n${item.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(item.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.addReportCategoryTextRu} <b>${item.category}</b>\n${localText.addReportCommentTextRu} ${item.user_input}`
+                           const reportText = `${localText.addReportTextRu}\n\n${item.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(item.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.addReportCategoryTextRu} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextRu} ${item.user_input}`
                            bot.sendMessage(chatId, reportText, {
                               parse_mode: 'HTML'
                            }).then(async () => {
@@ -582,7 +583,7 @@ bot.on('message', async (msg) => {
                               }
                            })
                         } else if (foundUser?.bot_lang == 'eng') {
-                           const reportText = `${localText.addReportTextEng}\n\n${item.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(item.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.addReportCategoryTextEng} <b>${item.category}</b>\n${localText.addReportCommentTextEng} ${item.user_input}`
+                           const reportText = `${localText.addReportTextEng}\n\n${item.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(item.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.addReportCategoryTextEng} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextEng} ${item.user_input}`
                            bot.sendMessage(chatId, reportText, {
                               parse_mode: 'HTML'
                            }).then(async () => {
@@ -632,6 +633,8 @@ bot.on('message', async (msg) => {
                         }
                      })
                   } else {
+                     const foundCategory = await model.foundCategory(jsonData.category, foundUser?.bot_lang)
+
                      if (jsonData.isDebtPayment) {
                         if (foundUser?.bot_lang == 'uz') {
                            const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(jsonData.deadline)}\n${localText.debtWhoTextUz} ${jsonData.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(jsonData.deadline)}`;
@@ -645,8 +648,9 @@ bot.on('message', async (msg) => {
                         }
                      }
 
+                     
                      if (foundUser?.bot_lang == 'uz') {
-                        const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${jsonData.category}</b>\n${localText.addReportCommentTextUz} ${item.user_input}`
+                        const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextUz} ${item.user_input}`
                         bot.sendMessage(chatId, reportText, {
                            parse_mode: 'HTML'
                         }).then(async () => {
@@ -694,7 +698,7 @@ bot.on('message', async (msg) => {
                            }
                         })
                      } else if (foundUser?.bot_lang == 'ru') {
-                        const reportText = `${localText.addReportTextRu}\n\n${jsonData.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextRu} <b>${jsonData.category}</b>\n${localText.addReportCommentTextRu} ${item.user_input}`
+                        const reportText = `${localText.addReportTextRu}\n\n${jsonData.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextRu} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextRu} ${item.user_input}`
                         bot.sendMessage(chatId, reportText, {
                            parse_mode: 'HTML'
                         }).then(async () => {
@@ -742,7 +746,7 @@ bot.on('message', async (msg) => {
                            }
                         })
                      } else if (foundUser?.bot_lang == 'eng') {
-                        const reportText = `${localText.addReportTextEng}\n\n${jsonData.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextEng} <b>${jsonData.category}</b>\n${localText.addReportCommentTextEng} ${item.user_input}`
+                        const reportText = `${localText.addReportTextEng}\n\n${jsonData.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextEng} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextEng} ${item.user_input}`
                         bot.sendMessage(chatId, reportText, {
                            parse_mode: 'HTML'
                         }).then(async () => {
@@ -812,6 +816,8 @@ bot.on('message', async (msg) => {
                }
             } else if (jsonData?.length > 0) {
                jsonData?.forEach(async (item) => {
+                  const foundCategory = await model.foundCategory(item.category, foundUser?.bot_lang)
+
                   if (item.isDebtPayment) {
                      if (foundUser?.bot_lang == 'uz') {
                         const debtText = `${localText.addDebtTextUz}\n\n${localText.debtGivenTextUz} ${formatDateAdvanced(item.deadline)}\n${localText.debtWhoTextUz} ${item.forWhom}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}`;
@@ -826,7 +832,7 @@ bot.on('message', async (msg) => {
                   }
 
                   if (foundUser?.bot_lang == 'uz') {
-                     const reportText = `${localText.addReportTextUz}\n\n${item.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(item.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.addReportCategoryTextUz} <b>${item.category}</b>\n${localText.addReportCommentTextUz} ${item.user_input}`
+                     const reportText = `${localText.addReportTextUz}\n\n${item.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(item.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.addReportCategoryTextUz} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextUz} ${item.user_input}`
                      bot.sendMessage(chatId, reportText, {
                         parse_mode: 'HTML'
                      }).then(async () => {
@@ -874,7 +880,7 @@ bot.on('message', async (msg) => {
                         }
                      })
                   } else if (foundUser?.bot_lang == 'ru') {
-                     const reportText = `${localText.addReportTextRu}\n\n${item.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(item.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.addReportCategoryTextRu} <b>${item.category}</b>\n${localText.addReportCommentTextRu} ${item.user_input}`
+                     const reportText = `${localText.addReportTextRu}\n\n${item.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(item.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.addReportCategoryTextRu} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextRu} ${item.user_input}`
                      bot.sendMessage(chatId, reportText, {
                         parse_mode: 'HTML'
                      }).then(async () => {
@@ -922,7 +928,7 @@ bot.on('message', async (msg) => {
                         }
                      })
                   } else if (foundUser?.bot_lang == 'eng') {
-                     const reportText = `${localText.addReportTextEng}\n\n${item.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(item.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.addReportCategoryTextEng} <b>${item.category}</b>\n${localText.addReportCommentTextEng} ${item.user_input}`
+                     const reportText = `${localText.addReportTextEng}\n\n${item.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(item.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.addReportCategoryTextEng} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextEng} ${item.user_input}`
                      bot.sendMessage(chatId, reportText, {
                         parse_mode: 'HTML'
                      }).then(async () => {
@@ -972,6 +978,7 @@ bot.on('message', async (msg) => {
                   }
                })
             } else {
+               const foundCategory = await model.foundCategory(jsonData.category, foundUser?.bot_lang)
 
                if (jsonData.isDebtPayment) {
                   if (foundUser?.bot_lang == 'uz') {
@@ -987,7 +994,7 @@ bot.on('message', async (msg) => {
                }
 
                if (foundUser?.bot_lang == 'uz') {
-                  const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${jsonData.category}</b>\n${localText.addReportCommentTextUz} ${item.user_input}`
+                  const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextUz} ${item.user_input}`
                   bot.sendMessage(chatId, reportText, {
                      parse_mode: 'HTML'
                   }).then(async () => {
@@ -1036,7 +1043,7 @@ bot.on('message', async (msg) => {
                      }
                   })
                } else if (foundUser?.bot_lang == 'ru') {
-                  const reportText = `${localText.addReportTextRu}\n\n${jsonData.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextRu} <b>${jsonData.category}</b>\n${localText.addReportCommentTextRu} ${item.user_input}`
+                  const reportText = `${localText.addReportTextRu}\n\n${jsonData.type == 'income' ? "<b>Доходы:</b>" : "<b>Расходы:</b>"}\n${localText.addReportDateTextRu} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextRu} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextRu} ${item.user_input}`
                   bot.sendMessage(chatId, reportText, {
                      parse_mode: 'HTML'
                   }).then(async () => {
@@ -1084,7 +1091,7 @@ bot.on('message', async (msg) => {
                      }
                   })
                } else if (foundUser?.bot_lang == 'eng') {
-                  const reportText = `${localText.addReportTextEng}\n\n${jsonData.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextEng} <b>${jsonData.category}</b>\n${localText.addReportCommentTextEng} ${item.user_input}`
+                  const reportText = `${localText.addReportTextEng}\n\n${jsonData.type == 'income' ? "<b>Income:</b>" : "<b>Outcome:</b>"}\n${localText.addReportDateTextEng} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextEng} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextEng} ${item.user_input}`
                   bot.sendMessage(chatId, reportText, {
                      parse_mode: 'HTML'
                   }).then(async () => {
