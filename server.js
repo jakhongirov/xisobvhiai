@@ -2026,7 +2026,11 @@ bot.on('message', async (msg) => {
             await model.editStep(chatId, 'menu')
          })
       } else if (text == localText.communityBtnUz) {
-
+         bot.sendMessage(chatId, localText.communityBtnUz)
+      } else if (text == localText.communityBtnRu) {
+         bot.sendMessage(chatId, localText.communityBtnRu)
+      } else if (text == localText.communityBtnEng) {
+         bot.sendMessage(chatId, localText.communityBtnEng)
       } else if (text == localText.backBtnRu) {
          bot.sendMessage(chatId, localText.menuTextRu, {
             parse_mode: "HTML",
