@@ -669,6 +669,18 @@ const addCategory = (categoryData, lang) => {
       true
    )
 }
+const foundUserLang = () => {
+   const QUERY = `
+      SELECT
+         *
+      FROM
+         users
+      WHERE
+         bot_step = 'language';
+   `;
+
+   return fetchALL(QUERY)
+}
 
 module.exports = {
    foundUser,
@@ -703,5 +715,6 @@ module.exports = {
    editDuration,
    userCard,
    categories,
-   addCategory
+   addCategory,
+   foundUserLang
 }
