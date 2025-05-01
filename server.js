@@ -2280,11 +2280,11 @@ bot.on('message', async (msg) => {
                         console.log(item)
                         const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
                         let foundCategory;
-                        foundCategory = await model.foundCategory(item.category)
+                        foundCategory = await model.foundCategory(item.category, foundUser.bot_lang)
 
                         if (foundCategory) {
                            const categoryData = await newCategoryData(item.category)
-                           foundCategory = await model.addCategory(categoryData)
+                           foundCategory = await model.addCategory(categoryData, foundUser.bot_lang)
                         }
 
                         const addReport = await model.addReport(

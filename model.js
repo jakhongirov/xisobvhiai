@@ -80,7 +80,7 @@ const addLang = (chatId, lang) => {
          bot_lang = $2
       WHERE
          chat_id = $1
-      RETURNING *;;
+      RETURNING *;
    `;
 
    return fetch(QUERY, chatId, lang)
@@ -437,15 +437,15 @@ const foundBalance = (id, currency) => {
 
    return fetch(QUERY, id, currency)
 }
-const foundCategory = (name) => {
+const foundCategory = (name, lang) => {
    const QUERY = `
       SELECT
          *,
-         name_uz as name
+         name_${lang === 'eng' ? 'en' : lang} AS name
       FROM
          categories
       WHERE
-         name_uz = $1 or name_ru = $1 or name_en = $1;
+         name_uz = $1;
    `;
 
    return fetch(QUERY, name)
@@ -457,7 +457,7 @@ const addReport = (
    date,
    amount,
    type,
-   comment
+   comment,
 ) => {
    const QUERY = `
       INSERT INTO
@@ -642,7 +642,7 @@ const categories = () => {
 
    return fetch(QUERY)
 }
-const addCategory = (categoryData) => {
+const addCategory = (categoryData, lang) => {
    const QUERY = `
       INSERT INTO
          categories (
@@ -657,7 +657,7 @@ const addCategory = (categoryData) => {
             $3,
             $4,
             $5
-         ) RETURNING *;
+         ) RETURNING id, name_${lang === 'eng' ? 'en' : lang} AS name;
    `;
 
    return fetch(
