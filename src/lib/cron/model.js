@@ -60,6 +60,31 @@ const getUsersPremium = () => {
 
    return fetchALL(QUERY)
 }
+const debts = (chat_id) => {
+   const QUERY = `
+      SELECT
+         d.id,
+         b.currency,
+         d.name,
+         d.deadline,
+         d.amount,
+         d.estimate,
+         d.given_date,
+         d.income
+      FROM
+         debt d
+      JOIN
+         balances b
+      ON
+         d.balance_id = b.id
+      WHERE
+         d.user_id = $1 and deadline::timestamptz::date = CURRENT_DATE
+      ORDER BY
+         d.id DESC;
+   `;
+
+   return fetchALL(QUERY, chat_id)
+}
 const getUsersWithDuration = () => {
    const QUERY = `
       SELECT 
@@ -254,6 +279,7 @@ module.exports = {
    getUsersBefore1day,
    getUsers,
    getUsersPremium,
+   debts,
    getUsersWithDuration,
    editUserPremium,
    markUserAsBlocked,
