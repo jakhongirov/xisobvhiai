@@ -192,19 +192,13 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
          reply_markup: {
             keyboard: [
                [
-                  {
-                     text: '🇺🇿 Uz',
-                  },
-                  {
-                     text: '🇷🇺 Ру',
-                  },
-                  {
-                     text: '🇬🇧 Eng',
-                  },
-               ],
+                  { text: '🇺🇿 Uz' },
+                  { text: '🇷🇺 Ру' },
+                  { text: '🇬🇧 Eng' }
+               ]
             ],
             resize_keyboard: true
-         },
+         }
       }).then(async () => {
          if (param) {
             const [partnerName, source] = param?.split('/');
@@ -648,7 +642,7 @@ bot.on('message', async (msg) => {
                         }
                      }
 
-                     
+
                      if (foundUser?.bot_lang == 'uz') {
                         const reportText = `${localText.addReportTextUz}\n\n${jsonData.type == 'income' ? "<b>Kirim:</b>" : "<b>Chiqim:</b>"}\n${localText.addReportDateTextUz} <b>${formatDateAdvanced(jsonData.date)}</b>\n\n${localText.addReportAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(jsonData.amount)}\n${localText.addReportCategoryTextUz} <b>${foundCategory.name}</b>\n${localText.addReportCommentTextUz} ${item.user_input}`
                         bot.sendMessage(chatId, reportText, {
