@@ -819,8 +819,6 @@ bot.on('message', async (msg) => {
             const categories = await model.categories()
             const jsonData = await analyzeText(text, categories)
 
-            console.log(jsonData)
-
             if (jsonData == 'wrong') {
                if (foundUser.bot_lang == 'uz') {
                   bot.sendMessage(chatId, localText.wrongTextUz)
