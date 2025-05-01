@@ -159,5 +159,27 @@ module.exports = {
             message: "Internal Server Error"
          });
       }
+   },
+
+   RESET_USER_DATA: async (req, res) => {
+      try {
+         const { chat_id } = req.params
+         const foundUser = await model.foundUser(chat_id)
+         
+         await model.deleteReports(foundUser.id)
+         await model.deleteDebts(foundUser.id)
+
+         return res.status(200).json({
+            status: 200,
+            message: "Success"
+         });
+
+      } catch (error) {
+         console.log(error);
+         return res.status(500).json({
+            status: 500,
+            message: "Internal Server Error"
+         });
+      }
    }
 }

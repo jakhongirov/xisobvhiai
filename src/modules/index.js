@@ -597,6 +597,49 @@ router
     */
    .get('/user/source', AUTH, users.STATISTICS_INCREASE)
 
+   /**
+    * @swagger
+    * /user/reset/{chat_id}:
+    *   delete:
+    *     summary: Reset a user's reports and debts using their chat ID
+    *     tags: [Users]
+    *     parameters:
+    *       - in: path
+    *         name: chat_id
+    *         required: true
+    *         schema:
+    *           type: string
+    *         description: Chat ID of the user
+    *     responses:
+    *       200:
+    *         description: Successfully reset user data
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 200
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *       500:
+    *         description: Internal server error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Internal Server Error
+    */
+   .delete('/user/reset/:chat_id', AUTH, users.RESET_USER_DATA)
+
    // ATMOS
    .get('/token', atmos.GET_TOKEN)
    .post('/add-card/:chat_id', atmos.ADD_CARD)

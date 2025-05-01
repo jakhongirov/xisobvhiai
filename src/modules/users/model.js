@@ -161,6 +161,28 @@ const source = () => {
 
    return fetchALL(QUERY)
 }
+const deleteReports = (id) => {
+   const QUERY = `
+      DELETE FROM
+         histories_balance
+      WHERE
+         user_id = $1
+      RETURNING id;
+   `;
+
+   return fetchALL(QUERY, id)
+}
+const deleteDebts = (id) => {
+   const QUERY = `
+      DELETE FROM
+         debt
+      WHERE
+         user_id = $1
+      RETURNING id;
+   `;
+
+   return fetchALL(QUERY, id)
+}
 
 module.exports = {
    users,
@@ -169,5 +191,7 @@ module.exports = {
    payedUsers,
    statisticsSource,
    statisticsIncrease,
-   source
+   source,
+   deleteReports,
+   deleteDebts
 }
