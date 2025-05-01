@@ -363,7 +363,6 @@ bot.on('message', async (msg) => {
                   ]
                ],
                resize_keyboard: true,
-               one_time_keyboard: true
             }
          }).then(async () => {
             const editStep = await model.editStep(chatId, 'register')
@@ -385,7 +384,6 @@ bot.on('message', async (msg) => {
                   ]
                ],
                resize_keyboard: true,
-               one_time_keyboard: true
             }
          }).then(async () => {
             const editStep = await model.editStep(chatId, 'register')
@@ -407,7 +405,6 @@ bot.on('message', async (msg) => {
                   ]
                ],
                resize_keyboard: true,
-               one_time_keyboard: true
             }
          }).then(async () => {
             const editStep = await model.editStep(chatId, 'register')
