@@ -56,7 +56,7 @@ const analyzeText = async (inputText, categories) => {
          "${inputText}"
 
          ## Input text only in Uzbek, English and Russian languages.
-         ## Output ONLY JSON. No explanations, no text, just JSON. If the input text is not suitable for financial statement extraction, output 'wrong'.
+         ## Output ONLY JSON. No explanations, no text, just JSON. If the input text is not suitable for financial statement extraction or or if the sum is equal to 0, output 'wrong'.
          ...
       `;
 
@@ -148,7 +148,7 @@ const analyzeVoice = async (tempFilePath, categories) => {
 
 
          ## Input text only in Uzbek, English and Russian languages.
-         ## Output ONLY JSON. No explanations, no text, just JSON. If the input text is not suitable for financial statement extraction, output 'wrong'.
+         ## Output ONLY JSON. No explanations, no text, just JSON. If the input text is not suitable for financial statement extraction or or if the sum is equal to 0, output 'wrong'.
       `;
 
 
