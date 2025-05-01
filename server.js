@@ -2454,6 +2454,17 @@ bot.on('message', async (msg) => {
 
                      })
                   } else if (typeof jsonData === 'object' && value !== null && !Array.isArray(value)) {
+
+                     if (jsonData.amount == 0) {
+                        if (foundUser.bot_lang == 'uz') {
+                           return bot.sendMessage(chatId, localText.wrongTextUz)
+                        } else if (foundUser.bot_lang == 'ru') {
+                           return bot.sendMessage(chatId, localText.wrongTextRU)
+                        } else if (foundUser.bot_lang == 'eng') {
+                           return bot.sendMessage(chatId, localText.wrongTextEng)
+                        }
+                     }
+
                      const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
                      let foundCategory;
                      foundCategory = await model.foundCategory(jsonData.category, foundUser?.bot_lang)
@@ -2734,6 +2745,15 @@ bot.on('message', async (msg) => {
 
                })
             } else if (typeof jsonData === 'object' && value !== null && !Array.isArray(value)) {
+               if (jsonData.amount == 0) {
+                  if (foundUser.bot_lang == 'uz') {
+                     return bot.sendMessage(chatId, localText.wrongTextUz)
+                  } else if (foundUser.bot_lang == 'ru') {
+                     return bot.sendMessage(chatId, localText.wrongTextRU)
+                  } else if (foundUser.bot_lang == 'eng') {
+                     return bot.sendMessage(chatId, localText.wrongTextEng)
+                  }
+               }
                const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
                let foundCategory;
                foundCategory = await model.foundCategory(jsonData.category, foundUser?.bot_lang)
