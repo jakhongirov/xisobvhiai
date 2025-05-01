@@ -213,17 +213,17 @@
 	"successfullyPaidRu": "✅ Ваш платеж прошел успешно. Вы можете начать отправлять свои входные и выходные данные в любом формате (голос, текст), а ваш помощник продолжит запись.",
 	"successfullyPaidEng": "✅ Your payment has been successful. You can start sending your receipts and expenses in any format (voice, text), and your assistant will continue to record them.",
 
-	"changeLangBtnUz": "Tilni o'zgartirish",
-	"changeLangBtnRu": "Изменить язык",
-	"changeLangBtnEng": "Change language",
+	"changeLangBtnUz": "🌐 Tilni o'zgartirish",
+	"changeLangBtnRu": "🌐 Изменить язык",
+	"changeLangBtnEng": "🌐 Change language",
 
 	"changeLangTextUz": "Iltimos bot tilni tanlang.",
 	"changeLangTextRu": "Пожалуйста, выберите язык.",
 	"changeLangTextEng": "Please select a language.",
 
-	"communityBtnUz": "Guruhga qo'shilish",
-	"communityBtnRu": "Присоединяйтесь к группе",
-	"communityBtnEng": "Join the group",
+	"communityBtnUz": "👥 Guruhga qo'shilish",
+	"communityBtnRu": "👥 Присоединяйтесь к группе",
+	"communityBtnEng": "👥 Join the group",
 
 	"communityTextUz": "Hisobchi Community - Moliyaviy intizomga iltiluvchilar guruhiga qo'shiling: @hisobchiai",
 	"communityTextRu": "Присоединяйтесь к группе “Hisobchi Community” — сообществу тех, кто стремится к финансовой дисциплине: @hisobchiai",
