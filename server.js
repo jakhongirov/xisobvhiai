@@ -192,9 +192,12 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
          reply_markup: {
             keyboard: [
                [
-                  { text: '🇺🇿 Uz' },
-                  { text: '🇷🇺 Ру' },
-                  { text: '🇬🇧 Eng' }
+                  {
+                     text: '🇺🇿 Uz'
+                  },
+                  {
+                     text: '🇷🇺 Ру'
+                  }
                ]
             ],
             resize_keyboard: true
@@ -207,7 +210,9 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
          } else {
             await model.createUser(chatId, 'language', null, 'organic', 'organic');
          }
-      })
+      }).catch(error => {
+         console.error("Error sending message:", error);
+      });
    }
 })
 
@@ -1901,10 +1906,7 @@ bot.on('message', async (msg) => {
                      },
                      {
                         text: '🇷🇺 Ру',
-                     },
-                     {
-                        text: '🇬🇧 Eng',
-                     },
+                     }
                   ],
                ],
                resize_keyboard: true,
@@ -1922,10 +1924,7 @@ bot.on('message', async (msg) => {
                      },
                      {
                         text: '🇷🇺 Ру',
-                     },
-                     {
-                        text: '🇬🇧 Eng',
-                     },
+                     }
                   ],
                ],
                resize_keyboard: true,
@@ -1943,10 +1942,7 @@ bot.on('message', async (msg) => {
                      },
                      {
                         text: '🇷🇺 Ру',
-                     },
-                     {
-                        text: '🇬🇧 Eng',
-                     },
+                     }
                   ],
                ],
                resize_keyboard: true,
