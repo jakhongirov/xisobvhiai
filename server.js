@@ -2282,7 +2282,7 @@ bot.on('message', async (msg) => {
                         let foundCategory;
                         foundCategory = await model.foundCategory(item.category, foundUser?.bot_lang)
 
-                        if (foundCategory) {
+                        if (!foundCategory) {
                            const categoryData = await newCategoryData(item.category)
                            foundCategory = await model.addCategory(categoryData, foundUser?.bot_lang)
                         }
@@ -2408,7 +2408,7 @@ bot.on('message', async (msg) => {
                      let foundCategory;
                      foundCategory = await model.foundCategory(jsonData.category, foundUser?.bot_lang)
 
-                     if (foundCategory) {
+                     if (!foundCategory) {
                         const categoryData = await newCategoryData(jsonData.category)
                         foundCategory = await model.addCategory(categoryData, foundUser?.bot_lang)
                      }
@@ -2551,7 +2551,7 @@ bot.on('message', async (msg) => {
                   let foundCategory;
                   foundCategory = await model.foundCategory(item.category, foundUser?.bot_lang)
 
-                  if (foundCategory) {
+                  if (!foundCategory) {
                      const categoryData = await newCategoryData(item.category)
                      foundCategory = await model.addCategory(categoryData, foundUser?.bot_lang)
                   }
@@ -2677,7 +2677,7 @@ bot.on('message', async (msg) => {
                let foundCategory;
                foundCategory = await model.foundCategory(jsonData.category,foundUser?.bot_lang)
 
-               if (foundCategory) {
+               if (!foundCategory) {
                   const categoryData = await newCategoryData(jsonData.category)
                   foundCategory = await model.addCategory(categoryData,foundUser?.bot_lang)
                }
