@@ -2280,11 +2280,11 @@ bot.on('message', async (msg) => {
                         console.log(item)
                         const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
                         let foundCategory;
-                        foundCategory = await model.foundCategory(item.category, foundUser.bot_lang)
+                        foundCategory = await model.foundCategory(item.category, foundUser?.bot_lang)
 
                         if (foundCategory) {
                            const categoryData = await newCategoryData(item.category)
-                           foundCategory = await model.addCategory(categoryData, foundUser.bot_lang)
+                           foundCategory = await model.addCategory(categoryData, foundUser?.bot_lang)
                         }
 
                         const addReport = await model.addReport(
@@ -2406,11 +2406,11 @@ bot.on('message', async (msg) => {
                   } else if (typeof jsonData === 'object' && value !== null && !Array.isArray(value)) {
                      const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
                      let foundCategory;
-                     foundCategory = await model.foundCategory(jsonData.category)
+                     foundCategory = await model.foundCategory(jsonData.category, foundUser?.bot_lang)
 
                      if (foundCategory) {
                         const categoryData = await newCategoryData(jsonData.category)
-                        foundCategory = await model.addCategory(categoryData)
+                        foundCategory = await model.addCategory(categoryData, foundUser?.bot_lang)
                      }
                      const addReport = await model.addReport(
                         foundUser.id,
@@ -2549,11 +2549,11 @@ bot.on('message', async (msg) => {
                jsonData?.forEach(async (item) => {
                   const foundBalance = await model.foundBalance(foundUser.id, item.currency,)
                   let foundCategory;
-                  foundCategory = await model.foundCategory(item.category)
+                  foundCategory = await model.foundCategory(item.category, foundUser?.bot_lang)
 
                   if (foundCategory) {
                      const categoryData = await newCategoryData(item.category)
-                     foundCategory = await model.addCategory(categoryData)
+                     foundCategory = await model.addCategory(categoryData, foundUser?.bot_lang)
                   }
 
                   const addReport = await model.addReport(
@@ -2675,11 +2675,11 @@ bot.on('message', async (msg) => {
             } else if (typeof jsonData === 'object' && value !== null && !Array.isArray(value)) {
                const foundBalance = await model.foundBalance(foundUser.id, jsonData.currency,)
                let foundCategory;
-               foundCategory = await model.foundCategory(jsonData.category)
+               foundCategory = await model.foundCategory(jsonData.category,foundUser?.bot_lang)
 
                if (foundCategory) {
                   const categoryData = await newCategoryData(jsonData.category)
-                  foundCategory = await model.addCategory(categoryData)
+                  foundCategory = await model.addCategory(categoryData,foundUser?.bot_lang)
                }
                const addReport = await model.addReport(
                   foundUser.id,
