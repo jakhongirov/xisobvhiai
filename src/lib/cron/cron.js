@@ -156,20 +156,28 @@ const sendMessageMorning = async () => {
 
             if (user?.bot_lang == 'uz') {
                bot.sendMessage(user?.chat_id, localText.cronTextMorningPremiumUz)
-               const debtText = `${localText.debtTextUz}\n\n${debts.map(item => `${item.income ? localText.debtTakenTextUz : localText.debtGivenTextUz} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextUz} ${item.name}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}`).join('\n\n***\n\n')}`
-               bot.sendMessage(user?.chat_id, debtText)
+               if (debts.length < 0) {
+                  const debtText = `${localText.debtTextUz}\n\n${debts.map(item => `${item.income ? localText.debtTakenTextUz : localText.debtGivenTextUz} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextUz} ${item.name}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}`).join('\n\n***\n\n')}`
+                  bot.sendMessage(user?.chat_id, debtText)
+               }
             } else if (user?.lang == 'ru') {
                bot.sendMessage(user?.chat_id, localText.cronTextMorningPremiumRu)
-               const debtText = `${localText.debtTextRu}\n\n${debts.map(item => `${item.income ? localText.debtTakenTextRu : localText.debtGivenTextRu} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextRu} ${item.name}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(item.deadline)}`).join('\n\n***\n\n')}`
-               bot.sendMessage(user?.chat_id, debtText)
+               if (debts?.length > 0) {
+                  const debtText = `${localText.debtTextRu}\n\n${debts.map(item => `${item.income ? localText.debtTakenTextRu : localText.debtGivenTextRu} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextRu} ${item.name}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(item.deadline)}`).join('\n\n***\n\n')}`
+                  bot.sendMessage(user?.chat_id, debtText)
+               }
             } else if (user?.lang == 'eng') {
                bot.sendMessage(user?.chat_id, localText.cronTextMorningPremiumEng)
-               const debtText = `${localText.debtTextEng}\n\n${debts.map(item => `${item.income ? localText.debtTakenTextEng : localText.debtGivenTextEng} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextEng} ${item.name}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(item.deadline)}`).join('\n\n***\n\n')}`
-               bot.sendMessage(user?.chat_id, debtText)
+               if (debts?.length > 0) {
+                  const debtText = `${localText.debtTextEng}\n\n${debts.map(item => `${item.income ? localText.debtTakenTextEng : localText.debtGivenTextEng} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextEng} ${item.name}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(item.deadline)}`).join('\n\n***\n\n')}`
+                  bot.sendMessage(user?.chat_id, debtText)
+               }
             } else {
                bot.sendMessage(user?.chat_id, localText.cronTextMorningPremiumUz)
-               const debtText = `${localText.debtTextUz}\n\n${debts.map(item => `${item.income ? localText.debtTakenTextUz : localText.debtGivenTextUz} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextUz} ${item.name}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}`).join('\n\n***\n\n')}`
-               bot.sendMessage(user?.chat_id, debtText)
+               if (debts?.length > 0) {
+                  const debtText = `${localText.debtTextUz}\n\n${debts.map(item => `${item.income ? localText.debtTakenTextUz : localText.debtGivenTextUz} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextUz} ${item.name}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}`).join('\n\n***\n\n')}`
+                  bot.sendMessage(user?.chat_id, debtText)
+               }
             }
          }
       }
