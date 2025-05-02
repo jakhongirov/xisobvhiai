@@ -679,6 +679,8 @@ const pay = async (user, userCard) => {
             await model.editPartnerProfit(foundPartner.id, profitAmount)
 
             if (addCheck && editUserPremium) {
+               const text = `<strong>${addCheck.method}</strong>\n\nIlova: Hisobchi AI\nUser id: ${addCheck?.user_id}\nTarif: Oylik\nAmount: ${addCheck?.amount}`;
+               bot.sendMessage(process.env.CHAT_ID, text, { parse_mode: "HTML" })
                return "Success"
             }
          } else {

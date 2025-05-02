@@ -312,6 +312,9 @@ module.exports = {
                                  }
 
                                  if (addCheck && editUserPremium) {
+                                    const text = `<strong>${addCheck.method}</strong>\n\nIlova: Hisobchi AI\nUser id: ${addCheck?.user_id}\nTarif: Oylik\nAmount: ${addCheck?.amount}`;
+                                    bot.sendMessage(process.env.CHAT_ID, text, { parse_mode: "HTML" })
+
                                     if (editUserPremium?.bot_lang == 'uz') {
                                        bot.sendMessage(chat_id, localText.successfullyPaidUz, {
                                           parse_mode: "HTML",
@@ -677,6 +680,9 @@ module.exports = {
                                  }
                               }
                               if (addCheck && editUserPremium) {
+                                 const text = `<strong>${addCheck.method}</strong>\n\nIlova: Hisobchi AI\nUser id: ${addCheck?.user_id}\nTarif: Oylik\nAmount: ${addCheck?.amount}`;
+                                 bot.sendMessage(process.env.CHAT_ID, text, { parse_mode: "HTML" })
+
                                  if (editUserPremium?.bot_lang == 'uz') {
                                     bot.sendMessage(chat_id, localText.successfullyPaidUz, {
                                        parse_mode: "HTML",

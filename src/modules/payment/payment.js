@@ -185,6 +185,9 @@ module.exports = {
                   })
                }
 
+               const text = `<strong>${addCheck.method}</strong>\n\nIlova: Hisobchi AI\nUser id: ${addCheck?.user_id}\nTarif: ${tarif}\nAmount: ${addCheck?.amount}`;
+               bot.sendMessage(process.env.CHAT_ID, text, { parse_mode: "HTML" })
+
                return res.status(200).json({
                   status: 200,
                   message: "Success"
