@@ -17,6 +17,7 @@ const partners = require('./partners/partners')
 const price = require('./price/price')
 const categories = require('./categories/categories')
 const cards = require('./cards/cards')
+const histories = require('./histories/histories')
 
 router
 
@@ -2292,5 +2293,284 @@ router
     *                   example: Interval Server Error
     */
    .delete('/cards', AUTH, cards.DELETE_CARD)
+
+   // HISTORIES
+
+   /**
+    * @swagger
+    * tags:
+    *    name: Histories
+    *    description: Histories managing API
+    */
+
+   /**
+    * @swagger
+    * /reports/list:
+    *   get:
+    *     summary: Get paginated report list for a specific user
+    *     tags: [Histories]
+    *     security:
+    *       - token: []
+    *     parameters:
+    *       - in: header
+    *         name: token
+    *         required: true
+    *         schema:
+    *           type: string
+    *         description: Authentication token
+    *       - in: query
+    *         name: limit
+    *         required: true
+    *         schema:
+    *           type: integer
+    *         description: Number of reports per page
+    *       - in: query
+    *         name: page
+    *         required: true
+    *         schema:
+    *           type: integer
+    *         description: Page number to retrieve
+    *       - in: query
+    *         name: user_id
+    *         required: false
+    *         schema:
+    *           type: string
+    *         description: Optional user ID to filter reports
+    *     responses:
+    *       200:
+    *         description: Successfully retrieved report list
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 200
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   type: array
+    *                   items:
+    *                     type: object
+    *                     description: Report item
+    *       400:
+    *         description: Bad request due to missing pagination parameters
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 400
+    *                 message:
+    *                   type: string
+    *                   example: Bad request
+    *       500:
+    *         description: Internal server error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .get('/reports/list', AUTH, histories.GET_REPORTS)
+
+   /**
+    * @swagger
+    * /debts/list:
+    *   get:
+    *     summary: Get paginated debt list for a specific user
+    *     tags: [Histories]
+    *     security:
+    *       - token: []
+    *     parameters:
+    *       - in: header
+    *         name: token
+    *         required: true
+    *         schema:
+    *           type: string
+    *         description: Authentication token
+    *       - in: query
+    *         name: limit
+    *         required: true
+    *         schema:
+    *           type: integer
+    *         description: Number of debts per page
+    *       - in: query
+    *         name: page
+    *         required: true
+    *         schema:
+    *           type: integer
+    *         description: Page number to retrieve
+    *       - in: query
+    *         name: user_id
+    *         required: false
+    *         schema:
+    *           type: string
+    *         description: Optional user ID to filter debts
+    *     responses:
+    *       200:
+    *         description: Successfully retrieved debt list
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 200
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   type: array
+    *                   items:
+    *                     type: object
+    *                     description: Debt item
+    *       400:
+    *         description: Bad request due to missing pagination parameters
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 400
+    *                 message:
+    *                   type: string
+    *                   example: Bad request
+    *       500:
+    *         description: Internal server error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .get('/debts/list', AUTH, histories.GET_DEBTS)
+
+   /**
+    * @swagger
+    * /report/{id}:
+    *   get:
+    *     summary: Get a report by its ID
+    *     tags: [Histories]
+    *     security:
+    *       - token: []
+    *     parameters:
+    *       - in: header
+    *         name: token
+    *         required: true
+    *         schema:
+    *           type: string
+    *         description: Authentication token
+    *       - in: path
+    *         name: id
+    *         required: true
+    *         schema:
+    *           type: string
+    *         description: The ID of the report to retrieve
+    *     responses:
+    *       200:
+    *         description: Successfully retrieved the report
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 200
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   type: object
+    *                   description: The report object
+    *       500:
+    *         description: Internal server error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .get('/report/:id', AUTH, histories.GET_REPORT_ID)
+
+   /**
+    * @swagger
+    * /debt/{id}:
+    *   get:
+    *     summary: Get a debt by its ID
+    *     tags: [Histories]
+    *     security:
+    *       - token: []
+    *     parameters:
+    *       - in: header
+    *         name: token
+    *         required: true
+    *         schema:
+    *           type: string
+    *         description: Authentication token
+    *       - in: path
+    *         name: id
+    *         required: true
+    *         schema:
+    *           type: string
+    *         description: The ID of the debt to retrieve
+    *     responses:
+    *       200:
+    *         description: Successfully retrieved the debt
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 200
+    *                 message:
+    *                   type: string
+    *                   example: Success
+    *                 data:
+    *                   type: object
+    *                   description: The debt object
+    *       500:
+    *         description: Internal server error
+    *         content:
+    *           application/json:
+    *             schema:
+    *               type: object
+    *               properties:
+    *                 status:
+    *                   type: integer
+    *                   example: 500
+    *                 message:
+    *                   type: string
+    *                   example: Interval Server Error
+    */
+   .get('/debt/:id', AUTH, histories.GET_DEBT_ID)
 
 module.exports = router
