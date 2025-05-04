@@ -339,7 +339,8 @@ const debtsList = (id) => {
          d.amount,
          d.estimate,
          d.given_date,
-         d.income
+         d.income,
+         d.comment
       FROM
          debt d
       JOIN
