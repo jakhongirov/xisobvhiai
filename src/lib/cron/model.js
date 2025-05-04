@@ -51,7 +51,8 @@ const getUsersPremium = () => {
       SELECT 
          id,
          chat_id,
-         bot_lang
+         bot_lang,
+         limit_amount
       FROM 
          users
       WHERE 
