@@ -2344,7 +2344,8 @@ bot.on('message', async (msg) => {
                            item.date,
                            item.amount,
                            item.type == 'income' ? true : false,
-                           item.user_input
+                           item.user_input,
+                           true
                         )
 
                         if (item.isDebtPayment) {
@@ -2356,6 +2357,8 @@ bot.on('message', async (msg) => {
                               item.deadline,
                               item.date,
                               item.type == 'income' ? true : false,
+                              item.user_input,
+                              true
                            )
 
                            if (foundUser?.bot_lang == 'uz') {
@@ -2484,7 +2487,8 @@ bot.on('message', async (msg) => {
                         jsonData.date,
                         jsonData.amount,
                         jsonData.type == 'income' ? true : false,
-                        jsonData.user_input
+                        jsonData.user_input,
+                        true,
                      )
 
                      if (jsonData.isDebtPayment) {
@@ -2496,6 +2500,8 @@ bot.on('message', async (msg) => {
                            jsonData.deadline,
                            jsonData.date,
                            jsonData.type == 'income' ? true : false,
+                           jsonData.user_input,
+                           true
                         )
 
                         if (foundUser?.bot_lang == 'uz') {
@@ -2643,7 +2649,8 @@ bot.on('message', async (msg) => {
                      item.date,
                      item.amount,
                      item.type == 'income' ? true : false,
-                     item.user_input
+                     item.user_input,
+                     false,
                   )
 
                   if (item.isDebtPayment) {
@@ -2655,6 +2662,8 @@ bot.on('message', async (msg) => {
                         item.deadline,
                         item.date,
                         item.type == 'income' ? true : false,
+                        item.user_input,
+                        false
                      )
 
                      if (foundUser?.bot_lang == 'uz') {
@@ -2781,7 +2790,8 @@ bot.on('message', async (msg) => {
                   jsonData.date,
                   jsonData.amount,
                   jsonData.type == 'income' ? true : false,
-                  jsonData.user_input
+                  jsonData.user_input,
+                  false
                )
 
                if (jsonData.isDebtPayment) {
@@ -2792,7 +2802,9 @@ bot.on('message', async (msg) => {
                      jsonData.amount,
                      jsonData.deadline,
                      jsonData.date,
-                     jsonData.type == 'income' ? true : false
+                     jsonData.type == 'income' ? true : false,
+                     jsonData.user_input,
+                     false
                   )
 
                   if (foundUser?.bot_lang == 'uz') {

@@ -459,6 +459,7 @@ const addReport = (
    amount,
    type,
    comment,
+   voice_message,
 ) => {
    const QUERY = `
       INSERT INTO
@@ -469,7 +470,8 @@ const addReport = (
             date,
             amount,
             income,
-            comment
+            comment,
+            voice_message
          ) VALUES (
             $1, 
             $2, 
@@ -477,7 +479,8 @@ const addReport = (
             $4, 
             $5,
             $6,
-            $7
+            $7,
+            $8
          ) RETURNING *;
    `;
 
@@ -489,7 +492,8 @@ const addReport = (
       date,
       amount,
       type,
-      comment
+      comment,
+      voice_message
    )
 }
 const addDebt = (
@@ -499,7 +503,9 @@ const addDebt = (
    amount,
    deadline,
    date,
-   income
+   income,
+   comment,
+   voice_message
 ) => {
    const QUERY = `
       INSERT INTO
@@ -510,7 +516,9 @@ const addDebt = (
             amount,
             deadline,
             given_date,
-            income
+            income,
+            comment,
+            voice_message
          ) VALUES (
             $1,
             $2,
@@ -518,7 +526,9 @@ const addDebt = (
             $4,
             $5,
             $6,
-            $7
+            $7,
+            $8,
+            $9
          ) RETURNING *;
    `;
 
@@ -530,7 +540,9 @@ const addDebt = (
       amount,
       deadline,
       date,
-      income
+      income,
+      comment,
+      voice_message
    )
 }
 const deleteReport = (reportid, user_id) => {

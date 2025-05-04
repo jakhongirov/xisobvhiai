@@ -77,6 +77,7 @@ CREATE TABLE histories_balance (
    balance_id bigint,
    user_id bigint,
    income boolean DEFAULT false,
+   voice_message boolean,
    create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -92,6 +93,8 @@ CREATE TABLE debt (
    history json [],
    given_date text,
    income boolean DEFAULT false,
+   comment text,
+   voice_message boolean,
    create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
 
