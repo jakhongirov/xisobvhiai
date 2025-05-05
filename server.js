@@ -4104,6 +4104,7 @@ bot.on('callback_query', async (msg) => {
          bot.editMessageText(newText, {
             chat_id: chatId,
             message_id: messageId,
+            parse_mode: "HTML",
             reply_markup: {
                inline_keyboard: buttons
             }
