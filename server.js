@@ -4077,6 +4077,38 @@ bot.on('callback_query', async (msg) => {
             await model.editStep(chatId, 'payment')
          })
       }
+   } else if (data.startsWith("income_page_") || data.startsWith("outcome_page_")) {
+      const messageId = msg.message.message_id;
+      const matchIncome = data.match(/^income_page_(\d+)_(\d+)$/);
+      const matchOutcome = data.match(/^outcome_page_(\d+)_(\d+)$/);
+      const currentMonth = new Date().getMonth() + 1;
+
+      let pageIncome = 0, pageOutcome = 0;
+
+      if (matchIncome) {
+         pageIncome = parseInt(matchIncome[1]);
+         pageOutcome = parseInt(matchIncome[2]);
+      } else if (matchOutcome) {
+         pageIncome = parseInt(matchOutcome[1]);
+         pageOutcome = parseInt(matchOutcome[2]);
+      }
+
+      if (foundUser.bot_lang == 'uz') {
+         const { income, outcome, buttons } = await paginationSeeMoreHistories(foundUser.id, currentMonth, foundUser.bot_lang, pageIncome, pageOutcome);
+         const historiesBalanceCurrentMonthOutcome = outcome
+         const historiesBalanceCurrentMonthIncome = income
+         const foundMonth = months.find(item => item.number == currentMonth)
+         const replacedSeeMoreText = localText.seeMoreTextUz.replace(/%monthName%/g, foundMonth.name_uz)
+         const newText = `${replacedSeeMoreText}\n\n<b>${localText.reportOutputTextUz}</b>\n${historiesBalanceCurrentMonthOutcome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextUz} ${item.comment}\n\n`).join('')}\n<b>${localText.reportInputTextUz}</b>\n${historiesBalanceCurrentMonthIncome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextUz} ${item.comment}\n\n`).join('')}`
+
+         bot.editMessageText(newText, {
+            chat_id: chatId,
+            message_id: messageId,
+            reply_markup: {
+               inline_keyboard: [buttons]
+            }
+         });
+      }
    }
 })
 
@@ -4168,37 +4200,6 @@ bot.on('contact', async (msg) => {
                },
             });
          }
-      }
-   } else if (data.startsWith("income_page_") || data.startsWith("outcome_page_")) {
-      const matchIncome = data.match(/^income_page_(\d+)_(\d+)$/);
-      const matchOutcome = data.match(/^outcome_page_(\d+)_(\d+)$/);
-      const currentMonth = new Date().getMonth() + 1;
-
-      let pageIncome = 0, pageOutcome = 0;
-
-      if (matchIncome) {
-         pageIncome = parseInt(matchIncome[1]);
-         pageOutcome = parseInt(matchIncome[2]);
-      } else if (matchOutcome) {
-         pageIncome = parseInt(matchOutcome[1]);
-         pageOutcome = parseInt(matchOutcome[2]);
-      }
-
-      if (foundUser.bot_lang == 'uz') {
-         const { income, outcome, buttons } = await paginationSeeMoreHistories(foundUser.id, currentMonth, foundUser.bot_lang, pageIncome, pageOutcome);
-         const historiesBalanceCurrentMonthOutcome = outcome
-         const historiesBalanceCurrentMonthIncome = income
-         const foundMonth = months.find(item => item.number == currentMonth)
-         const replacedSeeMoreText = localText.seeMoreTextUz.replace(/%monthName%/g, foundMonth.name_uz)
-         const newText = `${replacedSeeMoreText}\n\n<b>${localText.reportOutputTextUz}</b>\n${historiesBalanceCurrentMonthOutcome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextUz} ${item.comment}\n\n`).join('')}\n<b>${localText.reportInputTextUz}</b>\n${historiesBalanceCurrentMonthIncome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextUz} ${item.comment}\n\n`).join('')}`
-
-         bot.editMessageText(newText, {
-            chat_id: chatId,
-            message_id: messageId,
-            reply_markup: {
-               inline_keyboard: [buttons]
-            }
-         });
       }
    }
 })
