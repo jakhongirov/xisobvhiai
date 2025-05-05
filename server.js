@@ -2121,7 +2121,7 @@ bot.on('message', async (msg) => {
          const foundMonth = months.find(item => item.name_uz == text || item.name_ru == text || item.name_eng == text)
          const monthlyInput = await model.monthlyInput(foundUser.id, foundMonth.number)
          const monthlyOutput = await model.monthlyOutput(foundUser.id, foundMonth.number)
-         const monthlyByCategories = await model.monthlyByCategories(foundUser.id, foundMonth.number)
+         const monthlyByCategories = await model.monthlyByCategories(foundUser.id, foundMonth.number, foundUser.bot_lang)
 
          if (foundUser?.bot_lang == 'uz') {
             const replacedText = localText.reportMonthlyTextUz
