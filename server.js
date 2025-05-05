@@ -2118,7 +2118,7 @@ bot.on('message', async (msg) => {
             await model.editStep(chatId, 'menu')
          })
       } else if (foundUser?.bot_step === 'choose_month' && text) {
-         const foundMonth = months.find(item => item.name == text)
+         const foundMonth = months.find(item => item.name_uz == text || item.name_ru == text || item.name_eng == text)
          const monthlyInput = await model.monthlyInput(foundUser.id, foundMonth.number)
          const monthlyOutput = await model.monthlyOutput(foundUser.id, foundMonth.number)
          const monthlyByCategories = await model.monthlyByCategories(foundUser.id, foundMonth.number)
@@ -2127,7 +2127,7 @@ bot.on('message', async (msg) => {
             const replacedText = localText.reportMonthlyTextUz
                .replace(/%monthName%/g, foundMonth.name_uz)
 
-            const reportMonthly = `${replacedText}\n\n${localText.reportInputTextUz} ${monthlyInput.length > 0 ? monthlyInput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextUz} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextUz}\n${monthlyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
+            let reportMonthly = `${replacedText}\n\n${localText.reportInputTextUz} ${monthlyInput?.length > 0 ? monthlyInput?.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}${localText.reportOutputTextUz} ${monthlyOutput?.length > 0 ? monthlyOutput.map(item => `${item.currency} ${formatBalanceWithSpaces(item.sum)}\n`).join('') : "0\n"}\n\n${localText.reportCatgoriesTextUz}\n${monthlyByCategories.map(item => `${item.income ? '🟢' : '🔴'} ${item.name}: ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n`).join('')}`;
 
             bot.sendMessage(chatId, reportMonthly, {
                parse_mode: "HTML",
