@@ -77,6 +77,22 @@
 	"seeMoreBtnRu": "⏬️️️️️️ Посмотреть подробности",
 	"seeMoreBtnEng": "⏬️️️️️️ View details",
 
+	"previousBtnUzIncome": "← Kirimlar",
+	"previousBtnRuIncome": "← Доходы",
+	"previousBtnEngIncome": "← Incomes",
+
+	"nextBtnUzIncome": "Kirimlar →",
+	"nextBtnRuIncome": "Доходы →",
+	"nextBtnEngIncome": "Incomes →",
+
+	"previousBtnUzOutcome": "← Chiqimlar",
+	"previousBtnRuOutcome": "← Расходы",
+	"previousBtnEngOutcome": "← Expenses",
+
+	"nextBtnUzOutcome": "Chiqimlar →",
+	"nextBtnRuOutcome": "Расходы →",
+	"nextBtnEngOutcome": "Expenses →",
+
 	"chooseMonthTextUz": "O'zingizga kerakli oyni tanlang:",
 	"chooseMonthTextRu": "Выберите месяц, который вы хотите:",
 	"chooseMonthTextEng": "Choose the month you want:",

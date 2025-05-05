@@ -355,7 +355,7 @@ const debtsList = (id) => {
 
    return fetchALL(QUERY, id)
 }
-const historiesBalanceCurrentMonthOutcome = (id, currentMonth, lang) => {
+const historiesBalanceCurrentMonthOutcome = (id, currentMonth, lang, limit, offset) => {
    const QUERY = `
       SELECT 
          h.id,
@@ -386,12 +386,41 @@ const historiesBalanceCurrentMonthOutcome = (id, currentMonth, lang) => {
          AND EXTRACT(MONTH FROM h.date::date) = $2
          AND h.user_id = $1 AND h.income = false
       ORDER BY
-         h.id;
+         h.id
+      LIMIT $3
+      OFFSET $4;
    `;
 
-   return fetchALL(QUERY, id, currentMonth)
+   return fetchALL(QUERY, id, currentMonth, limit, offset)
 }
-const historiesBalanceCurrentMonthIncome = (id, currentMonth, lang) => {
+const historiesBalanceCurrentMonthOutcomeCount = (id, currentMonth) => {
+   const QUERY = `
+      SELECT
+         COUNT(*)
+      FROM
+         histories_balance h
+      JOIN
+         balances b
+      ON
+         h.balance_id = b.id
+      JOIN
+         categories c
+      ON
+         c.id = h.category_id
+      WHERE
+         EXTRACT(YEAR FROM h.date::date) = 
+            CASE 
+               WHEN EXTRACT(MONTH FROM CURRENT_DATE) >= $2 
+               THEN EXTRACT(YEAR FROM CURRENT_DATE) 
+               ELSE EXTRACT(YEAR FROM CURRENT_DATE) - 1 
+            END
+         AND EXTRACT(MONTH FROM h.date::date) = $2
+         AND h.user_id = $1 AND h.income = false;
+   `;
+
+   return fetch(QUERY, id, currentMonth)
+}
+const historiesBalanceCurrentMonthIncome = (id, currentMonth, lang, limit, offset) => {
    const QUERY = `
       SELECT 
          h.id,
@@ -422,10 +451,39 @@ const historiesBalanceCurrentMonthIncome = (id, currentMonth, lang) => {
          AND EXTRACT(MONTH FROM h.date::date) = $2
          AND h.user_id = $1 AND h.income = true
       ORDER BY
-         h.id;
+         h.id
+      LIMIT $3
+      OFFSET $4;
    `;
 
-   return fetchALL(QUERY, id, currentMonth)
+   return fetchALL(QUERY, id, currentMonth, limit, offset)
+}
+const historiesBalanceCurrentMonthIncomeCount = (id, currentMonth) => {
+   const QUERY = `
+      SELECT
+         COUNT(*)
+      FROM
+         histories_balance h
+      JOIN
+         balances b
+      ON
+         h.balance_id = b.id
+      JOIN
+         categories c
+      ON
+         c.id = h.category_id
+      WHERE
+         EXTRACT(YEAR FROM h.date::date) = 
+            CASE 
+               WHEN EXTRACT(MONTH FROM CURRENT_DATE) >= $2 
+               THEN EXTRACT(YEAR FROM CURRENT_DATE) 
+               ELSE EXTRACT(YEAR FROM CURRENT_DATE) - 1 
+            END
+         AND EXTRACT(MONTH FROM h.date::date) = $2
+         AND h.user_id = $1 AND h.income = true;
+   `;
+
+   return fetch(QUERY, id, currentMonth)
 }
 const foundBalance = (id, currency) => {
    const QUERY = `
@@ -719,7 +777,9 @@ module.exports = {
    userBalances,
    debtsList,
    historiesBalanceCurrentMonthOutcome,
+   historiesBalanceCurrentMonthOutcomeCount,
    historiesBalanceCurrentMonthIncome,
+   historiesBalanceCurrentMonthIncomeCount,
    foundBalance,
    foundCategory,
    addReport,

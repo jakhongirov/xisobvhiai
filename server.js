@@ -60,6 +60,46 @@ if (!fs.existsSync(audiosFolderPath)) {
    console.log('Images folder already exists within the public folder.');
 }
 
+const paginationSeeMoreHistories = async (user_id, currentMonth, lang, pageIncome, pageOutcome) => {
+   const ITEMS_PER_PAGE = 2;
+
+   // Calculate offsets
+   const offsetIncome = pageIncome * ITEMS_PER_PAGE;
+   const offsetOutcome = pageOutcome * ITEMS_PER_PAGE;
+
+   // Fetch data
+   const incomeData = await model.historiesBalanceCurrentMonthIncome(user_id, currentMonth, lang, ITEMS_PER_PAGE, offsetIncome);
+   const outcomeData = await model.historiesBalanceCurrentMonthOutcome(user_id, currentMonth, lang, ITEMS_PER_PAGE, offsetOutcome);
+
+   // Fetch counts
+   const incomeCountRes = await model.historiesBalanceCurrentMonthIncomeCount(user_id, currentMonth);
+   const outcomeCountRes = await model.historiesBalanceCurrentMonthOutcomeCount(user_id, currentMonth);
+
+   const totalIncome = parseInt(incomeCountRes.count ?? 0, 10);
+   const totalOutcome = parseInt(outcomeCountRes.count ?? 0, 10);
+
+   // Pagination buttons
+   const nav = [];
+
+   if (pageIncome > 0)
+      nav.push({ text: lang == "uz" ? localText.previousBtnUzIncome : lang == 'ru' ? localText.previousBtnRuIncome : lang == 'eng' ? localText.previousBtnEngIncome : localText.previousBtnUzIncome, callback_data: `income_page_${pageIncome - 1}_${pageOutcome}` });
+
+   if ((pageIncome + 1) * ITEMS_PER_PAGE < totalIncome)
+      nav.push({ text: lang == "uz" ? localText.nextBtnUzIncome : lang == 'ru' ? localText.nextBtnRuIncome : lang == 'eng' ? localText.nextBtnEngIncome : localText.nextBtnUzIncome, callback_data: `income_page_${pageIncome + 1}_${pageOutcome}` });
+
+   if (pageOutcome > 0)
+      nav.push({ text: lang == "uz" ? localText.previousBtnUzOutcome : lang == 'ru' ? localText.previousBtnRuOutcome : lang == 'eng' ? localText.previousBtnEngOutcome : localText.previousBtnUzOutcome, callback_data: `outcome_page_${pageIncome}_${pageOutcome - 1}` });
+
+   if ((pageOutcome + 1) * ITEMS_PER_PAGE < totalOutcome)
+      nav.push({ text: lang == "uz" ? localText.nextBtnUzOutcome : lang == 'ru' ? localText.nextBtnRuOutcome : lang == 'eng' ? localText.nextBtnEngOutcome : localText.nextBtnUzOutcome, callback_data: `outcome_page_${pageIncome}_${pageOutcome + 1}` });
+
+   return {
+      income: incomeData,
+      outcome: outcomeData,
+      buttons: nav
+   };
+};
+
 bot.onText(/\/start ?(.*)?/, async (msg, match) => {
    const chatId = msg.chat.id;
    const param = match[1]?.trim();
@@ -1729,8 +1769,9 @@ bot.on('message', async (msg) => {
 
       } else if (foundUser && text == localText.seeMoreBtnUz) {
          const currentMonth = new Date().getMonth() + 1;
-         const historiesBalanceCurrentMonthOutcome = await model.historiesBalanceCurrentMonthOutcome(foundUser.id, currentMonth, 'uz')
-         const historiesBalanceCurrentMonthIncome = await model.historiesBalanceCurrentMonthIncome(foundUser.id, currentMonth, 'uz')
+         const SeeMoreHistories = await paginationSeeMoreHistories(foundUser.id, currentMonth, 'uz', 0, 0)
+         const historiesBalanceCurrentMonthOutcome = SeeMoreHistories.outcome
+         const historiesBalanceCurrentMonthIncome = SeeMoreHistories.income
          const foundMonth = months.find(item => item.number == currentMonth)
          const replacedSeeMoreText = localText.seeMoreTextUz.replace(/%monthName%/g, foundMonth.name_uz)
          const seeMoreText = `${replacedSeeMoreText}\n\n<b>${localText.reportOutputTextUz}</b>\n${historiesBalanceCurrentMonthOutcome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextUz} ${item.comment}\n\n`).join('')}\n<b>${localText.reportInputTextUz}</b>\n${historiesBalanceCurrentMonthIncome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextUz} ${item.comment}\n\n`).join('')}`
@@ -1738,19 +1779,20 @@ bot.on('message', async (msg) => {
          bot.sendMessage(chatId, seeMoreText, {
             parse_mode: "HTML",
             reply_markup: {
-               keyboard: [
-                  [
-                     {
-                        text: localText.otherMonthsBtnUz
-                     }
-                  ],
-                  [
-                     {
-                        text: localText.backBtnUz
-                     }
-                  ],
-               ],
-               resize_keyboard: true
+               inline_keyboard: SeeMoreHistories.buttons
+               // keyboard: [
+               //    [
+               //       {
+               //          text: localText.otherMonthsBtnUz
+               //       }
+               //    ],
+               //    [
+               //       {
+               //          text: localText.backBtnUz
+               //       }
+               //    ],
+               // ],
+               // resize_keyboard: true
             }
          }).then(async () => {
             await model.editStep(chatId, 'see_more_histories')
@@ -4123,10 +4165,40 @@ bot.on('contact', async (msg) => {
                      ],
                   ],
                   resize_keyboard: true,
-
                },
             });
          }
+      }
+   } else if (data.startsWith("income_page_") || data.startsWith("outcome_page_")) {
+      const matchIncome = data.match(/^income_page_(\d+)_(\d+)$/);
+      const matchOutcome = data.match(/^outcome_page_(\d+)_(\d+)$/);
+      const currentMonth = new Date().getMonth() + 1;
+
+      let pageIncome = 0, pageOutcome = 0;
+
+      if (matchIncome) {
+         pageIncome = parseInt(matchIncome[1]);
+         pageOutcome = parseInt(matchIncome[2]);
+      } else if (matchOutcome) {
+         pageIncome = parseInt(matchOutcome[1]);
+         pageOutcome = parseInt(matchOutcome[2]);
+      }
+
+      if (foundUser.bot_lang == 'uz') {
+         const { income, outcome, buttons } = await paginationSeeMoreHistories(foundUser.id, currentMonth, foundUser.bot_lang, pageIncome, pageOutcome);
+         const historiesBalanceCurrentMonthOutcome = outcome
+         const historiesBalanceCurrentMonthIncome = income
+         const foundMonth = months.find(item => item.number == currentMonth)
+         const replacedSeeMoreText = localText.seeMoreTextUz.replace(/%monthName%/g, foundMonth.name_uz)
+         const newText = `${replacedSeeMoreText}\n\n<b>${localText.reportOutputTextUz}</b>\n${historiesBalanceCurrentMonthOutcome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextUz} ${item.comment}\n\n`).join('')}\n<b>${localText.reportInputTextUz}</b>\n${historiesBalanceCurrentMonthIncome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextUz} ${item.comment}\n\n`).join('')}`
+
+         bot.editMessageText(newText, {
+            chat_id: chatId,
+            message_id: messageId,
+            reply_markup: {
+               inline_keyboard: [buttons]
+            }
+         });
       }
    }
 })
