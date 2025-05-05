@@ -82,16 +82,16 @@ const paginationSeeMoreHistories = async (user_id, currentMonth, lang, pageIncom
    const nav = [];
 
    if (pageIncome > 0)
-      nav.push({ text: lang == "uz" ? localText.previousBtnUzIncome : lang == 'ru' ? localText.previousBtnRuIncome : lang == 'eng' ? localText.previousBtnEngIncome : localText.previousBtnUzIncome, callback_data: `income_page_${pageIncome - 1}_${pageOutcome}` });
+      nav.push([{ text: lang == "uz" ? localText.previousBtnUzIncome : lang == 'ru' ? localText.previousBtnRuIncome : lang == 'eng' ? localText.previousBtnEngIncome : localText.previousBtnUzIncome, callback_data: `income_page_${pageIncome - 1}_${pageOutcome}` }]);
 
    if ((pageIncome + 1) * ITEMS_PER_PAGE < totalIncome)
-      nav.push({ text: lang == "uz" ? localText.nextBtnUzIncome : lang == 'ru' ? localText.nextBtnRuIncome : lang == 'eng' ? localText.nextBtnEngIncome : localText.nextBtnUzIncome, callback_data: `income_page_${pageIncome + 1}_${pageOutcome}` });
+      nav.push([{ text: lang == "uz" ? localText.nextBtnUzIncome : lang == 'ru' ? localText.nextBtnRuIncome : lang == 'eng' ? localText.nextBtnEngIncome : localText.nextBtnUzIncome, callback_data: `income_page_${pageIncome + 1}_${pageOutcome}` }]);
 
    if (pageOutcome > 0)
-      nav.push({ text: lang == "uz" ? localText.previousBtnUzOutcome : lang == 'ru' ? localText.previousBtnRuOutcome : lang == 'eng' ? localText.previousBtnEngOutcome : localText.previousBtnUzOutcome, callback_data: `outcome_page_${pageIncome}_${pageOutcome - 1}` });
+      nav.push([{ text: lang == "uz" ? localText.previousBtnUzOutcome : lang == 'ru' ? localText.previousBtnRuOutcome : lang == 'eng' ? localText.previousBtnEngOutcome : localText.previousBtnUzOutcome, callback_data: `outcome_page_${pageIncome}_${pageOutcome - 1}` }]);
 
    if ((pageOutcome + 1) * ITEMS_PER_PAGE < totalOutcome)
-      nav.push({ text: lang == "uz" ? localText.nextBtnUzOutcome : lang == 'ru' ? localText.nextBtnRuOutcome : lang == 'eng' ? localText.nextBtnEngOutcome : localText.nextBtnUzOutcome, callback_data: `outcome_page_${pageIncome}_${pageOutcome + 1}` });
+      nav.push([{ text: lang == "uz" ? localText.nextBtnUzOutcome : lang == 'ru' ? localText.nextBtnRuOutcome : lang == 'eng' ? localText.nextBtnEngOutcome : localText.nextBtnUzOutcome, callback_data: `outcome_page_${pageIncome}_${pageOutcome + 1}` }]);
 
    return {
       income: incomeData,
