@@ -269,7 +269,8 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
          }
       }).then(async () => {
          if (param) {
-            const [partnerName, source] = param?.split('.');
+            const [partnerName, source] = param?.split('-');
+            console.log(param)
             const partner = await model.foundPartnerName(partnerName)
             await model.createUser(chatId, 'language', partner.id, partnerName, source);
          } else {
