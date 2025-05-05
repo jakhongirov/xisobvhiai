@@ -579,12 +579,21 @@ bot.on('message', async (msg) => {
                                  }, 3000)
                               } else if (foundUser?.bot_step == 'test_3') {
                                  const priceList = await model.priceList(foundUser?.bot_lang)
+                                 const foundPartner = await model.foundPartner(foundUser?.partner_id)
                                  const priceKeyboard = priceList
-                                    .filter(item => !(foundUser?.used_free && item.price == 0))
+                                    .filter(item => !(foundUser?.used_free && item.price === 0))
                                     .map(item => {
-                                       const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                                       // Calculate adjusted price per item
+                                       const adjustedPrice =
+                                          foundPartner?.discount > 0
+                                             ? Math.max(item.price - foundPartner.discount, 0)
+                                             : foundPartner?.additional > 0
+                                                ? Math.max(item.price + foundPartner.additional, 0)
+                                                : item.price;
 
-                                       if (item.period == 30) {
+                                       const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} so'm )`;
+
+                                       if (item.period === 30) {
                                           return [{
                                              text,
                                              web_app: {
@@ -627,12 +636,21 @@ bot.on('message', async (msg) => {
                                  }, 3000)
                               } else if (foundUser?.bot_step == 'test_3') {
                                  const priceList = await model.priceList(foundUser?.bot_lang)
+                                 const foundPartner = await model.foundPartner(foundUser?.partner_id)
                                  const priceKeyboard = priceList
-                                    .filter(item => !(foundUser?.used_free && item.price == 0))
+                                    .filter(item => !(foundUser?.used_free && item.price === 0))
                                     .map(item => {
-                                       const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                                       // Calculate adjusted price per item
+                                       const adjustedPrice =
+                                          foundPartner?.discount > 0
+                                             ? Math.max(item.price - foundPartner.discount, 0)
+                                             : foundPartner?.additional > 0
+                                                ? Math.max(item.price + foundPartner.additional, 0)
+                                                : item.price;
 
-                                       if (item.period == 30) {
+                                       const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} сум )`;
+
+                                       if (item.period === 30) {
                                           return [{
                                              text,
                                              web_app: {
@@ -675,12 +693,21 @@ bot.on('message', async (msg) => {
                                  }, 3000)
                               } else if (foundUser?.bot_step == 'test_3') {
                                  const priceList = await model.priceList(foundUser?.bot_lang)
+                                 const foundPartner = await model.foundPartner(foundUser?.partner_id)
                                  const priceKeyboard = priceList
-                                    .filter(item => !(foundUser?.used_free && item.price == 0))
+                                    .filter(item => !(foundUser?.used_free && item.price === 0))
                                     .map(item => {
-                                       const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                                       // Calculate adjusted price per item
+                                       const adjustedPrice =
+                                          foundPartner?.discount > 0
+                                             ? Math.max(item.price - foundPartner.discount, 0)
+                                             : foundPartner?.additional > 0
+                                                ? Math.max(item.price + foundPartner.additional, 0)
+                                                : item.price;
 
-                                       if (item.period == 30) {
+                                       const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} sum )`;
+
+                                       if (item.period === 30) {
                                           return [{
                                              text,
                                              web_app: {
@@ -742,12 +769,21 @@ bot.on('message', async (msg) => {
                               }, 3000)
                            } else if (foundUser?.bot_step == 'test_3') {
                               const priceList = await model.priceList(foundUser?.bot_lang)
+                              const foundPartner = await model.foundPartner(foundUser?.partner_id)
                               const priceKeyboard = priceList
-                                 .filter(item => !(foundUser?.used_free && item.price == 0))
+                                 .filter(item => !(foundUser?.used_free && item.price === 0))
                                  .map(item => {
-                                    const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                                    // Calculate adjusted price per item
+                                    const adjustedPrice =
+                                       foundPartner?.discount > 0
+                                          ? Math.max(item.price - foundPartner.discount, 0)
+                                          : foundPartner?.additional > 0
+                                             ? Math.max(item.price + foundPartner.additional, 0)
+                                             : item.price;
 
-                                    if (item.period == 30) {
+                                    const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} so'm )`;
+
+                                    if (item.period === 30) {
                                        return [{
                                           text,
                                           web_app: {
@@ -790,12 +826,21 @@ bot.on('message', async (msg) => {
                               }, 3000)
                            } else if (foundUser?.bot_step == 'test_3') {
                               const priceList = await model.priceList(foundUser?.bot_lang)
+                              const foundPartner = await model.foundPartner(foundUser?.partner_id)
                               const priceKeyboard = priceList
-                                 .filter(item => !(foundUser?.used_free && item.price == 0))
+                                 .filter(item => !(foundUser?.used_free && item.price === 0))
                                  .map(item => {
-                                    const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                                    // Calculate adjusted price per item
+                                    const adjustedPrice =
+                                       foundPartner?.discount > 0
+                                          ? Math.max(item.price - foundPartner.discount, 0)
+                                          : foundPartner?.additional > 0
+                                             ? Math.max(item.price + foundPartner.additional, 0)
+                                             : item.price;
 
-                                    if (item.period == 30) {
+                                    const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} сум )`;
+
+                                    if (item.period === 30) {
                                        return [{
                                           text,
                                           web_app: {
@@ -838,12 +883,21 @@ bot.on('message', async (msg) => {
                               }, 3000)
                            } else if (foundUser?.bot_step == 'test_3') {
                               const priceList = await model.priceList(foundUser?.bot_lang)
+                              const foundPartner = await model.foundPartner(foundUser?.partner_id)
                               const priceKeyboard = priceList
-                                 .filter(item => !(foundUser?.used_free && item.price == 0))
+                                 .filter(item => !(foundUser?.used_free && item.price === 0))
                                  .map(item => {
-                                    const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                                    // Calculate adjusted price per item
+                                    const adjustedPrice =
+                                       foundPartner?.discount > 0
+                                          ? Math.max(item.price - foundPartner.discount, 0)
+                                          : foundPartner?.additional > 0
+                                             ? Math.max(item.price + foundPartner.additional, 0)
+                                             : item.price;
 
-                                    if (item.period == 30) {
+                                    const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} sum )`;
+
+                                    if (item.period === 30) {
                                        return [{
                                           text,
                                           web_app: {
@@ -922,12 +976,21 @@ bot.on('message', async (msg) => {
                            }, 3000)
                         } else if (foundUser?.bot_step == 'test_3') {
                            const priceList = await model.priceList(foundUser?.bot_lang)
+                           const foundPartner = await model.foundPartner(foundUser?.partner_id)
                            const priceKeyboard = priceList
-                              .filter(item => !(foundUser?.used_free && item.price == 0))
+                              .filter(item => !(foundUser?.used_free && item.price === 0))
                               .map(item => {
-                                 const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                                 // Calculate adjusted price per item
+                                 const adjustedPrice =
+                                    foundPartner?.discount > 0
+                                       ? Math.max(item.price - foundPartner.discount, 0)
+                                       : foundPartner?.additional > 0
+                                          ? Math.max(item.price + foundPartner.additional, 0)
+                                          : item.price;
 
-                                 if (item.period == 30) {
+                                 const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} so'm )`;
+
+                                 if (item.period === 30) {
                                     return [{
                                        text,
                                        web_app: {
@@ -970,12 +1033,21 @@ bot.on('message', async (msg) => {
                            }, 3000)
                         } else if (foundUser?.bot_step == 'test_3') {
                            const priceList = await model.priceList(foundUser?.bot_lang)
+                           const foundPartner = await model.foundPartner(foundUser?.partner_id)
                            const priceKeyboard = priceList
-                              .filter(item => !(foundUser?.used_free && item.price == 0))
+                              .filter(item => !(foundUser?.used_free && item.price === 0))
                               .map(item => {
-                                 const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                                 // Calculate adjusted price per item
+                                 const adjustedPrice =
+                                    foundPartner?.discount > 0
+                                       ? Math.max(item.price - foundPartner.discount, 0)
+                                       : foundPartner?.additional > 0
+                                          ? Math.max(item.price + foundPartner.additional, 0)
+                                          : item.price;
 
-                                 if (item.period == 30) {
+                                 const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} сум )`;
+
+                                 if (item.period === 30) {
                                     return [{
                                        text,
                                        web_app: {
@@ -1018,12 +1090,21 @@ bot.on('message', async (msg) => {
                            }, 3000)
                         } else if (foundUser?.bot_step == 'test_3') {
                            const priceList = await model.priceList(foundUser?.bot_lang)
+                           const foundPartner = await model.foundPartner(foundUser?.partner_id)
                            const priceKeyboard = priceList
-                              .filter(item => !(foundUser?.used_free && item.price == 0))
+                              .filter(item => !(foundUser?.used_free && item.price === 0))
                               .map(item => {
-                                 const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                                 // Calculate adjusted price per item
+                                 const adjustedPrice =
+                                    foundPartner?.discount > 0
+                                       ? Math.max(item.price - foundPartner.discount, 0)
+                                       : foundPartner?.additional > 0
+                                          ? Math.max(item.price + foundPartner.additional, 0)
+                                          : item.price;
 
-                                 if (item.period == 30) {
+                                 const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} sum )`;
+
+                                 if (item.period === 30) {
                                     return [{
                                        text,
                                        web_app: {
@@ -1085,12 +1166,21 @@ bot.on('message', async (msg) => {
                         }, 3000)
                      } else if (foundUser?.bot_step == 'test_3') {
                         const priceList = await model.priceList(foundUser?.bot_lang)
+                        const foundPartner = await model.foundPartner(foundUser?.partner_id)
                         const priceKeyboard = priceList
-                           .filter(item => !(foundUser?.used_free && item.price == 0))
+                           .filter(item => !(foundUser?.used_free && item.price === 0))
                            .map(item => {
-                              const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                              // Calculate adjusted price per item
+                              const adjustedPrice =
+                                 foundPartner?.discount > 0
+                                    ? Math.max(item.price - foundPartner.discount, 0)
+                                    : foundPartner?.additional > 0
+                                       ? Math.max(item.price + foundPartner.additional, 0)
+                                       : item.price;
 
-                              if (item.period == 30) {
+                              const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} so'm )`;
+
+                              if (item.period === 30) {
                                  return [{
                                     text,
                                     web_app: {
@@ -1133,12 +1223,21 @@ bot.on('message', async (msg) => {
                         }, 3000)
                      } else if (foundUser?.bot_step == 'test_3') {
                         const priceList = await model.priceList(foundUser?.bot_lang)
+                        const foundPartner = await model.foundPartner(foundUser?.partner_id)
                         const priceKeyboard = priceList
-                           .filter(item => !(foundUser?.used_free && item.price == 0))
+                           .filter(item => !(foundUser?.used_free && item.price === 0))
                            .map(item => {
-                              const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                              // Calculate adjusted price per item
+                              const adjustedPrice =
+                                 foundPartner?.discount > 0
+                                    ? Math.max(item.price - foundPartner.discount, 0)
+                                    : foundPartner?.additional > 0
+                                       ? Math.max(item.price + foundPartner.additional, 0)
+                                       : item.price;
 
-                              if (item.period == 30) {
+                              const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} сум )`;
+
+                              if (item.period === 30) {
                                  return [{
                                     text,
                                     web_app: {
@@ -1181,12 +1280,21 @@ bot.on('message', async (msg) => {
                         }, 3000)
                      } else if (foundUser?.bot_step == 'test_3') {
                         const priceList = await model.priceList(foundUser?.bot_lang)
+                        const foundPartner = await model.foundPartner(foundUser?.partner_id)
                         const priceKeyboard = priceList
-                           .filter(item => !(foundUser?.used_free && item.price == 0))
+                           .filter(item => !(foundUser?.used_free && item.price === 0))
                            .map(item => {
-                              const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                              // Calculate adjusted price per item
+                              const adjustedPrice =
+                                 foundPartner?.discount > 0
+                                    ? Math.max(item.price - foundPartner.discount, 0)
+                                    : foundPartner?.additional > 0
+                                       ? Math.max(item.price + foundPartner.additional, 0)
+                                       : item.price;
 
-                              if (item.period == 30) {
+                              const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} sum )`;
+
+                              if (item.period === 30) {
                                  return [{
                                     text,
                                     web_app: {
@@ -1490,12 +1598,21 @@ bot.on('message', async (msg) => {
             }
          } else {
             const priceList = await model.priceList(foundUser?.bot_lang)
+            const foundPartner = await model.foundPartner(foundUser?.partner_id)
             const priceKeyboard = priceList
-               .filter(item => !(foundUser?.used_free && item.price == 0))
+               .filter(item => !(foundUser?.used_free && item.price === 0))
                .map(item => {
-                  const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                  // Calculate adjusted price per item
+                  const adjustedPrice =
+                     foundPartner?.discount > 0
+                        ? Math.max(item.price - foundPartner.discount, 0)
+                        : foundPartner?.additional > 0
+                           ? Math.max(item.price + foundPartner.additional, 0)
+                           : item.price;
 
-                  if (item.period == 30) {
+                  const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} so'm )`;
+
+                  if (item.period === 30) {
                      return [{
                         text,
                         web_app: {
@@ -1509,7 +1626,6 @@ bot.on('message', async (msg) => {
                      }];
                   }
                });
-
             bot.sendMessage(chatId, localText.premiumTextUz, {
                parse_mode: "HTML",
                reply_markup: {
@@ -1574,12 +1690,21 @@ bot.on('message', async (msg) => {
             }
          } else {
             const priceList = await model.priceList(foundUser?.bot_lang)
+            const foundPartner = await model.foundPartner(foundUser?.partner_id)
             const priceKeyboard = priceList
-               .filter(item => !(foundUser?.used_free && item.price == 0))
+               .filter(item => !(foundUser?.used_free && item.price === 0))
                .map(item => {
-                  const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                  // Calculate adjusted price per item
+                  const adjustedPrice =
+                     foundPartner?.discount > 0
+                        ? Math.max(item.price - foundPartner.discount, 0)
+                        : foundPartner?.additional > 0
+                           ? Math.max(item.price + foundPartner.additional, 0)
+                           : item.price;
 
-                  if (item.period == 30) {
+                  const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} сум )`;
+
+                  if (item.period === 30) {
                      return [{
                         text,
                         web_app: {
@@ -1658,12 +1783,21 @@ bot.on('message', async (msg) => {
             }
          } else {
             const priceList = await model.priceList(foundUser?.bot_lang)
+            const foundPartner = await model.foundPartner(foundUser?.partner_id)
             const priceKeyboard = priceList
-               .filter(item => !(foundUser?.used_free && item.price == 0))
+               .filter(item => !(foundUser?.used_free && item.price === 0))
                .map(item => {
-                  const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                  // Calculate adjusted price per item
+                  const adjustedPrice =
+                     foundPartner?.discount > 0
+                        ? Math.max(item.price - foundPartner.discount, 0)
+                        : foundPartner?.additional > 0
+                           ? Math.max(item.price + foundPartner.additional, 0)
+                           : item.price;
 
-                  if (item.period == 30) {
+                  const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} sum )`;
+
+                  if (item.period === 30) {
                      return [{
                         text,
                         web_app: {
@@ -2953,12 +3087,21 @@ bot.on('message', async (msg) => {
       } else if (text && text != '/start' && !foundUser.premium && foundUser.bot_step != "register") {
          if (foundUser?.bot_lang == 'uz') {
             const priceList = await model.priceList(foundUser?.bot_lang)
+            const foundPartner = await model.foundPartner(foundUser?.partner_id)
             const priceKeyboard = priceList
-               .filter(item => !(foundUser?.used_free && item.price == 0))
+               .filter(item => !(foundUser?.used_free && item.price === 0))
                .map(item => {
-                  const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                  // Calculate adjusted price per item
+                  const adjustedPrice =
+                     foundPartner?.discount > 0
+                        ? Math.max(item.price - foundPartner.discount, 0)
+                        : foundPartner?.additional > 0
+                           ? Math.max(item.price + foundPartner.additional, 0)
+                           : item.price;
 
-                  if (item.period == 30) {
+                  const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} so'm )`;
+
+                  if (item.period === 30) {
                      return [{
                         text,
                         web_app: {
@@ -2984,12 +3127,21 @@ bot.on('message', async (msg) => {
             })
          } else if (foundUser?.bot_lang == 'ru') {
             const priceList = await model.priceList(foundUser?.bot_lang)
+            const foundPartner = await model.foundPartner(foundUser?.partner_id)
             const priceKeyboard = priceList
-               ?.filter(item => !(foundUser?.used_free && item.price == 0))
-               ?.map(item => {
-                  const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+               .filter(item => !(foundUser?.used_free && item.price === 0))
+               .map(item => {
+                  // Calculate adjusted price per item
+                  const adjustedPrice =
+                     foundPartner?.discount > 0
+                        ? Math.max(item.price - foundPartner.discount, 0)
+                        : foundPartner?.additional > 0
+                           ? Math.max(item.price + foundPartner.additional, 0)
+                           : item.price;
 
-                  if (item.period == 30) {
+                  const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} сум )`;
+
+                  if (item.period === 30) {
                      return [{
                         text,
                         web_app: {
@@ -3015,12 +3167,21 @@ bot.on('message', async (msg) => {
             })
          } else if (foundUser?.bot_lang == 'eng') {
             const priceList = await model.priceList(foundUser?.bot_lang)
+            const foundPartner = await model.foundPartner(foundUser?.partner_id)
             const priceKeyboard = priceList
-               .filter(item => !(foundUser?.used_free && item.price == 0))
+               .filter(item => !(foundUser?.used_free && item.price === 0))
                .map(item => {
-                  const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+                  // Calculate adjusted price per item
+                  const adjustedPrice =
+                     foundPartner?.discount > 0
+                        ? Math.max(item.price - foundPartner.discount, 0)
+                        : foundPartner?.additional > 0
+                           ? Math.max(item.price + foundPartner.additional, 0)
+                           : item.price;
 
-                  if (item.period == 30) {
+                  const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} sum )`;
+
+                  if (item.period === 30) {
                      return [{
                         text,
                         web_app: {
@@ -3057,7 +3218,6 @@ bot.on('callback_query', async (msg) => {
    if (data.startsWith('tarif_')) {
       const tarifId = data?.split('tarif_')[1]
       const tarif = await model.foundTarif(tarifId, foundUser?.bot_lang)
-      console.log(tarif)
       const foundPartner = await model.foundPartner(foundUser?.partner_id)
       const price =
          foundPartner?.discount > 0
@@ -3135,7 +3295,7 @@ bot.on('callback_query', async (msg) => {
          }
       } else if (tarif && price > 0) {
          const text = `m=6697d19280d270b331826481;ac.user_id=${chatId};ac.tarif=${tarif.title};ac.ilova=Hisobchi_AI;a=${price}00`;
-         const base64Encoded = btoa(text);
+         const base64Encoded = Buffer.from(text, 'utf-8').toString('base64');
 
          if (foundUser?.bot_lang == 'uz') {
             const replacedText = localText.priceTextUz
@@ -3990,12 +4150,21 @@ bot.on('callback_query', async (msg) => {
    } else if (data == 'to_buy') {
       if (foundUser?.bot_lang == 'uz') {
          const priceList = await model.priceList(foundUser?.bot_lang)
+         const foundPartner = await model.foundPartner(foundUser?.partner_id)
          const priceKeyboard = priceList
-            .filter(item => !(foundUser?.used_free && item.price == 0))
+            .filter(item => !(foundUser?.used_free && item.price === 0))
             .map(item => {
-               const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+               // Calculate adjusted price per item
+               const adjustedPrice =
+                  foundPartner?.discount > 0
+                     ? Math.max(item.price - foundPartner.discount, 0)
+                     : foundPartner?.additional > 0
+                        ? Math.max(item.price + foundPartner.additional, 0)
+                        : item.price;
 
-               if (item.period == 30) {
+               const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} so'm )`;
+
+               if (item.period === 30) {
                   return [{
                      text,
                      web_app: {
@@ -4021,12 +4190,21 @@ bot.on('callback_query', async (msg) => {
          })
       } else if (foundUser?.bot_lang == 'ru') {
          const priceList = await model.priceList(foundUser?.bot_lang)
+         const foundPartner = await model.foundPartner(foundUser?.partner_id)
          const priceKeyboard = priceList
-            ?.filter(item => !(foundUser?.used_free && item.price == 0))
-            ?.map(item => {
-               const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+            .filter(item => !(foundUser?.used_free && item.price === 0))
+            .map(item => {
+               // Calculate adjusted price per item
+               const adjustedPrice =
+                  foundPartner?.discount > 0
+                     ? Math.max(item.price - foundPartner.discount, 0)
+                     : foundPartner?.additional > 0
+                        ? Math.max(item.price + foundPartner.additional, 0)
+                        : item.price;
 
-               if (item.period == 30) {
+               const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} сум )`;
+
+               if (item.period === 30) {
                   return [{
                      text,
                      web_app: {
@@ -4052,12 +4230,21 @@ bot.on('callback_query', async (msg) => {
          })
       } else if (foundUser?.bot_lang == 'eng') {
          const priceList = await model.priceList(foundUser?.bot_lang)
+         const foundPartner = await model.foundPartner(foundUser?.partner_id)
          const priceKeyboard = priceList
-            .filter(item => !(foundUser?.used_free && item.price == 0))
+            .filter(item => !(foundUser?.used_free && item.price === 0))
             .map(item => {
-               const text = `${item.title} ( ${formatBalanceWithSpaces(item.price)} so'm )`;
+               // Calculate adjusted price per item
+               const adjustedPrice =
+                  foundPartner?.discount > 0
+                     ? Math.max(item.price - foundPartner.discount, 0)
+                     : foundPartner?.additional > 0
+                        ? Math.max(item.price + foundPartner.additional, 0)
+                        : item.price;
 
-               if (item.period == 30) {
+               const text = `${item.title} ( ${formatBalanceWithSpaces(adjustedPrice)} sum )`;
+
+               if (item.period === 30) {
                   return [{
                      text,
                      web_app: {
