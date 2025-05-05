@@ -61,7 +61,7 @@ if (!fs.existsSync(audiosFolderPath)) {
 }
 
 const paginationSeeMoreHistories = async (user_id, currentMonth, lang, pageIncome, pageOutcome) => {
-   const ITEMS_PER_PAGE = 2;
+   const ITEMS_PER_PAGE = 5;
 
    // Calculate offsets
    const offsetIncome = pageIncome * ITEMS_PER_PAGE;
