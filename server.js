@@ -1800,28 +1800,30 @@ bot.on('message', async (msg) => {
 
       } else if (foundUser && text == localText.seeMoreBtnRu) {
          const currentMonth = new Date().getMonth() + 1;
-         const historiesBalanceCurrentMonthOutcome = await model.historiesBalanceCurrentMonthOutcome(foundUser.id, currentMonth, 'ru')
-         const historiesBalanceCurrentMonthIncome = await model.historiesBalanceCurrentMonthIncome(foundUser.id, currentMonth, 'ru')
+         const SeeMoreHistories = await paginationSeeMoreHistories(foundUser.id, currentMonth, 'ru', 0, 0)
+         const historiesBalanceCurrentMonthOutcome = SeeMoreHistories.outcome
+         const historiesBalanceCurrentMonthIncome = SeeMoreHistories.income
          const foundMonth = months.find(item => item.number == currentMonth)
-         const replacedSeeMoreText = localText.seeMoreTextRu.replace(/%monthName%/g, foundMonth.name_uz)
+         const replacedSeeMoreText = localText.seeMoreTextRu.replace(/%monthName%/g, foundMonth.name_ru)
          const seeMoreText = `${replacedSeeMoreText}\n\n<b>${localText.reportOutputTextRu}</b>\n${historiesBalanceCurrentMonthOutcome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextRu} ${item.comment}\n\n`).join('')}\n<b>${localText.reportInputTextRu}</b>\n${historiesBalanceCurrentMonthIncome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextRu} ${item.comment}\n\n`).join('')}`
 
          bot.sendMessage(chatId, seeMoreText, {
             parse_mode: "HTML",
             reply_markup: {
-               keyboard: [
-                  [
-                     {
-                        text: localText.otherMonthsBtnRu
-                     }
-                  ],
-                  [
-                     {
-                        text: localText.backBtnRu
-                     }
-                  ],
-               ],
-               resize_keyboard: true
+               inline_keyboard: SeeMoreHistories.buttons
+               // keyboard: [
+               //    [
+               //       {
+               //          text: localText.otherMonthsBtnRu
+               //       }
+               //    ],
+               //    [
+               //       {
+               //          text: localText.backBtnRu
+               //       }
+               //    ],
+               // ],
+               // resize_keyboard: true
             }
          }).then(async () => {
             await model.editStep(chatId, 'see_more_histories')
@@ -1829,8 +1831,9 @@ bot.on('message', async (msg) => {
 
       } else if (foundUser && text == localText.seeMoreBtnEng) {
          const currentMonth = new Date().getMonth() + 1;
-         const historiesBalanceCurrentMonthOutcome = await model.historiesBalanceCurrentMonthOutcome(foundUser.id, currentMonth, 'en')
-         const historiesBalanceCurrentMonthIncome = await model.historiesBalanceCurrentMonthIncome(foundUser.id, currentMonth, 'en')
+         const SeeMoreHistories = await paginationSeeMoreHistories(foundUser.id, currentMonth, 'eng', 0, 0)
+         const historiesBalanceCurrentMonthOutcome = SeeMoreHistories.outcome
+         const historiesBalanceCurrentMonthIncome = SeeMoreHistories.income
          const foundMonth = months.find(item => item.number == currentMonth)
          const replacedSeeMoreText = localText.seeMoreTextEng.replace(/%monthName%/g, foundMonth.name_uz)
          const seeMoreText = `${replacedSeeMoreText}\n\n<b>${localText.reportOutputTextEng}</b>\n${historiesBalanceCurrentMonthOutcome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextEng} ${item.comment}\n\n`).join('')}\n<b>${localText.reportInputTextEng}</b>\n${historiesBalanceCurrentMonthIncome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextEng} ${item.comment}\n\n`).join('')}`
@@ -1838,19 +1841,20 @@ bot.on('message', async (msg) => {
          bot.sendMessage(chatId, seeMoreText, {
             parse_mode: "HTML",
             reply_markup: {
-               keyboard: [
-                  [
-                     {
-                        text: localText.otherMonthsBtnEng
-                     }
-                  ],
-                  [
-                     {
-                        text: localText.backBtnEng
-                     }
-                  ],
-               ],
-               resize_keyboard: true
+               inline_keyboard: SeeMoreHistories.buttons
+               // keyboard: [
+               //    [
+               //       {
+               //          text: localText.otherMonthsBtnEng
+               //       }
+               //    ],
+               //    [
+               //       {
+               //          text: localText.backBtnEng
+               //       }
+               //    ],
+               // ],
+               // resize_keyboard: true
             }
          }).then(async () => {
             await model.editStep(chatId, 'see_more_histories')
@@ -4109,7 +4113,40 @@ bot.on('callback_query', async (msg) => {
                inline_keyboard: buttons
             }
          });
+      } else if (foundUser.bot_lang == 'ru') {
+         const { income, outcome, buttons } = await paginationSeeMoreHistories(foundUser.id, currentMonth, foundUser.bot_lang, pageIncome, pageOutcome);
+         const historiesBalanceCurrentMonthOutcome = outcome
+         const historiesBalanceCurrentMonthIncome = income
+         const foundMonth = months.find(item => item.number == currentMonth)
+         const replacedSeeMoreText = localText.seeMoreTextRu.replace(/%monthName%/g, foundMonth.name_ru)
+         const newText = `${replacedSeeMoreText}\n\n<b>${localText.reportOutputTextRu}</b>\n${historiesBalanceCurrentMonthOutcome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextRu} ${item.comment}\n\n`).join('')}\n<b>${localText.reportInputTextRu}</b>\n${historiesBalanceCurrentMonthIncome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextRu} ${item.comment}\n\n`).join('')}`
+
+         bot.editMessageText(newText, {
+            chat_id: chatId,
+            message_id: messageId,
+            parse_mode: "HTML",
+            reply_markup: {
+               inline_keyboard: buttons
+            }
+         });
+      } else if (foundUser.bot_lang == 'eng') {
+         const { income, outcome, buttons } = await paginationSeeMoreHistories(foundUser.id, currentMonth, foundUser.bot_lang, pageIncome, pageOutcome);
+         const historiesBalanceCurrentMonthOutcome = outcome
+         const historiesBalanceCurrentMonthIncome = income
+         const foundMonth = months.find(item => item.number == currentMonth)
+         const replacedSeeMoreText = localText.seeMoreTextEng.replace(/%monthName%/g, foundMonth.name_uz)
+         const newText = `${replacedSeeMoreText}\n\n<b>${localText.reportOutputTextEng}</b>\n${historiesBalanceCurrentMonthOutcome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextEng} ${item.comment}\n\n`).join('')}\n<b>${localText.reportInputTextEng}</b>\n${historiesBalanceCurrentMonthIncome.map(item => `${formatDateAdvanced(item.date)} | ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${item.name}\n${localText.addReportCommentTextEng} ${item.comment}\n\n`).join('')}`
+
+         bot.editMessageText(newText, {
+            chat_id: chatId,
+            message_id: messageId,
+            parse_mode: "HTML",
+            reply_markup: {
+               inline_keyboard: buttons
+            }
+         });
       }
+
    }
 })
 
