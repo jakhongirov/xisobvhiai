@@ -273,13 +273,13 @@ const monthlyOutput = (id, currentMonth) => {
 const monthlyByCategories = (id, currentMonth, lang) => {
    const QUERY = `
       SELECT 
-         h.balance_id,
+         c.id,
+         c.name_${lang} AS name,
+         h.income,
          SUM(h.amount) AS amount,
          b.currency,
          b.title,
-         c.name_${lang} as name,
-         c.id,
-         h.income
+         h.balance_id
       FROM 
          histories_balance h
       JOIN 
@@ -289,16 +289,16 @@ const monthlyByCategories = (id, currentMonth, lang) => {
       WHERE 
          EXTRACT(YEAR FROM h.date::date) = 
             CASE 
-                  WHEN EXTRACT(MONTH FROM CURRENT_DATE) >= $2 
-                  THEN EXTRACT(YEAR FROM CURRENT_DATE) 
-                  ELSE EXTRACT(YEAR FROM CURRENT_DATE) - 1 
+               WHEN EXTRACT(MONTH FROM CURRENT_DATE) >= $2 
+               THEN EXTRACT(YEAR FROM CURRENT_DATE) 
+               ELSE EXTRACT(YEAR FROM CURRENT_DATE) - 1 
             END
          AND EXTRACT(MONTH FROM h.date::date) = $2
          AND h.user_id = $1
       GROUP BY 
-         h.balance_id, b.currency, b.title, c.id, c.name_uz, h.income
+         c.id, c.name_${lang}, h.income
       ORDER BY 
-         h.balance_id;
+         c.name_${lang};
    `;
 
    return fetchALL(QUERY, id, currentMonth)
