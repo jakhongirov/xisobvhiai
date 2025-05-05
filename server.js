@@ -4105,7 +4105,7 @@ bot.on('callback_query', async (msg) => {
             chat_id: chatId,
             message_id: messageId,
             reply_markup: {
-               inline_keyboard: [buttons]
+               inline_keyboard: buttons
             }
          });
       }
