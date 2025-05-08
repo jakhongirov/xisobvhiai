@@ -1,9 +1,9 @@
 {
-	"startText": "🇺🇿: Assalomu alaykum, iltimos bot tilni tanlang.\n\n🇷🇺: Здравствуйте, пожалуйста, выберите язык.\n\n🇬🇧: Hello, please select a language.",
+	"startText": "🇺🇿: Assalomu alaykum, iltimos bot tilni tanlang.\n\n🇷🇺: Здравствуйте, пожалуйста, выберите язык.",
 
-	"startTextUz": "Xush kelibsiz! 👋\n\n📊 Xisobchi.ai – bu shaxsiy moliyalaringizni avtomatik boshqaruvchi AI yordamchi.\n\n💡 Nimalar qila oladi?:\n- Kirim-chiqimlaringizni tahlil qiladi 📊\n- Xarajatlaringizni toifalarga ajratadi 🏷\n- Moliyaviy intizomni shakllantirishga yordam beradi ✅\n\n⏩ Davom etish uchun pastdagi tugma orqali telefon raqamingizni yuboring.\n\n<i>va bu bilan <a href='https://behad.uz/xisobchioferta.html'>Ofertamiz</a> shartlariga rozilik bildirasiz</i>",
-	"startTextRu": "Добро пожаловать! 👋\n\n📊 Xisobchi.ai — искусственный помощник, который автоматически управляет вашими личными финансами.\n\n💡 Что он может делать?:\n- Анализирует ваши доходы и расходы 📊\n- Классифицирует ваши расходы 🏷\n- Помогает сформировать финансовую дисциплину ✅\n\n⏩ Для продолжения укажите свой номер телефона, используя кнопку ниже.<i>и вы настоящим соглашаетесь с условиями нашего <a href='https://behad.uz/xisobchioferta.html'>Предложения</a></i>",
-	"startTextEng": "Welcome! 👋\n\n📊 Xisobchi.ai is an AI assistant that automatically manages your personal finances.\n\n💡 What can it do?:\n- Analyzes your income and expenses 📊\n- Categorizes your expenses 🏷\n- Helps you build financial discipline ✅\n\n⏩ To continue, send your phone number using the button below.<i>and you hereby agree to the terms of our <a href='https://behad.uz/xisobchioferta.html'>Offer</a></i>",
+	"startTextUz": "Xush kelibsiz! 👋\n\n📊 Hisobchi AI – bu shaxsiy moliyalaringizni avtomatik boshqaruvchi AI yordamchi.\n\n💡 Nimalar qila oladi?:\n- Kirim-chiqimlaringizni tahlil qiladi 📊\n- Xarajatlaringizni toifalarga ajratadi 🏷\n- Moliyaviy intizomni shakllantirishga yordam beradi ✅\n\n⏩ Davom etish uchun pastdagi tugma orqali telefon raqamingizni yuboring.\n\n<i>va bu bilan <a href='https://behad.uz/xisobchioferta.html'>Ofertamiz</a> shartlariga rozilik bildirasiz</i>",
+	"startTextRu": "Добро пожаловать! 👋\n\n📊 Hisobchi AI — искусственный помощник, который автоматически управляет вашими личными финансами.\n\n💡 Что он может делать?:\n- Анализирует ваши доходы и расходы 📊\n- Классифицирует ваши расходы 🏷\n- Помогает сформировать финансовую дисциплину ✅\n\n⏩ Для продолжения укажите свой номер телефона, используя кнопку ниже.<i>и вы настоящим соглашаетесь с условиями нашего <a href='https://behad.uz/xisobchioferta.html'>Предложения</a></i>",
+	"startTextEng": "Welcome! 👋\n\n📊 Hisobchi AI is an AI assistant that automatically manages your personal finances.\n\n💡 What can it do?:\n- Analyzes your income and expenses 📊\n- Categorizes your expenses 🏷\n- Helps you build financial discipline ✅\n\n⏩ To continue, send your phone number using the button below.<i>and you hereby agree to the terms of our <a href='https://behad.uz/xisobchioferta.html'>Offer</a></i>",
 
 	"startText2Uz": "Davom etirsangiz shartlarga roziligingizni bildirad.",
 	"startText2Ru": "Продолжая, вы соглашаетесь с условиями.",
@@ -25,35 +25,35 @@
 	"contactRegisterErrorRu": "Неверно, пожалуйста, отправьте свой контакт с помощью кнопки ниже, чтобы продолжить.",
 	"contactRegisterErrorEng": "Wrong, please send your contact via the button below to continue.",
 
-	"successfullyRegisterUz": "✅ <b>Ro'yxatdan o'tib, tanishib ham oldik.</b>\n\nMing marta eshitgandan bir marta ishlatib ko’rgan afzal. Keling xisobchi.ai dan foydalanib ko’ramiz",
-	"successfullyRegisterRu": "✅ <b>Мы зарегистрировались и познакомились.</b>\n\nЛучше один раз использовать, чем тысячу раз услышать. Давайте попробуем использовать xisobchi.ai",
-	"successfullyRegisterEng": "✅ <b>We registered and got to know each other.</b>\n\nIt's better to try once than hear a thousand times. Let's try using xisobchi.ai",
+	"successfullyRegisterUz": "✅ <b>Ro'yxatdan o'tib, tanishib ham oldik.</b>\n\nMing marta eshitgandan bir marta ishlatib ko’rgan afzal. Keling Hisobchi AI dan foydalanib ko’ramiz",
+	"successfullyRegisterRu": "✅ <b>Мы зарегистрировались и познакомились.</b>\n\nЛучше один раз использовать, чем тысячу раз услышать. Давайте попробуем использовать Hisobchi AI",
+	"successfullyRegisterEng": "✅ <b>We registered and got to know each other.</b>\n\nIt's better to try once than hear a thousand times. Let's try using Hisobchi AI",
 
-	"test1TextUz": "Ushbu xabarni shu yerga audio ko’rinishida yuboring:\n\n”Taksiga 15,000 so’m xarajat qildim”",
-	"test1TextRu": "Отправьте это сообщение в аудиоформате:\n\n”Я потратил 15 000 сум на такси”",
-	"test1TextEng": "Send this message here in audio format:\n\n”I spent 15,000 sum on a taxi”",
+	"test1TextUz": "Ushbu xabarni shu yerga audioxabar yoki matn ko’rinishida yuboring:\n\n<b>”Taksiga 15,000 so’m xarajat qildim”",
+	"test1TextRu": "Отправьте это сообщение в аудио или текст формате:\n\n<b>”Я потратил 15 000 сум на такси”",
+	"test1TextEng": "Send this message here in audio format:\n\n<b>”I spent 15,000 sum on a taxi”",
 
-	"test2TextUz": "Ajoyib, keyingi qadam sifatida bu xabarni shu yerga audio, istasangiz matn ko’rinishida yuboring:\n\n”50,000 so’mga ovqatlandim”",
-	"test2TextRu": "Отлично, в качестве следующего шага отправьте это сообщение сюда в аудиоформате или текстовом виде, если вам так удобнее:\n\n”Я поел на 50000 сум”",
-	"test2TextEng": "Great, as a next step, send this message here in audio, or text if you prefer:\n\n”I ate for 50,000 sums”",
+	"test2TextUz": "Ajoyib, keyingi qadam sifatida bu xabarni shu yerga audio, istasangiz matn ko’rinishida yuboring:\n\n<b>”50,000 so’mga ovqatlandim”",
+	"test2TextRu": "Отлично, в качестве следующего шага отправьте это сообщение сюда в аудиоформате или текстовом виде, если вам так удобнее:\n\n<b>”Я поел на 50000 сум”",
+	"test2TextEng": "Great, as a next step, send this message here in audio, or text if you prefer:\n\n<b>”I ate for 50,000 sums”",
 
 	"test3TextUz": "Keyingi qadam, qarzlarni nazorat qilish.\n\nQuyidagi matnni audio yoki matn ko’rinishida yuborib ko'ring.\n\n<b>Rustamga 500 000 so'm qarzga berdim. 15-avgustda qaytaradi.</b>",
 	"test3TextRu": "Следующий шаг — контроль за долгами.\n\nПопробуйте отправить следующий текст в виде аудио или текста.\n\n<b>Я одолжил Рустаму 500 000 сумов. Возврат 15 августа.</b>",
 	"test3TextEng": "The next step is to control debts.\n\nTry sending the following text as audio or text.\n\n<b>I lent Rustam 500,000 soums. He will return it on August 15th.</b>",
 
-	"firstTextPaymentUz": "<b>Quyida Xisobchi.ai tariflari bilan tanishib, o'zingizga mosini tanlab - xarajatlaringizni boshqarishni boshlashingiz mumkin</b>\n\n🏷Agar hali ishonchingiz komil bo'lmasa, 3 kunlik bepul sinov muddatidan foydalanishingiz mumkin.",
-	"firstTextPaymentRu": "<b>Ниже вы можете ознакомиться с тарифами Xisobchi.ai, выбрать подходящий вам и начать управлять своими расходами.</b>\n\n🏷Если вы все еще не уверены, вы можете воспользоваться 3-дневной бесплатной пробной версией.",
-	"firstTextPaymentEng": "<b>Below you can familiarize yourself with the tariffs of Xisobchi.ai, choose the one that suits you and start managing your expenses.</b>\n\n🏷AIf you're still not sure, you can take advantage of the 3-day free trial.",
+	"firstTextPaymentUz": "Ko'rganingizdek, kirim-chiqimlarni yozib yurish juda ham oson va siz buni uddaladingiz.\n\n<b>Quyida Hisobchi AI tariflari bilan tanishib, o'zingizga mosini tanlab - xarajatlaringizni boshqarishni boshlashang</b>",
+	"firstTextPaymentRu": "Как видите, отслеживать свои доходы и расходы очень просто, и вы это сделали.\n\n<b>Ниже вы можете ознакомиться с тарифами Hisobchi AI, выбрать подходящий вам и начать управлять своими расходами.</b>",
+	"firstTextPaymentEng": "<b>Below you can familiarize yourself with the tariffs of Hisobchi AI, choose the one that suits you and start managing your expenses.</b>",
 
-	"menuTextUz": "Asosiy sahifa: Kirim-chiqimingizni shu yerda istalgan shaklda, matn yoki ovozli holatda yuborsangiz, men xisob kitoblarga qo'shib qo'yaman 📊",
+	"menuTextUz": "Asosiy sahifa: Kirim-chiqimingizni shu yerda istalgan shaklda, matn yoki ovozli holatda yuborsangiz, men hisob kitoblarga qo'shib qo'yaman 📊",
 	"menuTextRu": "Главная страница: отправьте сюда свой вклад в любой форме, текстовой или аудио, и я добавлю отчет. 📊",
 	"menuTextEng": "Home: Send your input here in any form, text or audio, and I'll add a report. 📊",
 
-	"reportsBtnUz": "📊  Xisobotlar",
+	"reportsBtnUz": "📊  Hisobotlar",
 	"reportsBtnRu": "📊  Отчеты",
 	"reportsBtnEng": "📊  Reports",
 
-	"reportMonthlyTextUz": "<b>%monthName% oyi xisobotlari:</b>",
+	"reportMonthlyTextUz": "<b>%monthName% oyi hisobotlari:</b>",
 	"reportMonthlyTextRu": "<b>Отчеты за месяц %monthName%:</b>",
 	"reportMonthlyTextEng": "<b>Reports for the month of %monthName%:</b>",
 
@@ -92,12 +92,12 @@
 	"nextBtnUzOutcome": "Chiqimlar →",
 	"nextBtnRuOutcome": "Расходы →",
 	"nextBtnEngOutcome": "Expenses →",
-
+	
 	"chooseMonthTextUz": "O'zingizga kerakli oyni tanlang:",
 	"chooseMonthTextRu": "Выберите месяц, который вы хотите:",
 	"chooseMonthTextEng": "Choose the month you want:",
 
-	"seeMoreTextUz": "<b>%monthName% oyi xisobotlari:</b>",
+	"seeMoreTextUz": "<b>%monthName% oyi hisobotlari:</b>",
 	"seeMoreTextRu": "<b>Отчеты за месяц %monthName%:</b>",
 	"seeMoreTextEng": "<b>Reports for the month of %monthName%:</b>",
 
@@ -173,13 +173,13 @@
 	"premiumBtnRu": "💎 Премиум",
 	"premiumBtnEng": "💎 Premium",
 
-	"premiumTextUz": "💎 O'zingizga mos tarifni tanlang va Xisobchi AI dan bahramand bo'ling.",
-	"premiumTextRu": "💎 Выберите подходящий вам тариф и наслаждайтесь Xisobchi AI.",
-	"premiumTextEng": "💎 Choose a tariff that suits you and enjoy Xisobchi AI.",
+	"premiumTextUz": "💎 O'zingizga mos tarifni tanlang va Hisobchi AI dan bahramand bo'ling.",
+	"premiumTextRu": "💎 Выберите подходящий вам тариф и наслаждайтесь Hisobchi AI.",
+	"premiumTextEng": "💎 Choose a tariff that suits you and enjoy Hisobchi AI.",
 
-	"premiumText2Uz": "Siz o’z moliyaviy intizomingizga investitsiya qilgansiz va Xisobchi AI’ premium obunasiga egasiz.\n\nObuna tugash vaqti:<b> %expiredDate% </b>",
-	"premiumText2Ru": "Вы инвестировали в свою финансовую дисциплину и имеете премиум-подписку на Xisobchi AI.\n\nСледующее время продления подписки:<b> %expiredDate% </b>",
-	"premiumText2Eng": "You have invested in your financial discipline and have a premium subscription to Xisobchi AI.\n\nNext subscription renewal time:<b> %expiredDate% </b>",
+	"premiumText2Uz": "Siz o’z moliyaviy intizomingizga investitsiya qilgansiz va Hisobchi AI’ premium obunasiga egasiz.\n\nObuna tugash vaqti:<b> %expiredDate% </b>",
+	"premiumText2Ru": "Вы инвестировали в свою финансовую дисциплину и имеете премиум-подписку на Hisobchi AI.\n\nСледующее время продления подписки:<b> %expiredDate% </b>",
+	"premiumText2Eng": "You have invested in your financial discipline and have a premium subscription to Hisobchi AI.\n\nNext subscription renewal time:<b> %expiredDate% </b>",
 
 	"premiumExpiredTextUz": "Premium' tarifingiz tugash muddati:",
 	"premiumExpiredTextRu": "Дата окончания действия вашего Премиум-тарифа:",
@@ -189,9 +189,9 @@
 	"unsubscribeBtnRu": "Отписаться",
 	"unsubscribeBtnEng": "Unsubscribe",
 
-	"askStopSubscribeUz": "Haqiqatdan ham obunani to’xtatmoqchimisiz ?\n\nObunani qayta tiklagungizga qadar xisobotlaringizni ko’ra olmaysiz va Xisobchi AI dan foydalana olymaysiz.",
-	"askStopSubscribeRu": "Вы уверены, что хотите отменить подписку?\n\nВы не сможете просматривать свои отчеты или использовать Xisobchi AI, пока не продлите подписку.",
-	"askStopSubscribeEng": "Are you sure you want to cancel your subscription?\n\nYou will not be able to view your reports or use Xisobchi AI until you renew your subscription.",
+	"askStopSubscribeUz": "Haqiqatdan ham obunani to’xtatmoqchimisiz ?\n\nObunani qayta tiklagungizga qadar hisobotlaringizni ko’ra olmaysiz va Hisobchi AI dan foydalana olymaysiz.",
+	"askStopSubscribeRu": "Вы уверены, что хотите отменить подписку?\n\nВы не сможете просматривать свои отчеты или использовать Hisobchi AI, пока не продлите подписку.",
+	"askStopSubscribeEng": "Are you sure you want to cancel your subscription?\n\nYou will not be able to view your reports or use Hisobchi AI until you renew your subscription.",
 
 	"askStopSubscribeYesUz": "Ha, to’xtatish",
 	"askStopSubscribeYesRu": "Да, стоп.",
@@ -205,9 +205,9 @@
 	"stopedSubscribeTextRu": "Ваша подписка приостановлена.",
 	"stopedSubscribeTextEng": "Your subscription has been suspended.",
 
-	"premiumDurationTextUz": "Siz o’z moliyaviy intizomingizga investitsiya qilgansiz va Xisobchi AI’ premium obunasiga egasiz.\n\nKeyingi obuna yangilanish vaqti:<b> %expiredDate% </b>\n\nBu yerda obunani va kartalaringizni boshqarishingiz mumkin",
-	"premiumDurationTextRu": "Вы инвестировали в свою финансовую дисциплину и имеете премиум-подписку на Xisobchi AI.\n\nСледующее время продления подписки:<b> %expiredDate% </b>\n\nЗдесь вы можете управлять своей подпиской и картами,",
-	"premiumDurationTextEng": "You have invested in your financial discipline and have a premium subscription to Xisobchi AI.\n\nNext subscription renewal time:<b> %expiredDate% </b>\n\nHere you can manage your subscription and cards,",
+	"premiumDurationTextUz": "Siz o’z moliyaviy intizomingizga investitsiya qilgansiz va Hisobchi AI’ premium obunasiga egasiz.\n\nKeyingi obuna yangilanish vaqti:<b> %expiredDate% </b>\n\nBu yerda obunani va kartalaringizni boshqarishingiz mumkin",
+	"premiumDurationTextRu": "Вы инвестировали в свою финансовую дисциплину и имеете премиум-подписку на Hisobchi AI.\n\nСледующее время продления подписки:<b> %expiredDate% </b>\n\nЗдесь вы можете управлять своей подпиской и картами,",
+	"premiumDurationTextEng": "You have invested in your financial discipline and have a premium subscription to Hisobchi AI.\n\nNext subscription renewal time:<b> %expiredDate% </b>\n\nHere you can manage your subscription and cards,",
 
 	"addCardTextUz": "Obunani faollashtirish uchun karta qo'shishingiz lozim.",
 	"addCardTextRu": "Для активации подписки необходимо добавить карту.",
@@ -253,7 +253,7 @@
 	"notFoundDataRu": "Не найдено...",
 	"notFoundDataEng": "Not found...",
 
-	"addReportTextUz": "<b>Xisobotga qo’shildi </b>✔️",
+	"addReportTextUz": "<b>Hisobotga qo’shildi </b>✔️",
 	"addReportTextRu": "<b>Добавлено в отчет </b>✔️",
 	"addReportTextEng": "<b>Added to the report </b>✔️",
 
@@ -297,29 +297,29 @@
 	"cronTextStopedRu": "Срок действия вашей премиум-подписки истек. Чтобы воспользоваться ботом, выберите нужный тариф и произведите оплату.",
 	"cronTextStopedEng": "Your premium subscription has expired. To use the bot, select the desired plan and make a payment.",
 
-	"cronTextMorningPremiumUz": "Assalomu alaykum. Kuningiz xisobli o'tsin!\n\nXarajatlaringizni yuritishni unutmang (emoji)",
-	"cronTextMorningPremiumRu": "Здравствуйте. Хорошего дня!\n\nНе забудьте отслеживать свои расходы (эмодзи)",
-	"cronTextMorningPremiumEng": "Good morning. Have a great day!\n\nDon't forget to keep track of your expenses (emoji)",
+	"cronTextMorningPremiumUz": "Assalomu alaykum. Kuningiz hisobli o'tsin!\n\nXarajatlaringizni yuritishni unutmang 😇",
+	"cronTextMorningPremiumRu": "Здравствуйте. Хорошего дня!\n\nНе забудьте отслеживать свои расходы 😇",
+	"cronTextMorningPremiumEng": "Good morning. Have a great day!\n\nDon't forget to keep track of your expenses 😇",
 
-	"cronTextAfternoonPremiumUz": "Xisobchi.ai aloqada. Ertalabdan hozirgacha bo'lgan xisobingizni kiritdlingizmi? \n\nEsingizdan chiqmasidan yuborib qo’ying. Bunga shunchaki 30 soniya yetarti",
-	"cronTextAfternoonPremiumRu": "Xisobchi.ai на связи. Вы ввели свой счет сегодня утром? \n\nОтправь, пока не забыл. Это займет всего 30 секунд",
-	"cronTextAfternoonPremiumEng": "Xisobchi.ai is in touch. Have you entered your account from this morning to now? \n\nSend it before you forget. It only takes 30 seconds.",
+	"cronTextAfternoonPremiumUz": "Hisobchi AI aloqada. Ertalabdan hozirgacha bo'lgan Hisobingizni kiritdlingizmi? \n\nEsingizdan chiqmasidan yuborib qo’ying. Bunga shunchaki 30 soniya yetarli",
+	"cronTextAfternoonPremiumRu": "Hisobchi AI на связи. Вы ввели свой счет сегодня утром? \n\nОтправь, пока не забыл. Это займет всего 30 секунд",
+	"cronTextAfternoonPremiumEng": "Hisobchi AI is in touch. Have you entered your account from this morning to now? \n\nSend it before you forget. It only takes 30 seconds.",
 
-	"cronTextNightPremiumUz": "Bugun sarxisobi:\n\nXarajatlar: %output% so'm\nKirimlar: %income% so'm\n\nLimitingiz bo’yicha qoldiq: %limit% so'm",
+	"cronTextNightPremiumUz": "Bugun sarhisobi:\n\nXarajatlar: %output% so'm\nKirimlar: %income% so'm\n\nLimitingiz bo’yicha qoldiq: %limit% so'm",
 	"cronTextNightPremiumRu": "Сегодняшний итог:\n\nРасходы: %output% сумов\nДоходы: %income% сумов\n\nОстаток по вашему лимиту: %limit% сумов",
 	"cronTextNightPremiumEng": "Today's summary:\n\nExpenses: %output% soums\nIncomes: %income% soums\n\nBalance under your limit: %limit% soums",
 
-	"cronText2NightPremiumUz": "Bugun sarxisobi:\n\nXarajatlar: %output% so'm\nKirimlar: %income% so'm",
+	"cronText2NightPremiumUz": "Bugun sarhisobi:\n\nXarajatlar: %output% so'm\nKirimlar: %income% so'm",
 	"cronText2NightPremiumRu": "Сегодняшний итог:\n\nРасходы: %output% сумов\nДоходы: %income% сумов",
 	"cronText2NightPremiumEng": "Today's summary:\n\nExpenses: %output% soums\nIncomes: %income% soumslimitBtnUz",
 
-	"cronTextRegister1dayUz": "Oylik sarfingizni aniq nazorat qilib, ortiqcha xarajatlarni 20% gacha kamaytirish imkoniga ega bo’ling. Xisobchi AI bilan har kun moliyangizni tushunarli grafiklarda ko'ring va har bir tiyiningizni e'tiborsiz qoldirmang.\n\nObuna narxi atigi %price% so'm = bir dona lavash...\n\nXarajatlaringizni nazoratga oling va moliyaviy mustaqil boling.",
-	"cronTextRegister1dayRu": "Получите точный контроль над своими ежемесячными расходами и сократите излишние расходы до 20%. С AI the Xisobchi AI вы сможете видеть свои финансы в понятных графиках каждый день и не упустите ни копейки.\n\nСтоимость подписки составляет всего %price% сумов = один кусок лаваша...\n\nВозьмите под контроль свои расходы и станьте финансово независимыми.",
+	"cronTextRegister1dayUz": "Oylik sarfingizni aniq nazorat qilib, ortiqcha xarajatlarni 20% gacha kamaytirish imkoniga ega bo’ling. Hisobchi AI bilan har kun moliyangizni tushunarli grafiklarda ko'ring va har bir tiyiningizni e'tiborsiz qoldirmang.\n\nObuna narxi atigi %price% so'm = bir dona lavash...\n\nXarajatlaringizni nazoratga oling va moliyaviy mustaqil boling.",
+	"cronTextRegister1dayRu": "Получите точный контроль над своими ежемесячными расходами и сократите излишние расходы до 20%. С AI the Hisobchi AI вы сможете видеть свои финансы в понятных графиках каждый день и не упустите ни копейки.\n\nСтоимость подписки составляет всего %price% сумов = один кусок лаваша...\n\nВозьмите под контроль свои расходы и станьте финансово независимыми.",
 	"cronTextRegister1dayEng": "Get a clear view of your monthly expenses and reduce your excess expenses by up to 20%. With Calculator AI, see your finances in easy-to-understand graphs every day and don't neglect every penny.\n\nThe subscription price is only %price% soum = one lavash...\n\nTake control of your expenses and become financially independent.",
 
-	"cronTextRegister2dayUz": "Pul qaerga ketayotganini bilmay qolasizmi? Ko‘pimiz shunday muammoga duch kelamiz.\nXisobchi AI bilan audio orqali harajat yoki daromadingizni bir zumda kiritib, to‘liq nazorat o‘rnating.\n\nOylik %price% so'mga bugunoq obuna bo‘ling – bu sizning eng yaxshi sarmoyangiz bo‘ladi!",
-	"cronTextRegister2dayRu": "Вы когда-нибудь задумывались, куда уходят ваши деньги? Многие из нас сталкиваются с этой проблемой.\nС Xisobchi AI мгновенно вводите свои расходы или доходы с помощью аудио и получайте полный контроль.\n\nОформите подписку сегодня за %price% сумов в месяц — это будет вашей лучшей инвестицией!",
-	"cronTextRegister2dayEng": "Do you ever wonder where your money is going? Many of us face this problem.\nTake full control by instantly entering your expenses or income via audio with Xisobchi AI.\n\nSubscribe today for %price% soums per month - it will be your best investment!",
+	"cronTextRegister2dayUz": "Pul qaerga ketayotganini bilmay qolasizmi? Ko‘pimiz shunday muammoga duch kelamiz.\nHisobchi AI bilan audio orqali harajat yoki daromadingizni bir zumda kiritib, to‘liq nazorat o‘rnating.\n\nOylik %price% so'mga bugunoq obuna bo‘ling – bu sizning eng yaxshi sarmoyangiz bo‘ladi!",
+	"cronTextRegister2dayRu": "Вы когда-нибудь задумывались, куда уходят ваши деньги? Многие из нас сталкиваются с этой проблемой.\nС Hisobchi AI мгновенно вводите свои расходы или доходы с помощью аудио и получайте полный контроль.\n\nОформите подписку сегодня за %price% сумов в месяц — это будет вашей лучшей инвестицией!",
+	"cronTextRegister2dayEng": "Do you ever wonder where your money is going? Many of us face this problem.\nTake full control by instantly entering your expenses or income via audio with Hisobchi AI.\n\nSubscribe today for %price% soums per month - it will be your best investment!",
 
 	"cronTextRegister3dayUz": "%price% so'm...\n\nSizni moliyaviy erkinligingizni nazorat qilish uchun kerak investitsiya.\n\nKeling bugun shu %price% so'mni yana qayerga \"shunchaki\" sarflab yuborish mumkinligini ko'rib chiqamiz.\n\n1. Bir stakan yaxshi kofe. Yo'q, eng zo'r kofe emas. Shunchaki oddiy cappucino. Sovugan bo'lsa 5 daqiqada, issiq bo'lsa 10 daqiqada ichib tugatasiz. Hayotingiz o'zgaradimi?\n\nAgar kechasi ichgan bo'lsangiz Ha, ertalabgacha uxlolmay. Ertangi kuningiz ham yomon o'tadi.\n\nMoliyaviy tomondan esa plyusda emassiz))",
 	"cronTextRegister3dayRu": "%price% сум...\n\nВам нужны инвестиции, чтобы взять под контроль свою финансовую свободу.\n\nДавайте посмотрим, где еще вы можете «просто» потратить этот %price% сум сегодня.\n\n1. Чашка хорошего кофе. Нет, не самый лучший кофе. Простой капучино. Холодный напиток можно выпить за 5 минут, а горячий — за 10 минут. Изменится ли ваша жизнь?\n\nЕсли вы вчера выпили, то да, вы не сможете уснуть до утра. Завтра у тебя тоже будет плохой день.\n\nУ тебя не очень хорошее финансовое положение))",
@@ -334,6 +334,6 @@
 	"cronTextRegister5dayEng": "Let's see where else you can \"just\" spend this %price% soum today.\n\nHow much will it cost you to get from Chilonzor to Oybek by taxi?\n\nIs it less than %price%? What if it rains?)\n\nA taxi is expensive, and you lose a lot of money, right?\n\nDo you know how much it costs you not to control your income and expenses?\n\nHow much money do you just waste every month?\n\nYou are postponing your financial freedom, thinking that you will save money on one lavash..",
 
 	"cronTextRegisterBtnUz": "Harid qilish",
-	"cronTextRegisterBtnRu": "Покупка",
-	"cronTextRegisterBtnEng": "To buy"
+	"cronTextRegisterBtnRu": "Получить доступ",
+	"cronTextRegisterBtnEng": "Get access"
 }
