@@ -111,7 +111,7 @@ const paginationDebtData = async (user_id, lang, page) => {
    const nav = [];
    if (page > 0)
       nav.push([{ text: lang == "uz" ? localText.previousBtnUz : lang == 'ru' ? localText.previousBtnRu : lang == 'eng' ? localText.previousBtnEng : localText.previousBtnUz, callback_data: `debt_page_${page - 1}` }]);
-   if ((page + 1) * ITEMS_PER_PAGE < totalCount) nav.push({ text: lang == 'uz' ? localText.nextBtnUz : lang == 'ru' ? localText.nextBtnRu : lang == 'eng' ? localText.nextBtnEng : localText.nextBtnUz, callback_data: `debt_page_${page + 1}` });
+   if ((page + 1) * ITEMS_PER_PAGE < totalCount) nav.push([{ text: lang == 'uz' ? localText.nextBtnUz : lang == 'ru' ? localText.nextBtnRu : lang == 'eng' ? localText.nextBtnEng : localText.nextBtnUz, callback_data: `debt_page_${page + 1}` }]);
 
    return {
       data: debtsList,
