@@ -4363,7 +4363,7 @@ bot.on('callback_query', async (msg) => {
       const page = parseInt(data.split("_")[2], 10);
 
       if (foundUser.bot_lang == 'uz') {
-         const debts = await paginationDebtData(foundUser.id, 'uz', 0)
+         const debts = await paginationDebtData(foundUser.id, 'uz', page)
          const debtText = `${localText.debtTextUz}\n\n${debts.data?.map(item => `${item.income ? localText.debtTakenTextUz : localText.debtGivenTextUz} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextUz} ${item.name}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}${item.comment ? `\n${localText.addReportCommentTextUz} ${item.comment}` : ""}`).join('\n\n***\n\n')}`
 
          bot.editMessageText(debtText, {
@@ -4375,7 +4375,7 @@ bot.on('callback_query', async (msg) => {
             }
          });
       } else if (foundUser.bot_lang == 'ru') {
-         const debts = await paginationDebtData(foundUser.id, 'ru', 0)
+         const debts = await paginationDebtData(foundUser.id, 'ru', page)
          const debtText = `${localText.debtTextRu}\n\n${debts.data?.map(item => `${item.income ? localText.debtTakenTextRu : localText.debtGivenTextRu} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextRu} ${item.name}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(item.deadline)}${item.comment ? `\n${localText.addReportCommentTextRu} ${item.comment}` : ""}`).join('\n\n***\n\n')}`
 
          bot.editMessageText(debtText, {
@@ -4387,7 +4387,7 @@ bot.on('callback_query', async (msg) => {
             }
          });
       } else if (foundUser.bot_lang == 'eng') {
-         const debts = await paginationDebtData(foundUser.id, 'eng', 0)
+         const debts = await paginationDebtData(foundUser.id, 'eng', page)
          const debtText = `${localText.debtTextEng}\n\n${debts.data?.map(item => `${item.income ? localText.debtTakenTextEng : localText.debtGivenTextEng} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextEng} ${item.name}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(item.deadline)}${item.comment ? `\n${localText.addReportCommentTextEng} ${item.comment}` : ""}`).join('\n\n***\n\n')}`
 
          bot.editMessageText(debtText, {
