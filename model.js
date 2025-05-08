@@ -329,7 +329,7 @@ const userBalances = (id) => {
 
    return fetchALL(QUERY, id)
 }
-const debtsList = (id) => {
+const debtsList = (id, limit, offset) => {
    const QUERY = `
       SELECT
          d.id,
@@ -350,10 +350,28 @@ const debtsList = (id) => {
       WHERE
          d.user_id = $1
       ORDER BY
-         d.id DESC;
+         d.id DESC
+      LIMIT $2
+      OFFSET $3;
    `;
 
-   return fetchALL(QUERY, id)
+   return fetchALL(QUERY, id, limit, offset)
+}
+const debtsCount = (id, limit, offset) => {
+   const QUERY = `
+      SELECT
+         count(d.id)
+      FROM
+         debt d
+      JOIN
+         balances b
+      ON
+         d.balance_id = b.id
+      WHERE
+         d.user_id = $1;
+   `;
+
+   return fetch(QUERY, id)
 }
 const historiesBalanceCurrentMonthOutcome = (id, currentMonth, lang, limit, offset) => {
    const QUERY = `
@@ -776,6 +794,7 @@ module.exports = {
    monthlyByCategories,
    userBalances,
    debtsList,
+   debtsCount,
    historiesBalanceCurrentMonthOutcome,
    historiesBalanceCurrentMonthOutcomeCount,
    historiesBalanceCurrentMonthIncome,
