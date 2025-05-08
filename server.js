@@ -100,6 +100,26 @@ const paginationSeeMoreHistories = async (user_id, currentMonth, lang, pageIncom
    };
 };
 
+const paginationDebtData = async (user_id, lang, page) => {
+   const ITEMS_PER_PAGE = 1;
+   const offset = page * ITEMS_PER_PAGE;
+
+   const debtsList = await model.debtsList(user_id, ITEMS_PER_PAGE, offset)
+   const debtsCount = await model.debtsCount(user_id)
+   const totalCount = parseInt(debtsCount.count ?? 0, 10);
+
+   const nav = [];
+   if (page > 0)
+      nav.push([{ text: lang == "uz" ? localText.previousBtnUz : lang == 'ru' ? localText.previousBtnRu : lang == 'eng' ? localText.previousBtnEng : localText.previousBtnUz, callback_data: `debt_page_${page - 1}` }]);
+   if ((page + 1) * ITEMS_PER_PAGE < totalCount) nav.push({ text: lang == 'uz' ? localText.nextBtnUz : lang == 'ru' ? localText.nextBtnRu : lang == 'eng' ? localText.nextBtnEng : localText.nextBtnUz, callback_data: `debt_page_${page + 1}` });
+
+   return {
+      data: debtsList,
+      buttons: nav
+   };
+
+}
+
 bot.onText(/\/start ?(.*)?/, async (msg, match) => {
    const chatId = msg.chat.id;
    const param = match[1]?.trim();
@@ -1487,58 +1507,61 @@ bot.on('message', async (msg) => {
             await model.editStep(chatId, 'balances')
          })
       } else if (foundUser && text == localText.debtBtnUz) {
-         const debtsList = await model.debtsList(foundUser.id)
-         const debtText = `${localText.debtTextUz}\n\n${debtsList.map(item => `${item.income ? localText.debtTakenTextUz : localText.debtGivenTextUz} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextUz} ${item.name}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}${item.comment ? `\n${localText.addReportCommentTextUz} ${item.comment}` : ""}`).join('\n\n***\n\n')}`
+         const debts = await paginationDebtData(foundUser.id, 'uz', 0)
+         const debtText = `${localText.debtTextUz}\n\n${debts.data?.map(item => `${item.income ? localText.debtTakenTextUz : localText.debtGivenTextUz} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextUz} ${item.name}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}${item.comment ? `\n${localText.addReportCommentTextUz} ${item.comment}` : ""}`).join('\n\n***\n\n')}`
 
          bot.sendMessage(chatId, debtText, {
             parse_mode: "HTML",
             reply_markup: {
-               keyboard: [
-                  [
-                     {
-                        text: localText.backBtnUz
-                     }
-                  ]
-               ],
-               resize_keyboard: true
+               inline_keyboard: debts.buttons
+               // keyboard: [
+               //    [
+               //       {
+               //          text: localText.backBtnUz
+               //       }
+               //    ]
+               // ],
+               // resize_keyboard: true
             }
          }).then(async () => {
             await model.editStep(chatId, 'debt')
          })
       } else if (foundUser && text == localText.debtBtnRu) {
-         const debtsList = await model.debtsList(foundUser.id)
-         const debtText = `${localText.debtTextRu}\n\n${debtsList.map(item => `${item.income ? localText.debtTakenTextRu : localText.debtGivenTextRu} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextRu} ${item.name}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(item.deadline)}${item.comment ? `\n${localText.addReportCommentTextRu} ${item.comment}` : ""}`).join('\n\n***\n\n')}`
+         const debts = await paginationDebtData(foundUser.id, 'ru', 0)
+         const debtText = `${localText.debtTextRu}\n\n${debts.data?.map(item => `${item.income ? localText.debtTakenTextRu : localText.debtGivenTextRu} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextRu} ${item.name}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(item.deadline)}${item.comment ? `\n${localText.addReportCommentTextRu} ${item.comment}` : ""}`).join('\n\n***\n\n')}`
 
          bot.sendMessage(chatId, debtText, {
             parse_mode: "HTML",
             reply_markup: {
-               keyboard: [
-                  [
-                     {
-                        text: localText.backBtnRu
-                     }
-                  ]
-               ],
-               resize_keyboard: true
+               inline_keyboard: debts.buttons
+               // keyboard: [
+               //    [
+               //       {
+               //          text: localText.backBtnRu
+               //       }
+               //    ]
+               // ],
+               // resize_keyboard: true
             }
          }).then(async () => {
             await model.editStep(chatId, 'debt')
          })
       } else if (foundUser && text == localText.debtBtnEng) {
-         const debtsList = await model.debtsList(foundUser.id)
-         const debtText = `${localText.debtTextEng}\n\n${debtsList.map(item => `${item.income ? localText.debtTakenTextEng : localText.debtGivenTextEng} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextEng} ${item.name}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(item.deadline)}${item.comment ? `\n${localText.addReportCommentTextEng} ${item.comment}` : ""}`).join('\n\n***\n\n')}`
+         const debts = await paginationDebtData(foundUser.id, 'eng', 0)
+         const debtText = `${localText.debtTextEng}\n\n${debts.data?.map(item => `${item.income ? localText.debtTakenTextEng : localText.debtGivenTextEng} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextEng} ${item.name}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(item.deadline)}${item.comment ? `\n${localText.addReportCommentTextEng} ${item.comment}` : ""}`).join('\n\n***\n\n')}`
 
          bot.sendMessage(chatId, debtText, {
             parse_mode: "HTML",
             reply_markup: {
-               keyboard: [
-                  [
-                     {
-                        text: localText.backBtnRu
-                     }
-                  ]
-               ],
-               resize_keyboard: true
+               inline_keyboard: debts.buttons
+               // keyboard: [
+               //    [
+               //       {
+               //          text: localText.backBtnRu
+               //       }
+               //    ]
+               // ],
+               // resize_keyboard: true
             }
          }).then(async () => {
             await model.editStep(chatId, 'debt')
@@ -4335,6 +4358,47 @@ bot.on('callback_query', async (msg) => {
          });
       }
 
+   } else if (data.startsWith('debt_page_')) {
+      const messageId = msg.message.message_id;
+      const page = parseInt(data.split("_")[2], 10);
+
+      if (foundUser.bot_lang == 'uz') {
+         const debts = await paginationDebtData(foundUser.id, 'uz', 0)
+         const debtText = `${localText.debtTextUz}\n\n${debts.data?.map(item => `${item.income ? localText.debtTakenTextUz : localText.debtGivenTextUz} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextUz} ${item.name}\n${localText.debtAmountTextUz} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextUz} ${formatDateAdvanced(item.deadline)}${item.comment ? `\n${localText.addReportCommentTextUz} ${item.comment}` : ""}`).join('\n\n***\n\n')}`
+
+         bot.editMessageText(debtText, {
+            chat_id: chatId,
+            message_id: messageId,
+            parse_mode: "HTML",
+            reply_markup: {
+               inline_keyboard: debts.buttons
+            }
+         });
+      } else if (foundUser.bot_lang == 'ru') {
+         const debts = await paginationDebtData(foundUser.id, 'ru', 0)
+         const debtText = `${localText.debtTextRu}\n\n${debts.data?.map(item => `${item.income ? localText.debtTakenTextRu : localText.debtGivenTextRu} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextRu} ${item.name}\n${localText.debtAmountTextRu} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextRu} ${formatDateAdvanced(item.deadline)}${item.comment ? `\n${localText.addReportCommentTextRu} ${item.comment}` : ""}`).join('\n\n***\n\n')}`
+
+         bot.editMessageText(debtText, {
+            chat_id: chatId,
+            message_id: messageId,
+            parse_mode: "HTML",
+            reply_markup: {
+               inline_keyboard: debts.buttons
+            }
+         });
+      } else if (foundUser.bot_lang == 'eng') {
+         const debts = await paginationDebtData(foundUser.id, 'eng', 0)
+         const debtText = `${localText.debtTextEng}\n\n${debts.data?.map(item => `${item.income ? localText.debtTakenTextEng : localText.debtGivenTextEng} ${formatDateAdvanced(item.given_date)}\n${localText.debtWhoTextEng} ${item.name}\n${localText.debtAmountTextEng} ${item.currency} ${formatBalanceWithSpaces(item.amount)}\n${localText.debtDeadlineTextEng} ${formatDateAdvanced(item.deadline)}${item.comment ? `\n${localText.addReportCommentTextEng} ${item.comment}` : ""}`).join('\n\n***\n\n')}`
+
+         bot.editMessageText(debtText, {
+            chat_id: chatId,
+            message_id: messageId,
+            parse_mode: "HTML",
+            reply_markup: {
+               inline_keyboard: debts.buttons
+            }
+         });
+      }
    }
 })
 
