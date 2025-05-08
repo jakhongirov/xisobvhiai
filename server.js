@@ -101,7 +101,7 @@ const paginationSeeMoreHistories = async (user_id, currentMonth, lang, pageIncom
 };
 
 const paginationDebtData = async (user_id, lang, page) => {
-   const ITEMS_PER_PAGE = 1;
+   const ITEMS_PER_PAGE = 5;
    const offset = page * ITEMS_PER_PAGE;
 
    const debtsList = await model.debtsList(user_id, ITEMS_PER_PAGE, offset)
