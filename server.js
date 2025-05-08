@@ -4557,7 +4557,7 @@ app.get('/errortext', async (req, res) => {
    const users = await model.foundUserLang()
 
    for (const user of users) {
-      bot.sendMessage(user.chat_id, "Kichik nozoslik tuzatildi!\n\n/start ustiga bosing va <b>Hisobchi AI</b> ni ishga tushuring", {
+      bot.sendMessage(user.chat_id, "Assalomu alaykum.\n\nBot yangilandi va yaxshilandi.  Iltimos, bot xatolarsiz ishlashi uchun /start 👈 ustiga bosing va yangilab oling.", {
          parse_mode: "HTML",
       }).catch(e => console.log("SendMessage Error:", e.message));
    }

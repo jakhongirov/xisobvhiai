@@ -770,7 +770,7 @@ const foundUserLang = () => {
       FROM
          users
       WHERE
-         bot_step = 'language';
+         premium = true;
    `;
 
    return fetchALL(QUERY)
