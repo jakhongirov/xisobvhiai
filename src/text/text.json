@@ -92,6 +92,14 @@
 	"nextBtnUzOutcome": "Chiqimlar →",
 	"nextBtnRuOutcome": "Расходы →",
 	"nextBtnEngOutcome": "Expenses →",
+
+	"previousBtnUz": "← Oldingi",
+	"previousBtnRu": "← Предыдущий",
+	"previousBtnEng": "← Previous",
+
+	"nextBtnUz": "Keyingisi →",
+	"nextBtnRu": "Следующий →",
+	"nextBtnEng": "Next →",
 	
 	"chooseMonthTextUz": "O'zingizga kerakli oyni tanlang:",
 	"chooseMonthTextRu": "Выберите месяц, который вы хотите:",
