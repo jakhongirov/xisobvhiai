@@ -142,6 +142,85 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
                resize_keyboard: true
             }
          })
+      } else if (foundUser?.bot_step == 'register') {
+         if (foundUser.bot_lang == 'uz') {
+            bot.sendVideo(chatId, 'https://xisobchiai2.admob.uz/public/videos/IMG_4833.MP4', {
+               parse_mode: "HTML",
+               caption: localText.startTextUz,
+               reply_markup: {
+                  keyboard: [
+                     [
+                        {
+                           text: localText.sendContactBtnUz,
+                           request_contact: true
+                        }
+                     ]
+                  ],
+                  resize_keyboard: true,
+               }
+            })
+         } else if (foundUser.bot_lang == 'ru') {
+            bot.sendVideo(chatId, 'https://xisobchiai2.admob.uz/public/videos/IMG_4833.MP4', {
+               parse_mode: "HTML",
+               caption: localText.startTextRu,
+               reply_markup: {
+                  keyboard: [
+                     [
+                        {
+                           text: localText.sendContactBtnRu,
+                           request_contact: true
+                        }
+                     ]
+                  ],
+                  resize_keyboard: true,
+               }
+            })
+         } else if (foundUser.bot_lang == 'eng') {
+            bot.sendVideo(chatId, 'https://xisobchiai2.admob.uz/public/videos/IMG_4833.MP4', {
+               parse_mode: "HTML",
+               caption: localText.startTextEng,
+               reply_markup: {
+                  keyboard: [
+                     [
+                        {
+                           text: localText.sendContactBtnEng,
+                           request_contact: true
+                        }
+                     ]
+                  ],
+                  resize_keyboard: true,
+               }
+            })
+         }
+      } else if (foundUser.bot_step == 'ask_name') {
+         if (foundUser.bot_lang == 'uz') {
+            bot.sendMessage(chatId, localText.askNameTextUz, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  remove_keyboard: true
+               }
+            }).then(async () => {
+               await model.editStep(chatId, 'ask_name')
+            })
+         } else if (foundUser.bot_lang == 'ru') {
+            bot.sendMessage(chatId, localText.askNameTextRu, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  remove_keyboard: true
+               }
+            }).then(async () => {
+               await model.editStep(chatId, 'ask_name')
+            })
+         } else if (foundUser.bot_lang == 'eng') {
+            bot.sendMessage(chatId, localText.askNameTextEng, {
+               parse_mode: "HTML",
+               reply_markup: {
+                  remove_keyboard: true
+               }
+            }).then(async () => {
+               await model.editStep(chatId, 'ask_name')
+            })
+         }
       } else if (foundUser?.bot_lang == 'uz') {
          bot.sendMessage(chatId, localText.menuTextUz, {
             parse_mode: "HTML",
