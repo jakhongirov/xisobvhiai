@@ -141,3 +141,14 @@ CREATE TABLE checks (
    ofd_url text,
    create_at timestamptz DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE messages (
+   id bigserial PRIMARY KEY,
+   text text,
+   premium boolean,
+   bot_lang text,
+   file_url text,
+   file_name text,
+   file_type text,
+   created_at timestamptz DEFAULT CURRENT_TIMESTAMP
+);

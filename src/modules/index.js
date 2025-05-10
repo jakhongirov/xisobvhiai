@@ -406,7 +406,7 @@ router
 
    /**
     * @swagger
-    * /user/statistics:
+    * /user/statistics/data:
     *   get:
     *     summary: Get user statistics
     *     tags: [Users]
@@ -447,7 +447,7 @@ router
     *       '500':
     *         description: Internal Server Error
     */
-   .get('/user/statistics', AUTH, users.USER_STATIS)
+   .get('/user/statistics/data', AUTH, users.USER_STATIS)
 
    /**
     * @swagger
