@@ -18,6 +18,7 @@ const price = require('./price/price')
 const categories = require('./categories/categories')
 const cards = require('./cards/cards')
 const histories = require('./histories/histories')
+const messages = require('./messages/messages')
 
 router
 
@@ -2572,5 +2573,151 @@ router
     *                   example: Interval Server Error
     */
    .get('/debt/:id', AUTH, histories.GET_DEBT_ID)
+
+   // MESSAGES
+   /**
+    * @swagger
+    * components:
+    *   schemas:
+    *     Message:
+    *       type: object
+    *       properties:
+    *         id:
+    *           type: integer
+    *           example: 1
+    *         text:
+    *           type: string
+    *           example: "Sample message text"
+    *         premium:
+    *           type: boolean
+    *           example: false
+    *         bot_lang:
+    *           type: string
+    *           example: "en"
+    *         file_url:
+    *           type: string
+    *           example: "https://example.com/files/audio.mp3"
+    *         file_name:
+    *           type: string
+    *           example: "audio.mp3"
+    *         file_type:
+    *           type: string
+    *           example: "audio"
+    *         created_at:
+    *           type: string
+    *           format: date-time
+    *           example: "2025-05-07T10:30:00Z"
+    */
+
+   /**
+    * @swagger
+    * tags:
+    *    name: Messages
+    *    description: Admin managing API
+    */
+
+   /**
+    * @swagger
+    * /messages/list:
+    *   get:
+    *     summary: Get list of messages
+    *     tags: [Messages]
+    *     parameters:
+    *       - name: limit
+    *         in: query
+    *         required: true
+    *         schema:
+    *           type: integer
+    *       - name: page
+    *         in: query
+    *         required: true
+    *         schema:
+    *           type: integer
+    *     responses:
+    *       200:
+    *         description: Successfully retrieved messages
+    *       400:
+    *         description: Missing limit or page
+    *       500:
+    *         description: Internal server error
+    */
+   .get('/messages/list', AUTH, messages.GET_LIST)
+
+   /**
+    * @swagger
+    * /message/{id}:
+    *   get:
+    *     summary: Get a message by ID
+    *     tags: [Messages]
+    *     parameters:
+    *       - name: id
+    *         in: path
+    *         required: true
+    *         schema:
+    *           type: integer
+    *     responses:
+    *       200:
+    *         description: Successfully retrieved message
+    *       404:
+    *         description: Message not found
+    *       500:
+    *         description: Internal server error
+    */
+   .get('/message/:id', AUTH, messages.GET_ID)
+
+   /**
+    * @swagger
+    * /message/send:
+    *   post:
+    *     summary: Add a new message
+    *     tags: [Messages]
+    *     requestBody:
+    *       required: true
+    *       content:
+    *         multipart/form-data:
+    *           schema:
+    *             type: object
+    *             properties:
+    *               text:
+    *                 type: string
+    *               premium:
+    *                 type: boolean
+    *               bot_lang:
+    *                 type: string
+    *               file:
+    *                 type: string
+    *                 format: binary
+    *     responses:
+    *       201:
+    *         description: Message created successfully
+    *       400:
+    *         description: Bad request
+    *       500:
+    *         description: Internal server error
+    */
+   .post('/message/send', AUTH, FileUpload.single('file'), messages.ADD_MESSAGE)
+
+   /**
+    * @swagger
+    * /message/delete/{id}:
+    *   delete:
+    *     summary: Delete a message by ID
+    *     tags: [Messages]
+    *     parameters:
+    *       - name: id
+    *         in: path
+    *         required: true
+    *         schema:
+    *           type: integer
+    *     responses:
+    *       200:
+    *         description: Successfully deleted message
+    *       404:
+    *         description: Message not found
+    *       500:
+    *         description: Internal server error
+    */
+   .delete('/message/delete/:id', AUTH, messages.DELETE_MESSAGE)
+
 
 module.exports = router
