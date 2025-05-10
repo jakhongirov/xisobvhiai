@@ -24,12 +24,12 @@ const transaction = (limit, page, method) => {
       ${method ? (
          `
                WHERE
-                  method = '${method.toUpperCase()}'
+                  c.method = '${method.toUpperCase()}'
             `
       ) : ""
       }
       ORDER BY
-         id DESC
+         c.id DESC
       LIMIT ${limit}
       OFFSET ${Number((page - 1) * limit)};
    `;
@@ -65,8 +65,8 @@ const transactionsFilter = (limit, page, month, year) => {
       ON
          u.chat_id = c.user_id
       WHERE
-         EXTRACT(MONTH FROM create_at) = $1 
-         AND EXTRACT(YEAR FROM create_at) = $2
+         EXTRACT(MONTH FROM c.create_at) = $1 
+         AND EXTRACT(YEAR FROM c.create_at) = $2
       ORDER BY
          id DESC
       LIMIT $3
@@ -106,7 +106,7 @@ const transactionsUserId = (user_id) => {
       ON
          u.chat_id = c.user_id
       WHERE 
-         user_id = $1
+         c.user_id = $1
       ORDER BY
          id DESC;
    `;
@@ -132,7 +132,7 @@ const foundTransaction = (id) => {
       ON
          u.chat_id = c.user_id
       WHERE
-         id = $1;
+         c.id = $1;
    `;
 
    return fetch(QUERY, id)
