@@ -59,7 +59,7 @@ const transactionsFilter = (limit, page, month, year) => {
          u.paid_msg,
          c.create_at
       FROM
-         checks
+         checks c
       JOIN
          users u
       ON
@@ -100,7 +100,7 @@ const transactionsUserId = (user_id) => {
          u.paid_msg,
          c.create_at
       FROM
-         checks
+         checks c
       JOIN
          users u
       ON
@@ -126,7 +126,7 @@ const foundTransaction = (id) => {
          u.paid_msg,
          c.create_at
       FROM
-         checks
+         checks c
       JOIN
          users u
       ON
