@@ -44,7 +44,8 @@ const createUser = (
    step,
    partner_id,
    partner_name,
-   source
+   source,
+   msg
 ) => {
    const QUERY = `
       INSERT INTO
@@ -53,13 +54,15 @@ const createUser = (
             bot_step,
             partner_id,
             partner_name,
-            source
+            source,
+            paid_msg
          ) VALUES (
             $1,
             $2,
             $3,
             $4,
-            $5
+            $5,
+            $6
          ) RETURNING *;
    `;
 
@@ -69,7 +72,8 @@ const createUser = (
       step,
       partner_id,
       partner_name,
-      source
+      source,
+      msg
    )
 }
 const addLang = (chatId, lang) => {

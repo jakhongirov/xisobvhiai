@@ -321,6 +321,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_5')
                })
             } else if (user.bot_lang == 'ru') {
                bot.sendMessage(user.chat_id,
@@ -336,6 +338,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_5')
                })
             } else if (user.bot_lang == 'eng') {
                bot.sendMessage(user.chat_id,
@@ -351,6 +355,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_5')
                })
             } else {
                bot.sendMessage(user.chat_id,
@@ -366,6 +372,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_5')
                })
             }
          }
@@ -387,6 +395,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_4')
                })
             } else if (user.bot_lang == 'ru') {
                bot.sendMessage(user.chat_id,
@@ -402,6 +412,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_4')
                })
             } else if (user.bot_lang == 'eng') {
                bot.sendMessage(user.chat_id,
@@ -417,6 +429,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_4')
                })
             } else {
                bot.sendMessage(user.chat_id,
@@ -432,6 +446,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_4')
                })
             }
          }
@@ -453,6 +469,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_3')
                })
             } else if (user.bot_lang == 'ru') {
                bot.sendMessage(user.chat_id,
@@ -468,6 +486,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_3')
                })
             } else if (user.bot_lang == 'eng') {
                bot.sendMessage(user.chat_id,
@@ -483,6 +503,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_3')
                })
             } else {
                bot.sendMessage(user.chat_id,
@@ -498,6 +520,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_3')
                })
             }
          }
@@ -519,6 +543,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_2')
                })
             } else if (user.bot_lang == 'ru') {
                bot.sendMessage(user.chat_id,
@@ -534,6 +560,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_2')
                })
             } else if (user.bot_lang == 'eng') {
                bot.sendMessage(user.chat_id,
@@ -549,6 +577,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_2')
                })
             } else {
                bot.sendMessage(user.chat_id,
@@ -564,6 +594,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_2')
                })
             }
          }
@@ -585,6 +617,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_1')
                })
             } else if (user.bot_lang == 'ru') {
                bot.sendMessage(user.chat_id,
@@ -600,6 +634,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_1')
                })
             } else if (user.bot_lang == 'eng') {
                bot.sendMessage(user.chat_id,
@@ -615,6 +651,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_1')
                })
             } else {
                bot.sendMessage(user.chat_id,
@@ -630,6 +668,8 @@ const sendMessageAdvice = async () => {
                         ]
                      ]
                   }
+               }).then(async () => {
+                  await model.editMsg(user.chat_id, 'day_1')
                })
             }
          }

@@ -89,6 +89,19 @@ const addMessage = (
       mimeType
    )
 }
+const editMsg = (chat_id, msg) => {
+   const QUERY = `
+      UPDATE
+         users
+      SET
+         paid_msg = $2
+      WHERE
+         chat_id = $1
+      RETURNING *;
+   `;
+
+   return fetch(QUERY, chat_id, msg)
+}
 const deleteMessage = (id) => {
    const QUERY = `
       DELETE FROM 
@@ -107,5 +120,6 @@ module.exports = {
    foundMessage,
    foundUsers,
    addMessage,
+   editMsg,
    deleteMessage
 }

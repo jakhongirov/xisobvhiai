@@ -278,6 +278,9 @@ router
     *         bot_lang:
     *           type: string
     *           example: "en"
+    *         paid_msg:
+    *           type: string
+    *           example: "day_1"
     *         duration:
     *           type: boolean
     *           default: false

@@ -274,6 +274,32 @@ const editPartnerProfit = (id, profitAmount) => {
 
    return fetch(QUERY, id, profitAmount)
 }
+const editStep = (chatId, step) => {
+   const QUERY = `
+      UPDATE
+         users
+      SET
+         bot_step = $2
+      WHERE
+         chat_id = $1
+      RETURNING *;
+   `;
+
+   return fetch(QUERY, chatId, step)
+}
+const editMsg = (chat_id, msg) => {
+   const QUERY = `
+      UPDATE
+         users
+      SET
+         paid_msg = $2
+      WHERE
+         chat_id = $1
+      RETURNING *;
+   `;
+
+   return fetch(QUERY, chat_id, msg)
+}
 
 module.exports = {
    getUsersBefore2day,
@@ -292,5 +318,7 @@ module.exports = {
    userCards,
    editUserPremiumPaid,
    foundPartner,
-   editPartnerProfit
+   editPartnerProfit,
+   editStep,
+   editMsg
 }

@@ -85,7 +85,7 @@ module.exports = {
          const mimeType = uploadFile?.mimetype || null;
 
          // Save message to DB
-         await model.addMessage(text, premium, bot_lang, fileUrl, fileName, mimeType);
+         const addMessage = await model.addMessage(text, premium, bot_lang, fileUrl, fileName, mimeType);
 
          if (!foundUsers.length) {
             return res.json({ message: "No users found in the specified balance range." });
@@ -120,6 +120,8 @@ module.exports = {
                               ]
                            ]
                         }
+                     }).then(async () => {
+                        await model.editMsg(chatId, `message_${addMessage.id}`)
                      });
                   } else {
                      await bot.sendMessage(chatId, formattedText, { parse_mode: "HTML" });
@@ -139,6 +141,8 @@ module.exports = {
                               ]
                            ]
                         }
+                     }).then(async () => {
+                        await model.editMsg(chatId, `message_${addMessage.id}`)
                      });
                   } else {
                      await bot.sendPhoto(chatId, fileUrl, { caption: formattedText, parse_mode: "HTML" });
@@ -158,6 +162,8 @@ module.exports = {
                               ]
                            ]
                         }
+                     }).then(async () => {
+                        await model.editMsg(chatId, `message_${addMessage.id}`)
                      });
                   } else {
                      await bot.sendVideo(chatId, fileUrl, { caption: formattedText, parse_mode: "HTML" });
@@ -176,6 +182,8 @@ module.exports = {
                               ]
                            ]
                         }
+                     }).then(async () => {
+                        await model.editMsg(chatId, `message_${addMessage.id}`)
                      });
                   } else {
                      await bot.sendMessage(chatId, `${formattedText}\n\nFile: ${fileUrl}`, { parse_mode: "HTML" });

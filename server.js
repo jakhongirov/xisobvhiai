@@ -371,9 +371,9 @@ bot.onText(/\/start ?(.*)?/, async (msg, match) => {
             const [partnerName, source] = param?.split('-');
             console.log(param)
             const partner = await model.foundPartnerName(partnerName)
-            await model.createUser(chatId, 'language', partner.id, partnerName, source);
+            await model.createUser(chatId, 'language', partner.id, partnerName, source, '/start');
          } else {
-            await model.createUser(chatId, 'language', null, 'organic', 'organic');
+            await model.createUser(chatId, 'language', null, 'organic', 'organic', '/start');
          }
       }).catch(error => {
          console.error("Error sending message:", error);

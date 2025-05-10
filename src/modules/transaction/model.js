@@ -6,9 +6,21 @@ const {
 const transaction = (limit, page, method) => {
    const QUERY = `
       SELECT
-         *
+         c.id,
+         c.user_id,
+         c.success_trans_id,
+         c.method,
+         c.amount,
+         c.transaction_id,
+         c.ofd_url,
+         u.paid_msg,
+         c.create_at
       FROM
-         checks
+         checks c
+      JOIN
+         users u
+      ON
+         u.chat_id = c.user_id
       ${method ? (
          `
                WHERE
@@ -37,9 +49,21 @@ const totalAmount = () => {
 const transactionsFilter = (limit, page, month, year) => {
    const QUERY = `
       SELECT
-         *
+         c.id,
+         c.user_id,
+         c.success_trans_id,
+         c.method,
+         c.amount,
+         c.transaction_id,
+         c.ofd_url,
+         u.paid_msg,
+         c.create_at
       FROM
          checks
+      JOIN
+         users u
+      ON
+         u.chat_id = c.user_id
       WHERE
          EXTRACT(MONTH FROM create_at) = $1 
          AND EXTRACT(YEAR FROM create_at) = $2
@@ -66,9 +90,21 @@ const transactionsAmount = (month, year) => {
 const transactionsUserId = (user_id) => {
    const QUERY = `
       SELECT
-         *
+         c.id,
+         c.user_id,
+         c.success_trans_id,
+         c.method,
+         c.amount,
+         c.transaction_id,
+         c.ofd_url,
+         u.paid_msg,
+         c.create_at
       FROM
          checks
+      JOIN
+         users u
+      ON
+         u.chat_id = c.user_id
       WHERE 
          user_id = $1
       ORDER BY
@@ -80,9 +116,21 @@ const transactionsUserId = (user_id) => {
 const foundTransaction = (id) => {
    const QUERY = `
       SELECT
-         *
+         c.id,
+         c.user_id,
+         c.success_trans_id,
+         c.method,
+         c.amount,
+         c.transaction_id,
+         c.ofd_url,
+         u.paid_msg,
+         c.create_at
       FROM
          checks
+      JOIN
+         users u
+      ON
+         u.chat_id = c.user_id
       WHERE
          id = $1;
    `;

@@ -15,6 +15,7 @@ CREATE TABLE users (
    chat_id bigint,
    bot_step text,
    bot_lang text,
+   paid_msg text,
    duration boolean DEFAULT false,
    source text,
    partner_id bigint,

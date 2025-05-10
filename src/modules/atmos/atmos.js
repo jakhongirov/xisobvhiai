@@ -312,7 +312,7 @@ module.exports = {
                                  }
 
                                  if (addCheck && editUserPremium) {
-                                    const text = `<strong>${addCheck.method}</strong>\n\nIlova: Hisobchi AI\nUser id: ${addCheck?.user_id}\nTarif: Oylik\nAmount: ${addCheck?.amount}`;
+                                    const text = `<strong>${addCheck.method}</strong>\n\nIlova: Hisobchi AI\nUser id: ${addCheck?.user_id}\nTarif: Oylik\nAmount: ${addCheck?.amount}\nMessage: ${checkUser?.paid_msg}`;
                                     bot.sendMessage(process.env.CHAT_ID, text, { parse_mode: "HTML" })
 
                                     if (editUserPremium?.bot_lang == 'uz') {
@@ -680,7 +680,7 @@ module.exports = {
                                  }
                               }
                               if (addCheck && editUserPremium) {
-                                 const text = `<strong>${addCheck.method}</strong>\n\nIlova: Hisobchi AI\nUser id: ${addCheck?.user_id}\nTarif: Oylik\nAmount: ${addCheck?.amount}`;
+                                 const text = `<strong>${addCheck.method}</strong>\n\nIlova: Hisobchi AI\nUser id: ${addCheck?.user_id}\nTarif: Oylik\nAmount: ${addCheck?.amount}\nMessage: ${checkUser?.paid_msg}`;
                                  bot.sendMessage(process.env.CHAT_ID, text, { parse_mode: "HTML" })
 
                                  if (editUserPremium?.bot_lang == 'uz') {
