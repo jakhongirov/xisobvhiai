@@ -3,6 +3,7 @@ const model = require('./model')
 const path = require('path')
 const FS = require('../../lib/fs/fs')
 const { bot } = require('../../lib/bot')
+const localText = require('../../text/text.json')
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -106,13 +107,79 @@ module.exports = {
 
             try {
                if (!uploadFile) {
-                  await bot.sendMessage(chatId, formattedText, { parse_mode: "HTML" });
+                  if (premium === false) {
+                     await bot.sendMessage(chatId, formattedText, {
+                        parse_mode: "HTML",
+                        reply_markup: {
+                           inline_keyboard: [
+                              [
+                                 {
+                                    text: user?.bot_lang == 'uz' ? localText.cronTextRegisterBtnUz : user?.bot_lang == 'ru' ? localText.cronTextRegisterBtnRu : user?.bot_lang == 'eng' ? localText.cronTextRegisterBtnEng : localText.cronTextRegisterBtnUz,
+                                    callback_data: "to_buy"
+                                 }
+                              ]
+                           ]
+                        }
+                     });
+                  } else {
+                     await bot.sendMessage(chatId, formattedText, { parse_mode: "HTML" });
+                  }
                } else if (mimeType.startsWith("image/")) {
-                  await bot.sendPhoto(chatId, fileUrl, { caption: formattedText, parse_mode: "HTML" });
+                  if (premium === false) {
+                     await bot.sendPhoto(chatId, fileUrl, {
+                        caption: formattedText,
+                        parse_mode: "HTML",
+                        reply_markup: {
+                           inline_keyboard: [
+                              [
+                                 {
+                                    text: user?.bot_lang == 'uz' ? localText.cronTextRegisterBtnUz : user?.bot_lang == 'ru' ? localText.cronTextRegisterBtnRu : user?.bot_lang == 'eng' ? localText.cronTextRegisterBtnEng : localText.cronTextRegisterBtnUz,
+                                    callback_data: "to_buy"
+                                 }
+                              ]
+                           ]
+                        }
+                     });
+                  } else {
+                     await bot.sendPhoto(chatId, fileUrl, { caption: formattedText, parse_mode: "HTML" });
+                  }
                } else if (mimeType.startsWith("video/")) {
-                  await bot.sendVideo(chatId, fileUrl, { caption: formattedText, parse_mode: "HTML" });
+                  if (premium === false) {
+                     await bot.sendVideo(chatId, fileUrl, {
+                        caption: formattedText,
+                        parse_mode: "HTML",
+                        reply_markup: {
+                           inline_keyboard: [
+                              [
+                                 {
+                                    text: user?.bot_lang == 'uz' ? localText.cronTextRegisterBtnUz : user?.bot_lang == 'ru' ? localText.cronTextRegisterBtnRu : user?.bot_lang == 'eng' ? localText.cronTextRegisterBtnEng : localText.cronTextRegisterBtnUz,
+                                    callback_data: "to_buy"
+                                 }
+                              ]
+                           ]
+                        }
+                     });
+                  } else {
+                     await bot.sendVideo(chatId, fileUrl, { caption: formattedText, parse_mode: "HTML" });
+                  }
                } else {
-                  await bot.sendMessage(chatId, `${formattedText}\n\nFile: ${fileUrl}`, { parse_mode: "HTML" });
+                  if (premium === false) {
+                     await bot.sendMessage(chatId, `${formattedText}\n\nFile: ${fileUrl}`, {
+                        parse_mode: "HTML",
+                        reply_markup: {
+                           inline_keyboard: [
+                              [
+                                 {
+                                    text: user?.bot_lang == 'uz' ? localText.cronTextRegisterBtnUz : user?.bot_lang == 'ru' ? localText.cronTextRegisterBtnRu : user?.bot_lang == 'eng' ? localText.cronTextRegisterBtnEng : localText.cronTextRegisterBtnUz,
+                                    callback_data: "to_buy"
+                                 }
+                              ]
+                           ]
+                        }
+                     });
+                  } else {
+                     await bot.sendMessage(chatId, `${formattedText}\n\nFile: ${fileUrl}`, { parse_mode: "HTML" });
+                  }
                }
             } catch (err) {
                console.error(`❌ Failed to send to ${chatId}:`, err.message);
